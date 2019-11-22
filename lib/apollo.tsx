@@ -148,8 +148,7 @@ function createApolloClient(initialState = {}, { getToken }: any) {
   }
 
   const httpLink = new HttpLink({
-    uri: 'https://api.davam.cz/', // Server URL (must be absolute)
-    // uri: 'http://localhost:4000/',
+    uri: 'https://davamcz.now.sh/api/graphql', // Server URL (must be absolute)
     credentials: 'same-origin',
     fetch,
     fetchOptions,
