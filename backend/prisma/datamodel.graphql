@@ -1,0 +1,70 @@
+type User {
+  id: ID! @id
+  email: String! @unique
+  firstName: String!
+  lastName: String!
+  password: String
+  role: UserRole! @default(value: USER)
+  offers: [Offer!]!
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+type Offer {
+  id: ID! @id
+  active: Boolean @default(value: false)
+  amount: Int
+  createdAt: DateTime @createdAt
+  updatedAt: DateTime @updatedAt
+  deletedAt: DateTime
+  email: String!
+  firstName: String!
+  lastName: String!
+  transactions: [Transaction!]! 
+  beneficator: Organization!
+  price: Int!
+  name: String!
+  user: User!
+}
+
+type Transaction {
+  id: ID! @id
+  amount: Int!
+  email: String!
+  firstName: String!
+  lastName: String!
+  comment: String
+  createdAt: DateTime @createdAt
+  updatedAt: DateTime @updatedAt
+  deletedAt: DateTime
+  donatedAmount: Int
+  status: TransactionStatus! @default(value: PENDING)
+  offer: Offer!
+}
+
+enum TransactionStatus {
+  PENDING
+  PAID
+  FAILED
+  INSUFFICIENT
+}
+
+type Organization {
+  id: ID! @id
+  apiId: Int!
+  apiSecret: String!
+  organizationId: Int!
+  active: Boolean!
+  logo: String
+  createdAt: DateTime @createdAt
+  updatedAt: DateTime @updatedAt
+  deletedAt: DateTime
+  name: String!
+  offers: [Offer!]!
+  projectIds: [Int] @scalarList(strategy:RELATION)
+  description: String!
+  url: String!
+}

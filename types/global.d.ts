@@ -1,0 +1,12 @@
+/// <reference types="node" />
+
+declare namespace NodeJS {
+
+  interface ProcessEnv {
+    readonly AIRTABLE_SECRET: string
+    readonly PRISMA_ENDPOINT: string
+    readonly PRISMA_SECRET: string
+    readonly SECRET_KEY: string
+    readonly PROJECT_DIRNAME: string
+  }
+}

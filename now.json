@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "davamcz",
+  "env": {
+    "AIRTABLE_SECRET": "@airtable-secret",
+    "PRISMA_ENDPOINT": "@prisma-endpoint",
+    "PRISMA_SECRET": "@prisma-secret",
+    "SECRET_KEY": "@secret-key"
+  }
+}
