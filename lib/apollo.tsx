@@ -14,7 +14,10 @@ type Options = {
   ssr: boolean
 }
 
-export function withApollo(PageComponent: NextPage, options: Options = { ssr: true }) {
+export function withApollo(
+  PageComponent: NextPage,
+  options: Options = { ssr: true }
+) {
   const WithApollo = ({
     apolloClient,
     apolloState,
@@ -148,7 +151,10 @@ function createApolloClient(initialState = {}, { getToken }: any) {
   }
 
   const httpLink = new HttpLink({
-    uri: 'https://davamcz.now.sh/api/graphql', // Server URL (must be absolute)
+    uri:
+      process.env.NODE_ENV === 'production'
+        ? 'https://davamcz.now.sh/api/graphql'
+        : 'http://localhost:3000/api/graphql', // Server URL (must be absolute)
     credentials: 'same-origin',
     fetch,
     fetchOptions,
