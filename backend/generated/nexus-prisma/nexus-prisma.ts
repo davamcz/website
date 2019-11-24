@@ -5,7 +5,7 @@
 
 import { core } from 'nexus'
 import { GraphQLResolveInfo } from 'graphql'
-import * as prisma from '../../prisma/backend/generated/prisma-client'
+import * as prisma from '../prisma-client'
 
 declare global {
   interface NexusPrismaGen extends NexusPrismaTypes {}

@@ -15,7 +15,7 @@ export default {
     Organization: ['id']
   },
   embeddedTypes: [],
-  clientPath: 'backend/prisma/backend/generated/prisma-client',
+  clientPath: 'backend/generated/prisma-client',
   schema: {
   "__schema": {
     "queryType": {
