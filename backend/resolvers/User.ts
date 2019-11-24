@@ -1,4 +1,4 @@
-import { stringArg, extendType } from 'nexus'
+import { stringArg, extendType, idArg } from 'nexus'
 import { prismaObjectType } from 'nexus-prisma'
 import { hash, compare } from 'bcrypt'
 import { sign } from 'jsonwebtoken'
@@ -24,9 +24,8 @@ export const UserQuery = extendType({
       resolve: async (_, {}, ctx) => {
         const id = getUserId(ctx)
 
-        const user = ctx.prisma.user({ id })
+        return ctx.prisma.user({ id }) as any
 
-        return user as any
         // if (id) {
         //   return ctx.prisma.user({ id })
         // }
@@ -88,6 +87,43 @@ export const UserMutations = extendType({
           ),
           user,
         }
+      },
+    })
+
+    t.field('updateUser', {
+      type: 'User',
+      args: {
+        id: idArg({ required: true }),
+        firstName: stringArg({ required: true }),
+        lastName: stringArg({ required: true }),
+        city: stringArg({ required: true }),
+        street: stringArg({ required: true }),
+        postalCode: stringArg({ required: true }),
+      },
+      resolve: async (
+        _,
+        { id, firstName, lastName, city, street, postalCode },
+        { prisma }
+      ) => {
+        const adress = {
+          city,
+          street,
+          postalCode,
+        }
+
+        return prisma.updateUser({
+          where: { id },
+          data: {
+            firstName,
+            lastName,
+            adress: {
+              upsert: {
+                create: adress,
+                update: adress,
+              },
+            },
+          },
+        })
       },
     })
   },

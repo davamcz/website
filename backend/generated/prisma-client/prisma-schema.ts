@@ -2,7 +2,179 @@
   // Please don't change this file manually but run `prisma generate` to update it.
   // For more information, please read the docs: https://www.prisma.io/docs/prisma-client/
 
-export const typeDefs = /* GraphQL */ `type AggregateOffer {
+export const typeDefs = /* GraphQL */ `type Adress {
+  id: ID!
+  city: String
+  street: String
+  postalCode: String
+}
+
+type AdressConnection {
+  pageInfo: PageInfo!
+  edges: [AdressEdge]!
+  aggregate: AggregateAdress!
+}
+
+input AdressCreateInput {
+  id: ID
+  city: String
+  street: String
+  postalCode: String
+}
+
+input AdressCreateOneInput {
+  create: AdressCreateInput
+  connect: AdressWhereUniqueInput
+}
+
+type AdressEdge {
+  node: Adress!
+  cursor: String!
+}
+
+enum AdressOrderByInput {
+  id_ASC
+  id_DESC
+  city_ASC
+  city_DESC
+  street_ASC
+  street_DESC
+  postalCode_ASC
+  postalCode_DESC
+}
+
+type AdressPreviousValues {
+  id: ID!
+  city: String
+  street: String
+  postalCode: String
+}
+
+type AdressSubscriptionPayload {
+  mutation: MutationType!
+  node: Adress
+  updatedFields: [String!]
+  previousValues: AdressPreviousValues
+}
+
+input AdressSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: AdressWhereInput
+  AND: [AdressSubscriptionWhereInput!]
+  OR: [AdressSubscriptionWhereInput!]
+  NOT: [AdressSubscriptionWhereInput!]
+}
+
+input AdressUpdateDataInput {
+  city: String
+  street: String
+  postalCode: String
+}
+
+input AdressUpdateInput {
+  city: String
+  street: String
+  postalCode: String
+}
+
+input AdressUpdateManyMutationInput {
+  city: String
+  street: String
+  postalCode: String
+}
+
+input AdressUpdateOneInput {
+  create: AdressCreateInput
+  update: AdressUpdateDataInput
+  upsert: AdressUpsertNestedInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: AdressWhereUniqueInput
+}
+
+input AdressUpsertNestedInput {
+  update: AdressUpdateDataInput!
+  create: AdressCreateInput!
+}
+
+input AdressWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  city: String
+  city_not: String
+  city_in: [String!]
+  city_not_in: [String!]
+  city_lt: String
+  city_lte: String
+  city_gt: String
+  city_gte: String
+  city_contains: String
+  city_not_contains: String
+  city_starts_with: String
+  city_not_starts_with: String
+  city_ends_with: String
+  city_not_ends_with: String
+  street: String
+  street_not: String
+  street_in: [String!]
+  street_not_in: [String!]
+  street_lt: String
+  street_lte: String
+  street_gt: String
+  street_gte: String
+  street_contains: String
+  street_not_contains: String
+  street_starts_with: String
+  street_not_starts_with: String
+  street_ends_with: String
+  street_not_ends_with: String
+  postalCode: String
+  postalCode_not: String
+  postalCode_in: [String!]
+  postalCode_not_in: [String!]
+  postalCode_lt: String
+  postalCode_lte: String
+  postalCode_gt: String
+  postalCode_gte: String
+  postalCode_contains: String
+  postalCode_not_contains: String
+  postalCode_starts_with: String
+  postalCode_not_starts_with: String
+  postalCode_ends_with: String
+  postalCode_not_ends_with: String
+  AND: [AdressWhereInput!]
+  OR: [AdressWhereInput!]
+  NOT: [AdressWhereInput!]
+}
+
+input AdressWhereUniqueInput {
+  id: ID
+}
+
+type AggregateAdress {
+  count: Int!
+}
+
+type AggregateFile {
+  count: Int!
+}
+
+type AggregateOffer {
   count: Int!
 }
 
@@ -24,9 +196,202 @@ type BatchPayload {
 
 scalar DateTime
 
+type File {
+  id: ID!
+  key: String!
+  fileName: String!
+  mimeType: String!
+  encoding: String!
+  url: String!
+}
+
+type FileConnection {
+  pageInfo: PageInfo!
+  edges: [FileEdge]!
+  aggregate: AggregateFile!
+}
+
+input FileCreateInput {
+  id: ID
+  key: String!
+  fileName: String!
+  mimeType: String!
+  encoding: String!
+  url: String!
+}
+
+type FileEdge {
+  node: File!
+  cursor: String!
+}
+
+enum FileOrderByInput {
+  id_ASC
+  id_DESC
+  key_ASC
+  key_DESC
+  fileName_ASC
+  fileName_DESC
+  mimeType_ASC
+  mimeType_DESC
+  encoding_ASC
+  encoding_DESC
+  url_ASC
+  url_DESC
+}
+
+type FilePreviousValues {
+  id: ID!
+  key: String!
+  fileName: String!
+  mimeType: String!
+  encoding: String!
+  url: String!
+}
+
+type FileSubscriptionPayload {
+  mutation: MutationType!
+  node: File
+  updatedFields: [String!]
+  previousValues: FilePreviousValues
+}
+
+input FileSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: FileWhereInput
+  AND: [FileSubscriptionWhereInput!]
+  OR: [FileSubscriptionWhereInput!]
+  NOT: [FileSubscriptionWhereInput!]
+}
+
+input FileUpdateInput {
+  key: String
+  fileName: String
+  mimeType: String
+  encoding: String
+  url: String
+}
+
+input FileUpdateManyMutationInput {
+  key: String
+  fileName: String
+  mimeType: String
+  encoding: String
+  url: String
+}
+
+input FileWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  key: String
+  key_not: String
+  key_in: [String!]
+  key_not_in: [String!]
+  key_lt: String
+  key_lte: String
+  key_gt: String
+  key_gte: String
+  key_contains: String
+  key_not_contains: String
+  key_starts_with: String
+  key_not_starts_with: String
+  key_ends_with: String
+  key_not_ends_with: String
+  fileName: String
+  fileName_not: String
+  fileName_in: [String!]
+  fileName_not_in: [String!]
+  fileName_lt: String
+  fileName_lte: String
+  fileName_gt: String
+  fileName_gte: String
+  fileName_contains: String
+  fileName_not_contains: String
+  fileName_starts_with: String
+  fileName_not_starts_with: String
+  fileName_ends_with: String
+  fileName_not_ends_with: String
+  mimeType: String
+  mimeType_not: String
+  mimeType_in: [String!]
+  mimeType_not_in: [String!]
+  mimeType_lt: String
+  mimeType_lte: String
+  mimeType_gt: String
+  mimeType_gte: String
+  mimeType_contains: String
+  mimeType_not_contains: String
+  mimeType_starts_with: String
+  mimeType_not_starts_with: String
+  mimeType_ends_with: String
+  mimeType_not_ends_with: String
+  encoding: String
+  encoding_not: String
+  encoding_in: [String!]
+  encoding_not_in: [String!]
+  encoding_lt: String
+  encoding_lte: String
+  encoding_gt: String
+  encoding_gte: String
+  encoding_contains: String
+  encoding_not_contains: String
+  encoding_starts_with: String
+  encoding_not_starts_with: String
+  encoding_ends_with: String
+  encoding_not_ends_with: String
+  url: String
+  url_not: String
+  url_in: [String!]
+  url_not_in: [String!]
+  url_lt: String
+  url_lte: String
+  url_gt: String
+  url_gte: String
+  url_contains: String
+  url_not_contains: String
+  url_starts_with: String
+  url_not_starts_with: String
+  url_ends_with: String
+  url_not_ends_with: String
+  AND: [FileWhereInput!]
+  OR: [FileWhereInput!]
+  NOT: [FileWhereInput!]
+}
+
+input FileWhereUniqueInput {
+  id: ID
+}
+
 scalar Long
 
 type Mutation {
+  createAdress(data: AdressCreateInput!): Adress!
+  updateAdress(data: AdressUpdateInput!, where: AdressWhereUniqueInput!): Adress
+  updateManyAdresses(data: AdressUpdateManyMutationInput!, where: AdressWhereInput): BatchPayload!
+  upsertAdress(where: AdressWhereUniqueInput!, create: AdressCreateInput!, update: AdressUpdateInput!): Adress!
+  deleteAdress(where: AdressWhereUniqueInput!): Adress
+  deleteManyAdresses(where: AdressWhereInput): BatchPayload!
+  createFile(data: FileCreateInput!): File!
+  updateFile(data: FileUpdateInput!, where: FileWhereUniqueInput!): File
+  updateManyFiles(data: FileUpdateManyMutationInput!, where: FileWhereInput): BatchPayload!
+  upsertFile(where: FileWhereUniqueInput!, create: FileCreateInput!, update: FileUpdateInput!): File!
+  deleteFile(where: FileWhereUniqueInput!): File
+  deleteManyFiles(where: FileWhereInput): BatchPayload!
   createOffer(data: OfferCreateInput!): Offer!
   updateOffer(data: OfferUpdateInput!, where: OfferWhereUniqueInput!): Offer
   updateManyOffers(data: OfferUpdateManyMutationInput!, where: OfferWhereInput): BatchPayload!
@@ -933,6 +1298,12 @@ type PageInfo {
 }
 
 type Query {
+  adress(where: AdressWhereUniqueInput!): Adress
+  adresses(where: AdressWhereInput, orderBy: AdressOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Adress]!
+  adressesConnection(where: AdressWhereInput, orderBy: AdressOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): AdressConnection!
+  file(where: FileWhereUniqueInput!): File
+  files(where: FileWhereInput, orderBy: FileOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [File]!
+  filesConnection(where: FileWhereInput, orderBy: FileOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): FileConnection!
   offer(where: OfferWhereUniqueInput!): Offer
   offers(where: OfferWhereInput, orderBy: OfferOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Offer]!
   offersConnection(where: OfferWhereInput, orderBy: OfferOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): OfferConnection!
@@ -949,6 +1320,8 @@ type Query {
 }
 
 type Subscription {
+  adress(where: AdressSubscriptionWhereInput): AdressSubscriptionPayload
+  file(where: FileSubscriptionWhereInput): FileSubscriptionPayload
   offer(where: OfferSubscriptionWhereInput): OfferSubscriptionPayload
   organization(where: OrganizationSubscriptionWhereInput): OrganizationSubscriptionPayload
   transaction(where: TransactionSubscriptionWhereInput): TransactionSubscriptionPayload
@@ -1401,6 +1774,7 @@ type User {
   password: String
   role: UserRole!
   offers(where: OfferWhereInput, orderBy: OfferOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Offer!]
+  adress: Adress
 }
 
 type UserConnection {
@@ -1417,6 +1791,7 @@ input UserCreateInput {
   password: String
   role: UserRole
   offers: OfferCreateManyWithoutUserInput
+  adress: AdressCreateOneInput
 }
 
 input UserCreateOneWithoutOffersInput {
@@ -1431,6 +1806,7 @@ input UserCreateWithoutOffersInput {
   lastName: String!
   password: String
   role: UserRole
+  adress: AdressCreateOneInput
 }
 
 type UserEdge {
@@ -1492,6 +1868,7 @@ input UserUpdateInput {
   password: String
   role: UserRole
   offers: OfferUpdateManyWithoutUserInput
+  adress: AdressUpdateOneInput
 }
 
 input UserUpdateManyMutationInput {
@@ -1515,6 +1892,7 @@ input UserUpdateWithoutOffersDataInput {
   lastName: String
   password: String
   role: UserRole
+  adress: AdressUpdateOneInput
 }
 
 input UserUpsertWithoutOffersInput {
@@ -1600,6 +1978,7 @@ input UserWhereInput {
   offers_every: OfferWhereInput
   offers_some: OfferWhereInput
   offers_none: OfferWhereInput
+  adress: AdressWhereInput
   AND: [UserWhereInput!]
   OR: [UserWhereInput!]
   NOT: [UserWhereInput!]

@@ -10,7 +10,7 @@ generate:
 hooks:
   post-deploy:
     - prisma generate -p backend/prisma/prisma.yml
-    - nexus-prisma-generate --project backend/prisma/prisma.yml --client backend/generated/prisma-client/ --output backend/generated/nexus-prisma
+    - nexus-prisma-generate --project ./backend/prisma/prisma.yml --output ./backend/generated/nexus-prisma
 
 endpoint: ${env:PRISMA_ENDPOINT}
 secret: ${env:PRISMA_SECRET}

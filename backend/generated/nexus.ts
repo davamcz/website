@@ -17,6 +17,67 @@ declare global {
 }
 
 export interface NexusGenInputs {
+  AdressWhereInput: { // input type
+    AND?: NexusGenInputs['AdressWhereInput'][] | null; // [AdressWhereInput!]
+    city?: string | null; // String
+    city_contains?: string | null; // String
+    city_ends_with?: string | null; // String
+    city_gt?: string | null; // String
+    city_gte?: string | null; // String
+    city_in?: string[] | null; // [String!]
+    city_lt?: string | null; // String
+    city_lte?: string | null; // String
+    city_not?: string | null; // String
+    city_not_contains?: string | null; // String
+    city_not_ends_with?: string | null; // String
+    city_not_in?: string[] | null; // [String!]
+    city_not_starts_with?: string | null; // String
+    city_starts_with?: string | null; // String
+    id?: string | null; // ID
+    id_contains?: string | null; // ID
+    id_ends_with?: string | null; // ID
+    id_gt?: string | null; // ID
+    id_gte?: string | null; // ID
+    id_in?: string[] | null; // [ID!]
+    id_lt?: string | null; // ID
+    id_lte?: string | null; // ID
+    id_not?: string | null; // ID
+    id_not_contains?: string | null; // ID
+    id_not_ends_with?: string | null; // ID
+    id_not_in?: string[] | null; // [ID!]
+    id_not_starts_with?: string | null; // ID
+    id_starts_with?: string | null; // ID
+    NOT?: NexusGenInputs['AdressWhereInput'][] | null; // [AdressWhereInput!]
+    OR?: NexusGenInputs['AdressWhereInput'][] | null; // [AdressWhereInput!]
+    postalCode?: string | null; // String
+    postalCode_contains?: string | null; // String
+    postalCode_ends_with?: string | null; // String
+    postalCode_gt?: string | null; // String
+    postalCode_gte?: string | null; // String
+    postalCode_in?: string[] | null; // [String!]
+    postalCode_lt?: string | null; // String
+    postalCode_lte?: string | null; // String
+    postalCode_not?: string | null; // String
+    postalCode_not_contains?: string | null; // String
+    postalCode_not_ends_with?: string | null; // String
+    postalCode_not_in?: string[] | null; // [String!]
+    postalCode_not_starts_with?: string | null; // String
+    postalCode_starts_with?: string | null; // String
+    street?: string | null; // String
+    street_contains?: string | null; // String
+    street_ends_with?: string | null; // String
+    street_gt?: string | null; // String
+    street_gte?: string | null; // String
+    street_in?: string[] | null; // [String!]
+    street_lt?: string | null; // String
+    street_lte?: string | null; // String
+    street_not?: string | null; // String
+    street_not_contains?: string | null; // String
+    street_not_ends_with?: string | null; // String
+    street_not_in?: string[] | null; // [String!]
+    street_not_starts_with?: string | null; // String
+    street_starts_with?: string | null; // String
+  }
   OfferWhereInput: { // input type
     active?: boolean | null; // Boolean
     active_not?: boolean | null; // Boolean
@@ -397,6 +458,7 @@ export interface NexusGenInputs {
     updatedAt_not_in?: any[] | null; // [DateTime!]
   }
   UserWhereInput: { // input type
+    adress?: NexusGenInputs['AdressWhereInput'] | null; // AdressWhereInput
     AND?: NexusGenInputs['UserWhereInput'][] | null; // [UserWhereInput!]
     email?: string | null; // String
     email_contains?: string | null; // String
@@ -493,6 +555,7 @@ export interface NexusGenRootTypes {
     token: string; // String!
     user: NexusGenRootTypes['User']; // User!
   }
+  File: prisma.File;
   Mutation: {};
   Offer: prisma.Offer;
   Organization: prisma.Organization;
@@ -509,6 +572,7 @@ export interface NexusGenRootTypes {
 }
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
+  AdressWhereInput: NexusGenInputs['AdressWhereInput'];
   OfferWhereInput: NexusGenInputs['OfferWhereInput'];
   OrganizationWhereInput: NexusGenInputs['OrganizationWhereInput'];
   OrganizationWhereUniqueInput: NexusGenInputs['OrganizationWhereUniqueInput'];
@@ -526,12 +590,21 @@ export interface NexusGenFieldTypes {
     token: string; // String!
     user: NexusGenRootTypes['User']; // User!
   }
+  File: { // field return type
+    encoding: string | null; // String
+    fileName: string | null; // String
+    id: string; // ID!
+    key: string | null; // String
+    mimeType: string | null; // String
+  }
   Mutation: { // field return type
     createOffer: NexusGenRootTypes['Offer']; // Offer!
     createOrganization: NexusGenRootTypes['Organization']; // Organization!
     createTransaction: NexusGenRootTypes['Transaction']; // Transaction!
     login: NexusGenRootTypes['AuthPayload']; // AuthPayload!
     signup: NexusGenRootTypes['AuthPayload']; // AuthPayload!
+    updateUser: NexusGenRootTypes['User']; // User!
+    uploadFile: NexusGenRootTypes['File']; // File!
   }
   Offer: { // field return type
     active: boolean | null; // Boolean
@@ -618,6 +691,17 @@ export interface NexusGenArgTypes {
       lastName: string; // String!
       password: string; // String!
     }
+    updateUser: { // args
+      city: string; // String!
+      firstName: string; // String!
+      id: string; // ID!
+      lastName: string; // String!
+      postalCode: string; // String!
+      street: string; // String!
+    }
+    uploadFile: { // args
+      file: any; // Upload!
+    }
   }
   Offer: {
     transactions: { // args
@@ -665,9 +749,9 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "AuthPayload" | "Mutation" | "Offer" | "Organization" | "Query" | "Transaction" | "User";
+export type NexusGenObjectNames = "AuthPayload" | "File" | "Mutation" | "Offer" | "Organization" | "Query" | "Transaction" | "User";
 
-export type NexusGenInputNames = "OfferWhereInput" | "OrganizationWhereInput" | "OrganizationWhereUniqueInput" | "TransactionWhereInput" | "UserWhereInput";
+export type NexusGenInputNames = "AdressWhereInput" | "OfferWhereInput" | "OrganizationWhereInput" | "OrganizationWhereUniqueInput" | "TransactionWhereInput" | "UserWhereInput";
 
 export type NexusGenEnumNames = "OfferOrderByInput" | "OrganizationOrderByInput" | "TransactionOrderByInput" | "TransactionStatus" | "UserRole";
 

@@ -2,12 +2,82 @@
 ### Do not make changes to this file directly
 
 
+input AdressWhereInput {
+  AND: [AdressWhereInput!]
+  city: String
+  city_contains: String
+  city_ends_with: String
+  city_gt: String
+  city_gte: String
+  city_in: [String!]
+  city_lt: String
+  city_lte: String
+  city_not: String
+  city_not_contains: String
+  city_not_ends_with: String
+  city_not_in: [String!]
+  city_not_starts_with: String
+  city_starts_with: String
+  id: ID
+  id_contains: ID
+  id_ends_with: ID
+  id_gt: ID
+  id_gte: ID
+  id_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_not: ID
+  id_not_contains: ID
+  id_not_ends_with: ID
+  id_not_in: [ID!]
+  id_not_starts_with: ID
+  id_starts_with: ID
+  NOT: [AdressWhereInput!]
+  OR: [AdressWhereInput!]
+  postalCode: String
+  postalCode_contains: String
+  postalCode_ends_with: String
+  postalCode_gt: String
+  postalCode_gte: String
+  postalCode_in: [String!]
+  postalCode_lt: String
+  postalCode_lte: String
+  postalCode_not: String
+  postalCode_not_contains: String
+  postalCode_not_ends_with: String
+  postalCode_not_in: [String!]
+  postalCode_not_starts_with: String
+  postalCode_starts_with: String
+  street: String
+  street_contains: String
+  street_ends_with: String
+  street_gt: String
+  street_gte: String
+  street_in: [String!]
+  street_lt: String
+  street_lte: String
+  street_not: String
+  street_not_contains: String
+  street_not_ends_with: String
+  street_not_in: [String!]
+  street_not_starts_with: String
+  street_starts_with: String
+}
+
 type AuthPayload {
   token: String!
   user: User!
 }
 
 scalar DateTime
+
+type File {
+  encoding: String
+  fileName: String
+  id: ID!
+  key: String
+  mimeType: String
+}
 
 type Mutation {
   """Create new Fundlamb offer"""
@@ -16,6 +86,8 @@ type Mutation {
   createTransaction(amount: Int!, comment: String, email: String!, firstName: String!, lastName: String!, offerId: ID!): Transaction!
   login(email: String!, password: String!): AuthPayload!
   signup(email: String!, firstName: String!, lastName: String!, password: String!): AuthPayload!
+  updateUser(city: String!, firstName: String!, id: ID!, lastName: String!, postalCode: String!, street: String!): User!
+  uploadFile(file: Upload!): File!
 }
 
 type Offer {
@@ -543,6 +615,7 @@ enum UserRole {
 }
 
 input UserWhereInput {
+  adress: AdressWhereInput
   AND: [UserWhereInput!]
   email: String
   email_contains: String

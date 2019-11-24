@@ -6,6 +6,23 @@ type User {
   password: String
   role: UserRole! @default(value: USER)
   offers: [Offer!]!
+  adress: Adress
+}
+
+type Adress {
+  id: ID! @id
+  city: String
+  street: String
+  postalCode: String
+}
+
+type File {
+  id: ID! @id
+  key: String!
+  fileName: String!
+  mimeType: String!
+  encoding: String!
+  url: String!
 }
 
 enum UserRole {
