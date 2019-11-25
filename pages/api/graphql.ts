@@ -5,8 +5,8 @@ import { Prisma } from '../../backend/generated/prisma-client'
 const server = new ApolloServer({
   schema,
   introspection: true,
-  context: req => ({
-    req,
+  context: ({ req }) => ({
+    request: req,
     prisma: new Prisma(),
   }),
 })
