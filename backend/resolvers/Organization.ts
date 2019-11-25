@@ -23,10 +23,10 @@ export const OrganizationMutation = prismaExtendType({
     t.field('createOrganization', {
       type: 'Organization',
       args: {
-        apiId: intArg({ required: true }),
-        apiSecret: stringArg({ required: true }),
-        organizationId: intArg({ required: true }),
-        active: booleanArg({ required: true }),
+        apiId: intArg({ required: false }),
+        apiSecret: stringArg({ required: false }),
+        organizationId: intArg({ required: false }),
+        active: booleanArg({ required: false }),
         name: idArg({ required: true }),
         logoId: stringArg({ required: true }),
         description: stringArg({ required: true }),
