@@ -739,13 +739,13 @@ export interface NexusGenArgTypes {
       price: number; // Int!
     }
     createOrganization: { // args
-      active: boolean; // Boolean!
-      apiId: number; // Int!
-      apiSecret: string; // String!
+      active?: boolean | null; // Boolean
+      apiId?: number | null; // Int
+      apiSecret?: string | null; // String
       description: string; // String!
-      logoId: string; // String!
-      name: string; // ID!
-      organizationId: number; // Int!
+      logoId: string; // ID!
+      name: string; // String!
+      organizationId?: number | null; // Int
       url: string; // String!
     }
     createTransaction: { // args

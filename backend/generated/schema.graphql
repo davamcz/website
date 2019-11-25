@@ -170,7 +170,7 @@ input FileWhereInput {
 type Mutation {
   """Create new Fundlamb offer"""
   createOffer(amount: Int!, email: String!, firstName: String!, lastName: String!, name: String!, organizationId: ID!, price: Int!): Offer!
-  createOrganization(active: Boolean!, apiId: Int!, apiSecret: String!, description: String!, logoId: String!, name: ID!, organizationId: Int!, url: String!): Organization!
+  createOrganization(active: Boolean, apiId: Int, apiSecret: String, description: String!, logoId: ID!, name: String!, organizationId: Int, url: String!): Organization!
   createTransaction(amount: Int!, comment: String, email: String!, firstName: String!, lastName: String!, offerId: ID!): Transaction!
   login(email: String!, password: String!): AuthPayload!
   signup(email: String!, firstName: String!, lastName: String!, password: String!): AuthPayload!
