@@ -1,4 +1,4 @@
-import { extendType, scalarType, arg } from 'nexus'
+import { extendType, scalarType, arg, stringArg } from 'nexus'
 import { GraphQLUpload } from 'apollo-server-micro'
 import { S3 } from 'aws-sdk'
 import { prismaObjectType } from 'nexus-prisma'
@@ -17,10 +17,24 @@ export const Upload = scalarType({
   parseLiteral: GraphQLUpload.parseLiteral,
 })
 
+const readFS = (stream: {
+  on: (
+    arg0: string,
+    arg1: (data: any) => number
+  ) => { on: (arg0: string, arg1: () => void) => void }
+}) => {
+  let chunkList: any[] | Uint8Array[] = []
+  return new Promise(resolve =>
+    stream
+      .on('data', data => chunkList.push(data))
+      .on('end', () => resolve(Buffer.concat(chunkList)))
+  )
+}
+
 export const File = prismaObjectType({
   name: 'File',
   definition(t) {
-    t.prismaFields(['*'])
+    t.prismaFields(['id', 'fileName', 'key'])
   },
 })
 
@@ -30,21 +44,30 @@ export const FileMutation = extendType({
     t.field('uploadFile', {
       type: 'File',
       args: {
+        directory: stringArg({ required: false }),
         file: arg({ type: 'Upload' }),
       },
-      resolve: async (_, { file }, { prisma }) => {
-        const { stream, filename: fileName, mimetype, encoding } = await file
+      resolve: async (_, { file, directory }, { prisma }) => {
+        const {
+          createReadStream,
+          filename: fileName,
+          mimetype,
+          encoding,
+        } = await file
 
-        const key = `objednavky/${fileName}`
+        const key = `${directory ? directory : 'objednavky'}/${fileName}`
+
+        const stream = createReadStream()
+
+        const buffer = await readFS(stream)
 
         const upload = await client
           .upload({
             Bucket: 'davamcz-images',
-            ACL: 'public-read',
             Key: key,
             ContentEncoding: encoding,
             ContentType: mimetype,
-            Body: stream,
+            Body: buffer as Buffer,
           })
           .promise()
 

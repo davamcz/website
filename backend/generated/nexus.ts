@@ -78,6 +78,95 @@ export interface NexusGenInputs {
     street_not_starts_with?: string | null; // String
     street_starts_with?: string | null; // String
   }
+  FileWhereInput: { // input type
+    AND?: NexusGenInputs['FileWhereInput'][] | null; // [FileWhereInput!]
+    encoding?: string | null; // String
+    encoding_contains?: string | null; // String
+    encoding_ends_with?: string | null; // String
+    encoding_gt?: string | null; // String
+    encoding_gte?: string | null; // String
+    encoding_in?: string[] | null; // [String!]
+    encoding_lt?: string | null; // String
+    encoding_lte?: string | null; // String
+    encoding_not?: string | null; // String
+    encoding_not_contains?: string | null; // String
+    encoding_not_ends_with?: string | null; // String
+    encoding_not_in?: string[] | null; // [String!]
+    encoding_not_starts_with?: string | null; // String
+    encoding_starts_with?: string | null; // String
+    fileName?: string | null; // String
+    fileName_contains?: string | null; // String
+    fileName_ends_with?: string | null; // String
+    fileName_gt?: string | null; // String
+    fileName_gte?: string | null; // String
+    fileName_in?: string[] | null; // [String!]
+    fileName_lt?: string | null; // String
+    fileName_lte?: string | null; // String
+    fileName_not?: string | null; // String
+    fileName_not_contains?: string | null; // String
+    fileName_not_ends_with?: string | null; // String
+    fileName_not_in?: string[] | null; // [String!]
+    fileName_not_starts_with?: string | null; // String
+    fileName_starts_with?: string | null; // String
+    id?: string | null; // ID
+    id_contains?: string | null; // ID
+    id_ends_with?: string | null; // ID
+    id_gt?: string | null; // ID
+    id_gte?: string | null; // ID
+    id_in?: string[] | null; // [ID!]
+    id_lt?: string | null; // ID
+    id_lte?: string | null; // ID
+    id_not?: string | null; // ID
+    id_not_contains?: string | null; // ID
+    id_not_ends_with?: string | null; // ID
+    id_not_in?: string[] | null; // [ID!]
+    id_not_starts_with?: string | null; // ID
+    id_starts_with?: string | null; // ID
+    key?: string | null; // String
+    key_contains?: string | null; // String
+    key_ends_with?: string | null; // String
+    key_gt?: string | null; // String
+    key_gte?: string | null; // String
+    key_in?: string[] | null; // [String!]
+    key_lt?: string | null; // String
+    key_lte?: string | null; // String
+    key_not?: string | null; // String
+    key_not_contains?: string | null; // String
+    key_not_ends_with?: string | null; // String
+    key_not_in?: string[] | null; // [String!]
+    key_not_starts_with?: string | null; // String
+    key_starts_with?: string | null; // String
+    mimeType?: string | null; // String
+    mimeType_contains?: string | null; // String
+    mimeType_ends_with?: string | null; // String
+    mimeType_gt?: string | null; // String
+    mimeType_gte?: string | null; // String
+    mimeType_in?: string[] | null; // [String!]
+    mimeType_lt?: string | null; // String
+    mimeType_lte?: string | null; // String
+    mimeType_not?: string | null; // String
+    mimeType_not_contains?: string | null; // String
+    mimeType_not_ends_with?: string | null; // String
+    mimeType_not_in?: string[] | null; // [String!]
+    mimeType_not_starts_with?: string | null; // String
+    mimeType_starts_with?: string | null; // String
+    NOT?: NexusGenInputs['FileWhereInput'][] | null; // [FileWhereInput!]
+    OR?: NexusGenInputs['FileWhereInput'][] | null; // [FileWhereInput!]
+    url?: string | null; // String
+    url_contains?: string | null; // String
+    url_ends_with?: string | null; // String
+    url_gt?: string | null; // String
+    url_gte?: string | null; // String
+    url_in?: string[] | null; // [String!]
+    url_lt?: string | null; // String
+    url_lte?: string | null; // String
+    url_not?: string | null; // String
+    url_not_contains?: string | null; // String
+    url_not_ends_with?: string | null; // String
+    url_not_in?: string[] | null; // [String!]
+    url_not_starts_with?: string | null; // String
+    url_starts_with?: string | null; // String
+  }
   OfferWhereInput: { // input type
     active?: boolean | null; // Boolean
     active_not?: boolean | null; // Boolean
@@ -270,20 +359,7 @@ export interface NexusGenInputs {
     id_not_in?: string[] | null; // [ID!]
     id_not_starts_with?: string | null; // ID
     id_starts_with?: string | null; // ID
-    logo?: string | null; // String
-    logo_contains?: string | null; // String
-    logo_ends_with?: string | null; // String
-    logo_gt?: string | null; // String
-    logo_gte?: string | null; // String
-    logo_in?: string[] | null; // [String!]
-    logo_lt?: string | null; // String
-    logo_lte?: string | null; // String
-    logo_not?: string | null; // String
-    logo_not_contains?: string | null; // String
-    logo_not_ends_with?: string | null; // String
-    logo_not_in?: string[] | null; // [String!]
-    logo_not_starts_with?: string | null; // String
-    logo_starts_with?: string | null; // String
+    logo?: NexusGenInputs['FileWhereInput'] | null; // FileWhereInput
     name?: string | null; // String
     name_contains?: string | null; // String
     name_ends_with?: string | null; // String
@@ -544,7 +620,7 @@ export interface NexusGenInputs {
 
 export interface NexusGenEnums {
   OfferOrderByInput: "active_ASC" | "active_DESC" | "amount_ASC" | "amount_DESC" | "createdAt_ASC" | "createdAt_DESC" | "deletedAt_ASC" | "deletedAt_DESC" | "email_ASC" | "email_DESC" | "firstName_ASC" | "firstName_DESC" | "id_ASC" | "id_DESC" | "lastName_ASC" | "lastName_DESC" | "name_ASC" | "name_DESC" | "price_ASC" | "price_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
-  OrganizationOrderByInput: "active_ASC" | "active_DESC" | "apiId_ASC" | "apiId_DESC" | "apiSecret_ASC" | "apiSecret_DESC" | "createdAt_ASC" | "createdAt_DESC" | "deletedAt_ASC" | "deletedAt_DESC" | "description_ASC" | "description_DESC" | "id_ASC" | "id_DESC" | "logo_ASC" | "logo_DESC" | "name_ASC" | "name_DESC" | "organizationId_ASC" | "organizationId_DESC" | "updatedAt_ASC" | "updatedAt_DESC" | "url_ASC" | "url_DESC"
+  OrganizationOrderByInput: "active_ASC" | "active_DESC" | "apiId_ASC" | "apiId_DESC" | "apiSecret_ASC" | "apiSecret_DESC" | "createdAt_ASC" | "createdAt_DESC" | "deletedAt_ASC" | "deletedAt_DESC" | "description_ASC" | "description_DESC" | "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC" | "organizationId_ASC" | "organizationId_DESC" | "updatedAt_ASC" | "updatedAt_DESC" | "url_ASC" | "url_DESC"
   TransactionOrderByInput: "amount_ASC" | "amount_DESC" | "comment_ASC" | "comment_DESC" | "createdAt_ASC" | "createdAt_DESC" | "deletedAt_ASC" | "deletedAt_DESC" | "donatedAmount_ASC" | "donatedAmount_DESC" | "email_ASC" | "email_DESC" | "firstName_ASC" | "firstName_DESC" | "id_ASC" | "id_DESC" | "lastName_ASC" | "lastName_DESC" | "status_ASC" | "status_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
   TransactionStatus: "FAILED" | "INSUFFICIENT" | "PAID" | "PENDING"
   UserRole: "ADMIN" | "USER"
@@ -573,6 +649,7 @@ export interface NexusGenRootTypes {
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
   AdressWhereInput: NexusGenInputs['AdressWhereInput'];
+  FileWhereInput: NexusGenInputs['FileWhereInput'];
   OfferWhereInput: NexusGenInputs['OfferWhereInput'];
   OrganizationWhereInput: NexusGenInputs['OrganizationWhereInput'];
   OrganizationWhereUniqueInput: NexusGenInputs['OrganizationWhereUniqueInput'];
@@ -591,11 +668,9 @@ export interface NexusGenFieldTypes {
     user: NexusGenRootTypes['User']; // User!
   }
   File: { // field return type
-    encoding: string | null; // String
-    fileName: string | null; // String
+    fileName: string; // String!
     id: string; // ID!
-    key: string | null; // String
-    mimeType: string | null; // String
+    key: string; // String!
   }
   Mutation: { // field return type
     createOffer: NexusGenRootTypes['Offer']; // Offer!
@@ -625,7 +700,7 @@ export interface NexusGenFieldTypes {
   Organization: { // field return type
     description: string; // String!
     id: string; // ID!
-    logo: string | null; // String
+    logo: NexusGenRootTypes['File']; // File!
     name: string; // String!
     offers: NexusGenRootTypes['Offer'][] | null; // [Offer!]
     url: string; // String!
@@ -668,8 +743,8 @@ export interface NexusGenArgTypes {
       apiId: number; // Int!
       apiSecret: string; // String!
       description: string; // String!
-      logo?: string | null; // String
-      name: string; // String!
+      logoId: string; // String!
+      name: string; // ID!
       organizationId: number; // Int!
       url: string; // String!
     }
@@ -700,6 +775,7 @@ export interface NexusGenArgTypes {
       street: string; // String!
     }
     uploadFile: { // args
+      directory?: string | null; // String
       file: any; // Upload!
     }
   }
@@ -751,7 +827,7 @@ export interface NexusGenInheritedFields {}
 
 export type NexusGenObjectNames = "AuthPayload" | "File" | "Mutation" | "Offer" | "Organization" | "Query" | "Transaction" | "User";
 
-export type NexusGenInputNames = "AdressWhereInput" | "OfferWhereInput" | "OrganizationWhereInput" | "OrganizationWhereUniqueInput" | "TransactionWhereInput" | "UserWhereInput";
+export type NexusGenInputNames = "AdressWhereInput" | "FileWhereInput" | "OfferWhereInput" | "OrganizationWhereInput" | "OrganizationWhereUniqueInput" | "TransactionWhereInput" | "UserWhereInput";
 
 export type NexusGenEnumNames = "OfferOrderByInput" | "OrganizationOrderByInput" | "TransactionOrderByInput" | "TransactionStatus" | "UserRole";
 

@@ -220,6 +220,11 @@ input FileCreateInput {
   url: String!
 }
 
+input FileCreateOneInput {
+  create: FileCreateInput
+  connect: FileWhereUniqueInput
+}
+
 type FileEdge {
   node: File!
   cursor: String!
@@ -267,6 +272,14 @@ input FileSubscriptionWhereInput {
   NOT: [FileSubscriptionWhereInput!]
 }
 
+input FileUpdateDataInput {
+  key: String
+  fileName: String
+  mimeType: String
+  encoding: String
+  url: String
+}
+
 input FileUpdateInput {
   key: String
   fileName: String
@@ -281,6 +294,18 @@ input FileUpdateManyMutationInput {
   mimeType: String
   encoding: String
   url: String
+}
+
+input FileUpdateOneRequiredInput {
+  create: FileCreateInput
+  update: FileUpdateDataInput
+  upsert: FileUpsertNestedInput
+  connect: FileWhereUniqueInput
+}
+
+input FileUpsertNestedInput {
+  update: FileUpdateDataInput!
+  create: FileCreateInput!
 }
 
 input FileWhereInput {
@@ -974,7 +999,7 @@ type Organization {
   apiSecret: String!
   organizationId: Int!
   active: Boolean!
-  logo: String
+  logo: File!
   createdAt: DateTime
   updatedAt: DateTime
   deletedAt: DateTime
@@ -997,7 +1022,7 @@ input OrganizationCreateInput {
   apiSecret: String!
   organizationId: Int!
   active: Boolean!
-  logo: String
+  logo: FileCreateOneInput!
   deletedAt: DateTime
   name: String!
   offers: OfferCreateManyWithoutBeneficatorInput
@@ -1021,7 +1046,7 @@ input OrganizationCreateWithoutOffersInput {
   apiSecret: String!
   organizationId: Int!
   active: Boolean!
-  logo: String
+  logo: FileCreateOneInput!
   deletedAt: DateTime
   name: String!
   projectIds: OrganizationCreateprojectIdsInput
@@ -1045,8 +1070,6 @@ enum OrganizationOrderByInput {
   organizationId_DESC
   active_ASC
   active_DESC
-  logo_ASC
-  logo_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
@@ -1067,7 +1090,6 @@ type OrganizationPreviousValues {
   apiSecret: String!
   organizationId: Int!
   active: Boolean!
-  logo: String
   createdAt: DateTime
   updatedAt: DateTime
   deletedAt: DateTime
@@ -1100,7 +1122,7 @@ input OrganizationUpdateInput {
   apiSecret: String
   organizationId: Int
   active: Boolean
-  logo: String
+  logo: FileUpdateOneRequiredInput
   deletedAt: DateTime
   name: String
   offers: OfferUpdateManyWithoutBeneficatorInput
@@ -1114,7 +1136,6 @@ input OrganizationUpdateManyMutationInput {
   apiSecret: String
   organizationId: Int
   active: Boolean
-  logo: String
   deletedAt: DateTime
   name: String
   projectIds: OrganizationUpdateprojectIdsInput
@@ -1138,7 +1159,7 @@ input OrganizationUpdateWithoutOffersDataInput {
   apiSecret: String
   organizationId: Int
   active: Boolean
-  logo: String
+  logo: FileUpdateOneRequiredInput
   deletedAt: DateTime
   name: String
   projectIds: OrganizationUpdateprojectIdsInput
@@ -1198,20 +1219,7 @@ input OrganizationWhereInput {
   organizationId_gte: Int
   active: Boolean
   active_not: Boolean
-  logo: String
-  logo_not: String
-  logo_in: [String!]
-  logo_not_in: [String!]
-  logo_lt: String
-  logo_lte: String
-  logo_gt: String
-  logo_gte: String
-  logo_contains: String
-  logo_not_contains: String
-  logo_starts_with: String
-  logo_not_starts_with: String
-  logo_ends_with: String
-  logo_not_ends_with: String
+  logo: FileWhereInput
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]

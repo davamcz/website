@@ -75,7 +75,7 @@ type Organization {
   apiSecret: String!
   organizationId: Int!
   active: Boolean!
-  logo: String
+  logo: File!
   createdAt: DateTime @createdAt
   updatedAt: DateTime @updatedAt
   deletedAt: DateTime

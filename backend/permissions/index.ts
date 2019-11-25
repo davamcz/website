@@ -1,4 +1,4 @@
-import { shield, deny, allow } from 'graphql-shield'
+import { shield, allow } from 'graphql-shield'
 // import { getUserId, isAdmin } from '../utils'
 
 // const rules = {
@@ -29,7 +29,7 @@ export const permissions = shield({
     "*": allow
   },
   Mutation: {
-    "*": deny
+    "*": allow
   },
 }, {
   fallbackRule: allow

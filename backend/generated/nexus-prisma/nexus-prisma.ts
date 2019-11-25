@@ -19,6 +19,7 @@ export interface NexusPrismaTypes {
       Offer: OfferObject
       Transaction: TransactionObject
       Organization: OrganizationObject
+      File: FileObject
       Adress: AdressObject
       UserConnection: UserConnectionObject
       PageInfo: PageInfoObject
@@ -27,7 +28,6 @@ export interface NexusPrismaTypes {
       AdressConnection: AdressConnectionObject
       AdressEdge: AdressEdgeObject
       AggregateAdress: AggregateAdressObject
-      File: FileObject
       FileConnection: FileConnectionObject
       FileEdge: FileEdgeObject
       AggregateFile: AggregateFileObject
@@ -62,6 +62,7 @@ export interface NexusPrismaTypes {
       Offer: OfferFieldDetails
       Transaction: TransactionFieldDetails
       Organization: OrganizationFieldDetails
+      File: FileFieldDetails
       Adress: AdressFieldDetails
       UserConnection: UserConnectionFieldDetails
       PageInfo: PageInfoFieldDetails
@@ -70,7 +71,6 @@ export interface NexusPrismaTypes {
       AdressConnection: AdressConnectionFieldDetails
       AdressEdge: AdressEdgeFieldDetails
       AggregateAdress: AggregateAdressFieldDetails
-      File: FileFieldDetails
       FileConnection: FileConnectionFieldDetails
       FileEdge: FileEdgeFieldDetails
       AggregateFile: AggregateFileFieldDetails
@@ -106,11 +106,11 @@ export interface NexusPrismaTypes {
       OfferWhereInput: OfferWhereInputInputObject
       TransactionWhereInput: TransactionWhereInputInputObject
       OrganizationWhereInput: OrganizationWhereInputInputObject
+      FileWhereInput: FileWhereInputInputObject
       UserWhereInput: UserWhereInputInputObject
       AdressWhereInput: AdressWhereInputInputObject
       AdressWhereUniqueInput: AdressWhereUniqueInputInputObject
       FileWhereUniqueInput: FileWhereUniqueInputInputObject
-      FileWhereInput: FileWhereInputInputObject
       OfferWhereUniqueInput: OfferWhereUniqueInputInputObject
       TransactionWhereUniqueInput: TransactionWhereUniqueInputInputObject
       OrganizationWhereUniqueInput: OrganizationWhereUniqueInputInputObject
@@ -121,6 +121,8 @@ export interface NexusPrismaTypes {
       TransactionCreateWithoutOfferInput: TransactionCreateWithoutOfferInputInputObject
       OrganizationCreateOneWithoutOffersInput: OrganizationCreateOneWithoutOffersInputInputObject
       OrganizationCreateWithoutOffersInput: OrganizationCreateWithoutOffersInputInputObject
+      FileCreateOneInput: FileCreateOneInputInputObject
+      FileCreateInput: FileCreateInputInputObject
       OrganizationCreateprojectIdsInput: OrganizationCreateprojectIdsInputInputObject
       AdressCreateOneInput: AdressCreateOneInputInputObject
       AdressCreateInput: AdressCreateInputInputObject
@@ -137,6 +139,9 @@ export interface NexusPrismaTypes {
       TransactionUpdateManyDataInput: TransactionUpdateManyDataInputInputObject
       OrganizationUpdateOneRequiredWithoutOffersInput: OrganizationUpdateOneRequiredWithoutOffersInputInputObject
       OrganizationUpdateWithoutOffersDataInput: OrganizationUpdateWithoutOffersDataInputInputObject
+      FileUpdateOneRequiredInput: FileUpdateOneRequiredInputInputObject
+      FileUpdateDataInput: FileUpdateDataInputInputObject
+      FileUpsertNestedInput: FileUpsertNestedInputInputObject
       OrganizationUpdateprojectIdsInput: OrganizationUpdateprojectIdsInputInputObject
       OrganizationUpsertWithoutOffersInput: OrganizationUpsertWithoutOffersInputInputObject
       OfferUpsertWithWhereUniqueWithoutUserInput: OfferUpsertWithWhereUniqueWithoutUserInputInputObject
@@ -149,7 +154,6 @@ export interface NexusPrismaTypes {
       UserUpdateManyMutationInput: UserUpdateManyMutationInputInputObject
       AdressUpdateInput: AdressUpdateInputInputObject
       AdressUpdateManyMutationInput: AdressUpdateManyMutationInputInputObject
-      FileCreateInput: FileCreateInputInputObject
       FileUpdateInput: FileUpdateInputInputObject
       FileUpdateManyMutationInput: FileUpdateManyMutationInputInputObject
       OfferCreateInput: OfferCreateInputInputObject
@@ -1117,12 +1121,17 @@ export interface OrganizationFieldDetails {
     resolve: undefined
   }
   logo: {
-    type: 'String'
+    type: 'File'
     args: {}
     description: string
     list: undefined
-    nullable: true
-    resolve: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Organization">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.File> | prisma.File
   }
   createdAt: {
     type: 'DateTime'
@@ -1178,6 +1187,81 @@ export interface OrganizationFieldDetails {
     resolve: undefined
   }
   description: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  url: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for File
+
+type FileObject =
+  | FileFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'key', args?: [] | false, alias?: string  } 
+  | { name: 'fileName', args?: [] | false, alias?: string  } 
+  | { name: 'mimeType', args?: [] | false, alias?: string  } 
+  | { name: 'encoding', args?: [] | false, alias?: string  } 
+  | { name: 'url', args?: [] | false, alias?: string  } 
+
+type FileFields =
+  | 'id'
+  | 'key'
+  | 'fileName'
+  | 'mimeType'
+  | 'encoding'
+  | 'url'
+
+
+
+  
+
+export interface FileFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  key: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  fileName: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  mimeType: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  encoding: {
     type: 'String'
     args: {}
     description: string
@@ -1547,81 +1631,6 @@ type AggregateAdressFields =
 export interface AggregateAdressFieldDetails {
   count: {
     type: 'Int'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-}
-  
-
-// Types for File
-
-type FileObject =
-  | FileFields
-  | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'key', args?: [] | false, alias?: string  } 
-  | { name: 'fileName', args?: [] | false, alias?: string  } 
-  | { name: 'mimeType', args?: [] | false, alias?: string  } 
-  | { name: 'encoding', args?: [] | false, alias?: string  } 
-  | { name: 'url', args?: [] | false, alias?: string  } 
-
-type FileFields =
-  | 'id'
-  | 'key'
-  | 'fileName'
-  | 'mimeType'
-  | 'encoding'
-  | 'url'
-
-
-
-  
-
-export interface FileFieldDetails {
-  id: {
-    type: 'ID'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  key: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  fileName: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  mimeType: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  encoding: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  url: {
-    type: 'String'
     args: {}
     description: string
     list: undefined
@@ -3816,7 +3825,6 @@ type OrganizationPreviousValuesObject =
   | { name: 'apiSecret', args?: [] | false, alias?: string  } 
   | { name: 'organizationId', args?: [] | false, alias?: string  } 
   | { name: 'active', args?: [] | false, alias?: string  } 
-  | { name: 'logo', args?: [] | false, alias?: string  } 
   | { name: 'createdAt', args?: [] | false, alias?: string  } 
   | { name: 'updatedAt', args?: [] | false, alias?: string  } 
   | { name: 'deletedAt', args?: [] | false, alias?: string  } 
@@ -3831,7 +3839,6 @@ type OrganizationPreviousValuesFields =
   | 'apiSecret'
   | 'organizationId'
   | 'active'
-  | 'logo'
   | 'createdAt'
   | 'updatedAt'
   | 'deletedAt'
@@ -3883,14 +3890,6 @@ export interface OrganizationPreviousValuesFieldDetails {
     description: string
     list: undefined
     nullable: false
-    resolve: undefined
-  }
-  logo: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
     resolve: undefined
   }
   createdAt: {
@@ -4495,20 +4494,7 @@ export interface OrganizationWhereInput {
   organizationId_gte?: number | null
   active?: boolean | null
   active_not?: boolean | null
-  logo?: string | null
-  logo_not?: string | null
-  logo_in?: string[]
-  logo_not_in?: string[]
-  logo_lt?: string | null
-  logo_lte?: string | null
-  logo_gt?: string | null
-  logo_gte?: string | null
-  logo_contains?: string | null
-  logo_not_contains?: string | null
-  logo_starts_with?: string | null
-  logo_not_starts_with?: string | null
-  logo_ends_with?: string | null
-  logo_not_ends_with?: string | null
+  logo?: FileWhereInput | null
   createdAt?: string | null
   createdAt_not?: string | null
   createdAt_in?: string[]
@@ -4631,19 +4617,6 @@ export type OrganizationWhereInputInputObject =
   | { name: 'active', alias?: string  } 
   | { name: 'active_not', alias?: string  } 
   | { name: 'logo', alias?: string  } 
-  | { name: 'logo_not', alias?: string  } 
-  | { name: 'logo_in', alias?: string  } 
-  | { name: 'logo_not_in', alias?: string  } 
-  | { name: 'logo_lt', alias?: string  } 
-  | { name: 'logo_lte', alias?: string  } 
-  | { name: 'logo_gt', alias?: string  } 
-  | { name: 'logo_gte', alias?: string  } 
-  | { name: 'logo_contains', alias?: string  } 
-  | { name: 'logo_not_contains', alias?: string  } 
-  | { name: 'logo_starts_with', alias?: string  } 
-  | { name: 'logo_not_starts_with', alias?: string  } 
-  | { name: 'logo_ends_with', alias?: string  } 
-  | { name: 'logo_not_ends_with', alias?: string  } 
   | { name: 'createdAt', alias?: string  } 
   | { name: 'createdAt_not', alias?: string  } 
   | { name: 'createdAt_in', alias?: string  } 
@@ -4699,6 +4672,185 @@ export type OrganizationWhereInputInputObject =
   | { name: 'description_not_starts_with', alias?: string  } 
   | { name: 'description_ends_with', alias?: string  } 
   | { name: 'description_not_ends_with', alias?: string  } 
+  | { name: 'url', alias?: string  } 
+  | { name: 'url_not', alias?: string  } 
+  | { name: 'url_in', alias?: string  } 
+  | { name: 'url_not_in', alias?: string  } 
+  | { name: 'url_lt', alias?: string  } 
+  | { name: 'url_lte', alias?: string  } 
+  | { name: 'url_gt', alias?: string  } 
+  | { name: 'url_gte', alias?: string  } 
+  | { name: 'url_contains', alias?: string  } 
+  | { name: 'url_not_contains', alias?: string  } 
+  | { name: 'url_starts_with', alias?: string  } 
+  | { name: 'url_not_starts_with', alias?: string  } 
+  | { name: 'url_ends_with', alias?: string  } 
+  | { name: 'url_not_ends_with', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface FileWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  key?: string | null
+  key_not?: string | null
+  key_in?: string[]
+  key_not_in?: string[]
+  key_lt?: string | null
+  key_lte?: string | null
+  key_gt?: string | null
+  key_gte?: string | null
+  key_contains?: string | null
+  key_not_contains?: string | null
+  key_starts_with?: string | null
+  key_not_starts_with?: string | null
+  key_ends_with?: string | null
+  key_not_ends_with?: string | null
+  fileName?: string | null
+  fileName_not?: string | null
+  fileName_in?: string[]
+  fileName_not_in?: string[]
+  fileName_lt?: string | null
+  fileName_lte?: string | null
+  fileName_gt?: string | null
+  fileName_gte?: string | null
+  fileName_contains?: string | null
+  fileName_not_contains?: string | null
+  fileName_starts_with?: string | null
+  fileName_not_starts_with?: string | null
+  fileName_ends_with?: string | null
+  fileName_not_ends_with?: string | null
+  mimeType?: string | null
+  mimeType_not?: string | null
+  mimeType_in?: string[]
+  mimeType_not_in?: string[]
+  mimeType_lt?: string | null
+  mimeType_lte?: string | null
+  mimeType_gt?: string | null
+  mimeType_gte?: string | null
+  mimeType_contains?: string | null
+  mimeType_not_contains?: string | null
+  mimeType_starts_with?: string | null
+  mimeType_not_starts_with?: string | null
+  mimeType_ends_with?: string | null
+  mimeType_not_ends_with?: string | null
+  encoding?: string | null
+  encoding_not?: string | null
+  encoding_in?: string[]
+  encoding_not_in?: string[]
+  encoding_lt?: string | null
+  encoding_lte?: string | null
+  encoding_gt?: string | null
+  encoding_gte?: string | null
+  encoding_contains?: string | null
+  encoding_not_contains?: string | null
+  encoding_starts_with?: string | null
+  encoding_not_starts_with?: string | null
+  encoding_ends_with?: string | null
+  encoding_not_ends_with?: string | null
+  url?: string | null
+  url_not?: string | null
+  url_in?: string[]
+  url_not_in?: string[]
+  url_lt?: string | null
+  url_lte?: string | null
+  url_gt?: string | null
+  url_gte?: string | null
+  url_contains?: string | null
+  url_not_contains?: string | null
+  url_starts_with?: string | null
+  url_not_starts_with?: string | null
+  url_ends_with?: string | null
+  url_not_ends_with?: string | null
+  AND?: FileWhereInput[]
+  OR?: FileWhereInput[]
+  NOT?: FileWhereInput[]
+}
+export type FileWhereInputInputObject =
+  | Extract<keyof FileWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'key', alias?: string  } 
+  | { name: 'key_not', alias?: string  } 
+  | { name: 'key_in', alias?: string  } 
+  | { name: 'key_not_in', alias?: string  } 
+  | { name: 'key_lt', alias?: string  } 
+  | { name: 'key_lte', alias?: string  } 
+  | { name: 'key_gt', alias?: string  } 
+  | { name: 'key_gte', alias?: string  } 
+  | { name: 'key_contains', alias?: string  } 
+  | { name: 'key_not_contains', alias?: string  } 
+  | { name: 'key_starts_with', alias?: string  } 
+  | { name: 'key_not_starts_with', alias?: string  } 
+  | { name: 'key_ends_with', alias?: string  } 
+  | { name: 'key_not_ends_with', alias?: string  } 
+  | { name: 'fileName', alias?: string  } 
+  | { name: 'fileName_not', alias?: string  } 
+  | { name: 'fileName_in', alias?: string  } 
+  | { name: 'fileName_not_in', alias?: string  } 
+  | { name: 'fileName_lt', alias?: string  } 
+  | { name: 'fileName_lte', alias?: string  } 
+  | { name: 'fileName_gt', alias?: string  } 
+  | { name: 'fileName_gte', alias?: string  } 
+  | { name: 'fileName_contains', alias?: string  } 
+  | { name: 'fileName_not_contains', alias?: string  } 
+  | { name: 'fileName_starts_with', alias?: string  } 
+  | { name: 'fileName_not_starts_with', alias?: string  } 
+  | { name: 'fileName_ends_with', alias?: string  } 
+  | { name: 'fileName_not_ends_with', alias?: string  } 
+  | { name: 'mimeType', alias?: string  } 
+  | { name: 'mimeType_not', alias?: string  } 
+  | { name: 'mimeType_in', alias?: string  } 
+  | { name: 'mimeType_not_in', alias?: string  } 
+  | { name: 'mimeType_lt', alias?: string  } 
+  | { name: 'mimeType_lte', alias?: string  } 
+  | { name: 'mimeType_gt', alias?: string  } 
+  | { name: 'mimeType_gte', alias?: string  } 
+  | { name: 'mimeType_contains', alias?: string  } 
+  | { name: 'mimeType_not_contains', alias?: string  } 
+  | { name: 'mimeType_starts_with', alias?: string  } 
+  | { name: 'mimeType_not_starts_with', alias?: string  } 
+  | { name: 'mimeType_ends_with', alias?: string  } 
+  | { name: 'mimeType_not_ends_with', alias?: string  } 
+  | { name: 'encoding', alias?: string  } 
+  | { name: 'encoding_not', alias?: string  } 
+  | { name: 'encoding_in', alias?: string  } 
+  | { name: 'encoding_not_in', alias?: string  } 
+  | { name: 'encoding_lt', alias?: string  } 
+  | { name: 'encoding_lte', alias?: string  } 
+  | { name: 'encoding_gt', alias?: string  } 
+  | { name: 'encoding_gte', alias?: string  } 
+  | { name: 'encoding_contains', alias?: string  } 
+  | { name: 'encoding_not_contains', alias?: string  } 
+  | { name: 'encoding_starts_with', alias?: string  } 
+  | { name: 'encoding_not_starts_with', alias?: string  } 
+  | { name: 'encoding_ends_with', alias?: string  } 
+  | { name: 'encoding_not_ends_with', alias?: string  } 
   | { name: 'url', alias?: string  } 
   | { name: 'url_not', alias?: string  } 
   | { name: 'url_in', alias?: string  } 
@@ -5021,185 +5173,6 @@ export type FileWhereUniqueInputInputObject =
   | Extract<keyof FileWhereUniqueInput, string>
   | { name: 'id', alias?: string  } 
   
-export interface FileWhereInput {
-  id?: string | null
-  id_not?: string | null
-  id_in?: string[]
-  id_not_in?: string[]
-  id_lt?: string | null
-  id_lte?: string | null
-  id_gt?: string | null
-  id_gte?: string | null
-  id_contains?: string | null
-  id_not_contains?: string | null
-  id_starts_with?: string | null
-  id_not_starts_with?: string | null
-  id_ends_with?: string | null
-  id_not_ends_with?: string | null
-  key?: string | null
-  key_not?: string | null
-  key_in?: string[]
-  key_not_in?: string[]
-  key_lt?: string | null
-  key_lte?: string | null
-  key_gt?: string | null
-  key_gte?: string | null
-  key_contains?: string | null
-  key_not_contains?: string | null
-  key_starts_with?: string | null
-  key_not_starts_with?: string | null
-  key_ends_with?: string | null
-  key_not_ends_with?: string | null
-  fileName?: string | null
-  fileName_not?: string | null
-  fileName_in?: string[]
-  fileName_not_in?: string[]
-  fileName_lt?: string | null
-  fileName_lte?: string | null
-  fileName_gt?: string | null
-  fileName_gte?: string | null
-  fileName_contains?: string | null
-  fileName_not_contains?: string | null
-  fileName_starts_with?: string | null
-  fileName_not_starts_with?: string | null
-  fileName_ends_with?: string | null
-  fileName_not_ends_with?: string | null
-  mimeType?: string | null
-  mimeType_not?: string | null
-  mimeType_in?: string[]
-  mimeType_not_in?: string[]
-  mimeType_lt?: string | null
-  mimeType_lte?: string | null
-  mimeType_gt?: string | null
-  mimeType_gte?: string | null
-  mimeType_contains?: string | null
-  mimeType_not_contains?: string | null
-  mimeType_starts_with?: string | null
-  mimeType_not_starts_with?: string | null
-  mimeType_ends_with?: string | null
-  mimeType_not_ends_with?: string | null
-  encoding?: string | null
-  encoding_not?: string | null
-  encoding_in?: string[]
-  encoding_not_in?: string[]
-  encoding_lt?: string | null
-  encoding_lte?: string | null
-  encoding_gt?: string | null
-  encoding_gte?: string | null
-  encoding_contains?: string | null
-  encoding_not_contains?: string | null
-  encoding_starts_with?: string | null
-  encoding_not_starts_with?: string | null
-  encoding_ends_with?: string | null
-  encoding_not_ends_with?: string | null
-  url?: string | null
-  url_not?: string | null
-  url_in?: string[]
-  url_not_in?: string[]
-  url_lt?: string | null
-  url_lte?: string | null
-  url_gt?: string | null
-  url_gte?: string | null
-  url_contains?: string | null
-  url_not_contains?: string | null
-  url_starts_with?: string | null
-  url_not_starts_with?: string | null
-  url_ends_with?: string | null
-  url_not_ends_with?: string | null
-  AND?: FileWhereInput[]
-  OR?: FileWhereInput[]
-  NOT?: FileWhereInput[]
-}
-export type FileWhereInputInputObject =
-  | Extract<keyof FileWhereInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'id_not', alias?: string  } 
-  | { name: 'id_in', alias?: string  } 
-  | { name: 'id_not_in', alias?: string  } 
-  | { name: 'id_lt', alias?: string  } 
-  | { name: 'id_lte', alias?: string  } 
-  | { name: 'id_gt', alias?: string  } 
-  | { name: 'id_gte', alias?: string  } 
-  | { name: 'id_contains', alias?: string  } 
-  | { name: 'id_not_contains', alias?: string  } 
-  | { name: 'id_starts_with', alias?: string  } 
-  | { name: 'id_not_starts_with', alias?: string  } 
-  | { name: 'id_ends_with', alias?: string  } 
-  | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'key', alias?: string  } 
-  | { name: 'key_not', alias?: string  } 
-  | { name: 'key_in', alias?: string  } 
-  | { name: 'key_not_in', alias?: string  } 
-  | { name: 'key_lt', alias?: string  } 
-  | { name: 'key_lte', alias?: string  } 
-  | { name: 'key_gt', alias?: string  } 
-  | { name: 'key_gte', alias?: string  } 
-  | { name: 'key_contains', alias?: string  } 
-  | { name: 'key_not_contains', alias?: string  } 
-  | { name: 'key_starts_with', alias?: string  } 
-  | { name: 'key_not_starts_with', alias?: string  } 
-  | { name: 'key_ends_with', alias?: string  } 
-  | { name: 'key_not_ends_with', alias?: string  } 
-  | { name: 'fileName', alias?: string  } 
-  | { name: 'fileName_not', alias?: string  } 
-  | { name: 'fileName_in', alias?: string  } 
-  | { name: 'fileName_not_in', alias?: string  } 
-  | { name: 'fileName_lt', alias?: string  } 
-  | { name: 'fileName_lte', alias?: string  } 
-  | { name: 'fileName_gt', alias?: string  } 
-  | { name: 'fileName_gte', alias?: string  } 
-  | { name: 'fileName_contains', alias?: string  } 
-  | { name: 'fileName_not_contains', alias?: string  } 
-  | { name: 'fileName_starts_with', alias?: string  } 
-  | { name: 'fileName_not_starts_with', alias?: string  } 
-  | { name: 'fileName_ends_with', alias?: string  } 
-  | { name: 'fileName_not_ends_with', alias?: string  } 
-  | { name: 'mimeType', alias?: string  } 
-  | { name: 'mimeType_not', alias?: string  } 
-  | { name: 'mimeType_in', alias?: string  } 
-  | { name: 'mimeType_not_in', alias?: string  } 
-  | { name: 'mimeType_lt', alias?: string  } 
-  | { name: 'mimeType_lte', alias?: string  } 
-  | { name: 'mimeType_gt', alias?: string  } 
-  | { name: 'mimeType_gte', alias?: string  } 
-  | { name: 'mimeType_contains', alias?: string  } 
-  | { name: 'mimeType_not_contains', alias?: string  } 
-  | { name: 'mimeType_starts_with', alias?: string  } 
-  | { name: 'mimeType_not_starts_with', alias?: string  } 
-  | { name: 'mimeType_ends_with', alias?: string  } 
-  | { name: 'mimeType_not_ends_with', alias?: string  } 
-  | { name: 'encoding', alias?: string  } 
-  | { name: 'encoding_not', alias?: string  } 
-  | { name: 'encoding_in', alias?: string  } 
-  | { name: 'encoding_not_in', alias?: string  } 
-  | { name: 'encoding_lt', alias?: string  } 
-  | { name: 'encoding_lte', alias?: string  } 
-  | { name: 'encoding_gt', alias?: string  } 
-  | { name: 'encoding_gte', alias?: string  } 
-  | { name: 'encoding_contains', alias?: string  } 
-  | { name: 'encoding_not_contains', alias?: string  } 
-  | { name: 'encoding_starts_with', alias?: string  } 
-  | { name: 'encoding_not_starts_with', alias?: string  } 
-  | { name: 'encoding_ends_with', alias?: string  } 
-  | { name: 'encoding_not_ends_with', alias?: string  } 
-  | { name: 'url', alias?: string  } 
-  | { name: 'url_not', alias?: string  } 
-  | { name: 'url_in', alias?: string  } 
-  | { name: 'url_not_in', alias?: string  } 
-  | { name: 'url_lt', alias?: string  } 
-  | { name: 'url_lte', alias?: string  } 
-  | { name: 'url_gt', alias?: string  } 
-  | { name: 'url_gte', alias?: string  } 
-  | { name: 'url_contains', alias?: string  } 
-  | { name: 'url_not_contains', alias?: string  } 
-  | { name: 'url_starts_with', alias?: string  } 
-  | { name: 'url_not_starts_with', alias?: string  } 
-  | { name: 'url_ends_with', alias?: string  } 
-  | { name: 'url_not_ends_with', alias?: string  } 
-  | { name: 'AND', alias?: string  } 
-  | { name: 'OR', alias?: string  } 
-  | { name: 'NOT', alias?: string  } 
-  
 export interface OfferWhereUniqueInput {
   id?: string | null
 }
@@ -5325,7 +5298,7 @@ export interface OrganizationCreateWithoutOffersInput {
   apiSecret?: string
   organizationId?: number
   active?: boolean
-  logo?: string | null
+  logo?: FileCreateOneInput
   deletedAt?: string | null
   name?: string
   projectIds?: OrganizationCreateprojectIdsInput | null
@@ -5344,6 +5317,32 @@ export type OrganizationCreateWithoutOffersInputInputObject =
   | { name: 'name', alias?: string  } 
   | { name: 'projectIds', alias?: string  } 
   | { name: 'description', alias?: string  } 
+  | { name: 'url', alias?: string  } 
+  
+export interface FileCreateOneInput {
+  create?: FileCreateInput | null
+  connect?: FileWhereUniqueInput | null
+}
+export type FileCreateOneInputInputObject =
+  | Extract<keyof FileCreateOneInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface FileCreateInput {
+  id?: string | null
+  key?: string
+  fileName?: string
+  mimeType?: string
+  encoding?: string
+  url?: string
+}
+export type FileCreateInputInputObject =
+  | Extract<keyof FileCreateInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'key', alias?: string  } 
+  | { name: 'fileName', alias?: string  } 
+  | { name: 'mimeType', alias?: string  } 
+  | { name: 'encoding', alias?: string  } 
   | { name: 'url', alias?: string  } 
   
 export interface OrganizationCreateprojectIdsInput {
@@ -5802,7 +5801,7 @@ export interface OrganizationUpdateWithoutOffersDataInput {
   apiSecret?: string | null
   organizationId?: number | null
   active?: boolean | null
-  logo?: string | null
+  logo?: FileUpdateOneRequiredInput | null
   deletedAt?: string | null
   name?: string | null
   projectIds?: OrganizationUpdateprojectIdsInput | null
@@ -5821,6 +5820,43 @@ export type OrganizationUpdateWithoutOffersDataInputInputObject =
   | { name: 'projectIds', alias?: string  } 
   | { name: 'description', alias?: string  } 
   | { name: 'url', alias?: string  } 
+  
+export interface FileUpdateOneRequiredInput {
+  create?: FileCreateInput | null
+  update?: FileUpdateDataInput | null
+  upsert?: FileUpsertNestedInput | null
+  connect?: FileWhereUniqueInput | null
+}
+export type FileUpdateOneRequiredInputInputObject =
+  | Extract<keyof FileUpdateOneRequiredInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface FileUpdateDataInput {
+  key?: string | null
+  fileName?: string | null
+  mimeType?: string | null
+  encoding?: string | null
+  url?: string | null
+}
+export type FileUpdateDataInputInputObject =
+  | Extract<keyof FileUpdateDataInput, string>
+  | { name: 'key', alias?: string  } 
+  | { name: 'fileName', alias?: string  } 
+  | { name: 'mimeType', alias?: string  } 
+  | { name: 'encoding', alias?: string  } 
+  | { name: 'url', alias?: string  } 
+  
+export interface FileUpsertNestedInput {
+  update?: FileUpdateDataInput
+  create?: FileCreateInput
+}
+export type FileUpsertNestedInputInputObject =
+  | Extract<keyof FileUpsertNestedInput, string>
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
   
 export interface OrganizationUpdateprojectIdsInput {
   set?: number[]
@@ -6188,23 +6224,6 @@ export type AdressUpdateManyMutationInputInputObject =
   | { name: 'street', alias?: string  } 
   | { name: 'postalCode', alias?: string  } 
   
-export interface FileCreateInput {
-  id?: string | null
-  key?: string
-  fileName?: string
-  mimeType?: string
-  encoding?: string
-  url?: string
-}
-export type FileCreateInputInputObject =
-  | Extract<keyof FileCreateInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'key', alias?: string  } 
-  | { name: 'fileName', alias?: string  } 
-  | { name: 'mimeType', alias?: string  } 
-  | { name: 'encoding', alias?: string  } 
-  | { name: 'url', alias?: string  } 
-  
 export interface FileUpdateInput {
   key?: string | null
   fileName?: string | null
@@ -6537,7 +6556,7 @@ export interface OrganizationCreateInput {
   apiSecret?: string
   organizationId?: number
   active?: boolean
-  logo?: string | null
+  logo?: FileCreateOneInput
   deletedAt?: string | null
   name?: string
   offers?: OfferCreateManyWithoutBeneficatorInput | null
@@ -6601,7 +6620,7 @@ export interface OrganizationUpdateInput {
   apiSecret?: string | null
   organizationId?: number | null
   active?: boolean | null
-  logo?: string | null
+  logo?: FileUpdateOneRequiredInput | null
   deletedAt?: string | null
   name?: string | null
   offers?: OfferUpdateManyWithoutBeneficatorInput | null
@@ -6696,7 +6715,6 @@ export interface OrganizationUpdateManyMutationInput {
   apiSecret?: string | null
   organizationId?: number | null
   active?: boolean | null
-  logo?: string | null
   deletedAt?: string | null
   name?: string | null
   projectIds?: OrganizationUpdateprojectIdsInput | null
@@ -6709,7 +6727,6 @@ export type OrganizationUpdateManyMutationInputInputObject =
   | { name: 'apiSecret', alias?: string  } 
   | { name: 'organizationId', alias?: string  } 
   | { name: 'active', alias?: string  } 
-  | { name: 'logo', alias?: string  } 
   | { name: 'deletedAt', alias?: string  } 
   | { name: 'name', alias?: string  } 
   | { name: 'projectIds', alias?: string  } 
@@ -6962,8 +6979,6 @@ export type OrganizationOrderByInputValues =
   | 'organizationId_DESC'
   | 'active_ASC'
   | 'active_DESC'
-  | 'logo_ASC'
-  | 'logo_DESC'
   | 'createdAt_ASC'
   | 'createdAt_DESC'
   | 'updatedAt_ASC'

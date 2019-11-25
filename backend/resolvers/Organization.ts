@@ -1,4 +1,4 @@
-import { stringArg, intArg, booleanArg } from 'nexus'
+import { stringArg, intArg, booleanArg, idArg } from 'nexus'
 import { prismaObjectType, prismaExtendType } from 'nexus-prisma'
 
 export const Organization = prismaObjectType({
@@ -27,8 +27,8 @@ export const OrganizationMutation = prismaExtendType({
         apiSecret: stringArg({ required: true }),
         organizationId: intArg({ required: true }),
         active: booleanArg({ required: true }),
-        name: stringArg({ required: true }),
-        logo: stringArg({ required: false }),
+        name: idArg({ required: true }),
+        logoId: stringArg({ required: true }),
         description: stringArg({ required: true }),
         url: stringArg({ required: true }),
       },
@@ -40,11 +40,11 @@ export const OrganizationMutation = prismaExtendType({
           organizationId,
           active,
           name,
-          logo,
+          logoId,
           description,
           url,
         },
-        ctx,
+        ctx
       ) => {
         return ctx.prisma.createOrganization({
           apiId,
@@ -52,7 +52,11 @@ export const OrganizationMutation = prismaExtendType({
           organizationId,
           active,
           name,
-          logo,
+          logo: {
+            connect: {
+              id: logoId,
+            },
+          },
           description,
           url,
         })

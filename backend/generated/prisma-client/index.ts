@@ -393,8 +393,6 @@ export type OrganizationOrderByInput =
   | "organizationId_DESC"
   | "active_ASC"
   | "active_DESC"
-  | "logo_ASC"
-  | "logo_DESC"
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "updatedAt_ASC"
@@ -424,19 +422,28 @@ export type UserOrderByInput =
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
-export interface AdressCreateOneInput {
-  create?: Maybe<AdressCreateInput>;
-  connect?: Maybe<AdressWhereUniqueInput>;
+export interface OfferUpdateInput {
+  active?: Maybe<Boolean>;
+  amount?: Maybe<Int>;
+  deletedAt?: Maybe<DateTimeInput>;
+  email?: Maybe<String>;
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  transactions?: Maybe<TransactionUpdateManyWithoutOfferInput>;
+  beneficator?: Maybe<OrganizationUpdateOneRequiredWithoutOffersInput>;
+  price?: Maybe<Int>;
+  name?: Maybe<String>;
+  user?: Maybe<UserUpdateOneRequiredWithoutOffersInput>;
 }
 
 export type AdressWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
 
-export interface AdressUpdateInput {
-  city?: Maybe<String>;
-  street?: Maybe<String>;
-  postalCode?: Maybe<String>;
+export interface OfferUpsertWithWhereUniqueWithoutBeneficatorInput {
+  where: OfferWhereUniqueInput;
+  update: OfferUpdateWithoutBeneficatorDataInput;
+  create: OfferCreateWithoutBeneficatorInput;
 }
 
 export interface OfferUpdateManyWithoutBeneficatorInput {
@@ -461,136 +468,31 @@ export interface OfferUpdateManyWithoutBeneficatorInput {
   >;
 }
 
-export interface AdressUpdateManyMutationInput {
-  city?: Maybe<String>;
-  street?: Maybe<String>;
-  postalCode?: Maybe<String>;
-}
-
-export interface TransactionScalarWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
+export interface OfferUpdateWithoutBeneficatorDataInput {
+  active?: Maybe<Boolean>;
   amount?: Maybe<Int>;
-  amount_not?: Maybe<Int>;
-  amount_in?: Maybe<Int[] | Int>;
-  amount_not_in?: Maybe<Int[] | Int>;
-  amount_lt?: Maybe<Int>;
-  amount_lte?: Maybe<Int>;
-  amount_gt?: Maybe<Int>;
-  amount_gte?: Maybe<Int>;
-  email?: Maybe<String>;
-  email_not?: Maybe<String>;
-  email_in?: Maybe<String[] | String>;
-  email_not_in?: Maybe<String[] | String>;
-  email_lt?: Maybe<String>;
-  email_lte?: Maybe<String>;
-  email_gt?: Maybe<String>;
-  email_gte?: Maybe<String>;
-  email_contains?: Maybe<String>;
-  email_not_contains?: Maybe<String>;
-  email_starts_with?: Maybe<String>;
-  email_not_starts_with?: Maybe<String>;
-  email_ends_with?: Maybe<String>;
-  email_not_ends_with?: Maybe<String>;
-  firstName?: Maybe<String>;
-  firstName_not?: Maybe<String>;
-  firstName_in?: Maybe<String[] | String>;
-  firstName_not_in?: Maybe<String[] | String>;
-  firstName_lt?: Maybe<String>;
-  firstName_lte?: Maybe<String>;
-  firstName_gt?: Maybe<String>;
-  firstName_gte?: Maybe<String>;
-  firstName_contains?: Maybe<String>;
-  firstName_not_contains?: Maybe<String>;
-  firstName_starts_with?: Maybe<String>;
-  firstName_not_starts_with?: Maybe<String>;
-  firstName_ends_with?: Maybe<String>;
-  firstName_not_ends_with?: Maybe<String>;
-  lastName?: Maybe<String>;
-  lastName_not?: Maybe<String>;
-  lastName_in?: Maybe<String[] | String>;
-  lastName_not_in?: Maybe<String[] | String>;
-  lastName_lt?: Maybe<String>;
-  lastName_lte?: Maybe<String>;
-  lastName_gt?: Maybe<String>;
-  lastName_gte?: Maybe<String>;
-  lastName_contains?: Maybe<String>;
-  lastName_not_contains?: Maybe<String>;
-  lastName_starts_with?: Maybe<String>;
-  lastName_not_starts_with?: Maybe<String>;
-  lastName_ends_with?: Maybe<String>;
-  lastName_not_ends_with?: Maybe<String>;
-  comment?: Maybe<String>;
-  comment_not?: Maybe<String>;
-  comment_in?: Maybe<String[] | String>;
-  comment_not_in?: Maybe<String[] | String>;
-  comment_lt?: Maybe<String>;
-  comment_lte?: Maybe<String>;
-  comment_gt?: Maybe<String>;
-  comment_gte?: Maybe<String>;
-  comment_contains?: Maybe<String>;
-  comment_not_contains?: Maybe<String>;
-  comment_starts_with?: Maybe<String>;
-  comment_not_starts_with?: Maybe<String>;
-  comment_ends_with?: Maybe<String>;
-  comment_not_ends_with?: Maybe<String>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
   deletedAt?: Maybe<DateTimeInput>;
-  deletedAt_not?: Maybe<DateTimeInput>;
-  deletedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  deletedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  deletedAt_lt?: Maybe<DateTimeInput>;
-  deletedAt_lte?: Maybe<DateTimeInput>;
-  deletedAt_gt?: Maybe<DateTimeInput>;
-  deletedAt_gte?: Maybe<DateTimeInput>;
-  donatedAmount?: Maybe<Int>;
-  donatedAmount_not?: Maybe<Int>;
-  donatedAmount_in?: Maybe<Int[] | Int>;
-  donatedAmount_not_in?: Maybe<Int[] | Int>;
-  donatedAmount_lt?: Maybe<Int>;
-  donatedAmount_lte?: Maybe<Int>;
-  donatedAmount_gt?: Maybe<Int>;
-  donatedAmount_gte?: Maybe<Int>;
-  status?: Maybe<TransactionStatus>;
-  status_not?: Maybe<TransactionStatus>;
-  status_in?: Maybe<TransactionStatus[] | TransactionStatus>;
-  status_not_in?: Maybe<TransactionStatus[] | TransactionStatus>;
-  AND?: Maybe<TransactionScalarWhereInput[] | TransactionScalarWhereInput>;
-  OR?: Maybe<TransactionScalarWhereInput[] | TransactionScalarWhereInput>;
-  NOT?: Maybe<TransactionScalarWhereInput[] | TransactionScalarWhereInput>;
+  email?: Maybe<String>;
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  transactions?: Maybe<TransactionUpdateManyWithoutOfferInput>;
+  price?: Maybe<Int>;
+  name?: Maybe<String>;
+  user?: Maybe<UserUpdateOneRequiredWithoutOffersInput>;
 }
 
-export interface OfferUpsertWithWhereUniqueWithoutBeneficatorInput {
-  where: OfferWhereUniqueInput;
-  update: OfferUpdateWithoutBeneficatorDataInput;
-  create: OfferCreateWithoutBeneficatorInput;
+export interface TransactionUpdateManyWithWhereNestedInput {
+  where: TransactionScalarWhereInput;
+  data: TransactionUpdateManyDataInput;
+}
+
+export interface FileCreateInput {
+  id?: Maybe<ID_Input>;
+  key: String;
+  fileName: String;
+  mimeType: String;
+  encoding: String;
+  url: String;
 }
 
 export interface FileWhereInput {
@@ -683,17 +585,12 @@ export interface FileWhereInput {
   NOT?: Maybe<FileWhereInput[] | FileWhereInput>;
 }
 
-export interface OfferUpdateWithoutBeneficatorDataInput {
-  active?: Maybe<Boolean>;
-  amount?: Maybe<Int>;
-  deletedAt?: Maybe<DateTimeInput>;
-  email?: Maybe<String>;
-  firstName?: Maybe<String>;
-  lastName?: Maybe<String>;
-  transactions?: Maybe<TransactionUpdateManyWithoutOfferInput>;
-  price?: Maybe<Int>;
-  name?: Maybe<String>;
-  user?: Maybe<UserUpdateOneRequiredWithoutOffersInput>;
+export interface FileUpdateInput {
+  key?: Maybe<String>;
+  fileName?: Maybe<String>;
+  mimeType?: Maybe<String>;
+  encoding?: Maybe<String>;
+  url?: Maybe<String>;
 }
 
 export interface OrganizationSubscriptionWhereInput {
@@ -713,13 +610,12 @@ export interface OrganizationSubscriptionWhereInput {
   >;
 }
 
-export interface FileCreateInput {
-  id?: Maybe<ID_Input>;
-  key: String;
-  fileName: String;
-  mimeType: String;
-  encoding: String;
-  url: String;
+export interface FileUpdateManyMutationInput {
+  key?: Maybe<String>;
+  fileName?: Maybe<String>;
+  mimeType?: Maybe<String>;
+  encoding?: Maybe<String>;
+  url?: Maybe<String>;
 }
 
 export interface FileSubscriptionWhereInput {
@@ -733,12 +629,19 @@ export interface FileSubscriptionWhereInput {
   NOT?: Maybe<FileSubscriptionWhereInput[] | FileSubscriptionWhereInput>;
 }
 
-export interface FileUpdateInput {
-  key?: Maybe<String>;
-  fileName?: Maybe<String>;
-  mimeType?: Maybe<String>;
-  encoding?: Maybe<String>;
-  url?: Maybe<String>;
+export interface OfferCreateInput {
+  id?: Maybe<ID_Input>;
+  active?: Maybe<Boolean>;
+  amount?: Maybe<Int>;
+  deletedAt?: Maybe<DateTimeInput>;
+  email: String;
+  firstName: String;
+  lastName: String;
+  transactions?: Maybe<TransactionCreateManyWithoutOfferInput>;
+  beneficator: OrganizationCreateOneWithoutOffersInput;
+  price: Int;
+  name: String;
+  user: UserCreateOneWithoutOffersInput;
 }
 
 export interface AdressSubscriptionWhereInput {
@@ -752,12 +655,11 @@ export interface AdressSubscriptionWhereInput {
   NOT?: Maybe<AdressSubscriptionWhereInput[] | AdressSubscriptionWhereInput>;
 }
 
-export interface FileUpdateManyMutationInput {
-  key?: Maybe<String>;
-  fileName?: Maybe<String>;
-  mimeType?: Maybe<String>;
-  encoding?: Maybe<String>;
-  url?: Maybe<String>;
+export interface TransactionCreateManyWithoutOfferInput {
+  create?: Maybe<
+    TransactionCreateWithoutOfferInput[] | TransactionCreateWithoutOfferInput
+  >;
+  connect?: Maybe<TransactionWhereUniqueInput[] | TransactionWhereUniqueInput>;
 }
 
 export interface TransactionWhereInput {
@@ -881,19 +783,16 @@ export interface TransactionWhereInput {
   NOT?: Maybe<TransactionWhereInput[] | TransactionWhereInput>;
 }
 
-export interface OfferCreateInput {
+export interface TransactionCreateWithoutOfferInput {
   id?: Maybe<ID_Input>;
-  active?: Maybe<Boolean>;
-  amount?: Maybe<Int>;
-  deletedAt?: Maybe<DateTimeInput>;
+  amount: Int;
   email: String;
   firstName: String;
   lastName: String;
-  transactions?: Maybe<TransactionCreateManyWithoutOfferInput>;
-  beneficator: OrganizationCreateOneWithoutOffersInput;
-  price: Int;
-  name: String;
-  user: UserCreateOneWithoutOffersInput;
+  comment?: Maybe<String>;
+  deletedAt?: Maybe<DateTimeInput>;
+  donatedAmount?: Maybe<Int>;
+  status?: Maybe<TransactionStatus>;
 }
 
 export interface OfferWhereInput {
@@ -1019,11 +918,9 @@ export interface OfferWhereInput {
   NOT?: Maybe<OfferWhereInput[] | OfferWhereInput>;
 }
 
-export interface TransactionCreateManyWithoutOfferInput {
-  create?: Maybe<
-    TransactionCreateWithoutOfferInput[] | TransactionCreateWithoutOfferInput
-  >;
-  connect?: Maybe<TransactionWhereUniqueInput[] | TransactionWhereUniqueInput>;
+export interface OrganizationCreateOneWithoutOffersInput {
+  create?: Maybe<OrganizationCreateWithoutOffersInput>;
+  connect?: Maybe<OrganizationWhereUniqueInput>;
 }
 
 export interface UserWhereInput {
@@ -1110,16 +1007,18 @@ export interface UserWhereInput {
   NOT?: Maybe<UserWhereInput[] | UserWhereInput>;
 }
 
-export interface TransactionCreateWithoutOfferInput {
+export interface OrganizationCreateWithoutOffersInput {
   id?: Maybe<ID_Input>;
-  amount: Int;
-  email: String;
-  firstName: String;
-  lastName: String;
-  comment?: Maybe<String>;
+  apiId: Int;
+  apiSecret: String;
+  organizationId: Int;
+  active: Boolean;
+  logo: FileCreateOneInput;
   deletedAt?: Maybe<DateTimeInput>;
-  donatedAmount?: Maybe<Int>;
-  status?: Maybe<TransactionStatus>;
+  name: String;
+  projectIds?: Maybe<OrganizationCreateprojectIdsInput>;
+  description: String;
+  url: String;
 }
 
 export interface OfferUpdateWithWhereUniqueWithoutUserInput {
@@ -1127,9 +1026,9 @@ export interface OfferUpdateWithWhereUniqueWithoutUserInput {
   data: OfferUpdateWithoutUserDataInput;
 }
 
-export interface OrganizationCreateOneWithoutOffersInput {
-  create?: Maybe<OrganizationCreateWithoutOffersInput>;
-  connect?: Maybe<OrganizationWhereUniqueInput>;
+export interface FileCreateOneInput {
+  create?: Maybe<FileCreateInput>;
+  connect?: Maybe<FileWhereUniqueInput>;
 }
 
 export interface UserUpdateInput {
@@ -1142,18 +1041,8 @@ export interface UserUpdateInput {
   adress?: Maybe<AdressUpdateOneInput>;
 }
 
-export interface OrganizationCreateWithoutOffersInput {
-  id?: Maybe<ID_Input>;
-  apiId: Int;
-  apiSecret: String;
-  organizationId: Int;
-  active: Boolean;
-  logo?: Maybe<String>;
-  deletedAt?: Maybe<DateTimeInput>;
-  name: String;
-  projectIds?: Maybe<OrganizationCreateprojectIdsInput>;
-  description: String;
-  url: String;
+export interface OrganizationCreateprojectIdsInput {
+  set?: Maybe<Int[] | Int>;
 }
 
 export interface OfferCreateManyWithoutUserInput {
@@ -1161,8 +1050,9 @@ export interface OfferCreateManyWithoutUserInput {
   connect?: Maybe<OfferWhereUniqueInput[] | OfferWhereUniqueInput>;
 }
 
-export interface OrganizationCreateprojectIdsInput {
-  set?: Maybe<Int[] | Int>;
+export interface UserCreateOneWithoutOffersInput {
+  create?: Maybe<UserCreateWithoutOffersInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
 }
 
 export interface TransactionUpdateManyMutationInput {
@@ -1176,15 +1066,6 @@ export interface TransactionUpdateManyMutationInput {
   status?: Maybe<TransactionStatus>;
 }
 
-export interface UserCreateOneWithoutOffersInput {
-  create?: Maybe<UserCreateWithoutOffersInput>;
-  connect?: Maybe<UserWhereUniqueInput>;
-}
-
-export type OrganizationWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
 export interface UserCreateWithoutOffersInput {
   id?: Maybe<ID_Input>;
   email: String;
@@ -1193,6 +1074,15 @@ export interface UserCreateWithoutOffersInput {
   password?: Maybe<String>;
   role?: Maybe<UserRole>;
   adress?: Maybe<AdressCreateOneInput>;
+}
+
+export type OrganizationWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface AdressCreateOneInput {
+  create?: Maybe<AdressCreateInput>;
+  connect?: Maybe<AdressWhereUniqueInput>;
 }
 
 export interface OfferUpdateWithoutTransactionsDataInput {
@@ -1225,34 +1115,6 @@ export interface TransactionUpdateInput {
   offer?: Maybe<OfferUpdateOneRequiredWithoutTransactionsInput>;
 }
 
-export interface OfferUpdateInput {
-  active?: Maybe<Boolean>;
-  amount?: Maybe<Int>;
-  deletedAt?: Maybe<DateTimeInput>;
-  email?: Maybe<String>;
-  firstName?: Maybe<String>;
-  lastName?: Maybe<String>;
-  transactions?: Maybe<TransactionUpdateManyWithoutOfferInput>;
-  beneficator?: Maybe<OrganizationUpdateOneRequiredWithoutOffersInput>;
-  price?: Maybe<Int>;
-  name?: Maybe<String>;
-  user?: Maybe<UserUpdateOneRequiredWithoutOffersInput>;
-}
-
-export interface OfferCreateWithoutTransactionsInput {
-  id?: Maybe<ID_Input>;
-  active?: Maybe<Boolean>;
-  amount?: Maybe<Int>;
-  deletedAt?: Maybe<DateTimeInput>;
-  email: String;
-  firstName: String;
-  lastName: String;
-  beneficator: OrganizationCreateOneWithoutOffersInput;
-  price: Int;
-  name: String;
-  user: UserCreateOneWithoutOffersInput;
-}
-
 export interface TransactionUpdateManyWithoutOfferInput {
   create?: Maybe<
     TransactionCreateWithoutOfferInput[] | TransactionCreateWithoutOfferInput
@@ -1280,6 +1142,25 @@ export interface TransactionUpdateManyWithoutOfferInput {
   >;
 }
 
+export interface OfferCreateWithoutTransactionsInput {
+  id?: Maybe<ID_Input>;
+  active?: Maybe<Boolean>;
+  amount?: Maybe<Int>;
+  deletedAt?: Maybe<DateTimeInput>;
+  email: String;
+  firstName: String;
+  lastName: String;
+  beneficator: OrganizationCreateOneWithoutOffersInput;
+  price: Int;
+  name: String;
+  user: UserCreateOneWithoutOffersInput;
+}
+
+export interface TransactionUpdateWithWhereUniqueWithoutOfferInput {
+  where: TransactionWhereUniqueInput;
+  data: TransactionUpdateWithoutOfferDataInput;
+}
+
 export interface TransactionCreateInput {
   id?: Maybe<ID_Input>;
   amount: Int;
@@ -1293,24 +1174,6 @@ export interface TransactionCreateInput {
   offer: OfferCreateOneWithoutTransactionsInput;
 }
 
-export interface TransactionUpdateWithWhereUniqueWithoutOfferInput {
-  where: TransactionWhereUniqueInput;
-  data: TransactionUpdateWithoutOfferDataInput;
-}
-
-export interface OrganizationUpdateManyMutationInput {
-  apiId?: Maybe<Int>;
-  apiSecret?: Maybe<String>;
-  organizationId?: Maybe<Int>;
-  active?: Maybe<Boolean>;
-  logo?: Maybe<String>;
-  deletedAt?: Maybe<DateTimeInput>;
-  name?: Maybe<String>;
-  projectIds?: Maybe<OrganizationUpdateprojectIdsInput>;
-  description?: Maybe<String>;
-  url?: Maybe<String>;
-}
-
 export interface TransactionUpdateWithoutOfferDataInput {
   amount?: Maybe<Int>;
   email?: Maybe<String>;
@@ -1322,9 +1185,16 @@ export interface TransactionUpdateWithoutOfferDataInput {
   status?: Maybe<TransactionStatus>;
 }
 
-export interface OfferUpdateManyWithWhereNestedInput {
-  where: OfferScalarWhereInput;
-  data: OfferUpdateManyDataInput;
+export interface OrganizationUpdateManyMutationInput {
+  apiId?: Maybe<Int>;
+  apiSecret?: Maybe<String>;
+  organizationId?: Maybe<Int>;
+  active?: Maybe<Boolean>;
+  deletedAt?: Maybe<DateTimeInput>;
+  name?: Maybe<String>;
+  projectIds?: Maybe<OrganizationUpdateprojectIdsInput>;
+  description?: Maybe<String>;
+  url?: Maybe<String>;
 }
 
 export interface TransactionUpsertWithWhereUniqueWithoutOfferInput {
@@ -1332,6 +1202,141 @@ export interface TransactionUpsertWithWhereUniqueWithoutOfferInput {
   update: TransactionUpdateWithoutOfferDataInput;
   create: TransactionCreateWithoutOfferInput;
 }
+
+export interface OfferUpdateManyWithWhereNestedInput {
+  where: OfferScalarWhereInput;
+  data: OfferUpdateManyDataInput;
+}
+
+export interface TransactionScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  amount?: Maybe<Int>;
+  amount_not?: Maybe<Int>;
+  amount_in?: Maybe<Int[] | Int>;
+  amount_not_in?: Maybe<Int[] | Int>;
+  amount_lt?: Maybe<Int>;
+  amount_lte?: Maybe<Int>;
+  amount_gt?: Maybe<Int>;
+  amount_gte?: Maybe<Int>;
+  email?: Maybe<String>;
+  email_not?: Maybe<String>;
+  email_in?: Maybe<String[] | String>;
+  email_not_in?: Maybe<String[] | String>;
+  email_lt?: Maybe<String>;
+  email_lte?: Maybe<String>;
+  email_gt?: Maybe<String>;
+  email_gte?: Maybe<String>;
+  email_contains?: Maybe<String>;
+  email_not_contains?: Maybe<String>;
+  email_starts_with?: Maybe<String>;
+  email_not_starts_with?: Maybe<String>;
+  email_ends_with?: Maybe<String>;
+  email_not_ends_with?: Maybe<String>;
+  firstName?: Maybe<String>;
+  firstName_not?: Maybe<String>;
+  firstName_in?: Maybe<String[] | String>;
+  firstName_not_in?: Maybe<String[] | String>;
+  firstName_lt?: Maybe<String>;
+  firstName_lte?: Maybe<String>;
+  firstName_gt?: Maybe<String>;
+  firstName_gte?: Maybe<String>;
+  firstName_contains?: Maybe<String>;
+  firstName_not_contains?: Maybe<String>;
+  firstName_starts_with?: Maybe<String>;
+  firstName_not_starts_with?: Maybe<String>;
+  firstName_ends_with?: Maybe<String>;
+  firstName_not_ends_with?: Maybe<String>;
+  lastName?: Maybe<String>;
+  lastName_not?: Maybe<String>;
+  lastName_in?: Maybe<String[] | String>;
+  lastName_not_in?: Maybe<String[] | String>;
+  lastName_lt?: Maybe<String>;
+  lastName_lte?: Maybe<String>;
+  lastName_gt?: Maybe<String>;
+  lastName_gte?: Maybe<String>;
+  lastName_contains?: Maybe<String>;
+  lastName_not_contains?: Maybe<String>;
+  lastName_starts_with?: Maybe<String>;
+  lastName_not_starts_with?: Maybe<String>;
+  lastName_ends_with?: Maybe<String>;
+  lastName_not_ends_with?: Maybe<String>;
+  comment?: Maybe<String>;
+  comment_not?: Maybe<String>;
+  comment_in?: Maybe<String[] | String>;
+  comment_not_in?: Maybe<String[] | String>;
+  comment_lt?: Maybe<String>;
+  comment_lte?: Maybe<String>;
+  comment_gt?: Maybe<String>;
+  comment_gte?: Maybe<String>;
+  comment_contains?: Maybe<String>;
+  comment_not_contains?: Maybe<String>;
+  comment_starts_with?: Maybe<String>;
+  comment_not_starts_with?: Maybe<String>;
+  comment_ends_with?: Maybe<String>;
+  comment_not_ends_with?: Maybe<String>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  deletedAt?: Maybe<DateTimeInput>;
+  deletedAt_not?: Maybe<DateTimeInput>;
+  deletedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  deletedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  deletedAt_lt?: Maybe<DateTimeInput>;
+  deletedAt_lte?: Maybe<DateTimeInput>;
+  deletedAt_gt?: Maybe<DateTimeInput>;
+  deletedAt_gte?: Maybe<DateTimeInput>;
+  donatedAmount?: Maybe<Int>;
+  donatedAmount_not?: Maybe<Int>;
+  donatedAmount_in?: Maybe<Int[] | Int>;
+  donatedAmount_not_in?: Maybe<Int[] | Int>;
+  donatedAmount_lt?: Maybe<Int>;
+  donatedAmount_lte?: Maybe<Int>;
+  donatedAmount_gt?: Maybe<Int>;
+  donatedAmount_gte?: Maybe<Int>;
+  status?: Maybe<TransactionStatus>;
+  status_not?: Maybe<TransactionStatus>;
+  status_in?: Maybe<TransactionStatus[] | TransactionStatus>;
+  status_not_in?: Maybe<TransactionStatus[] | TransactionStatus>;
+  AND?: Maybe<TransactionScalarWhereInput[] | TransactionScalarWhereInput>;
+  OR?: Maybe<TransactionScalarWhereInput[] | TransactionScalarWhereInput>;
+  NOT?: Maybe<TransactionScalarWhereInput[] | TransactionScalarWhereInput>;
+}
+
+export interface AdressUpdateInput {
+  city?: Maybe<String>;
+  street?: Maybe<String>;
+  postalCode?: Maybe<String>;
+}
+
+export type FileWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
 
 export interface UserSubscriptionWhereInput {
   mutation_in?: Maybe<MutationType[] | MutationType>;
@@ -1344,9 +1349,16 @@ export interface UserSubscriptionWhereInput {
   NOT?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
 }
 
-export type FileWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
+export interface TransactionUpdateManyDataInput {
+  amount?: Maybe<Int>;
+  email?: Maybe<String>;
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  comment?: Maybe<String>;
+  deletedAt?: Maybe<DateTimeInput>;
+  donatedAmount?: Maybe<Int>;
+  status?: Maybe<TransactionStatus>;
+}
 
 export interface OfferSubscriptionWhereInput {
   mutation_in?: Maybe<MutationType[] | MutationType>;
@@ -1359,9 +1371,11 @@ export interface OfferSubscriptionWhereInput {
   NOT?: Maybe<OfferSubscriptionWhereInput[] | OfferSubscriptionWhereInput>;
 }
 
-export interface TransactionUpdateManyWithWhereNestedInput {
-  where: TransactionScalarWhereInput;
-  data: TransactionUpdateManyDataInput;
+export interface OrganizationUpdateOneRequiredWithoutOffersInput {
+  create?: Maybe<OrganizationCreateWithoutOffersInput>;
+  update?: Maybe<OrganizationUpdateWithoutOffersDataInput>;
+  upsert?: Maybe<OrganizationUpsertWithoutOffersInput>;
+  connect?: Maybe<OrganizationWhereUniqueInput>;
 }
 
 export interface UserUpdateManyMutationInput {
@@ -1372,15 +1386,17 @@ export interface UserUpdateManyMutationInput {
   role?: Maybe<UserRole>;
 }
 
-export interface TransactionUpdateManyDataInput {
-  amount?: Maybe<Int>;
-  email?: Maybe<String>;
-  firstName?: Maybe<String>;
-  lastName?: Maybe<String>;
-  comment?: Maybe<String>;
+export interface OrganizationUpdateWithoutOffersDataInput {
+  apiId?: Maybe<Int>;
+  apiSecret?: Maybe<String>;
+  organizationId?: Maybe<Int>;
+  active?: Maybe<Boolean>;
+  logo?: Maybe<FileUpdateOneRequiredInput>;
   deletedAt?: Maybe<DateTimeInput>;
-  donatedAmount?: Maybe<Int>;
-  status?: Maybe<TransactionStatus>;
+  name?: Maybe<String>;
+  projectIds?: Maybe<OrganizationUpdateprojectIdsInput>;
+  description?: Maybe<String>;
+  url?: Maybe<String>;
 }
 
 export interface OrganizationWhereInput {
@@ -1430,20 +1446,7 @@ export interface OrganizationWhereInput {
   organizationId_gte?: Maybe<Int>;
   active?: Maybe<Boolean>;
   active_not?: Maybe<Boolean>;
-  logo?: Maybe<String>;
-  logo_not?: Maybe<String>;
-  logo_in?: Maybe<String[] | String>;
-  logo_not_in?: Maybe<String[] | String>;
-  logo_lt?: Maybe<String>;
-  logo_lte?: Maybe<String>;
-  logo_gt?: Maybe<String>;
-  logo_gte?: Maybe<String>;
-  logo_contains?: Maybe<String>;
-  logo_not_contains?: Maybe<String>;
-  logo_starts_with?: Maybe<String>;
-  logo_not_starts_with?: Maybe<String>;
-  logo_ends_with?: Maybe<String>;
-  logo_not_ends_with?: Maybe<String>;
+  logo?: Maybe<FileWhereInput>;
   createdAt?: Maybe<DateTimeInput>;
   createdAt_not?: Maybe<DateTimeInput>;
   createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
@@ -1518,11 +1521,11 @@ export interface OrganizationWhereInput {
   NOT?: Maybe<OrganizationWhereInput[] | OrganizationWhereInput>;
 }
 
-export interface OrganizationUpdateOneRequiredWithoutOffersInput {
-  create?: Maybe<OrganizationCreateWithoutOffersInput>;
-  update?: Maybe<OrganizationUpdateWithoutOffersDataInput>;
-  upsert?: Maybe<OrganizationUpsertWithoutOffersInput>;
-  connect?: Maybe<OrganizationWhereUniqueInput>;
+export interface FileUpdateOneRequiredInput {
+  create?: Maybe<FileCreateInput>;
+  update?: Maybe<FileUpdateDataInput>;
+  upsert?: Maybe<FileUpsertNestedInput>;
+  connect?: Maybe<FileWhereUniqueInput>;
 }
 
 export interface OfferUpdateManyWithoutUserInput {
@@ -1545,16 +1548,11 @@ export interface OfferUpdateManyWithoutUserInput {
   >;
 }
 
-export interface OrganizationUpdateWithoutOffersDataInput {
-  apiId?: Maybe<Int>;
-  apiSecret?: Maybe<String>;
-  organizationId?: Maybe<Int>;
-  active?: Maybe<Boolean>;
-  logo?: Maybe<String>;
-  deletedAt?: Maybe<DateTimeInput>;
-  name?: Maybe<String>;
-  projectIds?: Maybe<OrganizationUpdateprojectIdsInput>;
-  description?: Maybe<String>;
+export interface FileUpdateDataInput {
+  key?: Maybe<String>;
+  fileName?: Maybe<String>;
+  mimeType?: Maybe<String>;
+  encoding?: Maybe<String>;
   url?: Maybe<String>;
 }
 
@@ -1569,8 +1567,9 @@ export interface UserCreateInput {
   adress?: Maybe<AdressCreateOneInput>;
 }
 
-export interface OrganizationUpdateprojectIdsInput {
-  set?: Maybe<Int[] | Int>;
+export interface FileUpsertNestedInput {
+  update: FileUpdateDataInput;
+  create: FileCreateInput;
 }
 
 export interface AdressWhereInput {
@@ -1635,20 +1634,17 @@ export interface AdressWhereInput {
   NOT?: Maybe<AdressWhereInput[] | AdressWhereInput>;
 }
 
-export interface OrganizationUpsertWithoutOffersInput {
-  update: OrganizationUpdateWithoutOffersDataInput;
-  create: OrganizationCreateWithoutOffersInput;
+export interface OrganizationUpdateprojectIdsInput {
+  set?: Maybe<Int[] | Int>;
 }
 
 export type TransactionWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
 
-export interface UserUpdateOneRequiredWithoutOffersInput {
-  create?: Maybe<UserCreateWithoutOffersInput>;
-  update?: Maybe<UserUpdateWithoutOffersDataInput>;
-  upsert?: Maybe<UserUpsertWithoutOffersInput>;
-  connect?: Maybe<UserWhereUniqueInput>;
+export interface OrganizationUpsertWithoutOffersInput {
+  update: OrganizationUpdateWithoutOffersDataInput;
+  create: OrganizationCreateWithoutOffersInput;
 }
 
 export type UserWhereUniqueInput = AtLeastOne<{
@@ -1656,13 +1652,11 @@ export type UserWhereUniqueInput = AtLeastOne<{
   email?: Maybe<String>;
 }>;
 
-export interface UserUpdateWithoutOffersDataInput {
-  email?: Maybe<String>;
-  firstName?: Maybe<String>;
-  lastName?: Maybe<String>;
-  password?: Maybe<String>;
-  role?: Maybe<UserRole>;
-  adress?: Maybe<AdressUpdateOneInput>;
+export interface UserUpdateOneRequiredWithoutOffersInput {
+  create?: Maybe<UserCreateWithoutOffersInput>;
+  update?: Maybe<UserUpdateWithoutOffersDataInput>;
+  upsert?: Maybe<UserUpsertWithoutOffersInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
 }
 
 export interface OfferScalarWhereInput {
@@ -1783,6 +1777,21 @@ export interface OfferScalarWhereInput {
   NOT?: Maybe<OfferScalarWhereInput[] | OfferScalarWhereInput>;
 }
 
+export interface UserUpdateWithoutOffersDataInput {
+  email?: Maybe<String>;
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  password?: Maybe<String>;
+  role?: Maybe<UserRole>;
+  adress?: Maybe<AdressUpdateOneInput>;
+}
+
+export interface AdressUpdateManyMutationInput {
+  city?: Maybe<String>;
+  street?: Maybe<String>;
+  postalCode?: Maybe<String>;
+}
+
 export interface AdressUpdateOneInput {
   create?: Maybe<AdressCreateInput>;
   update?: Maybe<AdressUpdateDataInput>;
@@ -1792,22 +1801,9 @@ export interface AdressUpdateOneInput {
   connect?: Maybe<AdressWhereUniqueInput>;
 }
 
-export interface TransactionSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<TransactionWhereInput>;
-  AND?: Maybe<
-    TransactionSubscriptionWhereInput[] | TransactionSubscriptionWhereInput
-  >;
-  OR?: Maybe<
-    TransactionSubscriptionWhereInput[] | TransactionSubscriptionWhereInput
-  >;
-  NOT?: Maybe<
-    TransactionSubscriptionWhereInput[] | TransactionSubscriptionWhereInput
-  >;
-}
+export type OfferWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
 
 export interface AdressUpdateDataInput {
   city?: Maybe<String>;
@@ -1815,10 +1811,17 @@ export interface AdressUpdateDataInput {
   postalCode?: Maybe<String>;
 }
 
-export interface OfferUpsertWithWhereUniqueWithoutUserInput {
-  where: OfferWhereUniqueInput;
-  update: OfferUpdateWithoutUserDataInput;
-  create: OfferCreateWithoutUserInput;
+export interface OfferUpdateWithoutUserDataInput {
+  active?: Maybe<Boolean>;
+  amount?: Maybe<Int>;
+  deletedAt?: Maybe<DateTimeInput>;
+  email?: Maybe<String>;
+  firstName?: Maybe<String>;
+  lastName?: Maybe<String>;
+  transactions?: Maybe<TransactionUpdateManyWithoutOfferInput>;
+  beneficator?: Maybe<OrganizationUpdateOneRequiredWithoutOffersInput>;
+  price?: Maybe<Int>;
+  name?: Maybe<String>;
 }
 
 export interface AdressUpsertNestedInput {
@@ -1826,18 +1829,9 @@ export interface AdressUpsertNestedInput {
   create: AdressCreateInput;
 }
 
-export interface OfferCreateWithoutUserInput {
-  id?: Maybe<ID_Input>;
-  active?: Maybe<Boolean>;
-  amount?: Maybe<Int>;
-  deletedAt?: Maybe<DateTimeInput>;
-  email: String;
-  firstName: String;
-  lastName: String;
-  transactions?: Maybe<TransactionCreateManyWithoutOfferInput>;
-  beneficator: OrganizationCreateOneWithoutOffersInput;
-  price: Int;
-  name: String;
+export interface OfferUpsertWithoutTransactionsInput {
+  update: OfferUpdateWithoutTransactionsDataInput;
+  create: OfferCreateWithoutTransactionsInput;
 }
 
 export interface UserUpsertWithoutOffersInput {
@@ -1845,10 +1839,8 @@ export interface UserUpsertWithoutOffersInput {
   create: UserCreateWithoutOffersInput;
 }
 
-export interface OfferUpdateOneRequiredWithoutTransactionsInput {
+export interface OfferCreateOneWithoutTransactionsInput {
   create?: Maybe<OfferCreateWithoutTransactionsInput>;
-  update?: Maybe<OfferUpdateWithoutTransactionsDataInput>;
-  upsert?: Maybe<OfferUpsertWithoutTransactionsInput>;
   connect?: Maybe<OfferWhereUniqueInput>;
 }
 
@@ -1863,15 +1855,11 @@ export interface OfferUpdateManyMutationInput {
   name?: Maybe<String>;
 }
 
-export interface OfferUpdateManyDataInput {
-  active?: Maybe<Boolean>;
-  amount?: Maybe<Int>;
-  deletedAt?: Maybe<DateTimeInput>;
-  email?: Maybe<String>;
-  firstName?: Maybe<String>;
-  lastName?: Maybe<String>;
-  price?: Maybe<Int>;
-  name?: Maybe<String>;
+export interface AdressCreateInput {
+  id?: Maybe<ID_Input>;
+  city?: Maybe<String>;
+  street?: Maybe<String>;
+  postalCode?: Maybe<String>;
 }
 
 export interface OrganizationUpdateInput {
@@ -1879,7 +1867,7 @@ export interface OrganizationUpdateInput {
   apiSecret?: Maybe<String>;
   organizationId?: Maybe<Int>;
   active?: Maybe<Boolean>;
-  logo?: Maybe<String>;
+  logo?: Maybe<FileUpdateOneRequiredInput>;
   deletedAt?: Maybe<DateTimeInput>;
   name?: Maybe<String>;
   offers?: Maybe<OfferUpdateManyWithoutBeneficatorInput>;
@@ -1915,7 +1903,7 @@ export interface OrganizationCreateInput {
   apiSecret: String;
   organizationId: Int;
   active: Boolean;
-  logo?: Maybe<String>;
+  logo: FileCreateOneInput;
   deletedAt?: Maybe<DateTimeInput>;
   name: String;
   offers?: Maybe<OfferCreateManyWithoutBeneficatorInput>;
@@ -1924,39 +1912,60 @@ export interface OrganizationCreateInput {
   url: String;
 }
 
-export interface AdressCreateInput {
-  id?: Maybe<ID_Input>;
-  city?: Maybe<String>;
-  street?: Maybe<String>;
-  postalCode?: Maybe<String>;
+export interface TransactionSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<TransactionWhereInput>;
+  AND?: Maybe<
+    TransactionSubscriptionWhereInput[] | TransactionSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    TransactionSubscriptionWhereInput[] | TransactionSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    TransactionSubscriptionWhereInput[] | TransactionSubscriptionWhereInput
+  >;
 }
 
-export interface OfferCreateOneWithoutTransactionsInput {
-  create?: Maybe<OfferCreateWithoutTransactionsInput>;
-  connect?: Maybe<OfferWhereUniqueInput>;
-}
-
-export interface OfferUpsertWithoutTransactionsInput {
-  update: OfferUpdateWithoutTransactionsDataInput;
-  create: OfferCreateWithoutTransactionsInput;
-}
-
-export interface OfferUpdateWithoutUserDataInput {
+export interface OfferUpdateManyDataInput {
   active?: Maybe<Boolean>;
   amount?: Maybe<Int>;
   deletedAt?: Maybe<DateTimeInput>;
   email?: Maybe<String>;
   firstName?: Maybe<String>;
   lastName?: Maybe<String>;
-  transactions?: Maybe<TransactionUpdateManyWithoutOfferInput>;
-  beneficator?: Maybe<OrganizationUpdateOneRequiredWithoutOffersInput>;
   price?: Maybe<Int>;
   name?: Maybe<String>;
 }
 
-export type OfferWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
+export interface OfferUpdateOneRequiredWithoutTransactionsInput {
+  create?: Maybe<OfferCreateWithoutTransactionsInput>;
+  update?: Maybe<OfferUpdateWithoutTransactionsDataInput>;
+  upsert?: Maybe<OfferUpsertWithoutTransactionsInput>;
+  connect?: Maybe<OfferWhereUniqueInput>;
+}
+
+export interface OfferCreateWithoutUserInput {
+  id?: Maybe<ID_Input>;
+  active?: Maybe<Boolean>;
+  amount?: Maybe<Int>;
+  deletedAt?: Maybe<DateTimeInput>;
+  email: String;
+  firstName: String;
+  lastName: String;
+  transactions?: Maybe<TransactionCreateManyWithoutOfferInput>;
+  beneficator: OrganizationCreateOneWithoutOffersInput;
+  price: Int;
+  name: String;
+}
+
+export interface OfferUpsertWithWhereUniqueWithoutUserInput {
+  where: OfferWhereUniqueInput;
+  update: OfferUpdateWithoutUserDataInput;
+  create: OfferCreateWithoutUserInput;
+}
 
 export interface NodeNode {
   id: ID_Output;
@@ -2743,7 +2752,6 @@ export interface Organization {
   apiSecret: String;
   organizationId: Int;
   active: Boolean;
-  logo?: String;
   createdAt?: DateTimeOutput;
   updatedAt?: DateTimeOutput;
   deletedAt?: DateTimeOutput;
@@ -2761,7 +2769,7 @@ export interface OrganizationPromise
   apiSecret: () => Promise<String>;
   organizationId: () => Promise<Int>;
   active: () => Promise<Boolean>;
-  logo: () => Promise<String>;
+  logo: <T = FilePromise>() => T;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
   deletedAt: () => Promise<DateTimeOutput>;
@@ -2788,7 +2796,7 @@ export interface OrganizationSubscription
   apiSecret: () => Promise<AsyncIterator<String>>;
   organizationId: () => Promise<AsyncIterator<Int>>;
   active: () => Promise<AsyncIterator<Boolean>>;
-  logo: () => Promise<AsyncIterator<String>>;
+  logo: <T = FileSubscription>() => T;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   deletedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
@@ -2815,7 +2823,7 @@ export interface OrganizationNullablePromise
   apiSecret: () => Promise<String>;
   organizationId: () => Promise<Int>;
   active: () => Promise<Boolean>;
-  logo: () => Promise<String>;
+  logo: <T = FilePromise>() => T;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
   deletedAt: () => Promise<DateTimeOutput>;
@@ -2840,7 +2848,6 @@ export interface OrganizationPreviousValues {
   apiSecret: String;
   organizationId: Int;
   active: Boolean;
-  logo?: String;
   createdAt?: DateTimeOutput;
   updatedAt?: DateTimeOutput;
   deletedAt?: DateTimeOutput;
@@ -2858,7 +2865,6 @@ export interface OrganizationPreviousValuesPromise
   apiSecret: () => Promise<String>;
   organizationId: () => Promise<Int>;
   active: () => Promise<Boolean>;
-  logo: () => Promise<String>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
   deletedAt: () => Promise<DateTimeOutput>;
@@ -2876,7 +2882,6 @@ export interface OrganizationPreviousValuesSubscription
   apiSecret: () => Promise<AsyncIterator<String>>;
   organizationId: () => Promise<AsyncIterator<Int>>;
   active: () => Promise<AsyncIterator<Boolean>>;
-  logo: () => Promise<AsyncIterator<String>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   deletedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
