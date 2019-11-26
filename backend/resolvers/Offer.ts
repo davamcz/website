@@ -45,10 +45,19 @@ export const OfferMutations = extendType({
       ) => {
         let userId = getUserId(ctx)
         if (!userId) {
-          const { id } = await ctx.prisma.createUser({
-            firstName,
-            lastName,
-            email,
+          const { id } = await ctx.prisma.upsertUser({
+            where: {
+              email
+            },
+            create: {
+              firstName,
+              lastName,
+              email,
+            },
+            update: {
+              firstName,
+              lastName
+            }
           })
           userId = id
         } else {
@@ -74,6 +83,7 @@ export const OfferMutations = extendType({
             user: { connect: { id: userId } },
           }).$fragment(`
             fragment createdOffer on Offer {
+              id
               name
               email
               firstName
