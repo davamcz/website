@@ -456,6 +456,7 @@ interface Node {
 type Offer {
   id: ID!
   active: Boolean
+  public: Boolean
   amount: Int
   createdAt: DateTime
   updatedAt: DateTime
@@ -468,6 +469,8 @@ type Offer {
   price: Int!
   name: String!
   user: User!
+  description: String
+  transport: String
 }
 
 type OfferConnection {
@@ -479,6 +482,7 @@ type OfferConnection {
 input OfferCreateInput {
   id: ID
   active: Boolean
+  public: Boolean
   amount: Int
   deletedAt: DateTime
   email: String!
@@ -489,6 +493,8 @@ input OfferCreateInput {
   price: Int!
   name: String!
   user: UserCreateOneWithoutOffersInput!
+  description: String
+  transport: String
 }
 
 input OfferCreateManyWithoutBeneficatorInput {
@@ -509,6 +515,7 @@ input OfferCreateOneWithoutTransactionsInput {
 input OfferCreateWithoutBeneficatorInput {
   id: ID
   active: Boolean
+  public: Boolean
   amount: Int
   deletedAt: DateTime
   email: String!
@@ -518,11 +525,14 @@ input OfferCreateWithoutBeneficatorInput {
   price: Int!
   name: String!
   user: UserCreateOneWithoutOffersInput!
+  description: String
+  transport: String
 }
 
 input OfferCreateWithoutTransactionsInput {
   id: ID
   active: Boolean
+  public: Boolean
   amount: Int
   deletedAt: DateTime
   email: String!
@@ -532,11 +542,14 @@ input OfferCreateWithoutTransactionsInput {
   price: Int!
   name: String!
   user: UserCreateOneWithoutOffersInput!
+  description: String
+  transport: String
 }
 
 input OfferCreateWithoutUserInput {
   id: ID
   active: Boolean
+  public: Boolean
   amount: Int
   deletedAt: DateTime
   email: String!
@@ -546,6 +559,8 @@ input OfferCreateWithoutUserInput {
   beneficator: OrganizationCreateOneWithoutOffersInput!
   price: Int!
   name: String!
+  description: String
+  transport: String
 }
 
 type OfferEdge {
@@ -558,6 +573,8 @@ enum OfferOrderByInput {
   id_DESC
   active_ASC
   active_DESC
+  public_ASC
+  public_DESC
   amount_ASC
   amount_DESC
   createdAt_ASC
@@ -576,11 +593,16 @@ enum OfferOrderByInput {
   price_DESC
   name_ASC
   name_DESC
+  description_ASC
+  description_DESC
+  transport_ASC
+  transport_DESC
 }
 
 type OfferPreviousValues {
   id: ID!
   active: Boolean
+  public: Boolean
   amount: Int
   createdAt: DateTime
   updatedAt: DateTime
@@ -590,6 +612,8 @@ type OfferPreviousValues {
   lastName: String!
   price: Int!
   name: String!
+  description: String
+  transport: String
 }
 
 input OfferScalarWhereInput {
@@ -609,6 +633,8 @@ input OfferScalarWhereInput {
   id_not_ends_with: ID
   active: Boolean
   active_not: Boolean
+  public: Boolean
+  public_not: Boolean
   amount: Int
   amount_not: Int
   amount_in: [Int!]
@@ -705,6 +731,34 @@ input OfferScalarWhereInput {
   name_not_starts_with: String
   name_ends_with: String
   name_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  transport: String
+  transport_not: String
+  transport_in: [String!]
+  transport_not_in: [String!]
+  transport_lt: String
+  transport_lte: String
+  transport_gt: String
+  transport_gte: String
+  transport_contains: String
+  transport_not_contains: String
+  transport_starts_with: String
+  transport_not_starts_with: String
+  transport_ends_with: String
+  transport_not_ends_with: String
   AND: [OfferScalarWhereInput!]
   OR: [OfferScalarWhereInput!]
   NOT: [OfferScalarWhereInput!]
@@ -730,6 +784,7 @@ input OfferSubscriptionWhereInput {
 
 input OfferUpdateInput {
   active: Boolean
+  public: Boolean
   amount: Int
   deletedAt: DateTime
   email: String
@@ -740,10 +795,13 @@ input OfferUpdateInput {
   price: Int
   name: String
   user: UserUpdateOneRequiredWithoutOffersInput
+  description: String
+  transport: String
 }
 
 input OfferUpdateManyDataInput {
   active: Boolean
+  public: Boolean
   amount: Int
   deletedAt: DateTime
   email: String
@@ -751,10 +809,13 @@ input OfferUpdateManyDataInput {
   lastName: String
   price: Int
   name: String
+  description: String
+  transport: String
 }
 
 input OfferUpdateManyMutationInput {
   active: Boolean
+  public: Boolean
   amount: Int
   deletedAt: DateTime
   email: String
@@ -762,6 +823,8 @@ input OfferUpdateManyMutationInput {
   lastName: String
   price: Int
   name: String
+  description: String
+  transport: String
 }
 
 input OfferUpdateManyWithoutBeneficatorInput {
@@ -802,6 +865,7 @@ input OfferUpdateOneRequiredWithoutTransactionsInput {
 
 input OfferUpdateWithoutBeneficatorDataInput {
   active: Boolean
+  public: Boolean
   amount: Int
   deletedAt: DateTime
   email: String
@@ -811,10 +875,13 @@ input OfferUpdateWithoutBeneficatorDataInput {
   price: Int
   name: String
   user: UserUpdateOneRequiredWithoutOffersInput
+  description: String
+  transport: String
 }
 
 input OfferUpdateWithoutTransactionsDataInput {
   active: Boolean
+  public: Boolean
   amount: Int
   deletedAt: DateTime
   email: String
@@ -824,10 +891,13 @@ input OfferUpdateWithoutTransactionsDataInput {
   price: Int
   name: String
   user: UserUpdateOneRequiredWithoutOffersInput
+  description: String
+  transport: String
 }
 
 input OfferUpdateWithoutUserDataInput {
   active: Boolean
+  public: Boolean
   amount: Int
   deletedAt: DateTime
   email: String
@@ -837,6 +907,8 @@ input OfferUpdateWithoutUserDataInput {
   beneficator: OrganizationUpdateOneRequiredWithoutOffersInput
   price: Int
   name: String
+  description: String
+  transport: String
 }
 
 input OfferUpdateWithWhereUniqueWithoutBeneficatorInput {
@@ -883,6 +955,8 @@ input OfferWhereInput {
   id_not_ends_with: ID
   active: Boolean
   active_not: Boolean
+  public: Boolean
+  public_not: Boolean
   amount: Int
   amount_not: Int
   amount_in: [Int!]
@@ -984,6 +1058,34 @@ input OfferWhereInput {
   name_ends_with: String
   name_not_ends_with: String
   user: UserWhereInput
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  transport: String
+  transport_not: String
+  transport_in: [String!]
+  transport_not_in: [String!]
+  transport_lt: String
+  transport_lte: String
+  transport_gt: String
+  transport_gte: String
+  transport_contains: String
+  transport_not_contains: String
+  transport_starts_with: String
+  transport_not_starts_with: String
+  transport_ends_with: String
+  transport_not_ends_with: String
   AND: [OfferWhereInput!]
   OR: [OfferWhereInput!]
   NOT: [OfferWhereInput!]
@@ -995,9 +1097,9 @@ input OfferWhereUniqueInput {
 
 type Organization {
   id: ID!
-  apiId: Int!
-  apiSecret: String!
-  organizationId: Int!
+  apiId: Int
+  apiSecret: String
+  organizationId: Int
   active: Boolean!
   logo: File!
   createdAt: DateTime
@@ -1005,7 +1107,7 @@ type Organization {
   deletedAt: DateTime
   name: String!
   offers(where: OfferWhereInput, orderBy: OfferOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Offer!]
-  projectIds: [Int!]!
+  projectId: Int
   description: String!
   url: String!
 }
@@ -1018,15 +1120,15 @@ type OrganizationConnection {
 
 input OrganizationCreateInput {
   id: ID
-  apiId: Int!
-  apiSecret: String!
-  organizationId: Int!
+  apiId: Int
+  apiSecret: String
+  organizationId: Int
   active: Boolean!
   logo: FileCreateOneInput!
   deletedAt: DateTime
   name: String!
   offers: OfferCreateManyWithoutBeneficatorInput
-  projectIds: OrganizationCreateprojectIdsInput
+  projectId: Int
   description: String!
   url: String!
 }
@@ -1036,20 +1138,16 @@ input OrganizationCreateOneWithoutOffersInput {
   connect: OrganizationWhereUniqueInput
 }
 
-input OrganizationCreateprojectIdsInput {
-  set: [Int!]
-}
-
 input OrganizationCreateWithoutOffersInput {
   id: ID
-  apiId: Int!
-  apiSecret: String!
-  organizationId: Int!
+  apiId: Int
+  apiSecret: String
+  organizationId: Int
   active: Boolean!
   logo: FileCreateOneInput!
   deletedAt: DateTime
   name: String!
-  projectIds: OrganizationCreateprojectIdsInput
+  projectId: Int
   description: String!
   url: String!
 }
@@ -1078,6 +1176,8 @@ enum OrganizationOrderByInput {
   deletedAt_DESC
   name_ASC
   name_DESC
+  projectId_ASC
+  projectId_DESC
   description_ASC
   description_DESC
   url_ASC
@@ -1086,15 +1186,15 @@ enum OrganizationOrderByInput {
 
 type OrganizationPreviousValues {
   id: ID!
-  apiId: Int!
-  apiSecret: String!
-  organizationId: Int!
+  apiId: Int
+  apiSecret: String
+  organizationId: Int
   active: Boolean!
   createdAt: DateTime
   updatedAt: DateTime
   deletedAt: DateTime
   name: String!
-  projectIds: [Int!]!
+  projectId: Int
   description: String!
   url: String!
 }
@@ -1126,7 +1226,7 @@ input OrganizationUpdateInput {
   deletedAt: DateTime
   name: String
   offers: OfferUpdateManyWithoutBeneficatorInput
-  projectIds: OrganizationUpdateprojectIdsInput
+  projectId: Int
   description: String
   url: String
 }
@@ -1138,7 +1238,7 @@ input OrganizationUpdateManyMutationInput {
   active: Boolean
   deletedAt: DateTime
   name: String
-  projectIds: OrganizationUpdateprojectIdsInput
+  projectId: Int
   description: String
   url: String
 }
@@ -1150,10 +1250,6 @@ input OrganizationUpdateOneRequiredWithoutOffersInput {
   connect: OrganizationWhereUniqueInput
 }
 
-input OrganizationUpdateprojectIdsInput {
-  set: [Int!]
-}
-
 input OrganizationUpdateWithoutOffersDataInput {
   apiId: Int
   apiSecret: String
@@ -1162,7 +1258,7 @@ input OrganizationUpdateWithoutOffersDataInput {
   logo: FileUpdateOneRequiredInput
   deletedAt: DateTime
   name: String
-  projectIds: OrganizationUpdateprojectIdsInput
+  projectId: Int
   description: String
   url: String
 }
@@ -1261,6 +1357,14 @@ input OrganizationWhereInput {
   offers_every: OfferWhereInput
   offers_some: OfferWhereInput
   offers_none: OfferWhereInput
+  projectId: Int
+  projectId_not: Int
+  projectId_in: [Int!]
+  projectId_not_in: [Int!]
+  projectId_lt: Int
+  projectId_lte: Int
+  projectId_gt: Int
+  projectId_gte: Int
   description: String
   description_not: String
   description_in: [String!]
@@ -1777,8 +1881,8 @@ input TransactionWhereUniqueInput {
 type User {
   id: ID!
   email: String!
-  firstName: String!
-  lastName: String!
+  firstName: String
+  lastName: String
   password: String
   role: UserRole!
   offers(where: OfferWhereInput, orderBy: OfferOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Offer!]
@@ -1794,8 +1898,8 @@ type UserConnection {
 input UserCreateInput {
   id: ID
   email: String!
-  firstName: String!
-  lastName: String!
+  firstName: String
+  lastName: String
   password: String
   role: UserRole
   offers: OfferCreateManyWithoutUserInput
@@ -1810,8 +1914,8 @@ input UserCreateOneWithoutOffersInput {
 input UserCreateWithoutOffersInput {
   id: ID
   email: String!
-  firstName: String!
-  lastName: String!
+  firstName: String
+  lastName: String
   password: String
   role: UserRole
   adress: AdressCreateOneInput
@@ -1840,8 +1944,8 @@ enum UserOrderByInput {
 type UserPreviousValues {
   id: ID!
   email: String!
-  firstName: String!
-  lastName: String!
+  firstName: String
+  lastName: String
   password: String
   role: UserRole!
 }

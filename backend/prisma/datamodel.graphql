@@ -1,8 +1,8 @@
 type User {
   id: ID! @id
   email: String! @unique
-  firstName: String!
-  lastName: String!
+  firstName: String @default(value: "")
+  lastName: String @default(value: "")
   password: String
   role: UserRole! @default(value: USER)
   offers: [Offer!]!
@@ -32,7 +32,8 @@ enum UserRole {
 
 type Offer {
   id: ID! @id
-  active: Boolean @default(value: false)
+  active: Boolean @default(value: true)
+  public: Boolean @default(value: true)
   amount: Int
   createdAt: DateTime @createdAt
   updatedAt: DateTime @updatedAt
@@ -40,11 +41,13 @@ type Offer {
   email: String!
   firstName: String!
   lastName: String!
-  transactions: [Transaction!]! 
+  transactions: [Transaction!]!
   beneficator: Organization!
   price: Int!
   name: String!
   user: User!
+  description: String
+  transport: String
 }
 
 type Transaction {
@@ -71,9 +74,9 @@ enum TransactionStatus {
 
 type Organization {
   id: ID! @id
-  apiId: Int!
-  apiSecret: String!
-  organizationId: Int!
+  apiId: Int
+  apiSecret: String
+  organizationId: Int
   active: Boolean!
   logo: File!
   createdAt: DateTime @createdAt
@@ -81,7 +84,7 @@ type Organization {
   deletedAt: DateTime
   name: String!
   offers: [Offer!]!
-  projectIds: [Int] @scalarList(strategy:RELATION)
+  projectId: Int
   description: String!
   url: String!
 }

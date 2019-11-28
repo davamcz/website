@@ -10,6 +10,78 @@ export type Scalars = {
   Int: number,
   Float: number,
   DateTime: any,
+  /** The `Upload` scalar type represents a file upload. */
+  Upload: any,
+};
+
+export type Adress = {
+   __typename?: 'Adress',
+  id: Scalars['ID'],
+  city?: Maybe<Scalars['String']>,
+  street?: Maybe<Scalars['String']>,
+  postalCode?: Maybe<Scalars['String']>,
+};
+
+export type AdressWhereInput = {
+  id?: Maybe<Scalars['ID']>,
+  id_not?: Maybe<Scalars['ID']>,
+  id_in?: Maybe<Array<Scalars['ID']>>,
+  id_not_in?: Maybe<Array<Scalars['ID']>>,
+  id_lt?: Maybe<Scalars['ID']>,
+  id_lte?: Maybe<Scalars['ID']>,
+  id_gt?: Maybe<Scalars['ID']>,
+  id_gte?: Maybe<Scalars['ID']>,
+  id_contains?: Maybe<Scalars['ID']>,
+  id_not_contains?: Maybe<Scalars['ID']>,
+  id_starts_with?: Maybe<Scalars['ID']>,
+  id_not_starts_with?: Maybe<Scalars['ID']>,
+  id_ends_with?: Maybe<Scalars['ID']>,
+  id_not_ends_with?: Maybe<Scalars['ID']>,
+  city?: Maybe<Scalars['String']>,
+  city_not?: Maybe<Scalars['String']>,
+  city_in?: Maybe<Array<Scalars['String']>>,
+  city_not_in?: Maybe<Array<Scalars['String']>>,
+  city_lt?: Maybe<Scalars['String']>,
+  city_lte?: Maybe<Scalars['String']>,
+  city_gt?: Maybe<Scalars['String']>,
+  city_gte?: Maybe<Scalars['String']>,
+  city_contains?: Maybe<Scalars['String']>,
+  city_not_contains?: Maybe<Scalars['String']>,
+  city_starts_with?: Maybe<Scalars['String']>,
+  city_not_starts_with?: Maybe<Scalars['String']>,
+  city_ends_with?: Maybe<Scalars['String']>,
+  city_not_ends_with?: Maybe<Scalars['String']>,
+  street?: Maybe<Scalars['String']>,
+  street_not?: Maybe<Scalars['String']>,
+  street_in?: Maybe<Array<Scalars['String']>>,
+  street_not_in?: Maybe<Array<Scalars['String']>>,
+  street_lt?: Maybe<Scalars['String']>,
+  street_lte?: Maybe<Scalars['String']>,
+  street_gt?: Maybe<Scalars['String']>,
+  street_gte?: Maybe<Scalars['String']>,
+  street_contains?: Maybe<Scalars['String']>,
+  street_not_contains?: Maybe<Scalars['String']>,
+  street_starts_with?: Maybe<Scalars['String']>,
+  street_not_starts_with?: Maybe<Scalars['String']>,
+  street_ends_with?: Maybe<Scalars['String']>,
+  street_not_ends_with?: Maybe<Scalars['String']>,
+  postalCode?: Maybe<Scalars['String']>,
+  postalCode_not?: Maybe<Scalars['String']>,
+  postalCode_in?: Maybe<Array<Scalars['String']>>,
+  postalCode_not_in?: Maybe<Array<Scalars['String']>>,
+  postalCode_lt?: Maybe<Scalars['String']>,
+  postalCode_lte?: Maybe<Scalars['String']>,
+  postalCode_gt?: Maybe<Scalars['String']>,
+  postalCode_gte?: Maybe<Scalars['String']>,
+  postalCode_contains?: Maybe<Scalars['String']>,
+  postalCode_not_contains?: Maybe<Scalars['String']>,
+  postalCode_starts_with?: Maybe<Scalars['String']>,
+  postalCode_not_starts_with?: Maybe<Scalars['String']>,
+  postalCode_ends_with?: Maybe<Scalars['String']>,
+  postalCode_not_ends_with?: Maybe<Scalars['String']>,
+  AND?: Maybe<Array<AdressWhereInput>>,
+  OR?: Maybe<Array<AdressWhereInput>>,
+  NOT?: Maybe<Array<AdressWhereInput>>,
 };
 
 export type AuthPayload = {
@@ -19,6 +91,103 @@ export type AuthPayload = {
 };
 
 
+export type File = {
+   __typename?: 'File',
+  id: Scalars['ID'],
+  fileName: Scalars['String'],
+  key: Scalars['String'],
+};
+
+export type FileWhereInput = {
+  id?: Maybe<Scalars['ID']>,
+  id_not?: Maybe<Scalars['ID']>,
+  id_in?: Maybe<Array<Scalars['ID']>>,
+  id_not_in?: Maybe<Array<Scalars['ID']>>,
+  id_lt?: Maybe<Scalars['ID']>,
+  id_lte?: Maybe<Scalars['ID']>,
+  id_gt?: Maybe<Scalars['ID']>,
+  id_gte?: Maybe<Scalars['ID']>,
+  id_contains?: Maybe<Scalars['ID']>,
+  id_not_contains?: Maybe<Scalars['ID']>,
+  id_starts_with?: Maybe<Scalars['ID']>,
+  id_not_starts_with?: Maybe<Scalars['ID']>,
+  id_ends_with?: Maybe<Scalars['ID']>,
+  id_not_ends_with?: Maybe<Scalars['ID']>,
+  key?: Maybe<Scalars['String']>,
+  key_not?: Maybe<Scalars['String']>,
+  key_in?: Maybe<Array<Scalars['String']>>,
+  key_not_in?: Maybe<Array<Scalars['String']>>,
+  key_lt?: Maybe<Scalars['String']>,
+  key_lte?: Maybe<Scalars['String']>,
+  key_gt?: Maybe<Scalars['String']>,
+  key_gte?: Maybe<Scalars['String']>,
+  key_contains?: Maybe<Scalars['String']>,
+  key_not_contains?: Maybe<Scalars['String']>,
+  key_starts_with?: Maybe<Scalars['String']>,
+  key_not_starts_with?: Maybe<Scalars['String']>,
+  key_ends_with?: Maybe<Scalars['String']>,
+  key_not_ends_with?: Maybe<Scalars['String']>,
+  fileName?: Maybe<Scalars['String']>,
+  fileName_not?: Maybe<Scalars['String']>,
+  fileName_in?: Maybe<Array<Scalars['String']>>,
+  fileName_not_in?: Maybe<Array<Scalars['String']>>,
+  fileName_lt?: Maybe<Scalars['String']>,
+  fileName_lte?: Maybe<Scalars['String']>,
+  fileName_gt?: Maybe<Scalars['String']>,
+  fileName_gte?: Maybe<Scalars['String']>,
+  fileName_contains?: Maybe<Scalars['String']>,
+  fileName_not_contains?: Maybe<Scalars['String']>,
+  fileName_starts_with?: Maybe<Scalars['String']>,
+  fileName_not_starts_with?: Maybe<Scalars['String']>,
+  fileName_ends_with?: Maybe<Scalars['String']>,
+  fileName_not_ends_with?: Maybe<Scalars['String']>,
+  mimeType?: Maybe<Scalars['String']>,
+  mimeType_not?: Maybe<Scalars['String']>,
+  mimeType_in?: Maybe<Array<Scalars['String']>>,
+  mimeType_not_in?: Maybe<Array<Scalars['String']>>,
+  mimeType_lt?: Maybe<Scalars['String']>,
+  mimeType_lte?: Maybe<Scalars['String']>,
+  mimeType_gt?: Maybe<Scalars['String']>,
+  mimeType_gte?: Maybe<Scalars['String']>,
+  mimeType_contains?: Maybe<Scalars['String']>,
+  mimeType_not_contains?: Maybe<Scalars['String']>,
+  mimeType_starts_with?: Maybe<Scalars['String']>,
+  mimeType_not_starts_with?: Maybe<Scalars['String']>,
+  mimeType_ends_with?: Maybe<Scalars['String']>,
+  mimeType_not_ends_with?: Maybe<Scalars['String']>,
+  encoding?: Maybe<Scalars['String']>,
+  encoding_not?: Maybe<Scalars['String']>,
+  encoding_in?: Maybe<Array<Scalars['String']>>,
+  encoding_not_in?: Maybe<Array<Scalars['String']>>,
+  encoding_lt?: Maybe<Scalars['String']>,
+  encoding_lte?: Maybe<Scalars['String']>,
+  encoding_gt?: Maybe<Scalars['String']>,
+  encoding_gte?: Maybe<Scalars['String']>,
+  encoding_contains?: Maybe<Scalars['String']>,
+  encoding_not_contains?: Maybe<Scalars['String']>,
+  encoding_starts_with?: Maybe<Scalars['String']>,
+  encoding_not_starts_with?: Maybe<Scalars['String']>,
+  encoding_ends_with?: Maybe<Scalars['String']>,
+  encoding_not_ends_with?: Maybe<Scalars['String']>,
+  url?: Maybe<Scalars['String']>,
+  url_not?: Maybe<Scalars['String']>,
+  url_in?: Maybe<Array<Scalars['String']>>,
+  url_not_in?: Maybe<Array<Scalars['String']>>,
+  url_lt?: Maybe<Scalars['String']>,
+  url_lte?: Maybe<Scalars['String']>,
+  url_gt?: Maybe<Scalars['String']>,
+  url_gte?: Maybe<Scalars['String']>,
+  url_contains?: Maybe<Scalars['String']>,
+  url_not_contains?: Maybe<Scalars['String']>,
+  url_starts_with?: Maybe<Scalars['String']>,
+  url_not_starts_with?: Maybe<Scalars['String']>,
+  url_ends_with?: Maybe<Scalars['String']>,
+  url_not_ends_with?: Maybe<Scalars['String']>,
+  AND?: Maybe<Array<FileWhereInput>>,
+  OR?: Maybe<Array<FileWhereInput>>,
+  NOT?: Maybe<Array<FileWhereInput>>,
+};
+
 export type Mutation = {
    __typename?: 'Mutation',
   /** Create new Fundlamb offer */
@@ -27,27 +196,29 @@ export type Mutation = {
   createTransaction: Transaction,
   signup: AuthPayload,
   login: AuthPayload,
+  updateUser: User,
+  uploadFile: File,
 };
 
 
 export type MutationCreateOfferArgs = {
   name: Scalars['String'],
   organizationId: Scalars['ID'],
-  firstName?: Maybe<Scalars['String']>,
-  lastName?: Maybe<Scalars['String']>,
-  email?: Maybe<Scalars['String']>,
+  firstName: Scalars['String'],
+  lastName: Scalars['String'],
+  email: Scalars['String'],
   price: Scalars['Int'],
-  amount?: Maybe<Scalars['Int']>
+  amount: Scalars['Int']
 };
 
 
 export type MutationCreateOrganizationArgs = {
-  apiId: Scalars['Int'],
-  apiSecret: Scalars['String'],
-  organizationId: Scalars['Int'],
-  active: Scalars['Boolean'],
+  apiId?: Maybe<Scalars['Int']>,
+  apiSecret?: Maybe<Scalars['String']>,
+  organizationId?: Maybe<Scalars['Int']>,
+  active?: Maybe<Scalars['Boolean']>,
   name: Scalars['String'],
-  logo?: Maybe<Scalars['String']>,
+  logoId: Scalars['ID'],
   description: Scalars['String'],
   url: Scalars['String']
 };
@@ -59,7 +230,6 @@ export type MutationCreateTransactionArgs = {
   email: Scalars['String'],
   comment?: Maybe<Scalars['String']>,
   amount: Scalars['Int'],
-  donatedAmount: Scalars['Int'],
   offerId: Scalars['ID']
 };
 
@@ -77,10 +247,26 @@ export type MutationLoginArgs = {
   password: Scalars['String']
 };
 
+
+export type MutationUpdateUserArgs = {
+  firstName: Scalars['String'],
+  lastName: Scalars['String'],
+  city: Scalars['String'],
+  street: Scalars['String'],
+  postalCode: Scalars['String']
+};
+
+
+export type MutationUploadFileArgs = {
+  directory?: Maybe<Scalars['String']>,
+  file: Scalars['Upload']
+};
+
 export type Offer = {
    __typename?: 'Offer',
   id: Scalars['ID'],
   active?: Maybe<Scalars['Boolean']>,
+  public?: Maybe<Scalars['Boolean']>,
   amount?: Maybe<Scalars['Int']>,
   createdAt?: Maybe<Scalars['DateTime']>,
   updatedAt?: Maybe<Scalars['DateTime']>,
@@ -93,6 +279,8 @@ export type Offer = {
   price: Scalars['Int'],
   name: Scalars['String'],
   user: User,
+  description?: Maybe<Scalars['String']>,
+  transport?: Maybe<Scalars['String']>,
 };
 
 
@@ -111,6 +299,8 @@ export enum OfferOrderByInput {
   IdDesc = 'id_DESC',
   ActiveAsc = 'active_ASC',
   ActiveDesc = 'active_DESC',
+  PublicAsc = 'public_ASC',
+  PublicDesc = 'public_DESC',
   AmountAsc = 'amount_ASC',
   AmountDesc = 'amount_DESC',
   CreatedAtAsc = 'createdAt_ASC',
@@ -128,7 +318,11 @@ export enum OfferOrderByInput {
   PriceAsc = 'price_ASC',
   PriceDesc = 'price_DESC',
   NameAsc = 'name_ASC',
-  NameDesc = 'name_DESC'
+  NameDesc = 'name_DESC',
+  DescriptionAsc = 'description_ASC',
+  DescriptionDesc = 'description_DESC',
+  TransportAsc = 'transport_ASC',
+  TransportDesc = 'transport_DESC'
 }
 
 export type OfferWhereInput = {
@@ -148,6 +342,8 @@ export type OfferWhereInput = {
   id_not_ends_with?: Maybe<Scalars['ID']>,
   active?: Maybe<Scalars['Boolean']>,
   active_not?: Maybe<Scalars['Boolean']>,
+  public?: Maybe<Scalars['Boolean']>,
+  public_not?: Maybe<Scalars['Boolean']>,
   amount?: Maybe<Scalars['Int']>,
   amount_not?: Maybe<Scalars['Int']>,
   amount_in?: Maybe<Array<Scalars['Int']>>,
@@ -249,6 +445,34 @@ export type OfferWhereInput = {
   name_ends_with?: Maybe<Scalars['String']>,
   name_not_ends_with?: Maybe<Scalars['String']>,
   user?: Maybe<UserWhereInput>,
+  description?: Maybe<Scalars['String']>,
+  description_not?: Maybe<Scalars['String']>,
+  description_in?: Maybe<Array<Scalars['String']>>,
+  description_not_in?: Maybe<Array<Scalars['String']>>,
+  description_lt?: Maybe<Scalars['String']>,
+  description_lte?: Maybe<Scalars['String']>,
+  description_gt?: Maybe<Scalars['String']>,
+  description_gte?: Maybe<Scalars['String']>,
+  description_contains?: Maybe<Scalars['String']>,
+  description_not_contains?: Maybe<Scalars['String']>,
+  description_starts_with?: Maybe<Scalars['String']>,
+  description_not_starts_with?: Maybe<Scalars['String']>,
+  description_ends_with?: Maybe<Scalars['String']>,
+  description_not_ends_with?: Maybe<Scalars['String']>,
+  transport?: Maybe<Scalars['String']>,
+  transport_not?: Maybe<Scalars['String']>,
+  transport_in?: Maybe<Array<Scalars['String']>>,
+  transport_not_in?: Maybe<Array<Scalars['String']>>,
+  transport_lt?: Maybe<Scalars['String']>,
+  transport_lte?: Maybe<Scalars['String']>,
+  transport_gt?: Maybe<Scalars['String']>,
+  transport_gte?: Maybe<Scalars['String']>,
+  transport_contains?: Maybe<Scalars['String']>,
+  transport_not_contains?: Maybe<Scalars['String']>,
+  transport_starts_with?: Maybe<Scalars['String']>,
+  transport_not_starts_with?: Maybe<Scalars['String']>,
+  transport_ends_with?: Maybe<Scalars['String']>,
+  transport_not_ends_with?: Maybe<Scalars['String']>,
   AND?: Maybe<Array<OfferWhereInput>>,
   OR?: Maybe<Array<OfferWhereInput>>,
   NOT?: Maybe<Array<OfferWhereInput>>,
@@ -258,7 +482,7 @@ export type Organization = {
    __typename?: 'Organization',
   id: Scalars['ID'],
   name: Scalars['String'],
-  logo?: Maybe<Scalars['String']>,
+  logo: File,
   offers?: Maybe<Array<Offer>>,
   description: Scalars['String'],
   url: Scalars['String'],
@@ -286,8 +510,6 @@ export enum OrganizationOrderByInput {
   OrganizationIdDesc = 'organizationId_DESC',
   ActiveAsc = 'active_ASC',
   ActiveDesc = 'active_DESC',
-  LogoAsc = 'logo_ASC',
-  LogoDesc = 'logo_DESC',
   CreatedAtAsc = 'createdAt_ASC',
   CreatedAtDesc = 'createdAt_DESC',
   UpdatedAtAsc = 'updatedAt_ASC',
@@ -296,6 +518,8 @@ export enum OrganizationOrderByInput {
   DeletedAtDesc = 'deletedAt_DESC',
   NameAsc = 'name_ASC',
   NameDesc = 'name_DESC',
+  ProjectIdAsc = 'projectId_ASC',
+  ProjectIdDesc = 'projectId_DESC',
   DescriptionAsc = 'description_ASC',
   DescriptionDesc = 'description_DESC',
   UrlAsc = 'url_ASC',
@@ -349,20 +573,7 @@ export type OrganizationWhereInput = {
   organizationId_gte?: Maybe<Scalars['Int']>,
   active?: Maybe<Scalars['Boolean']>,
   active_not?: Maybe<Scalars['Boolean']>,
-  logo?: Maybe<Scalars['String']>,
-  logo_not?: Maybe<Scalars['String']>,
-  logo_in?: Maybe<Array<Scalars['String']>>,
-  logo_not_in?: Maybe<Array<Scalars['String']>>,
-  logo_lt?: Maybe<Scalars['String']>,
-  logo_lte?: Maybe<Scalars['String']>,
-  logo_gt?: Maybe<Scalars['String']>,
-  logo_gte?: Maybe<Scalars['String']>,
-  logo_contains?: Maybe<Scalars['String']>,
-  logo_not_contains?: Maybe<Scalars['String']>,
-  logo_starts_with?: Maybe<Scalars['String']>,
-  logo_not_starts_with?: Maybe<Scalars['String']>,
-  logo_ends_with?: Maybe<Scalars['String']>,
-  logo_not_ends_with?: Maybe<Scalars['String']>,
+  logo?: Maybe<FileWhereInput>,
   createdAt?: Maybe<Scalars['DateTime']>,
   createdAt_not?: Maybe<Scalars['DateTime']>,
   createdAt_in?: Maybe<Array<Scalars['DateTime']>>,
@@ -404,6 +615,14 @@ export type OrganizationWhereInput = {
   offers_every?: Maybe<OfferWhereInput>,
   offers_some?: Maybe<OfferWhereInput>,
   offers_none?: Maybe<OfferWhereInput>,
+  projectId?: Maybe<Scalars['Int']>,
+  projectId_not?: Maybe<Scalars['Int']>,
+  projectId_in?: Maybe<Array<Scalars['Int']>>,
+  projectId_not_in?: Maybe<Array<Scalars['Int']>>,
+  projectId_lt?: Maybe<Scalars['Int']>,
+  projectId_lte?: Maybe<Scalars['Int']>,
+  projectId_gt?: Maybe<Scalars['Int']>,
+  projectId_gte?: Maybe<Scalars['Int']>,
   description?: Maybe<Scalars['String']>,
   description_not?: Maybe<Scalars['String']>,
   description_in?: Maybe<Array<Scalars['String']>>,
@@ -447,6 +666,7 @@ export type Query = {
   organization?: Maybe<Organization>,
   organizations: Array<Organization>,
   recentTransactions: Array<Transaction>,
+  getTransactionStatus: Transaction,
   user: User,
 };
 
@@ -466,10 +686,19 @@ export type QueryOrganizationsArgs = {
   last?: Maybe<Scalars['Int']>
 };
 
+
+export type QueryGetTransactionStatusArgs = {
+  id: Scalars['ID']
+};
+
 export type Transaction = {
    __typename?: 'Transaction',
+  id: Scalars['ID'],
   firstName: Scalars['String'],
+  lastName: Scalars['String'],
   donatedAmount?: Maybe<Scalars['Int']>,
+  status: TransactionStatus,
+  offer: Offer,
 };
 
 export enum TransactionOrderByInput {
@@ -625,9 +854,13 @@ export type TransactionWhereInput = {
   NOT?: Maybe<Array<TransactionWhereInput>>,
 };
 
+
 export type User = {
    __typename?: 'User',
   email: Scalars['String'],
+  firstName?: Maybe<Scalars['String']>,
+  lastName?: Maybe<Scalars['String']>,
+  adress?: Maybe<Adress>,
   fullName: Scalars['String'],
 };
 
@@ -714,10 +947,12 @@ export type UserWhereInput = {
   offers_every?: Maybe<OfferWhereInput>,
   offers_some?: Maybe<OfferWhereInput>,
   offers_none?: Maybe<OfferWhereInput>,
+  adress?: Maybe<AdressWhereInput>,
   AND?: Maybe<Array<UserWhereInput>>,
   OR?: Maybe<Array<UserWhereInput>>,
   NOT?: Maybe<Array<UserWhereInput>>,
 };
+
 export type UserQueryVariables = {};
 
 
@@ -725,7 +960,11 @@ export type UserQuery = (
   { __typename?: 'Query' }
   & { user: (
     { __typename?: 'User' }
-    & Pick<User, 'email' | 'fullName'>
+    & Pick<User, 'email' | 'firstName' | 'lastName' | 'fullName'>
+    & { adress: Maybe<(
+      { __typename?: 'Adress' }
+      & Pick<Adress, 'city' | 'street' | 'postalCode'>
+    )> }
   ) }
 );
 
@@ -752,6 +991,10 @@ export type OrganizationsQuery = (
   & { organizations: Array<(
     { __typename?: 'Organization' }
     & Pick<Organization, 'name' | 'description' | 'url'>
+    & { logo: (
+      { __typename?: 'File' }
+      & Pick<File, 'key'>
+    ) }
   )> }
 );
 
@@ -764,6 +1007,46 @@ export type RecentTransactionsQuery = (
     { __typename?: 'Transaction' }
     & Pick<Transaction, 'firstName' | 'donatedAmount'>
   )> }
+);
+
+export type GetUserQueryVariables = {};
+
+
+export type GetUserQuery = (
+  { __typename?: 'Query' }
+  & { user: (
+    { __typename?: 'User' }
+    & Pick<User, 'fullName'>
+  ) }
+);
+
+export type UploadFileMutationVariables = {
+  file: Scalars['Upload']
+};
+
+
+export type UploadFileMutation = (
+  { __typename?: 'Mutation' }
+  & { uploadFile: (
+    { __typename?: 'File' }
+    & Pick<File, 'id' | 'fileName' | 'key'>
+  ) }
+);
+
+export type CreateOrganizationMutationVariables = {
+  name: Scalars['String'],
+  description: Scalars['String'],
+  url: Scalars['String'],
+  logoId: Scalars['ID']
+};
+
+
+export type CreateOrganizationMutation = (
+  { __typename?: 'Mutation' }
+  & { createOrganization: (
+    { __typename?: 'Organization' }
+    & Pick<Organization, 'name'>
+  ) }
 );
 
 export type LoginMutationVariables = {
@@ -780,23 +1063,83 @@ export type LoginMutation = (
   ) }
 );
 
+export type UpdateUserMutationVariables = {
+  firstName: Scalars['String'],
+  lastName: Scalars['String'],
+  city: Scalars['String'],
+  street: Scalars['String'],
+  postalCode: Scalars['String']
+};
+
+
+export type UpdateUserMutation = (
+  { __typename?: 'Mutation' }
+  & { updateUser: (
+    { __typename?: 'User' }
+    & Pick<User, 'email' | 'firstName' | 'lastName' | 'fullName'>
+    & { adress: Maybe<(
+      { __typename?: 'Adress' }
+      & Pick<Adress, 'city' | 'street' | 'postalCode'>
+    )> }
+  ) }
+);
+
+export type SignupMutationVariables = {
+  firstName: Scalars['String'],
+  lastName: Scalars['String'],
+  email: Scalars['String'],
+  password: Scalars['String']
+};
+
+
+export type SignupMutation = (
+  { __typename?: 'Mutation' }
+  & { signup: (
+    { __typename?: 'AuthPayload' }
+    & Pick<AuthPayload, 'token'>
+  ) }
+);
+
+
 export const UserDocument = gql`
     query user {
   user {
     email
+    firstName
+    lastName
     fullName
+    adress {
+      city
+      street
+      postalCode
+    }
   }
 }
     `;
 
-    export function useUserQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<UserQuery, UserQueryVariables>) {
-      return ApolloReactHooks.useQuery<UserQuery, UserQueryVariables>(UserDocument, baseOptions);
-    }
-      export function useUserLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<UserQuery, UserQueryVariables>) {
-        return ApolloReactHooks.useLazyQuery<UserQuery, UserQueryVariables>(UserDocument, baseOptions);
+/**
+ * __useUserQuery__
+ *
+ * To run a query within a React component, call `useUserQuery` and pass it any options that fit your needs.
+ * When your component renders, `useUserQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useUserQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useUserQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<UserQuery, UserQueryVariables>) {
+        return ApolloReactHooks.useQuery<UserQuery, UserQueryVariables>(UserDocument, baseOptions);
       }
-      
+export function useUserLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<UserQuery, UserQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<UserQuery, UserQueryVariables>(UserDocument, baseOptions);
+        }
 export type UserQueryHookResult = ReturnType<typeof useUserQuery>;
+export type UserLazyQueryHookResult = ReturnType<typeof useUserLazyQuery>;
 export type UserQueryResult = ApolloReactCommon.QueryResult<UserQuery, UserQueryVariables>;
 export const OffersDocument = gql`
     query offers {
@@ -811,14 +1154,29 @@ export const OffersDocument = gql`
 }
     `;
 
-    export function useOffersQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<OffersQuery, OffersQueryVariables>) {
-      return ApolloReactHooks.useQuery<OffersQuery, OffersQueryVariables>(OffersDocument, baseOptions);
-    }
-      export function useOffersLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<OffersQuery, OffersQueryVariables>) {
-        return ApolloReactHooks.useLazyQuery<OffersQuery, OffersQueryVariables>(OffersDocument, baseOptions);
+/**
+ * __useOffersQuery__
+ *
+ * To run a query within a React component, call `useOffersQuery` and pass it any options that fit your needs.
+ * When your component renders, `useOffersQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useOffersQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useOffersQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<OffersQuery, OffersQueryVariables>) {
+        return ApolloReactHooks.useQuery<OffersQuery, OffersQueryVariables>(OffersDocument, baseOptions);
       }
-      
+export function useOffersLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<OffersQuery, OffersQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<OffersQuery, OffersQueryVariables>(OffersDocument, baseOptions);
+        }
 export type OffersQueryHookResult = ReturnType<typeof useOffersQuery>;
+export type OffersLazyQueryHookResult = ReturnType<typeof useOffersLazyQuery>;
 export type OffersQueryResult = ApolloReactCommon.QueryResult<OffersQuery, OffersQueryVariables>;
 export const OrganizationsDocument = gql`
     query organizations {
@@ -826,18 +1184,36 @@ export const OrganizationsDocument = gql`
     name
     description
     url
+    logo {
+      key
+    }
   }
 }
     `;
 
-    export function useOrganizationsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<OrganizationsQuery, OrganizationsQueryVariables>) {
-      return ApolloReactHooks.useQuery<OrganizationsQuery, OrganizationsQueryVariables>(OrganizationsDocument, baseOptions);
-    }
-      export function useOrganizationsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<OrganizationsQuery, OrganizationsQueryVariables>) {
-        return ApolloReactHooks.useLazyQuery<OrganizationsQuery, OrganizationsQueryVariables>(OrganizationsDocument, baseOptions);
+/**
+ * __useOrganizationsQuery__
+ *
+ * To run a query within a React component, call `useOrganizationsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useOrganizationsQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useOrganizationsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useOrganizationsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<OrganizationsQuery, OrganizationsQueryVariables>) {
+        return ApolloReactHooks.useQuery<OrganizationsQuery, OrganizationsQueryVariables>(OrganizationsDocument, baseOptions);
       }
-      
+export function useOrganizationsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<OrganizationsQuery, OrganizationsQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<OrganizationsQuery, OrganizationsQueryVariables>(OrganizationsDocument, baseOptions);
+        }
 export type OrganizationsQueryHookResult = ReturnType<typeof useOrganizationsQuery>;
+export type OrganizationsLazyQueryHookResult = ReturnType<typeof useOrganizationsLazyQuery>;
 export type OrganizationsQueryResult = ApolloReactCommon.QueryResult<OrganizationsQuery, OrganizationsQueryVariables>;
 export const RecentTransactionsDocument = gql`
     query recentTransactions {
@@ -848,15 +1224,131 @@ export const RecentTransactionsDocument = gql`
 }
     `;
 
-    export function useRecentTransactionsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<RecentTransactionsQuery, RecentTransactionsQueryVariables>) {
-      return ApolloReactHooks.useQuery<RecentTransactionsQuery, RecentTransactionsQueryVariables>(RecentTransactionsDocument, baseOptions);
-    }
-      export function useRecentTransactionsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<RecentTransactionsQuery, RecentTransactionsQueryVariables>) {
-        return ApolloReactHooks.useLazyQuery<RecentTransactionsQuery, RecentTransactionsQueryVariables>(RecentTransactionsDocument, baseOptions);
+/**
+ * __useRecentTransactionsQuery__
+ *
+ * To run a query within a React component, call `useRecentTransactionsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useRecentTransactionsQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useRecentTransactionsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useRecentTransactionsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<RecentTransactionsQuery, RecentTransactionsQueryVariables>) {
+        return ApolloReactHooks.useQuery<RecentTransactionsQuery, RecentTransactionsQueryVariables>(RecentTransactionsDocument, baseOptions);
       }
-      
+export function useRecentTransactionsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<RecentTransactionsQuery, RecentTransactionsQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<RecentTransactionsQuery, RecentTransactionsQueryVariables>(RecentTransactionsDocument, baseOptions);
+        }
 export type RecentTransactionsQueryHookResult = ReturnType<typeof useRecentTransactionsQuery>;
+export type RecentTransactionsLazyQueryHookResult = ReturnType<typeof useRecentTransactionsLazyQuery>;
 export type RecentTransactionsQueryResult = ApolloReactCommon.QueryResult<RecentTransactionsQuery, RecentTransactionsQueryVariables>;
+export const GetUserDocument = gql`
+    query getUser {
+  user {
+    fullName
+  }
+}
+    `;
+
+/**
+ * __useGetUserQuery__
+ *
+ * To run a query within a React component, call `useGetUserQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetUserQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetUserQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetUserQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GetUserQuery, GetUserQueryVariables>) {
+        return ApolloReactHooks.useQuery<GetUserQuery, GetUserQueryVariables>(GetUserDocument, baseOptions);
+      }
+export function useGetUserLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetUserQuery, GetUserQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<GetUserQuery, GetUserQueryVariables>(GetUserDocument, baseOptions);
+        }
+export type GetUserQueryHookResult = ReturnType<typeof useGetUserQuery>;
+export type GetUserLazyQueryHookResult = ReturnType<typeof useGetUserLazyQuery>;
+export type GetUserQueryResult = ApolloReactCommon.QueryResult<GetUserQuery, GetUserQueryVariables>;
+export const UploadFileDocument = gql`
+    mutation uploadFile($file: Upload!) {
+  uploadFile(file: $file) {
+    id
+    fileName
+    key
+  }
+}
+    `;
+export type UploadFileMutationFn = ApolloReactCommon.MutationFunction<UploadFileMutation, UploadFileMutationVariables>;
+
+/**
+ * __useUploadFileMutation__
+ *
+ * To run a mutation, you first call `useUploadFileMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUploadFileMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [uploadFileMutation, { data, loading, error }] = useUploadFileMutation({
+ *   variables: {
+ *      file: // value for 'file'
+ *   },
+ * });
+ */
+export function useUploadFileMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<UploadFileMutation, UploadFileMutationVariables>) {
+        return ApolloReactHooks.useMutation<UploadFileMutation, UploadFileMutationVariables>(UploadFileDocument, baseOptions);
+      }
+export type UploadFileMutationHookResult = ReturnType<typeof useUploadFileMutation>;
+export type UploadFileMutationResult = ApolloReactCommon.MutationResult<UploadFileMutation>;
+export type UploadFileMutationOptions = ApolloReactCommon.BaseMutationOptions<UploadFileMutation, UploadFileMutationVariables>;
+export const CreateOrganizationDocument = gql`
+    mutation createOrganization($name: String!, $description: String!, $url: String!, $logoId: ID!) {
+  createOrganization(name: $name, description: $description, url: $url, logoId: $logoId, active: true) {
+    name
+  }
+}
+    `;
+export type CreateOrganizationMutationFn = ApolloReactCommon.MutationFunction<CreateOrganizationMutation, CreateOrganizationMutationVariables>;
+
+/**
+ * __useCreateOrganizationMutation__
+ *
+ * To run a mutation, you first call `useCreateOrganizationMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateOrganizationMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createOrganizationMutation, { data, loading, error }] = useCreateOrganizationMutation({
+ *   variables: {
+ *      name: // value for 'name'
+ *      description: // value for 'description'
+ *      url: // value for 'url'
+ *      logoId: // value for 'logoId'
+ *   },
+ * });
+ */
+export function useCreateOrganizationMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<CreateOrganizationMutation, CreateOrganizationMutationVariables>) {
+        return ApolloReactHooks.useMutation<CreateOrganizationMutation, CreateOrganizationMutationVariables>(CreateOrganizationDocument, baseOptions);
+      }
+export type CreateOrganizationMutationHookResult = ReturnType<typeof useCreateOrganizationMutation>;
+export type CreateOrganizationMutationResult = ApolloReactCommon.MutationResult<CreateOrganizationMutation>;
+export type CreateOrganizationMutationOptions = ApolloReactCommon.BaseMutationOptions<CreateOrganizationMutation, CreateOrganizationMutationVariables>;
 export const LoginDocument = gql`
     mutation login($email: String!, $password: String!) {
   login(email: $email, password: $password) {
@@ -866,9 +1358,106 @@ export const LoginDocument = gql`
     `;
 export type LoginMutationFn = ApolloReactCommon.MutationFunction<LoginMutation, LoginMutationVariables>;
 
-    export function useLoginMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<LoginMutation, LoginMutationVariables>) {
-      return ApolloReactHooks.useMutation<LoginMutation, LoginMutationVariables>(LoginDocument, baseOptions);
-    }
+/**
+ * __useLoginMutation__
+ *
+ * To run a mutation, you first call `useLoginMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useLoginMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [loginMutation, { data, loading, error }] = useLoginMutation({
+ *   variables: {
+ *      email: // value for 'email'
+ *      password: // value for 'password'
+ *   },
+ * });
+ */
+export function useLoginMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<LoginMutation, LoginMutationVariables>) {
+        return ApolloReactHooks.useMutation<LoginMutation, LoginMutationVariables>(LoginDocument, baseOptions);
+      }
 export type LoginMutationHookResult = ReturnType<typeof useLoginMutation>;
 export type LoginMutationResult = ApolloReactCommon.MutationResult<LoginMutation>;
 export type LoginMutationOptions = ApolloReactCommon.BaseMutationOptions<LoginMutation, LoginMutationVariables>;
+export const UpdateUserDocument = gql`
+    mutation updateUser($firstName: String!, $lastName: String!, $city: String!, $street: String!, $postalCode: String!) {
+  updateUser(firstName: $firstName, lastName: $lastName, city: $city, street: $street, postalCode: $postalCode) {
+    email
+    firstName
+    lastName
+    fullName
+    adress {
+      city
+      street
+      postalCode
+    }
+  }
+}
+    `;
+export type UpdateUserMutationFn = ApolloReactCommon.MutationFunction<UpdateUserMutation, UpdateUserMutationVariables>;
+
+/**
+ * __useUpdateUserMutation__
+ *
+ * To run a mutation, you first call `useUpdateUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateUserMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateUserMutation, { data, loading, error }] = useUpdateUserMutation({
+ *   variables: {
+ *      firstName: // value for 'firstName'
+ *      lastName: // value for 'lastName'
+ *      city: // value for 'city'
+ *      street: // value for 'street'
+ *      postalCode: // value for 'postalCode'
+ *   },
+ * });
+ */
+export function useUpdateUserMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<UpdateUserMutation, UpdateUserMutationVariables>) {
+        return ApolloReactHooks.useMutation<UpdateUserMutation, UpdateUserMutationVariables>(UpdateUserDocument, baseOptions);
+      }
+export type UpdateUserMutationHookResult = ReturnType<typeof useUpdateUserMutation>;
+export type UpdateUserMutationResult = ApolloReactCommon.MutationResult<UpdateUserMutation>;
+export type UpdateUserMutationOptions = ApolloReactCommon.BaseMutationOptions<UpdateUserMutation, UpdateUserMutationVariables>;
+export const SignupDocument = gql`
+    mutation signup($firstName: String!, $lastName: String!, $email: String!, $password: String!) {
+  signup(firstName: $firstName, lastName: $lastName, email: $email, password: $password) {
+    token
+  }
+}
+    `;
+export type SignupMutationFn = ApolloReactCommon.MutationFunction<SignupMutation, SignupMutationVariables>;
+
+/**
+ * __useSignupMutation__
+ *
+ * To run a mutation, you first call `useSignupMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useSignupMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [signupMutation, { data, loading, error }] = useSignupMutation({
+ *   variables: {
+ *      firstName: // value for 'firstName'
+ *      lastName: // value for 'lastName'
+ *      email: // value for 'email'
+ *      password: // value for 'password'
+ *   },
+ * });
+ */
+export function useSignupMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<SignupMutation, SignupMutationVariables>) {
+        return ApolloReactHooks.useMutation<SignupMutation, SignupMutationVariables>(SignupDocument, baseOptions);
+      }
+export type SignupMutationHookResult = ReturnType<typeof useSignupMutation>;
+export type SignupMutationResult = ApolloReactCommon.MutationResult<SignupMutation>;
+export type SignupMutationOptions = ApolloReactCommon.BaseMutationOptions<SignupMutation, SignupMutationVariables>;

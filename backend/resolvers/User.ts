@@ -1,13 +1,14 @@
-import { stringArg, extendType, idArg } from 'nexus'
+import { stringArg, extendType } from 'nexus'
 import { prismaObjectType } from 'nexus-prisma'
 import { hash, compare } from 'bcrypt'
 import { sign } from 'jsonwebtoken'
 import { getUserId } from '../utils'
+import { UserSchemaValidation } from '../../validation/user'
 
 export const UserType = prismaObjectType({
   name: 'User',
   definition(t) {
-    t.prismaFields({ pick: ['email'] })
+    t.prismaFields({ pick: ['email', 'firstName', 'lastName', 'adress'] })
     t.string('fullName', {
       resolve: ({ firstName, lastName }) => {
         return `${firstName} ${lastName}`
@@ -48,6 +49,17 @@ export const UserMutations = extendType({
         password: stringArg(),
       },
       resolve: async (_, { firstName, lastName, email, password }, ctx) => {
+        try {
+          await UserSchemaValidation.validate({
+            firstName,
+            lastName,
+            email,
+            password,
+          })
+        } catch(e) {
+          throw e
+        }
+
         const hashedPassword = await hash(password, 10)
         const user = await ctx.prisma.createUser({
           firstName,
@@ -93,7 +105,6 @@ export const UserMutations = extendType({
     t.field('updateUser', {
       type: 'User',
       args: {
-        id: idArg({ required: true }),
         firstName: stringArg({ required: true }),
         lastName: stringArg({ required: true }),
         city: stringArg({ required: true }),
@@ -102,14 +113,16 @@ export const UserMutations = extendType({
       },
       resolve: async (
         _,
-        { id, firstName, lastName, city, street, postalCode },
-        { prisma }
+        { firstName, lastName, city, street, postalCode },
+        { prisma, request }
       ) => {
         const adress = {
           city,
           street,
           postalCode,
         }
+
+        const id = getUserId({ prisma, request })
 
         return prisma.updateUser({
           where: { id },

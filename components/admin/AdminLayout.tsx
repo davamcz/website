@@ -8,9 +8,9 @@ interface Props {
 
 export const AdminLayout = ({ children }: Props) => (
   <Section>
-    <Container row>
+    <Container row style={{ justifyContent: 'space-between' }}>
       <Menu />
-      <Container>{children}</Container>
+      <Container style={{ paddingLeft: '10%' }}>{children}</Container>
     </Container>
   </Section>
 )

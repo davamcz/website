@@ -6,12 +6,20 @@ import { logout } from '../lib/auth'
 import { useUserLazyQuery } from '../generated/graphql'
 import { useEffect } from 'react'
 import ApolloClient from 'apollo-client'
+import styled from 'styled-components'
 
-export const user = gql`
+export const userQuery = gql`
   query user {
     user {
       email
+      firstName
+      lastName
       fullName
+      adress {
+        city
+        street
+        postalCode
+      }
     }
   }
 `
@@ -38,7 +46,7 @@ export const AuthButton = () => {
   }
 
   if (isAdminPage) {
-    return <span onClick={() => logout()}>Odhlásit se</span>
+    return <Logout onClick={() => logout()}>Odhlásit se</Logout>
   }
 
   if (data && data.user) {
@@ -47,3 +55,7 @@ export const AuthButton = () => {
 
   return <Link href="/login">Přihlásit se</Link>
 }
+
+const Logout = styled.span`
+  cursor: pointer;
+`

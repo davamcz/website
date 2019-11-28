@@ -196,6 +196,20 @@ export interface NexusGenInputs {
     deletedAt_lte?: any | null; // DateTime
     deletedAt_not?: any | null; // DateTime
     deletedAt_not_in?: any[] | null; // [DateTime!]
+    description?: string | null; // String
+    description_contains?: string | null; // String
+    description_ends_with?: string | null; // String
+    description_gt?: string | null; // String
+    description_gte?: string | null; // String
+    description_in?: string[] | null; // [String!]
+    description_lt?: string | null; // String
+    description_lte?: string | null; // String
+    description_not?: string | null; // String
+    description_not_contains?: string | null; // String
+    description_not_ends_with?: string | null; // String
+    description_not_in?: string[] | null; // [String!]
+    description_not_starts_with?: string | null; // String
+    description_starts_with?: string | null; // String
     email?: string | null; // String
     email_contains?: string | null; // String
     email_ends_with?: string | null; // String
@@ -276,9 +290,25 @@ export interface NexusGenInputs {
     price_lte?: number | null; // Int
     price_not?: number | null; // Int
     price_not_in?: number[] | null; // [Int!]
+    public?: boolean | null; // Boolean
+    public_not?: boolean | null; // Boolean
     transactions_every?: NexusGenInputs['TransactionWhereInput'] | null; // TransactionWhereInput
     transactions_none?: NexusGenInputs['TransactionWhereInput'] | null; // TransactionWhereInput
     transactions_some?: NexusGenInputs['TransactionWhereInput'] | null; // TransactionWhereInput
+    transport?: string | null; // String
+    transport_contains?: string | null; // String
+    transport_ends_with?: string | null; // String
+    transport_gt?: string | null; // String
+    transport_gte?: string | null; // String
+    transport_in?: string[] | null; // [String!]
+    transport_lt?: string | null; // String
+    transport_lte?: string | null; // String
+    transport_not?: string | null; // String
+    transport_not_contains?: string | null; // String
+    transport_not_ends_with?: string | null; // String
+    transport_not_in?: string[] | null; // [String!]
+    transport_not_starts_with?: string | null; // String
+    transport_starts_with?: string | null; // String
     updatedAt?: any | null; // DateTime
     updatedAt_gt?: any | null; // DateTime
     updatedAt_gte?: any | null; // DateTime
@@ -387,6 +417,14 @@ export interface NexusGenInputs {
     organizationId_lte?: number | null; // Int
     organizationId_not?: number | null; // Int
     organizationId_not_in?: number[] | null; // [Int!]
+    projectId?: number | null; // Int
+    projectId_gt?: number | null; // Int
+    projectId_gte?: number | null; // Int
+    projectId_in?: number[] | null; // [Int!]
+    projectId_lt?: number | null; // Int
+    projectId_lte?: number | null; // Int
+    projectId_not?: number | null; // Int
+    projectId_not_in?: number[] | null; // [Int!]
     updatedAt?: any | null; // DateTime
     updatedAt_gt?: any | null; // DateTime
     updatedAt_gte?: any | null; // DateTime
@@ -619,14 +657,15 @@ export interface NexusGenInputs {
 }
 
 export interface NexusGenEnums {
-  OfferOrderByInput: "active_ASC" | "active_DESC" | "amount_ASC" | "amount_DESC" | "createdAt_ASC" | "createdAt_DESC" | "deletedAt_ASC" | "deletedAt_DESC" | "email_ASC" | "email_DESC" | "firstName_ASC" | "firstName_DESC" | "id_ASC" | "id_DESC" | "lastName_ASC" | "lastName_DESC" | "name_ASC" | "name_DESC" | "price_ASC" | "price_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
-  OrganizationOrderByInput: "active_ASC" | "active_DESC" | "apiId_ASC" | "apiId_DESC" | "apiSecret_ASC" | "apiSecret_DESC" | "createdAt_ASC" | "createdAt_DESC" | "deletedAt_ASC" | "deletedAt_DESC" | "description_ASC" | "description_DESC" | "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC" | "organizationId_ASC" | "organizationId_DESC" | "updatedAt_ASC" | "updatedAt_DESC" | "url_ASC" | "url_DESC"
+  OfferOrderByInput: "active_ASC" | "active_DESC" | "amount_ASC" | "amount_DESC" | "createdAt_ASC" | "createdAt_DESC" | "deletedAt_ASC" | "deletedAt_DESC" | "description_ASC" | "description_DESC" | "email_ASC" | "email_DESC" | "firstName_ASC" | "firstName_DESC" | "id_ASC" | "id_DESC" | "lastName_ASC" | "lastName_DESC" | "name_ASC" | "name_DESC" | "price_ASC" | "price_DESC" | "public_ASC" | "public_DESC" | "transport_ASC" | "transport_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
+  OrganizationOrderByInput: "active_ASC" | "active_DESC" | "apiId_ASC" | "apiId_DESC" | "apiSecret_ASC" | "apiSecret_DESC" | "createdAt_ASC" | "createdAt_DESC" | "deletedAt_ASC" | "deletedAt_DESC" | "description_ASC" | "description_DESC" | "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC" | "organizationId_ASC" | "organizationId_DESC" | "projectId_ASC" | "projectId_DESC" | "updatedAt_ASC" | "updatedAt_DESC" | "url_ASC" | "url_DESC"
   TransactionOrderByInput: "amount_ASC" | "amount_DESC" | "comment_ASC" | "comment_DESC" | "createdAt_ASC" | "createdAt_DESC" | "deletedAt_ASC" | "deletedAt_DESC" | "donatedAmount_ASC" | "donatedAmount_DESC" | "email_ASC" | "email_DESC" | "firstName_ASC" | "firstName_DESC" | "id_ASC" | "id_DESC" | "lastName_ASC" | "lastName_DESC" | "status_ASC" | "status_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
   TransactionStatus: "FAILED" | "INSUFFICIENT" | "PAID" | "PENDING"
   UserRole: "ADMIN" | "USER"
 }
 
 export interface NexusGenRootTypes {
+  Adress: prisma.Adress;
   AuthPayload: { // root type
     token: string; // String!
     user: NexusGenRootTypes['User']; // User!
@@ -663,6 +702,12 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
 }
 
 export interface NexusGenFieldTypes {
+  Adress: { // field return type
+    city: string | null; // String
+    id: string; // ID!
+    postalCode: string | null; // String
+    street: string | null; // String
+  }
   AuthPayload: { // field return type
     token: string; // String!
     user: NexusGenRootTypes['User']; // User!
@@ -687,13 +732,16 @@ export interface NexusGenFieldTypes {
     beneficator: NexusGenRootTypes['Organization']; // Organization!
     createdAt: any | null; // DateTime
     deletedAt: any | null; // DateTime
+    description: string | null; // String
     email: string; // String!
     firstName: string; // String!
     id: string; // ID!
     lastName: string; // String!
     name: string; // String!
     price: number; // Int!
+    public: boolean | null; // Boolean
     transactions: NexusGenRootTypes['Transaction'][] | null; // [Transaction!]
+    transport: string | null; // String
     updatedAt: any | null; // DateTime
     user: NexusGenRootTypes['User']; // User!
   }
@@ -722,8 +770,11 @@ export interface NexusGenFieldTypes {
     status: NexusGenEnums['TransactionStatus']; // TransactionStatus!
   }
   User: { // field return type
+    adress: NexusGenRootTypes['Adress'] | null; // Adress
     email: string; // String!
+    firstName: string | null; // String
     fullName: string; // String!
+    lastName: string | null; // String
   }
 }
 
@@ -769,7 +820,6 @@ export interface NexusGenArgTypes {
     updateUser: { // args
       city: string; // String!
       firstName: string; // String!
-      id: string; // ID!
       lastName: string; // String!
       postalCode: string; // String!
       street: string; // String!
@@ -825,7 +875,7 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "AuthPayload" | "File" | "Mutation" | "Offer" | "Organization" | "Query" | "Transaction" | "User";
+export type NexusGenObjectNames = "Adress" | "AuthPayload" | "File" | "Mutation" | "Offer" | "Organization" | "Query" | "Transaction" | "User";
 
 export type NexusGenInputNames = "AdressWhereInput" | "FileWhereInput" | "OfferWhereInput" | "OrganizationWhereInput" | "OrganizationWhereUniqueInput" | "TransactionWhereInput" | "UserWhereInput";
 

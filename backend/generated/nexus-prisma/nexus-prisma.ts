@@ -123,7 +123,6 @@ export interface NexusPrismaTypes {
       OrganizationCreateWithoutOffersInput: OrganizationCreateWithoutOffersInputInputObject
       FileCreateOneInput: FileCreateOneInputInputObject
       FileCreateInput: FileCreateInputInputObject
-      OrganizationCreateprojectIdsInput: OrganizationCreateprojectIdsInputInputObject
       AdressCreateOneInput: AdressCreateOneInputInputObject
       AdressCreateInput: AdressCreateInputInputObject
       UserUpdateInput: UserUpdateInputInputObject
@@ -142,7 +141,6 @@ export interface NexusPrismaTypes {
       FileUpdateOneRequiredInput: FileUpdateOneRequiredInputInputObject
       FileUpdateDataInput: FileUpdateDataInputInputObject
       FileUpsertNestedInput: FileUpsertNestedInputInputObject
-      OrganizationUpdateprojectIdsInput: OrganizationUpdateprojectIdsInputInputObject
       OrganizationUpsertWithoutOffersInput: OrganizationUpsertWithoutOffersInputInputObject
       OfferUpsertWithWhereUniqueWithoutUserInput: OfferUpsertWithWhereUniqueWithoutUserInputInputObject
       OfferScalarWhereInput: OfferScalarWhereInputInputObject
@@ -650,7 +648,7 @@ export interface UserFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
   lastName: {
@@ -658,7 +656,7 @@ export interface UserFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
   password: {
@@ -717,6 +715,7 @@ type OfferObject =
   | OfferFields
   | { name: 'id', args?: [] | false, alias?: string  } 
   | { name: 'active', args?: [] | false, alias?: string  } 
+  | { name: 'public', args?: [] | false, alias?: string  } 
   | { name: 'amount', args?: [] | false, alias?: string  } 
   | { name: 'createdAt', args?: [] | false, alias?: string  } 
   | { name: 'updatedAt', args?: [] | false, alias?: string  } 
@@ -729,10 +728,13 @@ type OfferObject =
   | { name: 'price', args?: [] | false, alias?: string  } 
   | { name: 'name', args?: [] | false, alias?: string  } 
   | { name: 'user', args?: [] | false, alias?: string  } 
+  | { name: 'description', args?: [] | false, alias?: string  } 
+  | { name: 'transport', args?: [] | false, alias?: string  } 
 
 type OfferFields =
   | 'id'
   | 'active'
+  | 'public'
   | 'amount'
   | 'createdAt'
   | 'updatedAt'
@@ -745,6 +747,8 @@ type OfferFields =
   | 'price'
   | 'name'
   | 'user'
+  | 'description'
+  | 'transport'
 
 
 type OfferTransactionsArgs =
@@ -767,6 +771,14 @@ export interface OfferFieldDetails {
     resolve: undefined
   }
   active: {
+    type: 'Boolean'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  public: {
     type: 'Boolean'
     args: {}
     description: string
@@ -884,6 +896,22 @@ export interface OfferFieldDetails {
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.User> | prisma.User
+  }
+  description: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  transport: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
   }
 }
   
@@ -1048,7 +1076,7 @@ type OrganizationObject =
   | { name: 'deletedAt', args?: [] | false, alias?: string  } 
   | { name: 'name', args?: [] | false, alias?: string  } 
   | { name: 'offers', args?: OrganizationOffersArgs[] | false, alias?: string  } 
-  | { name: 'projectIds', args?: [] | false, alias?: string  } 
+  | { name: 'projectId', args?: [] | false, alias?: string  } 
   | { name: 'description', args?: [] | false, alias?: string  } 
   | { name: 'url', args?: [] | false, alias?: string  } 
 
@@ -1064,7 +1092,7 @@ type OrganizationFields =
   | 'deletedAt'
   | 'name'
   | 'offers'
-  | 'projectIds'
+  | 'projectId'
   | 'description'
   | 'url'
 
@@ -1093,7 +1121,7 @@ export interface OrganizationFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
   apiSecret: {
@@ -1101,7 +1129,7 @@ export interface OrganizationFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
   organizationId: {
@@ -1109,7 +1137,7 @@ export interface OrganizationFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
   active: {
@@ -1178,12 +1206,12 @@ export interface OrganizationFieldDetails {
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Offer[]> | prisma.Offer[]
   }
-  projectIds: {
+  projectId: {
     type: 'Int'
     args: {}
     description: string
-    list: true
-    nullable: false
+    list: undefined
+    nullable: true
     resolve: undefined
   }
   description: {
@@ -3046,7 +3074,7 @@ export interface UserPreviousValuesFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
   lastName: {
@@ -3054,7 +3082,7 @@ export interface UserPreviousValuesFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
   password: {
@@ -3427,6 +3455,7 @@ type OfferPreviousValuesObject =
   | OfferPreviousValuesFields
   | { name: 'id', args?: [] | false, alias?: string  } 
   | { name: 'active', args?: [] | false, alias?: string  } 
+  | { name: 'public', args?: [] | false, alias?: string  } 
   | { name: 'amount', args?: [] | false, alias?: string  } 
   | { name: 'createdAt', args?: [] | false, alias?: string  } 
   | { name: 'updatedAt', args?: [] | false, alias?: string  } 
@@ -3436,10 +3465,13 @@ type OfferPreviousValuesObject =
   | { name: 'lastName', args?: [] | false, alias?: string  } 
   | { name: 'price', args?: [] | false, alias?: string  } 
   | { name: 'name', args?: [] | false, alias?: string  } 
+  | { name: 'description', args?: [] | false, alias?: string  } 
+  | { name: 'transport', args?: [] | false, alias?: string  } 
 
 type OfferPreviousValuesFields =
   | 'id'
   | 'active'
+  | 'public'
   | 'amount'
   | 'createdAt'
   | 'updatedAt'
@@ -3449,6 +3481,8 @@ type OfferPreviousValuesFields =
   | 'lastName'
   | 'price'
   | 'name'
+  | 'description'
+  | 'transport'
 
 
 
@@ -3464,6 +3498,14 @@ export interface OfferPreviousValuesFieldDetails {
     resolve: undefined
   }
   active: {
+    type: 'Boolean'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  public: {
     type: 'Boolean'
     args: {}
     description: string
@@ -3541,6 +3583,22 @@ export interface OfferPreviousValuesFieldDetails {
     description: string
     list: undefined
     nullable: false
+    resolve: undefined
+  }
+  description: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  transport: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
     resolve: undefined
   }
 }
@@ -3829,7 +3887,7 @@ type OrganizationPreviousValuesObject =
   | { name: 'updatedAt', args?: [] | false, alias?: string  } 
   | { name: 'deletedAt', args?: [] | false, alias?: string  } 
   | { name: 'name', args?: [] | false, alias?: string  } 
-  | { name: 'projectIds', args?: [] | false, alias?: string  } 
+  | { name: 'projectId', args?: [] | false, alias?: string  } 
   | { name: 'description', args?: [] | false, alias?: string  } 
   | { name: 'url', args?: [] | false, alias?: string  } 
 
@@ -3843,7 +3901,7 @@ type OrganizationPreviousValuesFields =
   | 'updatedAt'
   | 'deletedAt'
   | 'name'
-  | 'projectIds'
+  | 'projectId'
   | 'description'
   | 'url'
 
@@ -3865,7 +3923,7 @@ export interface OrganizationPreviousValuesFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
   apiSecret: {
@@ -3873,7 +3931,7 @@ export interface OrganizationPreviousValuesFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
   organizationId: {
@@ -3881,7 +3939,7 @@ export interface OrganizationPreviousValuesFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
   active: {
@@ -3924,12 +3982,12 @@ export interface OrganizationPreviousValuesFieldDetails {
     nullable: false
     resolve: undefined
   }
-  projectIds: {
+  projectId: {
     type: 'Int'
     args: {}
     description: string
-    list: true
-    nullable: false
+    list: undefined
+    nullable: true
     resolve: undefined
   }
   description: {
@@ -3978,6 +4036,8 @@ export interface OfferWhereInput {
   id_not_ends_with?: string | null
   active?: boolean | null
   active_not?: boolean | null
+  public?: boolean | null
+  public_not?: boolean | null
   amount?: number | null
   amount_not?: number | null
   amount_in?: number[]
@@ -4079,6 +4139,34 @@ export interface OfferWhereInput {
   name_ends_with?: string | null
   name_not_ends_with?: string | null
   user?: UserWhereInput | null
+  description?: string | null
+  description_not?: string | null
+  description_in?: string[]
+  description_not_in?: string[]
+  description_lt?: string | null
+  description_lte?: string | null
+  description_gt?: string | null
+  description_gte?: string | null
+  description_contains?: string | null
+  description_not_contains?: string | null
+  description_starts_with?: string | null
+  description_not_starts_with?: string | null
+  description_ends_with?: string | null
+  description_not_ends_with?: string | null
+  transport?: string | null
+  transport_not?: string | null
+  transport_in?: string[]
+  transport_not_in?: string[]
+  transport_lt?: string | null
+  transport_lte?: string | null
+  transport_gt?: string | null
+  transport_gte?: string | null
+  transport_contains?: string | null
+  transport_not_contains?: string | null
+  transport_starts_with?: string | null
+  transport_not_starts_with?: string | null
+  transport_ends_with?: string | null
+  transport_not_ends_with?: string | null
   AND?: OfferWhereInput[]
   OR?: OfferWhereInput[]
   NOT?: OfferWhereInput[]
@@ -4101,6 +4189,8 @@ export type OfferWhereInputInputObject =
   | { name: 'id_not_ends_with', alias?: string  } 
   | { name: 'active', alias?: string  } 
   | { name: 'active_not', alias?: string  } 
+  | { name: 'public', alias?: string  } 
+  | { name: 'public_not', alias?: string  } 
   | { name: 'amount', alias?: string  } 
   | { name: 'amount_not', alias?: string  } 
   | { name: 'amount_in', alias?: string  } 
@@ -4202,6 +4292,34 @@ export type OfferWhereInputInputObject =
   | { name: 'name_ends_with', alias?: string  } 
   | { name: 'name_not_ends_with', alias?: string  } 
   | { name: 'user', alias?: string  } 
+  | { name: 'description', alias?: string  } 
+  | { name: 'description_not', alias?: string  } 
+  | { name: 'description_in', alias?: string  } 
+  | { name: 'description_not_in', alias?: string  } 
+  | { name: 'description_lt', alias?: string  } 
+  | { name: 'description_lte', alias?: string  } 
+  | { name: 'description_gt', alias?: string  } 
+  | { name: 'description_gte', alias?: string  } 
+  | { name: 'description_contains', alias?: string  } 
+  | { name: 'description_not_contains', alias?: string  } 
+  | { name: 'description_starts_with', alias?: string  } 
+  | { name: 'description_not_starts_with', alias?: string  } 
+  | { name: 'description_ends_with', alias?: string  } 
+  | { name: 'description_not_ends_with', alias?: string  } 
+  | { name: 'transport', alias?: string  } 
+  | { name: 'transport_not', alias?: string  } 
+  | { name: 'transport_in', alias?: string  } 
+  | { name: 'transport_not_in', alias?: string  } 
+  | { name: 'transport_lt', alias?: string  } 
+  | { name: 'transport_lte', alias?: string  } 
+  | { name: 'transport_gt', alias?: string  } 
+  | { name: 'transport_gte', alias?: string  } 
+  | { name: 'transport_contains', alias?: string  } 
+  | { name: 'transport_not_contains', alias?: string  } 
+  | { name: 'transport_starts_with', alias?: string  } 
+  | { name: 'transport_not_starts_with', alias?: string  } 
+  | { name: 'transport_ends_with', alias?: string  } 
+  | { name: 'transport_not_ends_with', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
@@ -4536,6 +4654,14 @@ export interface OrganizationWhereInput {
   offers_every?: OfferWhereInput | null
   offers_some?: OfferWhereInput | null
   offers_none?: OfferWhereInput | null
+  projectId?: number | null
+  projectId_not?: number | null
+  projectId_in?: number[]
+  projectId_not_in?: number[]
+  projectId_lt?: number | null
+  projectId_lte?: number | null
+  projectId_gt?: number | null
+  projectId_gte?: number | null
   description?: string | null
   description_not?: string | null
   description_in?: string[]
@@ -4658,6 +4784,14 @@ export type OrganizationWhereInputInputObject =
   | { name: 'offers_every', alias?: string  } 
   | { name: 'offers_some', alias?: string  } 
   | { name: 'offers_none', alias?: string  } 
+  | { name: 'projectId', alias?: string  } 
+  | { name: 'projectId_not', alias?: string  } 
+  | { name: 'projectId_in', alias?: string  } 
+  | { name: 'projectId_not_in', alias?: string  } 
+  | { name: 'projectId_lt', alias?: string  } 
+  | { name: 'projectId_lte', alias?: string  } 
+  | { name: 'projectId_gt', alias?: string  } 
+  | { name: 'projectId_gte', alias?: string  } 
   | { name: 'description', alias?: string  } 
   | { name: 'description_not', alias?: string  } 
   | { name: 'description_in', alias?: string  } 
@@ -5197,8 +5331,8 @@ export type OrganizationWhereUniqueInputInputObject =
 export interface UserCreateInput {
   id?: string | null
   email?: string
-  firstName?: string
-  lastName?: string
+  firstName?: string | null
+  lastName?: string | null
   password?: string | null
   role?: prisma.UserRole | null
   offers?: OfferCreateManyWithoutUserInput | null
@@ -5227,6 +5361,7 @@ export type OfferCreateManyWithoutUserInputInputObject =
 export interface OfferCreateWithoutUserInput {
   id?: string | null
   active?: boolean | null
+  public?: boolean | null
   amount?: number | null
   deletedAt?: string | null
   email?: string
@@ -5236,11 +5371,14 @@ export interface OfferCreateWithoutUserInput {
   beneficator?: OrganizationCreateOneWithoutOffersInput
   price?: number
   name?: string
+  description?: string | null
+  transport?: string | null
 }
 export type OfferCreateWithoutUserInputInputObject =
   | Extract<keyof OfferCreateWithoutUserInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'active', alias?: string  } 
+  | { name: 'public', alias?: string  } 
   | { name: 'amount', alias?: string  } 
   | { name: 'deletedAt', alias?: string  } 
   | { name: 'email', alias?: string  } 
@@ -5250,6 +5388,8 @@ export type OfferCreateWithoutUserInputInputObject =
   | { name: 'beneficator', alias?: string  } 
   | { name: 'price', alias?: string  } 
   | { name: 'name', alias?: string  } 
+  | { name: 'description', alias?: string  } 
+  | { name: 'transport', alias?: string  } 
   
 export interface TransactionCreateManyWithoutOfferInput {
   create?: TransactionCreateWithoutOfferInput[]
@@ -5294,14 +5434,14 @@ export type OrganizationCreateOneWithoutOffersInputInputObject =
   
 export interface OrganizationCreateWithoutOffersInput {
   id?: string | null
-  apiId?: number
-  apiSecret?: string
-  organizationId?: number
+  apiId?: number | null
+  apiSecret?: string | null
+  organizationId?: number | null
   active?: boolean
   logo?: FileCreateOneInput
   deletedAt?: string | null
   name?: string
-  projectIds?: OrganizationCreateprojectIdsInput | null
+  projectId?: number | null
   description?: string
   url?: string
 }
@@ -5315,7 +5455,7 @@ export type OrganizationCreateWithoutOffersInputInputObject =
   | { name: 'logo', alias?: string  } 
   | { name: 'deletedAt', alias?: string  } 
   | { name: 'name', alias?: string  } 
-  | { name: 'projectIds', alias?: string  } 
+  | { name: 'projectId', alias?: string  } 
   | { name: 'description', alias?: string  } 
   | { name: 'url', alias?: string  } 
   
@@ -5344,13 +5484,6 @@ export type FileCreateInputInputObject =
   | { name: 'mimeType', alias?: string  } 
   | { name: 'encoding', alias?: string  } 
   | { name: 'url', alias?: string  } 
-  
-export interface OrganizationCreateprojectIdsInput {
-  set?: number[]
-}
-export type OrganizationCreateprojectIdsInputInputObject =
-  | Extract<keyof OrganizationCreateprojectIdsInput, string>
-  | { name: 'set', alias?: string  } 
   
 export interface AdressCreateOneInput {
   create?: AdressCreateInput | null
@@ -5427,6 +5560,7 @@ export type OfferUpdateWithWhereUniqueWithoutUserInputInputObject =
   
 export interface OfferUpdateWithoutUserDataInput {
   active?: boolean | null
+  public?: boolean | null
   amount?: number | null
   deletedAt?: string | null
   email?: string | null
@@ -5436,10 +5570,13 @@ export interface OfferUpdateWithoutUserDataInput {
   beneficator?: OrganizationUpdateOneRequiredWithoutOffersInput | null
   price?: number | null
   name?: string | null
+  description?: string | null
+  transport?: string | null
 }
 export type OfferUpdateWithoutUserDataInputInputObject =
   | Extract<keyof OfferUpdateWithoutUserDataInput, string>
   | { name: 'active', alias?: string  } 
+  | { name: 'public', alias?: string  } 
   | { name: 'amount', alias?: string  } 
   | { name: 'deletedAt', alias?: string  } 
   | { name: 'email', alias?: string  } 
@@ -5449,6 +5586,8 @@ export type OfferUpdateWithoutUserDataInputInputObject =
   | { name: 'beneficator', alias?: string  } 
   | { name: 'price', alias?: string  } 
   | { name: 'name', alias?: string  } 
+  | { name: 'description', alias?: string  } 
+  | { name: 'transport', alias?: string  } 
   
 export interface TransactionUpdateManyWithoutOfferInput {
   create?: TransactionCreateWithoutOfferInput[]
@@ -5804,7 +5943,7 @@ export interface OrganizationUpdateWithoutOffersDataInput {
   logo?: FileUpdateOneRequiredInput | null
   deletedAt?: string | null
   name?: string | null
-  projectIds?: OrganizationUpdateprojectIdsInput | null
+  projectId?: number | null
   description?: string | null
   url?: string | null
 }
@@ -5817,7 +5956,7 @@ export type OrganizationUpdateWithoutOffersDataInputInputObject =
   | { name: 'logo', alias?: string  } 
   | { name: 'deletedAt', alias?: string  } 
   | { name: 'name', alias?: string  } 
-  | { name: 'projectIds', alias?: string  } 
+  | { name: 'projectId', alias?: string  } 
   | { name: 'description', alias?: string  } 
   | { name: 'url', alias?: string  } 
   
@@ -5858,13 +5997,6 @@ export type FileUpsertNestedInputInputObject =
   | { name: 'update', alias?: string  } 
   | { name: 'create', alias?: string  } 
   
-export interface OrganizationUpdateprojectIdsInput {
-  set?: number[]
-}
-export type OrganizationUpdateprojectIdsInputInputObject =
-  | Extract<keyof OrganizationUpdateprojectIdsInput, string>
-  | { name: 'set', alias?: string  } 
-  
 export interface OrganizationUpsertWithoutOffersInput {
   update?: OrganizationUpdateWithoutOffersDataInput
   create?: OrganizationCreateWithoutOffersInput
@@ -5902,6 +6034,8 @@ export interface OfferScalarWhereInput {
   id_not_ends_with?: string | null
   active?: boolean | null
   active_not?: boolean | null
+  public?: boolean | null
+  public_not?: boolean | null
   amount?: number | null
   amount_not?: number | null
   amount_in?: number[]
@@ -5998,6 +6132,34 @@ export interface OfferScalarWhereInput {
   name_not_starts_with?: string | null
   name_ends_with?: string | null
   name_not_ends_with?: string | null
+  description?: string | null
+  description_not?: string | null
+  description_in?: string[]
+  description_not_in?: string[]
+  description_lt?: string | null
+  description_lte?: string | null
+  description_gt?: string | null
+  description_gte?: string | null
+  description_contains?: string | null
+  description_not_contains?: string | null
+  description_starts_with?: string | null
+  description_not_starts_with?: string | null
+  description_ends_with?: string | null
+  description_not_ends_with?: string | null
+  transport?: string | null
+  transport_not?: string | null
+  transport_in?: string[]
+  transport_not_in?: string[]
+  transport_lt?: string | null
+  transport_lte?: string | null
+  transport_gt?: string | null
+  transport_gte?: string | null
+  transport_contains?: string | null
+  transport_not_contains?: string | null
+  transport_starts_with?: string | null
+  transport_not_starts_with?: string | null
+  transport_ends_with?: string | null
+  transport_not_ends_with?: string | null
   AND?: OfferScalarWhereInput[]
   OR?: OfferScalarWhereInput[]
   NOT?: OfferScalarWhereInput[]
@@ -6020,6 +6182,8 @@ export type OfferScalarWhereInputInputObject =
   | { name: 'id_not_ends_with', alias?: string  } 
   | { name: 'active', alias?: string  } 
   | { name: 'active_not', alias?: string  } 
+  | { name: 'public', alias?: string  } 
+  | { name: 'public_not', alias?: string  } 
   | { name: 'amount', alias?: string  } 
   | { name: 'amount_not', alias?: string  } 
   | { name: 'amount_in', alias?: string  } 
@@ -6116,6 +6280,34 @@ export type OfferScalarWhereInputInputObject =
   | { name: 'name_not_starts_with', alias?: string  } 
   | { name: 'name_ends_with', alias?: string  } 
   | { name: 'name_not_ends_with', alias?: string  } 
+  | { name: 'description', alias?: string  } 
+  | { name: 'description_not', alias?: string  } 
+  | { name: 'description_in', alias?: string  } 
+  | { name: 'description_not_in', alias?: string  } 
+  | { name: 'description_lt', alias?: string  } 
+  | { name: 'description_lte', alias?: string  } 
+  | { name: 'description_gt', alias?: string  } 
+  | { name: 'description_gte', alias?: string  } 
+  | { name: 'description_contains', alias?: string  } 
+  | { name: 'description_not_contains', alias?: string  } 
+  | { name: 'description_starts_with', alias?: string  } 
+  | { name: 'description_not_starts_with', alias?: string  } 
+  | { name: 'description_ends_with', alias?: string  } 
+  | { name: 'description_not_ends_with', alias?: string  } 
+  | { name: 'transport', alias?: string  } 
+  | { name: 'transport_not', alias?: string  } 
+  | { name: 'transport_in', alias?: string  } 
+  | { name: 'transport_not_in', alias?: string  } 
+  | { name: 'transport_lt', alias?: string  } 
+  | { name: 'transport_lte', alias?: string  } 
+  | { name: 'transport_gt', alias?: string  } 
+  | { name: 'transport_gte', alias?: string  } 
+  | { name: 'transport_contains', alias?: string  } 
+  | { name: 'transport_not_contains', alias?: string  } 
+  | { name: 'transport_starts_with', alias?: string  } 
+  | { name: 'transport_not_starts_with', alias?: string  } 
+  | { name: 'transport_ends_with', alias?: string  } 
+  | { name: 'transport_not_ends_with', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
@@ -6131,6 +6323,7 @@ export type OfferUpdateManyWithWhereNestedInputInputObject =
   
 export interface OfferUpdateManyDataInput {
   active?: boolean | null
+  public?: boolean | null
   amount?: number | null
   deletedAt?: string | null
   email?: string | null
@@ -6138,10 +6331,13 @@ export interface OfferUpdateManyDataInput {
   lastName?: string | null
   price?: number | null
   name?: string | null
+  description?: string | null
+  transport?: string | null
 }
 export type OfferUpdateManyDataInputInputObject =
   | Extract<keyof OfferUpdateManyDataInput, string>
   | { name: 'active', alias?: string  } 
+  | { name: 'public', alias?: string  } 
   | { name: 'amount', alias?: string  } 
   | { name: 'deletedAt', alias?: string  } 
   | { name: 'email', alias?: string  } 
@@ -6149,6 +6345,8 @@ export type OfferUpdateManyDataInputInputObject =
   | { name: 'lastName', alias?: string  } 
   | { name: 'price', alias?: string  } 
   | { name: 'name', alias?: string  } 
+  | { name: 'description', alias?: string  } 
+  | { name: 'transport', alias?: string  } 
   
 export interface AdressUpdateOneInput {
   create?: AdressCreateInput | null
@@ -6257,6 +6455,7 @@ export type FileUpdateManyMutationInputInputObject =
 export interface OfferCreateInput {
   id?: string | null
   active?: boolean | null
+  public?: boolean | null
   amount?: number | null
   deletedAt?: string | null
   email?: string
@@ -6267,11 +6466,14 @@ export interface OfferCreateInput {
   price?: number
   name?: string
   user?: UserCreateOneWithoutOffersInput
+  description?: string | null
+  transport?: string | null
 }
 export type OfferCreateInputInputObject =
   | Extract<keyof OfferCreateInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'active', alias?: string  } 
+  | { name: 'public', alias?: string  } 
   | { name: 'amount', alias?: string  } 
   | { name: 'deletedAt', alias?: string  } 
   | { name: 'email', alias?: string  } 
@@ -6282,6 +6484,8 @@ export type OfferCreateInputInputObject =
   | { name: 'price', alias?: string  } 
   | { name: 'name', alias?: string  } 
   | { name: 'user', alias?: string  } 
+  | { name: 'description', alias?: string  } 
+  | { name: 'transport', alias?: string  } 
   
 export interface UserCreateOneWithoutOffersInput {
   create?: UserCreateWithoutOffersInput | null
@@ -6295,8 +6499,8 @@ export type UserCreateOneWithoutOffersInputInputObject =
 export interface UserCreateWithoutOffersInput {
   id?: string | null
   email?: string
-  firstName?: string
-  lastName?: string
+  firstName?: string | null
+  lastName?: string | null
   password?: string | null
   role?: prisma.UserRole | null
   adress?: AdressCreateOneInput | null
@@ -6313,6 +6517,7 @@ export type UserCreateWithoutOffersInputInputObject =
   
 export interface OfferUpdateInput {
   active?: boolean | null
+  public?: boolean | null
   amount?: number | null
   deletedAt?: string | null
   email?: string | null
@@ -6323,10 +6528,13 @@ export interface OfferUpdateInput {
   price?: number | null
   name?: string | null
   user?: UserUpdateOneRequiredWithoutOffersInput | null
+  description?: string | null
+  transport?: string | null
 }
 export type OfferUpdateInputInputObject =
   | Extract<keyof OfferUpdateInput, string>
   | { name: 'active', alias?: string  } 
+  | { name: 'public', alias?: string  } 
   | { name: 'amount', alias?: string  } 
   | { name: 'deletedAt', alias?: string  } 
   | { name: 'email', alias?: string  } 
@@ -6337,6 +6545,8 @@ export type OfferUpdateInputInputObject =
   | { name: 'price', alias?: string  } 
   | { name: 'name', alias?: string  } 
   | { name: 'user', alias?: string  } 
+  | { name: 'description', alias?: string  } 
+  | { name: 'transport', alias?: string  } 
   
 export interface UserUpdateOneRequiredWithoutOffersInput {
   create?: UserCreateWithoutOffersInput | null
@@ -6379,6 +6589,7 @@ export type UserUpsertWithoutOffersInputInputObject =
   
 export interface OfferUpdateManyMutationInput {
   active?: boolean | null
+  public?: boolean | null
   amount?: number | null
   deletedAt?: string | null
   email?: string | null
@@ -6386,10 +6597,13 @@ export interface OfferUpdateManyMutationInput {
   lastName?: string | null
   price?: number | null
   name?: string | null
+  description?: string | null
+  transport?: string | null
 }
 export type OfferUpdateManyMutationInputInputObject =
   | Extract<keyof OfferUpdateManyMutationInput, string>
   | { name: 'active', alias?: string  } 
+  | { name: 'public', alias?: string  } 
   | { name: 'amount', alias?: string  } 
   | { name: 'deletedAt', alias?: string  } 
   | { name: 'email', alias?: string  } 
@@ -6397,6 +6611,8 @@ export type OfferUpdateManyMutationInputInputObject =
   | { name: 'lastName', alias?: string  } 
   | { name: 'price', alias?: string  } 
   | { name: 'name', alias?: string  } 
+  | { name: 'description', alias?: string  } 
+  | { name: 'transport', alias?: string  } 
   
 export interface TransactionCreateInput {
   id?: string | null
@@ -6435,6 +6651,7 @@ export type OfferCreateOneWithoutTransactionsInputInputObject =
 export interface OfferCreateWithoutTransactionsInput {
   id?: string | null
   active?: boolean | null
+  public?: boolean | null
   amount?: number | null
   deletedAt?: string | null
   email?: string
@@ -6444,11 +6661,14 @@ export interface OfferCreateWithoutTransactionsInput {
   price?: number
   name?: string
   user?: UserCreateOneWithoutOffersInput
+  description?: string | null
+  transport?: string | null
 }
 export type OfferCreateWithoutTransactionsInputInputObject =
   | Extract<keyof OfferCreateWithoutTransactionsInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'active', alias?: string  } 
+  | { name: 'public', alias?: string  } 
   | { name: 'amount', alias?: string  } 
   | { name: 'deletedAt', alias?: string  } 
   | { name: 'email', alias?: string  } 
@@ -6458,6 +6678,8 @@ export type OfferCreateWithoutTransactionsInputInputObject =
   | { name: 'price', alias?: string  } 
   | { name: 'name', alias?: string  } 
   | { name: 'user', alias?: string  } 
+  | { name: 'description', alias?: string  } 
+  | { name: 'transport', alias?: string  } 
   
 export interface TransactionUpdateInput {
   amount?: number | null
@@ -6497,6 +6719,7 @@ export type OfferUpdateOneRequiredWithoutTransactionsInputInputObject =
   
 export interface OfferUpdateWithoutTransactionsDataInput {
   active?: boolean | null
+  public?: boolean | null
   amount?: number | null
   deletedAt?: string | null
   email?: string | null
@@ -6506,10 +6729,13 @@ export interface OfferUpdateWithoutTransactionsDataInput {
   price?: number | null
   name?: string | null
   user?: UserUpdateOneRequiredWithoutOffersInput | null
+  description?: string | null
+  transport?: string | null
 }
 export type OfferUpdateWithoutTransactionsDataInputInputObject =
   | Extract<keyof OfferUpdateWithoutTransactionsDataInput, string>
   | { name: 'active', alias?: string  } 
+  | { name: 'public', alias?: string  } 
   | { name: 'amount', alias?: string  } 
   | { name: 'deletedAt', alias?: string  } 
   | { name: 'email', alias?: string  } 
@@ -6519,6 +6745,8 @@ export type OfferUpdateWithoutTransactionsDataInputInputObject =
   | { name: 'price', alias?: string  } 
   | { name: 'name', alias?: string  } 
   | { name: 'user', alias?: string  } 
+  | { name: 'description', alias?: string  } 
+  | { name: 'transport', alias?: string  } 
   
 export interface OfferUpsertWithoutTransactionsInput {
   update?: OfferUpdateWithoutTransactionsDataInput
@@ -6552,15 +6780,15 @@ export type TransactionUpdateManyMutationInputInputObject =
   
 export interface OrganizationCreateInput {
   id?: string | null
-  apiId?: number
-  apiSecret?: string
-  organizationId?: number
+  apiId?: number | null
+  apiSecret?: string | null
+  organizationId?: number | null
   active?: boolean
   logo?: FileCreateOneInput
   deletedAt?: string | null
   name?: string
   offers?: OfferCreateManyWithoutBeneficatorInput | null
-  projectIds?: OrganizationCreateprojectIdsInput | null
+  projectId?: number | null
   description?: string
   url?: string
 }
@@ -6575,7 +6803,7 @@ export type OrganizationCreateInputInputObject =
   | { name: 'deletedAt', alias?: string  } 
   | { name: 'name', alias?: string  } 
   | { name: 'offers', alias?: string  } 
-  | { name: 'projectIds', alias?: string  } 
+  | { name: 'projectId', alias?: string  } 
   | { name: 'description', alias?: string  } 
   | { name: 'url', alias?: string  } 
   
@@ -6591,6 +6819,7 @@ export type OfferCreateManyWithoutBeneficatorInputInputObject =
 export interface OfferCreateWithoutBeneficatorInput {
   id?: string | null
   active?: boolean | null
+  public?: boolean | null
   amount?: number | null
   deletedAt?: string | null
   email?: string
@@ -6600,11 +6829,14 @@ export interface OfferCreateWithoutBeneficatorInput {
   price?: number
   name?: string
   user?: UserCreateOneWithoutOffersInput
+  description?: string | null
+  transport?: string | null
 }
 export type OfferCreateWithoutBeneficatorInputInputObject =
   | Extract<keyof OfferCreateWithoutBeneficatorInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'active', alias?: string  } 
+  | { name: 'public', alias?: string  } 
   | { name: 'amount', alias?: string  } 
   | { name: 'deletedAt', alias?: string  } 
   | { name: 'email', alias?: string  } 
@@ -6614,6 +6846,8 @@ export type OfferCreateWithoutBeneficatorInputInputObject =
   | { name: 'price', alias?: string  } 
   | { name: 'name', alias?: string  } 
   | { name: 'user', alias?: string  } 
+  | { name: 'description', alias?: string  } 
+  | { name: 'transport', alias?: string  } 
   
 export interface OrganizationUpdateInput {
   apiId?: number | null
@@ -6624,7 +6858,7 @@ export interface OrganizationUpdateInput {
   deletedAt?: string | null
   name?: string | null
   offers?: OfferUpdateManyWithoutBeneficatorInput | null
-  projectIds?: OrganizationUpdateprojectIdsInput | null
+  projectId?: number | null
   description?: string | null
   url?: string | null
 }
@@ -6638,7 +6872,7 @@ export type OrganizationUpdateInputInputObject =
   | { name: 'deletedAt', alias?: string  } 
   | { name: 'name', alias?: string  } 
   | { name: 'offers', alias?: string  } 
-  | { name: 'projectIds', alias?: string  } 
+  | { name: 'projectId', alias?: string  } 
   | { name: 'description', alias?: string  } 
   | { name: 'url', alias?: string  } 
   
@@ -6676,6 +6910,7 @@ export type OfferUpdateWithWhereUniqueWithoutBeneficatorInputInputObject =
   
 export interface OfferUpdateWithoutBeneficatorDataInput {
   active?: boolean | null
+  public?: boolean | null
   amount?: number | null
   deletedAt?: string | null
   email?: string | null
@@ -6685,10 +6920,13 @@ export interface OfferUpdateWithoutBeneficatorDataInput {
   price?: number | null
   name?: string | null
   user?: UserUpdateOneRequiredWithoutOffersInput | null
+  description?: string | null
+  transport?: string | null
 }
 export type OfferUpdateWithoutBeneficatorDataInputInputObject =
   | Extract<keyof OfferUpdateWithoutBeneficatorDataInput, string>
   | { name: 'active', alias?: string  } 
+  | { name: 'public', alias?: string  } 
   | { name: 'amount', alias?: string  } 
   | { name: 'deletedAt', alias?: string  } 
   | { name: 'email', alias?: string  } 
@@ -6698,6 +6936,8 @@ export type OfferUpdateWithoutBeneficatorDataInputInputObject =
   | { name: 'price', alias?: string  } 
   | { name: 'name', alias?: string  } 
   | { name: 'user', alias?: string  } 
+  | { name: 'description', alias?: string  } 
+  | { name: 'transport', alias?: string  } 
   
 export interface OfferUpsertWithWhereUniqueWithoutBeneficatorInput {
   where?: OfferWhereUniqueInput
@@ -6717,7 +6957,7 @@ export interface OrganizationUpdateManyMutationInput {
   active?: boolean | null
   deletedAt?: string | null
   name?: string | null
-  projectIds?: OrganizationUpdateprojectIdsInput | null
+  projectId?: number | null
   description?: string | null
   url?: string | null
 }
@@ -6729,7 +6969,7 @@ export type OrganizationUpdateManyMutationInputInputObject =
   | { name: 'active', alias?: string  } 
   | { name: 'deletedAt', alias?: string  } 
   | { name: 'name', alias?: string  } 
-  | { name: 'projectIds', alias?: string  } 
+  | { name: 'projectId', alias?: string  } 
   | { name: 'description', alias?: string  } 
   | { name: 'url', alias?: string  } 
   
@@ -6875,6 +7115,8 @@ export type OfferOrderByInputValues =
   | 'id_DESC'
   | 'active_ASC'
   | 'active_DESC'
+  | 'public_ASC'
+  | 'public_DESC'
   | 'amount_ASC'
   | 'amount_DESC'
   | 'createdAt_ASC'
@@ -6893,6 +7135,10 @@ export type OfferOrderByInputValues =
   | 'price_DESC'
   | 'name_ASC'
   | 'name_DESC'
+  | 'description_ASC'
+  | 'description_DESC'
+  | 'transport_ASC'
+  | 'transport_DESC'
   
 export type TransactionOrderByInputValues =
   | 'id_ASC'
@@ -6987,6 +7233,8 @@ export type OrganizationOrderByInputValues =
   | 'deletedAt_DESC'
   | 'name_ASC'
   | 'name_DESC'
+  | 'projectId_ASC'
+  | 'projectId_DESC'
   | 'description_ASC'
   | 'description_DESC'
   | 'url_ASC'

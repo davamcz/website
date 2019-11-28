@@ -1,5 +1,5 @@
 import { Form } from '../components/Form'
-import { Input } from '../components/Input'
+import { Input, Error } from '../components/Input'
 import { Formik } from 'formik'
 import { withApollo } from '../lib/apollo'
 import { saveToken } from '../lib/auth'
@@ -9,6 +9,8 @@ import Spacer from '../components/Spacer'
 import Text from '../components/Text'
 import { Container } from '../components/Container'
 import { Section } from '../components/Section'
+import { Link } from '../components/Link'
+import { useRouter } from 'next/router'
 
 export const login = gql`
   mutation login($email: String!, $password: String!) {
@@ -20,6 +22,7 @@ export const login = gql`
 
 export default withApollo(() => {
   const [loginUser] = useLoginMutation()
+  const router = useRouter()
 
   return (
     <Section>
@@ -34,22 +37,35 @@ export default withApollo(() => {
               email: '',
               password: '',
             }}
-            onSubmit={async values => {
+            onSubmit={async (values, { setStatus }) => {
               try {
                 const { data } = await loginUser({ variables: values })
                 if (data && data.login && data.login.token) {
                   saveToken(data.login.token)
-                  window.location.pathname = '/profil'
-                } else {
-                  console.log('Show error')
+                  router.push('/profil')
                 }
-              } catch (e) {
-                console.log(e)
+              } catch {
+                setStatus({
+                  type: 'error',
+                  message: 'Vaše přihlašovací údaje nesouhlasí',
+                })
               }
             }}
           >
-            {({ values, handleSubmit, handleChange, handleBlur, isSubmitting }) => (
-              <Form onSubmit={handleSubmit} center buttonText="Přihlásit se" loading={isSubmitting}>
+            {({
+              values,
+              handleSubmit,
+              handleChange,
+              handleBlur,
+              isSubmitting,
+              status,
+            }) => (
+              <Form
+                onSubmit={handleSubmit}
+                center
+                buttonText="Přihlásit se"
+                loading={isSubmitting}
+              >
                 <Input
                   placeholder="E-mail"
                   label="E-mail"
@@ -69,6 +85,20 @@ export default withApollo(() => {
                   value={values.password}
                   onChange={handleChange}
                 />
+                <Spacer />
+                <Text>
+                  Pokud ještě nemáte účet, můžete se registrovat{' '}
+                  <Link color underline href="/signup">
+                    zde
+                  </Link>
+                  .
+                </Text>
+                {status && status.type === 'error' && (
+                  <>
+                    <Spacer />
+                    <Error>{status.message}</Error>
+                  </>
+                )}
               </Form>
             )}
           </Formik>

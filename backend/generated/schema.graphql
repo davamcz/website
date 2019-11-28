@@ -2,6 +2,13 @@
 ### Do not make changes to this file directly
 
 
+type Adress {
+  city: String
+  id: ID!
+  postalCode: String
+  street: String
+}
+
 input AdressWhereInput {
   AND: [AdressWhereInput!]
   city: String
@@ -174,7 +181,7 @@ type Mutation {
   createTransaction(amount: Int!, comment: String, email: String!, firstName: String!, lastName: String!, offerId: ID!): Transaction!
   login(email: String!, password: String!): AuthPayload!
   signup(email: String!, firstName: String!, lastName: String!, password: String!): AuthPayload!
-  updateUser(city: String!, firstName: String!, id: ID!, lastName: String!, postalCode: String!, street: String!): User!
+  updateUser(city: String!, firstName: String!, lastName: String!, postalCode: String!, street: String!): User!
   uploadFile(directory: String, file: Upload!): File!
 }
 
@@ -184,13 +191,16 @@ type Offer {
   beneficator: Organization!
   createdAt: DateTime
   deletedAt: DateTime
+  description: String
   email: String!
   firstName: String!
   id: ID!
   lastName: String!
   name: String!
   price: Int!
+  public: Boolean
   transactions(after: String, before: String, first: Int, last: Int, orderBy: TransactionOrderByInput, skip: Int, where: TransactionWhereInput): [Transaction!]
+  transport: String
   updatedAt: DateTime
   user: User!
 }
@@ -204,6 +214,8 @@ enum OfferOrderByInput {
   createdAt_DESC
   deletedAt_ASC
   deletedAt_DESC
+  description_ASC
+  description_DESC
   email_ASC
   email_DESC
   firstName_ASC
@@ -216,6 +228,10 @@ enum OfferOrderByInput {
   name_DESC
   price_ASC
   price_DESC
+  public_ASC
+  public_DESC
+  transport_ASC
+  transport_DESC
   updatedAt_ASC
   updatedAt_DESC
 }
@@ -249,6 +265,20 @@ input OfferWhereInput {
   deletedAt_lte: DateTime
   deletedAt_not: DateTime
   deletedAt_not_in: [DateTime!]
+  description: String
+  description_contains: String
+  description_ends_with: String
+  description_gt: String
+  description_gte: String
+  description_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_not: String
+  description_not_contains: String
+  description_not_ends_with: String
+  description_not_in: [String!]
+  description_not_starts_with: String
+  description_starts_with: String
   email: String
   email_contains: String
   email_ends_with: String
@@ -329,9 +359,25 @@ input OfferWhereInput {
   price_lte: Int
   price_not: Int
   price_not_in: [Int!]
+  public: Boolean
+  public_not: Boolean
   transactions_every: TransactionWhereInput
   transactions_none: TransactionWhereInput
   transactions_some: TransactionWhereInput
+  transport: String
+  transport_contains: String
+  transport_ends_with: String
+  transport_gt: String
+  transport_gte: String
+  transport_in: [String!]
+  transport_lt: String
+  transport_lte: String
+  transport_not: String
+  transport_not_contains: String
+  transport_not_ends_with: String
+  transport_not_in: [String!]
+  transport_not_starts_with: String
+  transport_starts_with: String
   updatedAt: DateTime
   updatedAt_gt: DateTime
   updatedAt_gte: DateTime
@@ -371,6 +417,8 @@ enum OrganizationOrderByInput {
   name_DESC
   organizationId_ASC
   organizationId_DESC
+  projectId_ASC
+  projectId_DESC
   updatedAt_ASC
   updatedAt_DESC
   url_ASC
@@ -475,6 +523,14 @@ input OrganizationWhereInput {
   organizationId_lte: Int
   organizationId_not: Int
   organizationId_not_in: [Int!]
+  projectId: Int
+  projectId_gt: Int
+  projectId_gte: Int
+  projectId_in: [Int!]
+  projectId_lt: Int
+  projectId_lte: Int
+  projectId_not: Int
+  projectId_not_in: [Int!]
   updatedAt: DateTime
   updatedAt_gt: DateTime
   updatedAt_gte: DateTime
@@ -678,8 +734,11 @@ input TransactionWhereInput {
 scalar Upload
 
 type User {
+  adress: Adress
   email: String!
+  firstName: String
   fullName: String!
+  lastName: String
 }
 
 enum UserRole {
