@@ -9,6 +9,7 @@ interface Props {
   external?: boolean
   underline?: boolean
   target?: string
+  color?: boolean
 }
 
 export const Link: React.FC<Props> = ({
@@ -22,14 +23,22 @@ export const Link: React.FC<Props> = ({
 }) => {
   if (external) {
     return (
-      <StyledLink title={title} underline={underline} target={target}>
+      <StyledLink
+        title={title}
+        underline={underline}
+        target={target}
+      >
         {children}
       </StyledLink>
     )
   }
   return (
     <NextLink href={href} as={as} passHref>
-      <StyledLink title={title} underline={underline} target={target}>
+      <StyledLink
+        title={title}
+        underline={underline}
+        target={target}
+      >
         {children}
       </StyledLink>
     </NextLink>
@@ -42,15 +51,15 @@ interface StyledLinkProps {
 }
 
 const StyledLink = styled.a<StyledLinkProps>`
-display: inline-flex;
-align-items: center;
-  color: ${({ theme, color }) => color ? theme.colors.orange : 'inherit'};
+  display: inline-flex;
+  align-items: center;
+  color: ${({ theme, color }) => (color ? theme.colors.orange : 'inherit')};
   text-decoration: none;
   cursor: pointer;
   translate: color 200ms ease-in;
 
   &:hover {
-    color: ${({ theme, color }) => color ? theme.colors.orange : 'inherit'};
+    color: ${({ theme, color }) => (color ? theme.colors.orange : 'inherit')};
     text-decoration: ${({ underline }) => (underline ? 'underline' : 'none')};
   }
 `

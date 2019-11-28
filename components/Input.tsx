@@ -6,11 +6,12 @@ interface Props {
   value: string
   name: string
   label?: string
-  type: any
-  placeholder: string
-  onChange: React.EventHandler<ChangeEvent<HTMLInputElement>>
-  onBlur: any
+  type?: string
+  placeholder?: string
+  onChange?: React.EventHandler<ChangeEvent<HTMLInputElement>>
+  onBlur?: any
   error?: string
+  disabled?: boolean
 }
 
 export const Input = ({
@@ -22,10 +23,14 @@ export const Input = ({
   type,
   placeholder,
   error,
+  disabled,
 }: Props) => {
   return (
     <Container full>
-      {label && <Label>{label}</Label>}
+      <Container row style={{ justifyContent: 'space-between' }}>
+        {label && <Label>{label}</Label>}
+        {error && <Error>{error}</Error>}
+      </Container>
       <StyledInput
         type={type}
         name={name}
@@ -34,8 +39,8 @@ export const Input = ({
         onChange={onChange}
         onBlur={onBlur}
         error={error}
+        disabled={disabled}
       />
-      {error && <Error>{error}</Error>}
     </Container>
   )
 }
@@ -47,8 +52,8 @@ export const Label = styled.label`
   font-weight: 700;
 `
 
-const Error = styled.span`
-  color: ${({theme}) => theme.colors.red};
+export const Error = styled.span`
+  color: ${({ theme }) => theme.colors.red};
 `
 
 export const InputStyles = () => css`
@@ -61,7 +66,5 @@ export const InputStyles = () => css`
 
 const StyledInput = styled.input<{ error?: string }>`
   ${InputStyles()}
-  ${({ error, theme }) => error ? `border-color: ${theme.colors.red}`: ''};
+  ${({ error, theme }) => (error ? `border-color: ${theme.colors.red}` : '')};
 `
-
-

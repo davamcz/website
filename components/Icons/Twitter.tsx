@@ -1,8 +1,8 @@
-export const Twitter = () => (
+export const Twitter = ({ size = 36 }: { size?: number }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="48"
-    height="48"
+    width={size}
+    height={size}
     viewBox="0 0 48 48"
   >
     <g fill="none" fillRule="evenodd">

@@ -1,11 +1,9 @@
 import styled from 'styled-components'
 import Text from '../Text'
 import Spacer from '../Spacer'
-import { Twitter } from '../Icons/Twitter';
-import { Facebook } from '../Icons/Facebook';
-// import { Instagram } from '../Icons/Instagram';
-import { Link } from '../Link';
 import { Container } from '../Container'
+import { SocialLinks } from '../SocialLinks'
+import { Link } from '../Link'
 
 interface Props {
   maxWidth?: string
@@ -13,7 +11,14 @@ interface Props {
 
 export const ContactInfo = ({ maxWidth = '730px' }: Props) => {
   return (
-    <Container style={{ width: '100%', maxWidth, paddingTop: '36px', paddingLeft: '62.5px' }}>
+    <Container
+      style={{
+        width: '100%',
+        maxWidth,
+        paddingTop: '36px',
+        paddingLeft: '62.5px',
+      }}
+    >
       <ContactInfoContainer>
         <Text>
           Máte nějaké dotazy, náměty, nápady? Napište nám! Využijte náš
@@ -23,28 +28,20 @@ export const ContactInfo = ({ maxWidth = '730px' }: Props) => {
         <Text bold color="orange">
           Dávám.cz
         </Text>
-        <Text>
-          +420 737 875 551
-        </Text>
-        <Text>
-          info@davam.cz
-        </Text>
+        <Container>
+          <Link underline external href="tel+420737875551">
+            +420 737 875 551
+          </Link>
+          <Link underline external href="mailto:info@davam.cz">
+            info@davam.cz
+          </Link>
+        </Container>
         <Spacer />
         <Text bold color="orange">
           Sledujte nás
         </Text>
-        <Container row flex="0 0 auto" style={{ paddingTop: '12px' }}>
-          <Link external href="https://www.facebook.com/fundlamb/" target="_blank">
-            <Facebook />
-          </Link>
-          <Spacer/>
-          <Link external href="https://twitter.com/Davamcz" title="Davamcz Twitter" target="_blank">
-            <Twitter />
-          </Link>
-          {/* <Link href="">
-            <Instagram />
-          </Link> */}
-        </Container>
+        <Spacer y={0.5} />
+        <SocialLinks />
       </ContactInfoContainer>
     </Container>
   )

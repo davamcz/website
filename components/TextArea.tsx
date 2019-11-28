@@ -1,24 +1,38 @@
 import styled from 'styled-components'
-import { InputStyles, Label } from './Input'
+import { InputStyles, Label, Error } from './Input'
 import { Container } from './Container'
-import { FunctionComponent } from 'react'
+import { FunctionComponent, ChangeEvent } from 'react'
 
 interface Props {
   label?: string
   error?: string
+  value: string
+  name: string
+  onChange: React.EventHandler<ChangeEvent<HTMLTextAreaElement>>
+  onBlur?: any
 }
 
-export const TextArea: FunctionComponent<Props> = ({ label }) => {
+export const TextArea: FunctionComponent<Props> = ({
+  label,
+  error,
+  name,
+  onChange,
+  value,
+}) => {
   return (
     <Container full>
-      {label && <Label>{label}</Label>}
-      <StyledTextArea />
+      <Container row style={{ justifyContent: 'space-between' }}>
+        {label && <Label>{label}</Label>}
+        {error && <Error>{error}</Error>}
+      </Container>
+      <StyledTextArea name={name} value={value} onChange={onChange} error={error} />
     </Container>
   )
 }
 
-const StyledTextArea = styled.textarea`
+const StyledTextArea = styled.textarea<{ error?: string }>`
   ${InputStyles()};
+  ${({ error, theme }) => (error ? `border-color: ${theme.colors.red}` : '')};
   height: 180px;
   resize: none;
 `
