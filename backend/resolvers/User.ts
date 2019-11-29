@@ -3,7 +3,7 @@ import { prismaObjectType } from 'nexus-prisma'
 import { hash, compare } from 'bcrypt'
 import { sign } from 'jsonwebtoken'
 import { getUserId } from '../utils'
-import { UserSchemaValidation } from '../../validation/user'
+import { UserWithPassowordSchemaValidation } from '../../validation/user'
 
 export const UserType = prismaObjectType({
   name: 'User',
@@ -50,7 +50,7 @@ export const UserMutations = extendType({
       },
       resolve: async (_, { firstName, lastName, email, password }, ctx) => {
         try {
-          await UserSchemaValidation.validate({
+          await UserWithPassowordSchemaValidation.validate({
             firstName,
             lastName,
             email,

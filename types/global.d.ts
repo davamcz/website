@@ -3,6 +3,7 @@
 declare namespace NodeJS {
 
   interface ProcessEnv {
+    readonly WEBSITE_URL: string
     readonly AIRTABLE_SECRET: string
     readonly PRISMA_ENDPOINT: string
     readonly PRISMA_SECRET: string

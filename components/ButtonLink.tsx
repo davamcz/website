@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { CSSProperties } from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
 
@@ -8,6 +8,7 @@ interface Props {
   secondary?: boolean
   title?: string
   noShadow?: boolean
+  style?: CSSProperties
 }
 
 export const ButtonLink: React.FC<Props> = ({
@@ -16,14 +17,14 @@ export const ButtonLink: React.FC<Props> = ({
   as,
   title,
   secondary,
-  noShadow
+  noShadow,style
 }) => {
-  const Button = () => <StyledLink title={title}>{children}</StyledLink>
+  const Button = () => <StyledLink title={title} style={style}>{children}</StyledLink>
 
   if (href) {
     return (
       <Link href={href} as={as} passHref>
-        <StyledLink secondary={secondary} noShadow={noShadow} title={title}>
+        <StyledLink secondary={secondary} noShadow={noShadow} title={title} style={style}>
           {children}
         </StyledLink>
       </Link>

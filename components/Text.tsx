@@ -129,27 +129,22 @@ const presets = {
   `,
   h2: `
     font-size: 2.25rem;
-    letter-spacing: -.049375rem;
     font-weight: 600;
   `,
   h3: `
     font-size: 1.5rem;
-    letter-spacing: -.029375rem;
     font-weight: 600;
   `,
   h4: `
     font-size: 1.25rem;
-    letter-spacing: -.020625rem;
     font-weight: 600;
   `,
   h5: `
     font-size: 1rem;
-    letter-spacing: -.01125rem;
     font-weight: 600;
   `,
   h6: `
     font-size: .875rem;
-    letter-spacing: -.005625rem;
     font-weight: 600;
   `,
   p: `

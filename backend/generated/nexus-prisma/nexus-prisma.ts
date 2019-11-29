@@ -20,6 +20,7 @@ export interface NexusPrismaTypes {
       Transaction: TransactionObject
       Organization: OrganizationObject
       File: FileObject
+      Gallery: GalleryObject
       Adress: AdressObject
       UserConnection: UserConnectionObject
       PageInfo: PageInfoObject
@@ -31,6 +32,9 @@ export interface NexusPrismaTypes {
       FileConnection: FileConnectionObject
       FileEdge: FileEdgeObject
       AggregateFile: AggregateFileObject
+      GalleryConnection: GalleryConnectionObject
+      GalleryEdge: GalleryEdgeObject
+      AggregateGallery: AggregateGalleryObject
       OfferConnection: OfferConnectionObject
       OfferEdge: OfferEdgeObject
       AggregateOffer: AggregateOfferObject
@@ -49,6 +53,8 @@ export interface NexusPrismaTypes {
       AdressPreviousValues: AdressPreviousValuesObject
       FileSubscriptionPayload: FileSubscriptionPayloadObject
       FilePreviousValues: FilePreviousValuesObject
+      GallerySubscriptionPayload: GallerySubscriptionPayloadObject
+      GalleryPreviousValues: GalleryPreviousValuesObject
       OfferSubscriptionPayload: OfferSubscriptionPayloadObject
       OfferPreviousValues: OfferPreviousValuesObject
       TransactionSubscriptionPayload: TransactionSubscriptionPayloadObject
@@ -63,6 +69,7 @@ export interface NexusPrismaTypes {
       Transaction: TransactionFieldDetails
       Organization: OrganizationFieldDetails
       File: FileFieldDetails
+      Gallery: GalleryFieldDetails
       Adress: AdressFieldDetails
       UserConnection: UserConnectionFieldDetails
       PageInfo: PageInfoFieldDetails
@@ -74,6 +81,9 @@ export interface NexusPrismaTypes {
       FileConnection: FileConnectionFieldDetails
       FileEdge: FileEdgeFieldDetails
       AggregateFile: AggregateFileFieldDetails
+      GalleryConnection: GalleryConnectionFieldDetails
+      GalleryEdge: GalleryEdgeFieldDetails
+      AggregateGallery: AggregateGalleryFieldDetails
       OfferConnection: OfferConnectionFieldDetails
       OfferEdge: OfferEdgeFieldDetails
       AggregateOffer: AggregateOfferFieldDetails
@@ -92,6 +102,8 @@ export interface NexusPrismaTypes {
       AdressPreviousValues: AdressPreviousValuesFieldDetails
       FileSubscriptionPayload: FileSubscriptionPayloadFieldDetails
       FilePreviousValues: FilePreviousValuesFieldDetails
+      GallerySubscriptionPayload: GallerySubscriptionPayloadFieldDetails
+      GalleryPreviousValues: GalleryPreviousValuesFieldDetails
       OfferSubscriptionPayload: OfferSubscriptionPayloadFieldDetails
       OfferPreviousValues: OfferPreviousValuesFieldDetails
       TransactionSubscriptionPayload: TransactionSubscriptionPayloadFieldDetails
@@ -109,8 +121,10 @@ export interface NexusPrismaTypes {
       FileWhereInput: FileWhereInputInputObject
       UserWhereInput: UserWhereInputInputObject
       AdressWhereInput: AdressWhereInputInputObject
+      GalleryWhereInput: GalleryWhereInputInputObject
       AdressWhereUniqueInput: AdressWhereUniqueInputInputObject
       FileWhereUniqueInput: FileWhereUniqueInputInputObject
+      GalleryWhereUniqueInput: GalleryWhereUniqueInputInputObject
       OfferWhereUniqueInput: OfferWhereUniqueInputInputObject
       TransactionWhereUniqueInput: TransactionWhereUniqueInputInputObject
       OrganizationWhereUniqueInput: OrganizationWhereUniqueInputInputObject
@@ -123,6 +137,9 @@ export interface NexusPrismaTypes {
       OrganizationCreateWithoutOffersInput: OrganizationCreateWithoutOffersInputInputObject
       FileCreateOneInput: FileCreateOneInputInputObject
       FileCreateInput: FileCreateInputInputObject
+      GalleryCreateOneInput: GalleryCreateOneInputInputObject
+      GalleryCreateInput: GalleryCreateInputInputObject
+      FileCreateManyInput: FileCreateManyInputInputObject
       AdressCreateOneInput: AdressCreateOneInputInputObject
       AdressCreateInput: AdressCreateInputInputObject
       UserUpdateInput: UserUpdateInputInputObject
@@ -142,6 +159,15 @@ export interface NexusPrismaTypes {
       FileUpdateDataInput: FileUpdateDataInputInputObject
       FileUpsertNestedInput: FileUpsertNestedInputInputObject
       OrganizationUpsertWithoutOffersInput: OrganizationUpsertWithoutOffersInputInputObject
+      GalleryUpdateOneRequiredInput: GalleryUpdateOneRequiredInputInputObject
+      GalleryUpdateDataInput: GalleryUpdateDataInputInputObject
+      FileUpdateManyInput: FileUpdateManyInputInputObject
+      FileUpdateWithWhereUniqueNestedInput: FileUpdateWithWhereUniqueNestedInputInputObject
+      FileUpsertWithWhereUniqueNestedInput: FileUpsertWithWhereUniqueNestedInputInputObject
+      FileScalarWhereInput: FileScalarWhereInputInputObject
+      FileUpdateManyWithWhereNestedInput: FileUpdateManyWithWhereNestedInputInputObject
+      FileUpdateManyDataInput: FileUpdateManyDataInputInputObject
+      GalleryUpsertNestedInput: GalleryUpsertNestedInputInputObject
       OfferUpsertWithWhereUniqueWithoutUserInput: OfferUpsertWithWhereUniqueWithoutUserInputInputObject
       OfferScalarWhereInput: OfferScalarWhereInputInputObject
       OfferUpdateManyWithWhereNestedInput: OfferUpdateManyWithWhereNestedInputInputObject
@@ -154,6 +180,7 @@ export interface NexusPrismaTypes {
       AdressUpdateManyMutationInput: AdressUpdateManyMutationInputInputObject
       FileUpdateInput: FileUpdateInputInputObject
       FileUpdateManyMutationInput: FileUpdateManyMutationInputInputObject
+      GalleryUpdateInput: GalleryUpdateInputInputObject
       OfferCreateInput: OfferCreateInputInputObject
       UserCreateOneWithoutOffersInput: UserCreateOneWithoutOffersInputInputObject
       UserCreateWithoutOffersInput: UserCreateWithoutOffersInputInputObject
@@ -182,6 +209,7 @@ export interface NexusPrismaTypes {
       UserSubscriptionWhereInput: UserSubscriptionWhereInputInputObject
       AdressSubscriptionWhereInput: AdressSubscriptionWhereInputInputObject
       FileSubscriptionWhereInput: FileSubscriptionWhereInputInputObject
+      GallerySubscriptionWhereInput: GallerySubscriptionWhereInputInputObject
       OfferSubscriptionWhereInput: OfferSubscriptionWhereInputInputObject
       TransactionSubscriptionWhereInput: TransactionSubscriptionWhereInputInputObject
       OrganizationSubscriptionWhereInput: OrganizationSubscriptionWhereInputInputObject
@@ -192,9 +220,10 @@ export interface NexusPrismaTypes {
     TransactionStatus: TransactionStatusValues,
     OfferOrderByInput: OfferOrderByInputValues,
     TransactionOrderByInput: TransactionOrderByInputValues,
+    FileOrderByInput: FileOrderByInputValues,
     UserOrderByInput: UserOrderByInputValues,
     AdressOrderByInput: AdressOrderByInputValues,
-    FileOrderByInput: FileOrderByInputValues,
+    GalleryOrderByInput: GalleryOrderByInputValues,
     OrganizationOrderByInput: OrganizationOrderByInputValues,
     MutationType: MutationTypeValues,
   }
@@ -213,6 +242,9 @@ type QueryObject =
   | { name: 'file', args?: QueryFileArgs[] | false, alias?: string  } 
   | { name: 'files', args?: QueryFilesArgs[] | false, alias?: string  } 
   | { name: 'filesConnection', args?: QueryFilesConnectionArgs[] | false, alias?: string  } 
+  | { name: 'gallery', args?: QueryGalleryArgs[] | false, alias?: string  } 
+  | { name: 'galleries', args?: QueryGalleriesArgs[] | false, alias?: string  } 
+  | { name: 'galleriesConnection', args?: QueryGalleriesConnectionArgs[] | false, alias?: string  } 
   | { name: 'offer', args?: QueryOfferArgs[] | false, alias?: string  } 
   | { name: 'offers', args?: QueryOffersArgs[] | false, alias?: string  } 
   | { name: 'offersConnection', args?: QueryOffersConnectionArgs[] | false, alias?: string  } 
@@ -233,6 +265,9 @@ type QueryFields =
   | 'file'
   | 'files'
   | 'filesConnection'
+  | 'gallery'
+  | 'galleries'
+  | 'galleriesConnection'
   | 'offer'
   | 'offers'
   | 'offersConnection'
@@ -291,6 +326,24 @@ type QueryFilesArgs =
   | 'first'
   | 'last'
 type QueryFilesConnectionArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryGalleryArgs =
+  | 'where'
+type QueryGalleriesArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryGalleriesConnectionArgs =
   | 'where'
   | 'orderBy'
   | 'skip'
@@ -471,6 +524,45 @@ export interface QueryFieldDetails {
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.FileConnection> | prisma.FileConnection
+  }
+  gallery: {
+    type: 'Gallery'
+    args: Record<QueryGalleryArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where: GalleryWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Gallery | null> | prisma.Gallery | null
+  }
+  galleries: {
+    type: 'Gallery'
+    args: Record<QueryGalleriesArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: GalleryWhereInput | null, orderBy?: prisma.GalleryOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Gallery[]> | prisma.Gallery[]
+  }
+  galleriesConnection: {
+    type: 'GalleryConnection'
+    args: Record<QueryGalleriesConnectionArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: GalleryWhereInput | null, orderBy?: prisma.GalleryOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.GalleryConnection> | prisma.GalleryConnection
   }
   offer: {
     type: 'Offer'
@@ -715,7 +807,7 @@ type OfferObject =
   | OfferFields
   | { name: 'id', args?: [] | false, alias?: string  } 
   | { name: 'active', args?: [] | false, alias?: string  } 
-  | { name: 'public', args?: [] | false, alias?: string  } 
+  | { name: 'publicOffer', args?: [] | false, alias?: string  } 
   | { name: 'amount', args?: [] | false, alias?: string  } 
   | { name: 'createdAt', args?: [] | false, alias?: string  } 
   | { name: 'updatedAt', args?: [] | false, alias?: string  } 
@@ -730,11 +822,12 @@ type OfferObject =
   | { name: 'user', args?: [] | false, alias?: string  } 
   | { name: 'description', args?: [] | false, alias?: string  } 
   | { name: 'transport', args?: [] | false, alias?: string  } 
+  | { name: 'gallery', args?: [] | false, alias?: string  } 
 
 type OfferFields =
   | 'id'
   | 'active'
-  | 'public'
+  | 'publicOffer'
   | 'amount'
   | 'createdAt'
   | 'updatedAt'
@@ -749,6 +842,7 @@ type OfferFields =
   | 'user'
   | 'description'
   | 'transport'
+  | 'gallery'
 
 
 type OfferTransactionsArgs =
@@ -778,7 +872,7 @@ export interface OfferFieldDetails {
     nullable: true
     resolve: undefined
   }
-  public: {
+  publicOffer: {
     type: 'Boolean'
     args: {}
     description: string
@@ -791,7 +885,7 @@ export interface OfferFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: true
+    nullable: false
     resolve: undefined
   }
   createdAt: {
@@ -902,7 +996,7 @@ export interface OfferFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: true
+    nullable: false
     resolve: undefined
   }
   transport: {
@@ -912,6 +1006,19 @@ export interface OfferFieldDetails {
     list: undefined
     nullable: true
     resolve: undefined
+  }
+  gallery: {
+    type: 'Gallery'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Offer">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Gallery> | prisma.Gallery
   }
 }
   
@@ -1304,6 +1411,53 @@ export interface FileFieldDetails {
     list: undefined
     nullable: false
     resolve: undefined
+  }
+}
+  
+
+// Types for Gallery
+
+type GalleryObject =
+  | GalleryFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'images', args?: GalleryImagesArgs[] | false, alias?: string  } 
+
+type GalleryFields =
+  | 'id'
+  | 'images'
+
+
+type GalleryImagesArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+  
+
+export interface GalleryFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  images: {
+    type: 'File'
+    args: Record<GalleryImagesArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Gallery">,
+      args: { where?: FileWhereInput | null, orderBy?: prisma.FileOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.File[]> | prisma.File[]
   }
 }
   
@@ -1793,6 +1947,131 @@ export interface AggregateFileFieldDetails {
 }
   
 
+// Types for GalleryConnection
+
+type GalleryConnectionObject =
+  | GalleryConnectionFields
+  | { name: 'pageInfo', args?: [] | false, alias?: string  } 
+  | { name: 'edges', args?: [] | false, alias?: string  } 
+  | { name: 'aggregate', args?: [] | false, alias?: string  } 
+
+type GalleryConnectionFields =
+  | 'pageInfo'
+  | 'edges'
+  | 'aggregate'
+
+
+
+  
+
+export interface GalleryConnectionFieldDetails {
+  pageInfo: {
+    type: 'PageInfo'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"GalleryConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PageInfo> | prisma.PageInfo
+  }
+  edges: {
+    type: 'GalleryEdge'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"GalleryConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.GalleryEdge[]> | prisma.GalleryEdge[]
+  }
+  aggregate: {
+    type: 'AggregateGallery'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"GalleryConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.AggregateGallery> | prisma.AggregateGallery
+  }
+}
+  
+
+// Types for GalleryEdge
+
+type GalleryEdgeObject =
+  | GalleryEdgeFields
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'cursor', args?: [] | false, alias?: string  } 
+
+type GalleryEdgeFields =
+  | 'node'
+  | 'cursor'
+
+
+
+  
+
+export interface GalleryEdgeFieldDetails {
+  node: {
+    type: 'Gallery'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"GalleryEdge">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Gallery> | prisma.Gallery
+  }
+  cursor: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for AggregateGallery
+
+type AggregateGalleryObject =
+  | AggregateGalleryFields
+  | { name: 'count', args?: [] | false, alias?: string  } 
+
+type AggregateGalleryFields =
+  | 'count'
+
+
+
+  
+
+export interface AggregateGalleryFieldDetails {
+  count: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
 // Types for OfferConnection
 
 type OfferConnectionObject =
@@ -2190,6 +2469,11 @@ type MutationObject =
   | { name: 'upsertFile', args?: MutationUpsertFileArgs[] | false, alias?: string  } 
   | { name: 'deleteFile', args?: MutationDeleteFileArgs[] | false, alias?: string  } 
   | { name: 'deleteManyFiles', args?: MutationDeleteManyFilesArgs[] | false, alias?: string  } 
+  | { name: 'createGallery', args?: MutationCreateGalleryArgs[] | false, alias?: string  } 
+  | { name: 'updateGallery', args?: MutationUpdateGalleryArgs[] | false, alias?: string  } 
+  | { name: 'upsertGallery', args?: MutationUpsertGalleryArgs[] | false, alias?: string  } 
+  | { name: 'deleteGallery', args?: MutationDeleteGalleryArgs[] | false, alias?: string  } 
+  | { name: 'deleteManyGalleries', args?: MutationDeleteManyGalleriesArgs[] | false, alias?: string  } 
   | { name: 'createOffer', args?: MutationCreateOfferArgs[] | false, alias?: string  } 
   | { name: 'updateOffer', args?: MutationUpdateOfferArgs[] | false, alias?: string  } 
   | { name: 'updateManyOffers', args?: MutationUpdateManyOffersArgs[] | false, alias?: string  } 
@@ -2228,6 +2512,11 @@ type MutationFields =
   | 'upsertFile'
   | 'deleteFile'
   | 'deleteManyFiles'
+  | 'createGallery'
+  | 'updateGallery'
+  | 'upsertGallery'
+  | 'deleteGallery'
+  | 'deleteManyGalleries'
   | 'createOffer'
   | 'updateOffer'
   | 'updateManyOffers'
@@ -2295,6 +2584,19 @@ type MutationUpsertFileArgs =
 type MutationDeleteFileArgs =
   | 'where'
 type MutationDeleteManyFilesArgs =
+  | 'where'
+type MutationCreateGalleryArgs =
+  | 'data'
+type MutationUpdateGalleryArgs =
+  | 'data'
+  | 'where'
+type MutationUpsertGalleryArgs =
+  | 'where'
+  | 'create'
+  | 'update'
+type MutationDeleteGalleryArgs =
+  | 'where'
+type MutationDeleteManyGalleriesArgs =
   | 'where'
 type MutationCreateOfferArgs =
   | 'data'
@@ -2581,6 +2883,71 @@ export interface MutationFieldDetails {
       info?: GraphQLResolveInfo
     ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
   }
+  createGallery: {
+    type: 'Gallery'
+    args: Record<MutationCreateGalleryArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: GalleryCreateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Gallery> | prisma.Gallery
+  }
+  updateGallery: {
+    type: 'Gallery'
+    args: Record<MutationUpdateGalleryArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: GalleryUpdateInput, where: GalleryWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Gallery | null> | prisma.Gallery | null
+  }
+  upsertGallery: {
+    type: 'Gallery'
+    args: Record<MutationUpsertGalleryArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: GalleryWhereUniqueInput, create: GalleryCreateInput, update: GalleryUpdateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Gallery> | prisma.Gallery
+  }
+  deleteGallery: {
+    type: 'Gallery'
+    args: Record<MutationDeleteGalleryArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: GalleryWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Gallery | null> | prisma.Gallery | null
+  }
+  deleteManyGalleries: {
+    type: 'BatchPayload'
+    args: Record<MutationDeleteManyGalleriesArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where?: GalleryWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
   createOffer: {
     type: 'Offer'
     args: Record<MutationCreateOfferArgs, core.NexusArgDef<string>>
@@ -2850,6 +3217,7 @@ type SubscriptionObject =
   | { name: 'user', args?: SubscriptionUserArgs[] | false, alias?: string  } 
   | { name: 'adress', args?: SubscriptionAdressArgs[] | false, alias?: string  } 
   | { name: 'file', args?: SubscriptionFileArgs[] | false, alias?: string  } 
+  | { name: 'gallery', args?: SubscriptionGalleryArgs[] | false, alias?: string  } 
   | { name: 'offer', args?: SubscriptionOfferArgs[] | false, alias?: string  } 
   | { name: 'transaction', args?: SubscriptionTransactionArgs[] | false, alias?: string  } 
   | { name: 'organization', args?: SubscriptionOrganizationArgs[] | false, alias?: string  } 
@@ -2858,6 +3226,7 @@ type SubscriptionFields =
   | 'user'
   | 'adress'
   | 'file'
+  | 'gallery'
   | 'offer'
   | 'transaction'
   | 'organization'
@@ -2868,6 +3237,8 @@ type SubscriptionUserArgs =
 type SubscriptionAdressArgs =
   | 'where'
 type SubscriptionFileArgs =
+  | 'where'
+type SubscriptionGalleryArgs =
   | 'where'
 type SubscriptionOfferArgs =
   | 'where'
@@ -2916,6 +3287,19 @@ export interface SubscriptionFieldDetails {
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.FileSubscriptionPayload | null> | prisma.FileSubscriptionPayload | null
+  }
+  gallery: {
+    type: 'GallerySubscriptionPayload'
+    args: Record<SubscriptionGalleryArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Subscription">,
+      args: { where?: GallerySubscriptionWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.GallerySubscriptionPayload | null> | prisma.GallerySubscriptionPayload | null
   }
   offer: {
     type: 'OfferSubscriptionPayload'
@@ -3379,6 +3763,101 @@ export interface FilePreviousValuesFieldDetails {
 }
   
 
+// Types for GallerySubscriptionPayload
+
+type GallerySubscriptionPayloadObject =
+  | GallerySubscriptionPayloadFields
+  | { name: 'mutation', args?: [] | false, alias?: string  } 
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'updatedFields', args?: [] | false, alias?: string  } 
+  | { name: 'previousValues', args?: [] | false, alias?: string  } 
+
+type GallerySubscriptionPayloadFields =
+  | 'mutation'
+  | 'node'
+  | 'updatedFields'
+  | 'previousValues'
+
+
+
+  
+
+export interface GallerySubscriptionPayloadFieldDetails {
+  mutation: {
+    type: 'MutationType'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"GallerySubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.MutationType> | prisma.MutationType
+  }
+  node: {
+    type: 'Gallery'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"GallerySubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Gallery | null> | prisma.Gallery | null
+  }
+  updatedFields: {
+    type: 'String'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: undefined
+  }
+  previousValues: {
+    type: 'GalleryPreviousValues'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"GallerySubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.GalleryPreviousValues | null> | prisma.GalleryPreviousValues | null
+  }
+}
+  
+
+// Types for GalleryPreviousValues
+
+type GalleryPreviousValuesObject =
+  | GalleryPreviousValuesFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+
+type GalleryPreviousValuesFields =
+  | 'id'
+
+
+
+  
+
+export interface GalleryPreviousValuesFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
 // Types for OfferSubscriptionPayload
 
 type OfferSubscriptionPayloadObject =
@@ -3455,7 +3934,7 @@ type OfferPreviousValuesObject =
   | OfferPreviousValuesFields
   | { name: 'id', args?: [] | false, alias?: string  } 
   | { name: 'active', args?: [] | false, alias?: string  } 
-  | { name: 'public', args?: [] | false, alias?: string  } 
+  | { name: 'publicOffer', args?: [] | false, alias?: string  } 
   | { name: 'amount', args?: [] | false, alias?: string  } 
   | { name: 'createdAt', args?: [] | false, alias?: string  } 
   | { name: 'updatedAt', args?: [] | false, alias?: string  } 
@@ -3471,7 +3950,7 @@ type OfferPreviousValuesObject =
 type OfferPreviousValuesFields =
   | 'id'
   | 'active'
-  | 'public'
+  | 'publicOffer'
   | 'amount'
   | 'createdAt'
   | 'updatedAt'
@@ -3505,7 +3984,7 @@ export interface OfferPreviousValuesFieldDetails {
     nullable: true
     resolve: undefined
   }
-  public: {
+  publicOffer: {
     type: 'Boolean'
     args: {}
     description: string
@@ -3518,7 +3997,7 @@ export interface OfferPreviousValuesFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: true
+    nullable: false
     resolve: undefined
   }
   createdAt: {
@@ -3590,7 +4069,7 @@ export interface OfferPreviousValuesFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: true
+    nullable: false
     resolve: undefined
   }
   transport: {
@@ -4036,8 +4515,8 @@ export interface OfferWhereInput {
   id_not_ends_with?: string | null
   active?: boolean | null
   active_not?: boolean | null
-  public?: boolean | null
-  public_not?: boolean | null
+  publicOffer?: boolean | null
+  publicOffer_not?: boolean | null
   amount?: number | null
   amount_not?: number | null
   amount_in?: number[]
@@ -4167,6 +4646,7 @@ export interface OfferWhereInput {
   transport_not_starts_with?: string | null
   transport_ends_with?: string | null
   transport_not_ends_with?: string | null
+  gallery?: GalleryWhereInput | null
   AND?: OfferWhereInput[]
   OR?: OfferWhereInput[]
   NOT?: OfferWhereInput[]
@@ -4189,8 +4669,8 @@ export type OfferWhereInputInputObject =
   | { name: 'id_not_ends_with', alias?: string  } 
   | { name: 'active', alias?: string  } 
   | { name: 'active_not', alias?: string  } 
-  | { name: 'public', alias?: string  } 
-  | { name: 'public_not', alias?: string  } 
+  | { name: 'publicOffer', alias?: string  } 
+  | { name: 'publicOffer_not', alias?: string  } 
   | { name: 'amount', alias?: string  } 
   | { name: 'amount_not', alias?: string  } 
   | { name: 'amount_in', alias?: string  } 
@@ -4320,6 +4800,7 @@ export type OfferWhereInputInputObject =
   | { name: 'transport_not_starts_with', alias?: string  } 
   | { name: 'transport_ends_with', alias?: string  } 
   | { name: 'transport_not_ends_with', alias?: string  } 
+  | { name: 'gallery', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
@@ -5293,6 +5774,51 @@ export type AdressWhereInputInputObject =
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
   
+export interface GalleryWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  images_every?: FileWhereInput | null
+  images_some?: FileWhereInput | null
+  images_none?: FileWhereInput | null
+  AND?: GalleryWhereInput[]
+  OR?: GalleryWhereInput[]
+  NOT?: GalleryWhereInput[]
+}
+export type GalleryWhereInputInputObject =
+  | Extract<keyof GalleryWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'images_every', alias?: string  } 
+  | { name: 'images_some', alias?: string  } 
+  | { name: 'images_none', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
 export interface AdressWhereUniqueInput {
   id?: string | null
 }
@@ -5305,6 +5831,13 @@ export interface FileWhereUniqueInput {
 }
 export type FileWhereUniqueInputInputObject =
   | Extract<keyof FileWhereUniqueInput, string>
+  | { name: 'id', alias?: string  } 
+  
+export interface GalleryWhereUniqueInput {
+  id?: string | null
+}
+export type GalleryWhereUniqueInputInputObject =
+  | Extract<keyof GalleryWhereUniqueInput, string>
   | { name: 'id', alias?: string  } 
   
 export interface OfferWhereUniqueInput {
@@ -5361,8 +5894,8 @@ export type OfferCreateManyWithoutUserInputInputObject =
 export interface OfferCreateWithoutUserInput {
   id?: string | null
   active?: boolean | null
-  public?: boolean | null
-  amount?: number | null
+  publicOffer?: boolean | null
+  amount?: number
   deletedAt?: string | null
   email?: string
   firstName?: string
@@ -5371,14 +5904,15 @@ export interface OfferCreateWithoutUserInput {
   beneficator?: OrganizationCreateOneWithoutOffersInput
   price?: number
   name?: string
-  description?: string | null
+  description?: string
   transport?: string | null
+  gallery?: GalleryCreateOneInput
 }
 export type OfferCreateWithoutUserInputInputObject =
   | Extract<keyof OfferCreateWithoutUserInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'active', alias?: string  } 
-  | { name: 'public', alias?: string  } 
+  | { name: 'publicOffer', alias?: string  } 
   | { name: 'amount', alias?: string  } 
   | { name: 'deletedAt', alias?: string  } 
   | { name: 'email', alias?: string  } 
@@ -5390,6 +5924,7 @@ export type OfferCreateWithoutUserInputInputObject =
   | { name: 'name', alias?: string  } 
   | { name: 'description', alias?: string  } 
   | { name: 'transport', alias?: string  } 
+  | { name: 'gallery', alias?: string  } 
   
 export interface TransactionCreateManyWithoutOfferInput {
   create?: TransactionCreateWithoutOfferInput[]
@@ -5485,6 +6020,33 @@ export type FileCreateInputInputObject =
   | { name: 'encoding', alias?: string  } 
   | { name: 'url', alias?: string  } 
   
+export interface GalleryCreateOneInput {
+  create?: GalleryCreateInput | null
+  connect?: GalleryWhereUniqueInput | null
+}
+export type GalleryCreateOneInputInputObject =
+  | Extract<keyof GalleryCreateOneInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface GalleryCreateInput {
+  id?: string | null
+  images?: FileCreateManyInput | null
+}
+export type GalleryCreateInputInputObject =
+  | Extract<keyof GalleryCreateInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'images', alias?: string  } 
+  
+export interface FileCreateManyInput {
+  create?: FileCreateInput[]
+  connect?: FileWhereUniqueInput[]
+}
+export type FileCreateManyInputInputObject =
+  | Extract<keyof FileCreateManyInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
 export interface AdressCreateOneInput {
   create?: AdressCreateInput | null
   connect?: AdressWhereUniqueInput | null
@@ -5560,7 +6122,7 @@ export type OfferUpdateWithWhereUniqueWithoutUserInputInputObject =
   
 export interface OfferUpdateWithoutUserDataInput {
   active?: boolean | null
-  public?: boolean | null
+  publicOffer?: boolean | null
   amount?: number | null
   deletedAt?: string | null
   email?: string | null
@@ -5572,11 +6134,12 @@ export interface OfferUpdateWithoutUserDataInput {
   name?: string | null
   description?: string | null
   transport?: string | null
+  gallery?: GalleryUpdateOneRequiredInput | null
 }
 export type OfferUpdateWithoutUserDataInputInputObject =
   | Extract<keyof OfferUpdateWithoutUserDataInput, string>
   | { name: 'active', alias?: string  } 
-  | { name: 'public', alias?: string  } 
+  | { name: 'publicOffer', alias?: string  } 
   | { name: 'amount', alias?: string  } 
   | { name: 'deletedAt', alias?: string  } 
   | { name: 'email', alias?: string  } 
@@ -5588,6 +6151,7 @@ export type OfferUpdateWithoutUserDataInputInputObject =
   | { name: 'name', alias?: string  } 
   | { name: 'description', alias?: string  } 
   | { name: 'transport', alias?: string  } 
+  | { name: 'gallery', alias?: string  } 
   
 export interface TransactionUpdateManyWithoutOfferInput {
   create?: TransactionCreateWithoutOfferInput[]
@@ -6006,6 +6570,281 @@ export type OrganizationUpsertWithoutOffersInputInputObject =
   | { name: 'update', alias?: string  } 
   | { name: 'create', alias?: string  } 
   
+export interface GalleryUpdateOneRequiredInput {
+  create?: GalleryCreateInput | null
+  update?: GalleryUpdateDataInput | null
+  upsert?: GalleryUpsertNestedInput | null
+  connect?: GalleryWhereUniqueInput | null
+}
+export type GalleryUpdateOneRequiredInputInputObject =
+  | Extract<keyof GalleryUpdateOneRequiredInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface GalleryUpdateDataInput {
+  images?: FileUpdateManyInput | null
+}
+export type GalleryUpdateDataInputInputObject =
+  | Extract<keyof GalleryUpdateDataInput, string>
+  | { name: 'images', alias?: string  } 
+  
+export interface FileUpdateManyInput {
+  create?: FileCreateInput[]
+  update?: FileUpdateWithWhereUniqueNestedInput[]
+  upsert?: FileUpsertWithWhereUniqueNestedInput[]
+  delete?: FileWhereUniqueInput[]
+  connect?: FileWhereUniqueInput[]
+  set?: FileWhereUniqueInput[]
+  disconnect?: FileWhereUniqueInput[]
+  deleteMany?: FileScalarWhereInput[]
+  updateMany?: FileUpdateManyWithWhereNestedInput[]
+}
+export type FileUpdateManyInputInputObject =
+  | Extract<keyof FileUpdateManyInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'delete', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  | { name: 'set', alias?: string  } 
+  | { name: 'disconnect', alias?: string  } 
+  | { name: 'deleteMany', alias?: string  } 
+  | { name: 'updateMany', alias?: string  } 
+  
+export interface FileUpdateWithWhereUniqueNestedInput {
+  where?: FileWhereUniqueInput
+  data?: FileUpdateDataInput
+}
+export type FileUpdateWithWhereUniqueNestedInputInputObject =
+  | Extract<keyof FileUpdateWithWhereUniqueNestedInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'data', alias?: string  } 
+  
+export interface FileUpsertWithWhereUniqueNestedInput {
+  where?: FileWhereUniqueInput
+  update?: FileUpdateDataInput
+  create?: FileCreateInput
+}
+export type FileUpsertWithWhereUniqueNestedInputInputObject =
+  | Extract<keyof FileUpsertWithWhereUniqueNestedInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
+export interface FileScalarWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  key?: string | null
+  key_not?: string | null
+  key_in?: string[]
+  key_not_in?: string[]
+  key_lt?: string | null
+  key_lte?: string | null
+  key_gt?: string | null
+  key_gte?: string | null
+  key_contains?: string | null
+  key_not_contains?: string | null
+  key_starts_with?: string | null
+  key_not_starts_with?: string | null
+  key_ends_with?: string | null
+  key_not_ends_with?: string | null
+  fileName?: string | null
+  fileName_not?: string | null
+  fileName_in?: string[]
+  fileName_not_in?: string[]
+  fileName_lt?: string | null
+  fileName_lte?: string | null
+  fileName_gt?: string | null
+  fileName_gte?: string | null
+  fileName_contains?: string | null
+  fileName_not_contains?: string | null
+  fileName_starts_with?: string | null
+  fileName_not_starts_with?: string | null
+  fileName_ends_with?: string | null
+  fileName_not_ends_with?: string | null
+  mimeType?: string | null
+  mimeType_not?: string | null
+  mimeType_in?: string[]
+  mimeType_not_in?: string[]
+  mimeType_lt?: string | null
+  mimeType_lte?: string | null
+  mimeType_gt?: string | null
+  mimeType_gte?: string | null
+  mimeType_contains?: string | null
+  mimeType_not_contains?: string | null
+  mimeType_starts_with?: string | null
+  mimeType_not_starts_with?: string | null
+  mimeType_ends_with?: string | null
+  mimeType_not_ends_with?: string | null
+  encoding?: string | null
+  encoding_not?: string | null
+  encoding_in?: string[]
+  encoding_not_in?: string[]
+  encoding_lt?: string | null
+  encoding_lte?: string | null
+  encoding_gt?: string | null
+  encoding_gte?: string | null
+  encoding_contains?: string | null
+  encoding_not_contains?: string | null
+  encoding_starts_with?: string | null
+  encoding_not_starts_with?: string | null
+  encoding_ends_with?: string | null
+  encoding_not_ends_with?: string | null
+  url?: string | null
+  url_not?: string | null
+  url_in?: string[]
+  url_not_in?: string[]
+  url_lt?: string | null
+  url_lte?: string | null
+  url_gt?: string | null
+  url_gte?: string | null
+  url_contains?: string | null
+  url_not_contains?: string | null
+  url_starts_with?: string | null
+  url_not_starts_with?: string | null
+  url_ends_with?: string | null
+  url_not_ends_with?: string | null
+  AND?: FileScalarWhereInput[]
+  OR?: FileScalarWhereInput[]
+  NOT?: FileScalarWhereInput[]
+}
+export type FileScalarWhereInputInputObject =
+  | Extract<keyof FileScalarWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'key', alias?: string  } 
+  | { name: 'key_not', alias?: string  } 
+  | { name: 'key_in', alias?: string  } 
+  | { name: 'key_not_in', alias?: string  } 
+  | { name: 'key_lt', alias?: string  } 
+  | { name: 'key_lte', alias?: string  } 
+  | { name: 'key_gt', alias?: string  } 
+  | { name: 'key_gte', alias?: string  } 
+  | { name: 'key_contains', alias?: string  } 
+  | { name: 'key_not_contains', alias?: string  } 
+  | { name: 'key_starts_with', alias?: string  } 
+  | { name: 'key_not_starts_with', alias?: string  } 
+  | { name: 'key_ends_with', alias?: string  } 
+  | { name: 'key_not_ends_with', alias?: string  } 
+  | { name: 'fileName', alias?: string  } 
+  | { name: 'fileName_not', alias?: string  } 
+  | { name: 'fileName_in', alias?: string  } 
+  | { name: 'fileName_not_in', alias?: string  } 
+  | { name: 'fileName_lt', alias?: string  } 
+  | { name: 'fileName_lte', alias?: string  } 
+  | { name: 'fileName_gt', alias?: string  } 
+  | { name: 'fileName_gte', alias?: string  } 
+  | { name: 'fileName_contains', alias?: string  } 
+  | { name: 'fileName_not_contains', alias?: string  } 
+  | { name: 'fileName_starts_with', alias?: string  } 
+  | { name: 'fileName_not_starts_with', alias?: string  } 
+  | { name: 'fileName_ends_with', alias?: string  } 
+  | { name: 'fileName_not_ends_with', alias?: string  } 
+  | { name: 'mimeType', alias?: string  } 
+  | { name: 'mimeType_not', alias?: string  } 
+  | { name: 'mimeType_in', alias?: string  } 
+  | { name: 'mimeType_not_in', alias?: string  } 
+  | { name: 'mimeType_lt', alias?: string  } 
+  | { name: 'mimeType_lte', alias?: string  } 
+  | { name: 'mimeType_gt', alias?: string  } 
+  | { name: 'mimeType_gte', alias?: string  } 
+  | { name: 'mimeType_contains', alias?: string  } 
+  | { name: 'mimeType_not_contains', alias?: string  } 
+  | { name: 'mimeType_starts_with', alias?: string  } 
+  | { name: 'mimeType_not_starts_with', alias?: string  } 
+  | { name: 'mimeType_ends_with', alias?: string  } 
+  | { name: 'mimeType_not_ends_with', alias?: string  } 
+  | { name: 'encoding', alias?: string  } 
+  | { name: 'encoding_not', alias?: string  } 
+  | { name: 'encoding_in', alias?: string  } 
+  | { name: 'encoding_not_in', alias?: string  } 
+  | { name: 'encoding_lt', alias?: string  } 
+  | { name: 'encoding_lte', alias?: string  } 
+  | { name: 'encoding_gt', alias?: string  } 
+  | { name: 'encoding_gte', alias?: string  } 
+  | { name: 'encoding_contains', alias?: string  } 
+  | { name: 'encoding_not_contains', alias?: string  } 
+  | { name: 'encoding_starts_with', alias?: string  } 
+  | { name: 'encoding_not_starts_with', alias?: string  } 
+  | { name: 'encoding_ends_with', alias?: string  } 
+  | { name: 'encoding_not_ends_with', alias?: string  } 
+  | { name: 'url', alias?: string  } 
+  | { name: 'url_not', alias?: string  } 
+  | { name: 'url_in', alias?: string  } 
+  | { name: 'url_not_in', alias?: string  } 
+  | { name: 'url_lt', alias?: string  } 
+  | { name: 'url_lte', alias?: string  } 
+  | { name: 'url_gt', alias?: string  } 
+  | { name: 'url_gte', alias?: string  } 
+  | { name: 'url_contains', alias?: string  } 
+  | { name: 'url_not_contains', alias?: string  } 
+  | { name: 'url_starts_with', alias?: string  } 
+  | { name: 'url_not_starts_with', alias?: string  } 
+  | { name: 'url_ends_with', alias?: string  } 
+  | { name: 'url_not_ends_with', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface FileUpdateManyWithWhereNestedInput {
+  where?: FileScalarWhereInput
+  data?: FileUpdateManyDataInput
+}
+export type FileUpdateManyWithWhereNestedInputInputObject =
+  | Extract<keyof FileUpdateManyWithWhereNestedInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'data', alias?: string  } 
+  
+export interface FileUpdateManyDataInput {
+  key?: string | null
+  fileName?: string | null
+  mimeType?: string | null
+  encoding?: string | null
+  url?: string | null
+}
+export type FileUpdateManyDataInputInputObject =
+  | Extract<keyof FileUpdateManyDataInput, string>
+  | { name: 'key', alias?: string  } 
+  | { name: 'fileName', alias?: string  } 
+  | { name: 'mimeType', alias?: string  } 
+  | { name: 'encoding', alias?: string  } 
+  | { name: 'url', alias?: string  } 
+  
+export interface GalleryUpsertNestedInput {
+  update?: GalleryUpdateDataInput
+  create?: GalleryCreateInput
+}
+export type GalleryUpsertNestedInputInputObject =
+  | Extract<keyof GalleryUpsertNestedInput, string>
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
 export interface OfferUpsertWithWhereUniqueWithoutUserInput {
   where?: OfferWhereUniqueInput
   update?: OfferUpdateWithoutUserDataInput
@@ -6034,8 +6873,8 @@ export interface OfferScalarWhereInput {
   id_not_ends_with?: string | null
   active?: boolean | null
   active_not?: boolean | null
-  public?: boolean | null
-  public_not?: boolean | null
+  publicOffer?: boolean | null
+  publicOffer_not?: boolean | null
   amount?: number | null
   amount_not?: number | null
   amount_in?: number[]
@@ -6182,8 +7021,8 @@ export type OfferScalarWhereInputInputObject =
   | { name: 'id_not_ends_with', alias?: string  } 
   | { name: 'active', alias?: string  } 
   | { name: 'active_not', alias?: string  } 
-  | { name: 'public', alias?: string  } 
-  | { name: 'public_not', alias?: string  } 
+  | { name: 'publicOffer', alias?: string  } 
+  | { name: 'publicOffer_not', alias?: string  } 
   | { name: 'amount', alias?: string  } 
   | { name: 'amount_not', alias?: string  } 
   | { name: 'amount_in', alias?: string  } 
@@ -6323,7 +7162,7 @@ export type OfferUpdateManyWithWhereNestedInputInputObject =
   
 export interface OfferUpdateManyDataInput {
   active?: boolean | null
-  public?: boolean | null
+  publicOffer?: boolean | null
   amount?: number | null
   deletedAt?: string | null
   email?: string | null
@@ -6337,7 +7176,7 @@ export interface OfferUpdateManyDataInput {
 export type OfferUpdateManyDataInputInputObject =
   | Extract<keyof OfferUpdateManyDataInput, string>
   | { name: 'active', alias?: string  } 
-  | { name: 'public', alias?: string  } 
+  | { name: 'publicOffer', alias?: string  } 
   | { name: 'amount', alias?: string  } 
   | { name: 'deletedAt', alias?: string  } 
   | { name: 'email', alias?: string  } 
@@ -6452,11 +7291,18 @@ export type FileUpdateManyMutationInputInputObject =
   | { name: 'encoding', alias?: string  } 
   | { name: 'url', alias?: string  } 
   
+export interface GalleryUpdateInput {
+  images?: FileUpdateManyInput | null
+}
+export type GalleryUpdateInputInputObject =
+  | Extract<keyof GalleryUpdateInput, string>
+  | { name: 'images', alias?: string  } 
+  
 export interface OfferCreateInput {
   id?: string | null
   active?: boolean | null
-  public?: boolean | null
-  amount?: number | null
+  publicOffer?: boolean | null
+  amount?: number
   deletedAt?: string | null
   email?: string
   firstName?: string
@@ -6466,14 +7312,15 @@ export interface OfferCreateInput {
   price?: number
   name?: string
   user?: UserCreateOneWithoutOffersInput
-  description?: string | null
+  description?: string
   transport?: string | null
+  gallery?: GalleryCreateOneInput
 }
 export type OfferCreateInputInputObject =
   | Extract<keyof OfferCreateInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'active', alias?: string  } 
-  | { name: 'public', alias?: string  } 
+  | { name: 'publicOffer', alias?: string  } 
   | { name: 'amount', alias?: string  } 
   | { name: 'deletedAt', alias?: string  } 
   | { name: 'email', alias?: string  } 
@@ -6486,6 +7333,7 @@ export type OfferCreateInputInputObject =
   | { name: 'user', alias?: string  } 
   | { name: 'description', alias?: string  } 
   | { name: 'transport', alias?: string  } 
+  | { name: 'gallery', alias?: string  } 
   
 export interface UserCreateOneWithoutOffersInput {
   create?: UserCreateWithoutOffersInput | null
@@ -6517,7 +7365,7 @@ export type UserCreateWithoutOffersInputInputObject =
   
 export interface OfferUpdateInput {
   active?: boolean | null
-  public?: boolean | null
+  publicOffer?: boolean | null
   amount?: number | null
   deletedAt?: string | null
   email?: string | null
@@ -6530,11 +7378,12 @@ export interface OfferUpdateInput {
   user?: UserUpdateOneRequiredWithoutOffersInput | null
   description?: string | null
   transport?: string | null
+  gallery?: GalleryUpdateOneRequiredInput | null
 }
 export type OfferUpdateInputInputObject =
   | Extract<keyof OfferUpdateInput, string>
   | { name: 'active', alias?: string  } 
-  | { name: 'public', alias?: string  } 
+  | { name: 'publicOffer', alias?: string  } 
   | { name: 'amount', alias?: string  } 
   | { name: 'deletedAt', alias?: string  } 
   | { name: 'email', alias?: string  } 
@@ -6547,6 +7396,7 @@ export type OfferUpdateInputInputObject =
   | { name: 'user', alias?: string  } 
   | { name: 'description', alias?: string  } 
   | { name: 'transport', alias?: string  } 
+  | { name: 'gallery', alias?: string  } 
   
 export interface UserUpdateOneRequiredWithoutOffersInput {
   create?: UserCreateWithoutOffersInput | null
@@ -6589,7 +7439,7 @@ export type UserUpsertWithoutOffersInputInputObject =
   
 export interface OfferUpdateManyMutationInput {
   active?: boolean | null
-  public?: boolean | null
+  publicOffer?: boolean | null
   amount?: number | null
   deletedAt?: string | null
   email?: string | null
@@ -6603,7 +7453,7 @@ export interface OfferUpdateManyMutationInput {
 export type OfferUpdateManyMutationInputInputObject =
   | Extract<keyof OfferUpdateManyMutationInput, string>
   | { name: 'active', alias?: string  } 
-  | { name: 'public', alias?: string  } 
+  | { name: 'publicOffer', alias?: string  } 
   | { name: 'amount', alias?: string  } 
   | { name: 'deletedAt', alias?: string  } 
   | { name: 'email', alias?: string  } 
@@ -6651,8 +7501,8 @@ export type OfferCreateOneWithoutTransactionsInputInputObject =
 export interface OfferCreateWithoutTransactionsInput {
   id?: string | null
   active?: boolean | null
-  public?: boolean | null
-  amount?: number | null
+  publicOffer?: boolean | null
+  amount?: number
   deletedAt?: string | null
   email?: string
   firstName?: string
@@ -6661,14 +7511,15 @@ export interface OfferCreateWithoutTransactionsInput {
   price?: number
   name?: string
   user?: UserCreateOneWithoutOffersInput
-  description?: string | null
+  description?: string
   transport?: string | null
+  gallery?: GalleryCreateOneInput
 }
 export type OfferCreateWithoutTransactionsInputInputObject =
   | Extract<keyof OfferCreateWithoutTransactionsInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'active', alias?: string  } 
-  | { name: 'public', alias?: string  } 
+  | { name: 'publicOffer', alias?: string  } 
   | { name: 'amount', alias?: string  } 
   | { name: 'deletedAt', alias?: string  } 
   | { name: 'email', alias?: string  } 
@@ -6680,6 +7531,7 @@ export type OfferCreateWithoutTransactionsInputInputObject =
   | { name: 'user', alias?: string  } 
   | { name: 'description', alias?: string  } 
   | { name: 'transport', alias?: string  } 
+  | { name: 'gallery', alias?: string  } 
   
 export interface TransactionUpdateInput {
   amount?: number | null
@@ -6719,7 +7571,7 @@ export type OfferUpdateOneRequiredWithoutTransactionsInputInputObject =
   
 export interface OfferUpdateWithoutTransactionsDataInput {
   active?: boolean | null
-  public?: boolean | null
+  publicOffer?: boolean | null
   amount?: number | null
   deletedAt?: string | null
   email?: string | null
@@ -6731,11 +7583,12 @@ export interface OfferUpdateWithoutTransactionsDataInput {
   user?: UserUpdateOneRequiredWithoutOffersInput | null
   description?: string | null
   transport?: string | null
+  gallery?: GalleryUpdateOneRequiredInput | null
 }
 export type OfferUpdateWithoutTransactionsDataInputInputObject =
   | Extract<keyof OfferUpdateWithoutTransactionsDataInput, string>
   | { name: 'active', alias?: string  } 
-  | { name: 'public', alias?: string  } 
+  | { name: 'publicOffer', alias?: string  } 
   | { name: 'amount', alias?: string  } 
   | { name: 'deletedAt', alias?: string  } 
   | { name: 'email', alias?: string  } 
@@ -6747,6 +7600,7 @@ export type OfferUpdateWithoutTransactionsDataInputInputObject =
   | { name: 'user', alias?: string  } 
   | { name: 'description', alias?: string  } 
   | { name: 'transport', alias?: string  } 
+  | { name: 'gallery', alias?: string  } 
   
 export interface OfferUpsertWithoutTransactionsInput {
   update?: OfferUpdateWithoutTransactionsDataInput
@@ -6819,8 +7673,8 @@ export type OfferCreateManyWithoutBeneficatorInputInputObject =
 export interface OfferCreateWithoutBeneficatorInput {
   id?: string | null
   active?: boolean | null
-  public?: boolean | null
-  amount?: number | null
+  publicOffer?: boolean | null
+  amount?: number
   deletedAt?: string | null
   email?: string
   firstName?: string
@@ -6829,14 +7683,15 @@ export interface OfferCreateWithoutBeneficatorInput {
   price?: number
   name?: string
   user?: UserCreateOneWithoutOffersInput
-  description?: string | null
+  description?: string
   transport?: string | null
+  gallery?: GalleryCreateOneInput
 }
 export type OfferCreateWithoutBeneficatorInputInputObject =
   | Extract<keyof OfferCreateWithoutBeneficatorInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'active', alias?: string  } 
-  | { name: 'public', alias?: string  } 
+  | { name: 'publicOffer', alias?: string  } 
   | { name: 'amount', alias?: string  } 
   | { name: 'deletedAt', alias?: string  } 
   | { name: 'email', alias?: string  } 
@@ -6848,6 +7703,7 @@ export type OfferCreateWithoutBeneficatorInputInputObject =
   | { name: 'user', alias?: string  } 
   | { name: 'description', alias?: string  } 
   | { name: 'transport', alias?: string  } 
+  | { name: 'gallery', alias?: string  } 
   
 export interface OrganizationUpdateInput {
   apiId?: number | null
@@ -6910,7 +7766,7 @@ export type OfferUpdateWithWhereUniqueWithoutBeneficatorInputInputObject =
   
 export interface OfferUpdateWithoutBeneficatorDataInput {
   active?: boolean | null
-  public?: boolean | null
+  publicOffer?: boolean | null
   amount?: number | null
   deletedAt?: string | null
   email?: string | null
@@ -6922,11 +7778,12 @@ export interface OfferUpdateWithoutBeneficatorDataInput {
   user?: UserUpdateOneRequiredWithoutOffersInput | null
   description?: string | null
   transport?: string | null
+  gallery?: GalleryUpdateOneRequiredInput | null
 }
 export type OfferUpdateWithoutBeneficatorDataInputInputObject =
   | Extract<keyof OfferUpdateWithoutBeneficatorDataInput, string>
   | { name: 'active', alias?: string  } 
-  | { name: 'public', alias?: string  } 
+  | { name: 'publicOffer', alias?: string  } 
   | { name: 'amount', alias?: string  } 
   | { name: 'deletedAt', alias?: string  } 
   | { name: 'email', alias?: string  } 
@@ -6938,6 +7795,7 @@ export type OfferUpdateWithoutBeneficatorDataInputInputObject =
   | { name: 'user', alias?: string  } 
   | { name: 'description', alias?: string  } 
   | { name: 'transport', alias?: string  } 
+  | { name: 'gallery', alias?: string  } 
   
 export interface OfferUpsertWithWhereUniqueWithoutBeneficatorInput {
   where?: OfferWhereUniqueInput
@@ -7036,6 +7894,27 @@ export type FileSubscriptionWhereInputInputObject =
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
   
+export interface GallerySubscriptionWhereInput {
+  mutation_in?: prisma.MutationType[]
+  updatedFields_contains?: string | null
+  updatedFields_contains_every?: string[]
+  updatedFields_contains_some?: string[]
+  node?: GalleryWhereInput | null
+  AND?: GallerySubscriptionWhereInput[]
+  OR?: GallerySubscriptionWhereInput[]
+  NOT?: GallerySubscriptionWhereInput[]
+}
+export type GallerySubscriptionWhereInputInputObject =
+  | Extract<keyof GallerySubscriptionWhereInput, string>
+  | { name: 'mutation_in', alias?: string  } 
+  | { name: 'updatedFields_contains', alias?: string  } 
+  | { name: 'updatedFields_contains_every', alias?: string  } 
+  | { name: 'updatedFields_contains_some', alias?: string  } 
+  | { name: 'node', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
 export interface OfferSubscriptionWhereInput {
   mutation_in?: prisma.MutationType[]
   updatedFields_contains?: string | null
@@ -7115,8 +7994,8 @@ export type OfferOrderByInputValues =
   | 'id_DESC'
   | 'active_ASC'
   | 'active_DESC'
-  | 'public_ASC'
-  | 'public_DESC'
+  | 'publicOffer_ASC'
+  | 'publicOffer_DESC'
   | 'amount_ASC'
   | 'amount_DESC'
   | 'createdAt_ASC'
@@ -7164,6 +8043,24 @@ export type TransactionOrderByInputValues =
   | 'status_ASC'
   | 'status_DESC'
   
+export type FileOrderByInputValues =
+  | 'id_ASC'
+  | 'id_DESC'
+  | 'key_ASC'
+  | 'key_DESC'
+  | 'fileName_ASC'
+  | 'fileName_DESC'
+  | 'mimeType_ASC'
+  | 'mimeType_DESC'
+  | 'encoding_ASC'
+  | 'encoding_DESC'
+  | 'url_ASC'
+  | 'url_DESC'
+  | 'createdAt_ASC'
+  | 'createdAt_DESC'
+  | 'updatedAt_ASC'
+  | 'updatedAt_DESC'
+  
 export type UserOrderByInputValues =
   | 'id_ASC'
   | 'id_DESC'
@@ -7196,19 +8093,9 @@ export type AdressOrderByInputValues =
   | 'updatedAt_ASC'
   | 'updatedAt_DESC'
   
-export type FileOrderByInputValues =
+export type GalleryOrderByInputValues =
   | 'id_ASC'
   | 'id_DESC'
-  | 'key_ASC'
-  | 'key_DESC'
-  | 'fileName_ASC'
-  | 'fileName_DESC'
-  | 'mimeType_ASC'
-  | 'mimeType_DESC'
-  | 'encoding_ASC'
-  | 'encoding_DESC'
-  | 'url_ASC'
-  | 'url_DESC'
   | 'createdAt_ASC'
   | 'createdAt_DESC'
   | 'updatedAt_ASC'

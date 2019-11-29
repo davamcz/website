@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 import { Container } from './Container'
 
 interface Props {
-  value: string
+  value: any
   name: string
   label?: string
   type?: string

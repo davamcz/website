@@ -12,7 +12,12 @@ export const UserSchemaValidation = object().shape({
   email: string()
     .email('Špatný formát e-mailu')
     .required('E-mail je povinný údaj'),
-  password: string()
-    .min(6, 'Heslo je příliš krátké')
-    .required('Heslo je povinný údaj'),
 })
+
+export const UserWithPassowordSchemaValidation = object()
+  .shape({
+    password: string()
+      .min(6, 'Heslo je příliš krátké')
+      .required('Heslo je povinný údaj'),
+  })
+  .concat(UserSchemaValidation)

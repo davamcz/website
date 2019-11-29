@@ -14,26 +14,27 @@ export const Header = () => {
           Domů
         </Link> 
         <Spacer />
-        {/*<Link href="/about" title="Jak to funguje">
+        {/* <Link href="/about" title="Jak to funguje">
           Jak to funguje
-        </Link>
-        <Link href="/about" title="Komu pomáhame">
+        </Link> */}
+        <Link href="/komu-pomahame" title="Komu pomáhame">
           Komu pomáhame
         </Link>
-        <Link href="/about" title="O nás">
+        <Spacer x={0.5} />
+        {/* <Link href="/about" title="O nás">
           O nás
-        </Link>*/}
+        </Link> */}
         <Link href="/kontakt" title="Kontakt">
           Kontakt
         </Link> 
       </Container>
       <Container row flex="0 0 auto" vcenter>
         <AuthButton />
-        {/* <Spacer x={0.5} />
+        <Spacer x={0.5} />
         <ButtonLink href="/nabidka" secondary>
           Nabídka
         </ButtonLink>
-        */}
+       
         <Spacer x={0.5} />
         <ButtonLink href="/chci-darovat">Chci darovat</ButtonLink> 
       </Container>

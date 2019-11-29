@@ -30,11 +30,16 @@ enum UserRole {
   ADMIN
 }
 
+type Gallery {
+  id: ID! @id
+  images: [File!]!
+}
+
 type Offer {
   id: ID! @id
   active: Boolean @default(value: true)
-  public: Boolean @default(value: true)
-  amount: Int
+  publicOffer: Boolean @default(value: true)
+  amount: Int!
   createdAt: DateTime @createdAt
   updatedAt: DateTime @updatedAt
   deletedAt: DateTime
@@ -46,8 +51,9 @@ type Offer {
   price: Int!
   name: String!
   user: User!
-  description: String
+  description: String!
   transport: String
+  gallery: Gallery!
 }
 
 type Transaction {

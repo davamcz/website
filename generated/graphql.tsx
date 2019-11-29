@@ -98,6 +98,25 @@ export type File = {
   key: Scalars['String'],
 };
 
+export enum FileOrderByInput {
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  KeyAsc = 'key_ASC',
+  KeyDesc = 'key_DESC',
+  FileNameAsc = 'fileName_ASC',
+  FileNameDesc = 'fileName_DESC',
+  MimeTypeAsc = 'mimeType_ASC',
+  MimeTypeDesc = 'mimeType_DESC',
+  EncodingAsc = 'encoding_ASC',
+  EncodingDesc = 'encoding_DESC',
+  UrlAsc = 'url_ASC',
+  UrlDesc = 'url_DESC',
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC'
+}
+
 export type FileWhereInput = {
   id?: Maybe<Scalars['ID']>,
   id_not?: Maybe<Scalars['ID']>,
@@ -188,6 +207,46 @@ export type FileWhereInput = {
   NOT?: Maybe<Array<FileWhereInput>>,
 };
 
+export type Gallery = {
+   __typename?: 'Gallery',
+  id: Scalars['ID'],
+  images?: Maybe<Array<File>>,
+};
+
+
+export type GalleryImagesArgs = {
+  where?: Maybe<FileWhereInput>,
+  orderBy?: Maybe<FileOrderByInput>,
+  skip?: Maybe<Scalars['Int']>,
+  after?: Maybe<Scalars['String']>,
+  before?: Maybe<Scalars['String']>,
+  first?: Maybe<Scalars['Int']>,
+  last?: Maybe<Scalars['Int']>
+};
+
+export type GalleryWhereInput = {
+  id?: Maybe<Scalars['ID']>,
+  id_not?: Maybe<Scalars['ID']>,
+  id_in?: Maybe<Array<Scalars['ID']>>,
+  id_not_in?: Maybe<Array<Scalars['ID']>>,
+  id_lt?: Maybe<Scalars['ID']>,
+  id_lte?: Maybe<Scalars['ID']>,
+  id_gt?: Maybe<Scalars['ID']>,
+  id_gte?: Maybe<Scalars['ID']>,
+  id_contains?: Maybe<Scalars['ID']>,
+  id_not_contains?: Maybe<Scalars['ID']>,
+  id_starts_with?: Maybe<Scalars['ID']>,
+  id_not_starts_with?: Maybe<Scalars['ID']>,
+  id_ends_with?: Maybe<Scalars['ID']>,
+  id_not_ends_with?: Maybe<Scalars['ID']>,
+  images_every?: Maybe<FileWhereInput>,
+  images_some?: Maybe<FileWhereInput>,
+  images_none?: Maybe<FileWhereInput>,
+  AND?: Maybe<Array<GalleryWhereInput>>,
+  OR?: Maybe<Array<GalleryWhereInput>>,
+  NOT?: Maybe<Array<GalleryWhereInput>>,
+};
+
 export type Mutation = {
    __typename?: 'Mutation',
   /** Create new Fundlamb offer */
@@ -203,12 +262,16 @@ export type Mutation = {
 
 export type MutationCreateOfferArgs = {
   name: Scalars['String'],
+  description: Scalars['String'],
   organizationId: Scalars['ID'],
+  price: Scalars['Int'],
+  amount: Scalars['Int'],
+  transport: Scalars['String'],
+  publicOffer: Scalars['Boolean'],
   firstName: Scalars['String'],
   lastName: Scalars['String'],
   email: Scalars['String'],
-  price: Scalars['Int'],
-  amount: Scalars['Int']
+  images: Array<Scalars['ID']>
 };
 
 
@@ -266,8 +329,8 @@ export type Offer = {
    __typename?: 'Offer',
   id: Scalars['ID'],
   active?: Maybe<Scalars['Boolean']>,
-  public?: Maybe<Scalars['Boolean']>,
-  amount?: Maybe<Scalars['Int']>,
+  publicOffer?: Maybe<Scalars['Boolean']>,
+  amount: Scalars['Int'],
   createdAt?: Maybe<Scalars['DateTime']>,
   updatedAt?: Maybe<Scalars['DateTime']>,
   deletedAt?: Maybe<Scalars['DateTime']>,
@@ -279,8 +342,9 @@ export type Offer = {
   price: Scalars['Int'],
   name: Scalars['String'],
   user: User,
-  description?: Maybe<Scalars['String']>,
+  description: Scalars['String'],
   transport?: Maybe<Scalars['String']>,
+  gallery: Gallery,
 };
 
 
@@ -299,8 +363,8 @@ export enum OfferOrderByInput {
   IdDesc = 'id_DESC',
   ActiveAsc = 'active_ASC',
   ActiveDesc = 'active_DESC',
-  PublicAsc = 'public_ASC',
-  PublicDesc = 'public_DESC',
+  PublicOfferAsc = 'publicOffer_ASC',
+  PublicOfferDesc = 'publicOffer_DESC',
   AmountAsc = 'amount_ASC',
   AmountDesc = 'amount_DESC',
   CreatedAtAsc = 'createdAt_ASC',
@@ -342,8 +406,8 @@ export type OfferWhereInput = {
   id_not_ends_with?: Maybe<Scalars['ID']>,
   active?: Maybe<Scalars['Boolean']>,
   active_not?: Maybe<Scalars['Boolean']>,
-  public?: Maybe<Scalars['Boolean']>,
-  public_not?: Maybe<Scalars['Boolean']>,
+  publicOffer?: Maybe<Scalars['Boolean']>,
+  publicOffer_not?: Maybe<Scalars['Boolean']>,
   amount?: Maybe<Scalars['Int']>,
   amount_not?: Maybe<Scalars['Int']>,
   amount_in?: Maybe<Array<Scalars['Int']>>,
@@ -473,6 +537,7 @@ export type OfferWhereInput = {
   transport_not_starts_with?: Maybe<Scalars['String']>,
   transport_ends_with?: Maybe<Scalars['String']>,
   transport_not_ends_with?: Maybe<Scalars['String']>,
+  gallery?: Maybe<GalleryWhereInput>,
   AND?: Maybe<Array<OfferWhereInput>>,
   OR?: Maybe<Array<OfferWhereInput>>,
   NOT?: Maybe<Array<OfferWhereInput>>,
@@ -990,7 +1055,7 @@ export type OrganizationsQuery = (
   { __typename?: 'Query' }
   & { organizations: Array<(
     { __typename?: 'Organization' }
-    & Pick<Organization, 'name' | 'description' | 'url'>
+    & Pick<Organization, 'id' | 'name' | 'description' | 'url'>
     & { logo: (
       { __typename?: 'File' }
       & Pick<File, 'key'>
@@ -1046,6 +1111,29 @@ export type CreateOrganizationMutation = (
   & { createOrganization: (
     { __typename?: 'Organization' }
     & Pick<Organization, 'name'>
+  ) }
+);
+
+export type CreateOfferMutationVariables = {
+  name: Scalars['String'],
+  description: Scalars['String'],
+  organizationId: Scalars['ID'],
+  price: Scalars['Int'],
+  amount: Scalars['Int'],
+  transport: Scalars['String'],
+  publicOffer: Scalars['Boolean'],
+  firstName: Scalars['String'],
+  lastName: Scalars['String'],
+  email: Scalars['String'],
+  images: Array<Scalars['ID']>
+};
+
+
+export type CreateOfferMutation = (
+  { __typename?: 'Mutation' }
+  & { createOffer: (
+    { __typename?: 'Offer' }
+    & Pick<Offer, 'id'>
   ) }
 );
 
@@ -1181,6 +1269,7 @@ export type OffersQueryResult = ApolloReactCommon.QueryResult<OffersQuery, Offer
 export const OrganizationsDocument = gql`
     query organizations {
   organizations {
+    id
     name
     description
     url
@@ -1349,6 +1438,48 @@ export function useCreateOrganizationMutation(baseOptions?: ApolloReactHooks.Mut
 export type CreateOrganizationMutationHookResult = ReturnType<typeof useCreateOrganizationMutation>;
 export type CreateOrganizationMutationResult = ApolloReactCommon.MutationResult<CreateOrganizationMutation>;
 export type CreateOrganizationMutationOptions = ApolloReactCommon.BaseMutationOptions<CreateOrganizationMutation, CreateOrganizationMutationVariables>;
+export const CreateOfferDocument = gql`
+    mutation createOffer($name: String!, $description: String!, $organizationId: ID!, $price: Int!, $amount: Int!, $transport: String!, $publicOffer: Boolean!, $firstName: String!, $lastName: String!, $email: String!, $images: [ID!]!) {
+  createOffer(name: $name, description: $description, organizationId: $organizationId, price: $price, amount: $amount, transport: $transport, publicOffer: $publicOffer, firstName: $firstName, lastName: $lastName, email: $email, images: $images) {
+    id
+  }
+}
+    `;
+export type CreateOfferMutationFn = ApolloReactCommon.MutationFunction<CreateOfferMutation, CreateOfferMutationVariables>;
+
+/**
+ * __useCreateOfferMutation__
+ *
+ * To run a mutation, you first call `useCreateOfferMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateOfferMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createOfferMutation, { data, loading, error }] = useCreateOfferMutation({
+ *   variables: {
+ *      name: // value for 'name'
+ *      description: // value for 'description'
+ *      organizationId: // value for 'organizationId'
+ *      price: // value for 'price'
+ *      amount: // value for 'amount'
+ *      transport: // value for 'transport'
+ *      publicOffer: // value for 'publicOffer'
+ *      firstName: // value for 'firstName'
+ *      lastName: // value for 'lastName'
+ *      email: // value for 'email'
+ *      images: // value for 'images'
+ *   },
+ * });
+ */
+export function useCreateOfferMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<CreateOfferMutation, CreateOfferMutationVariables>) {
+        return ApolloReactHooks.useMutation<CreateOfferMutation, CreateOfferMutationVariables>(CreateOfferDocument, baseOptions);
+      }
+export type CreateOfferMutationHookResult = ReturnType<typeof useCreateOfferMutation>;
+export type CreateOfferMutationResult = ApolloReactCommon.MutationResult<CreateOfferMutation>;
+export type CreateOfferMutationOptions = ApolloReactCommon.BaseMutationOptions<CreateOfferMutation, CreateOfferMutationVariables>;
 export const LoginDocument = gql`
     mutation login($email: String!, $password: String!) {
   login(email: $email, password: $password) {

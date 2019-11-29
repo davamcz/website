@@ -84,6 +84,25 @@ type File {
   key: String!
 }
 
+enum FileOrderByInput {
+  createdAt_ASC
+  createdAt_DESC
+  encoding_ASC
+  encoding_DESC
+  fileName_ASC
+  fileName_DESC
+  id_ASC
+  id_DESC
+  key_ASC
+  key_DESC
+  mimeType_ASC
+  mimeType_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  url_ASC
+  url_DESC
+}
+
 input FileWhereInput {
   AND: [FileWhereInput!]
   encoding: String
@@ -174,9 +193,37 @@ input FileWhereInput {
   url_starts_with: String
 }
 
+type Gallery {
+  id: ID!
+  images(after: String, before: String, first: Int, last: Int, orderBy: FileOrderByInput, skip: Int, where: FileWhereInput): [File!]
+}
+
+input GalleryWhereInput {
+  AND: [GalleryWhereInput!]
+  id: ID
+  id_contains: ID
+  id_ends_with: ID
+  id_gt: ID
+  id_gte: ID
+  id_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_not: ID
+  id_not_contains: ID
+  id_not_ends_with: ID
+  id_not_in: [ID!]
+  id_not_starts_with: ID
+  id_starts_with: ID
+  images_every: FileWhereInput
+  images_none: FileWhereInput
+  images_some: FileWhereInput
+  NOT: [GalleryWhereInput!]
+  OR: [GalleryWhereInput!]
+}
+
 type Mutation {
   """Create new Fundlamb offer"""
-  createOffer(amount: Int!, email: String!, firstName: String!, lastName: String!, name: String!, organizationId: ID!, price: Int!): Offer!
+  createOffer(amount: Int!, description: String!, email: String!, firstName: String!, images: [ID!]!, lastName: String!, name: String!, organizationId: ID!, price: Int!, publicOffer: Boolean!, transport: String!): Offer!
   createOrganization(active: Boolean, apiId: Int, apiSecret: String, description: String!, logoId: ID!, name: String!, organizationId: Int, url: String!): Organization!
   createTransaction(amount: Int!, comment: String, email: String!, firstName: String!, lastName: String!, offerId: ID!): Transaction!
   login(email: String!, password: String!): AuthPayload!
@@ -187,18 +234,19 @@ type Mutation {
 
 type Offer {
   active: Boolean
-  amount: Int
+  amount: Int!
   beneficator: Organization!
   createdAt: DateTime
   deletedAt: DateTime
-  description: String
+  description: String!
   email: String!
   firstName: String!
+  gallery: Gallery!
   id: ID!
   lastName: String!
   name: String!
   price: Int!
-  public: Boolean
+  publicOffer: Boolean
   transactions(after: String, before: String, first: Int, last: Int, orderBy: TransactionOrderByInput, skip: Int, where: TransactionWhereInput): [Transaction!]
   transport: String
   updatedAt: DateTime
@@ -228,8 +276,8 @@ enum OfferOrderByInput {
   name_DESC
   price_ASC
   price_DESC
-  public_ASC
-  public_DESC
+  publicOffer_ASC
+  publicOffer_DESC
   transport_ASC
   transport_DESC
   updatedAt_ASC
@@ -307,6 +355,7 @@ input OfferWhereInput {
   firstName_not_in: [String!]
   firstName_not_starts_with: String
   firstName_starts_with: String
+  gallery: GalleryWhereInput
   id: ID
   id_contains: ID
   id_ends_with: ID
@@ -359,8 +408,8 @@ input OfferWhereInput {
   price_lte: Int
   price_not: Int
   price_not_in: [Int!]
-  public: Boolean
-  public_not: Boolean
+  publicOffer: Boolean
+  publicOffer_not: Boolean
   transactions_every: TransactionWhereInput
   transactions_none: TransactionWhereInput
   transactions_some: TransactionWhereInput

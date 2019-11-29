@@ -38,7 +38,7 @@ export const OrganizationMutation = prismaExtendType({
           apiId,
           apiSecret,
           organizationId,
-          active,
+          // active,
           name,
           logoId,
           description,
@@ -50,7 +50,7 @@ export const OrganizationMutation = prismaExtendType({
           apiId,
           apiSecret,
           organizationId,
-          active,
+          active: true,
           name,
           logo: {
             connect: {

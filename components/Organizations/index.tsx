@@ -6,9 +6,13 @@ import { OrganizationItem } from './Organization'
 export const organizations = gql`
   query organizations {
     organizations {
+      id
       name
       description
       url
+      logo {
+        key
+      }
     }
   }
 `
@@ -21,10 +25,8 @@ export const Organizations = () => {
 
   if (loading) return <div>Loading</div>
 
-  console.log(data)
-
   return (
-    <Container>
+    <Container row>
       {data && data.organizations.map((organization, i) => (
         <OrganizationItem organization={organization} key={i} />
       ))}

@@ -1,6 +1,12 @@
 import styled from "styled-components"
 
-export const Image = ({ src, maxWidth }: any) => {
+interface Props {
+  src: string
+  maxWidth?: number
+}
+
+
+export const Image = ({ src, maxWidth }: Props) => {
   return <Img src={src} style={{ maxWidth }} />
 }
 

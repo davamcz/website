@@ -174,6 +174,10 @@ type AggregateFile {
   count: Int!
 }
 
+type AggregateGallery {
+  count: Int!
+}
+
 type AggregateOffer {
   count: Int!
 }
@@ -220,6 +224,11 @@ input FileCreateInput {
   url: String!
 }
 
+input FileCreateManyInput {
+  create: [FileCreateInput!]
+  connect: [FileWhereUniqueInput!]
+}
+
 input FileCreateOneInput {
   create: FileCreateInput
   connect: FileWhereUniqueInput
@@ -252,6 +261,96 @@ type FilePreviousValues {
   mimeType: String!
   encoding: String!
   url: String!
+}
+
+input FileScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  key: String
+  key_not: String
+  key_in: [String!]
+  key_not_in: [String!]
+  key_lt: String
+  key_lte: String
+  key_gt: String
+  key_gte: String
+  key_contains: String
+  key_not_contains: String
+  key_starts_with: String
+  key_not_starts_with: String
+  key_ends_with: String
+  key_not_ends_with: String
+  fileName: String
+  fileName_not: String
+  fileName_in: [String!]
+  fileName_not_in: [String!]
+  fileName_lt: String
+  fileName_lte: String
+  fileName_gt: String
+  fileName_gte: String
+  fileName_contains: String
+  fileName_not_contains: String
+  fileName_starts_with: String
+  fileName_not_starts_with: String
+  fileName_ends_with: String
+  fileName_not_ends_with: String
+  mimeType: String
+  mimeType_not: String
+  mimeType_in: [String!]
+  mimeType_not_in: [String!]
+  mimeType_lt: String
+  mimeType_lte: String
+  mimeType_gt: String
+  mimeType_gte: String
+  mimeType_contains: String
+  mimeType_not_contains: String
+  mimeType_starts_with: String
+  mimeType_not_starts_with: String
+  mimeType_ends_with: String
+  mimeType_not_ends_with: String
+  encoding: String
+  encoding_not: String
+  encoding_in: [String!]
+  encoding_not_in: [String!]
+  encoding_lt: String
+  encoding_lte: String
+  encoding_gt: String
+  encoding_gte: String
+  encoding_contains: String
+  encoding_not_contains: String
+  encoding_starts_with: String
+  encoding_not_starts_with: String
+  encoding_ends_with: String
+  encoding_not_ends_with: String
+  url: String
+  url_not: String
+  url_in: [String!]
+  url_not_in: [String!]
+  url_lt: String
+  url_lte: String
+  url_gt: String
+  url_gte: String
+  url_contains: String
+  url_not_contains: String
+  url_starts_with: String
+  url_not_starts_with: String
+  url_ends_with: String
+  url_not_ends_with: String
+  AND: [FileScalarWhereInput!]
+  OR: [FileScalarWhereInput!]
+  NOT: [FileScalarWhereInput!]
 }
 
 type FileSubscriptionPayload {
@@ -288,12 +387,37 @@ input FileUpdateInput {
   url: String
 }
 
+input FileUpdateManyDataInput {
+  key: String
+  fileName: String
+  mimeType: String
+  encoding: String
+  url: String
+}
+
+input FileUpdateManyInput {
+  create: [FileCreateInput!]
+  update: [FileUpdateWithWhereUniqueNestedInput!]
+  upsert: [FileUpsertWithWhereUniqueNestedInput!]
+  delete: [FileWhereUniqueInput!]
+  connect: [FileWhereUniqueInput!]
+  set: [FileWhereUniqueInput!]
+  disconnect: [FileWhereUniqueInput!]
+  deleteMany: [FileScalarWhereInput!]
+  updateMany: [FileUpdateManyWithWhereNestedInput!]
+}
+
 input FileUpdateManyMutationInput {
   key: String
   fileName: String
   mimeType: String
   encoding: String
   url: String
+}
+
+input FileUpdateManyWithWhereNestedInput {
+  where: FileScalarWhereInput!
+  data: FileUpdateManyDataInput!
 }
 
 input FileUpdateOneRequiredInput {
@@ -303,7 +427,18 @@ input FileUpdateOneRequiredInput {
   connect: FileWhereUniqueInput
 }
 
+input FileUpdateWithWhereUniqueNestedInput {
+  where: FileWhereUniqueInput!
+  data: FileUpdateDataInput!
+}
+
 input FileUpsertNestedInput {
+  update: FileUpdateDataInput!
+  create: FileCreateInput!
+}
+
+input FileUpsertWithWhereUniqueNestedInput {
+  where: FileWhereUniqueInput!
   update: FileUpdateDataInput!
   create: FileCreateInput!
 }
@@ -402,6 +537,106 @@ input FileWhereUniqueInput {
   id: ID
 }
 
+type Gallery {
+  id: ID!
+  images(where: FileWhereInput, orderBy: FileOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [File!]
+}
+
+type GalleryConnection {
+  pageInfo: PageInfo!
+  edges: [GalleryEdge]!
+  aggregate: AggregateGallery!
+}
+
+input GalleryCreateInput {
+  id: ID
+  images: FileCreateManyInput
+}
+
+input GalleryCreateOneInput {
+  create: GalleryCreateInput
+  connect: GalleryWhereUniqueInput
+}
+
+type GalleryEdge {
+  node: Gallery!
+  cursor: String!
+}
+
+enum GalleryOrderByInput {
+  id_ASC
+  id_DESC
+}
+
+type GalleryPreviousValues {
+  id: ID!
+}
+
+type GallerySubscriptionPayload {
+  mutation: MutationType!
+  node: Gallery
+  updatedFields: [String!]
+  previousValues: GalleryPreviousValues
+}
+
+input GallerySubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: GalleryWhereInput
+  AND: [GallerySubscriptionWhereInput!]
+  OR: [GallerySubscriptionWhereInput!]
+  NOT: [GallerySubscriptionWhereInput!]
+}
+
+input GalleryUpdateDataInput {
+  images: FileUpdateManyInput
+}
+
+input GalleryUpdateInput {
+  images: FileUpdateManyInput
+}
+
+input GalleryUpdateOneRequiredInput {
+  create: GalleryCreateInput
+  update: GalleryUpdateDataInput
+  upsert: GalleryUpsertNestedInput
+  connect: GalleryWhereUniqueInput
+}
+
+input GalleryUpsertNestedInput {
+  update: GalleryUpdateDataInput!
+  create: GalleryCreateInput!
+}
+
+input GalleryWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  images_every: FileWhereInput
+  images_some: FileWhereInput
+  images_none: FileWhereInput
+  AND: [GalleryWhereInput!]
+  OR: [GalleryWhereInput!]
+  NOT: [GalleryWhereInput!]
+}
+
+input GalleryWhereUniqueInput {
+  id: ID
+}
+
 scalar Long
 
 type Mutation {
@@ -417,6 +652,11 @@ type Mutation {
   upsertFile(where: FileWhereUniqueInput!, create: FileCreateInput!, update: FileUpdateInput!): File!
   deleteFile(where: FileWhereUniqueInput!): File
   deleteManyFiles(where: FileWhereInput): BatchPayload!
+  createGallery(data: GalleryCreateInput!): Gallery!
+  updateGallery(data: GalleryUpdateInput!, where: GalleryWhereUniqueInput!): Gallery
+  upsertGallery(where: GalleryWhereUniqueInput!, create: GalleryCreateInput!, update: GalleryUpdateInput!): Gallery!
+  deleteGallery(where: GalleryWhereUniqueInput!): Gallery
+  deleteManyGalleries(where: GalleryWhereInput): BatchPayload!
   createOffer(data: OfferCreateInput!): Offer!
   updateOffer(data: OfferUpdateInput!, where: OfferWhereUniqueInput!): Offer
   updateManyOffers(data: OfferUpdateManyMutationInput!, where: OfferWhereInput): BatchPayload!
@@ -456,8 +696,8 @@ interface Node {
 type Offer {
   id: ID!
   active: Boolean
-  public: Boolean
-  amount: Int
+  publicOffer: Boolean
+  amount: Int!
   createdAt: DateTime
   updatedAt: DateTime
   deletedAt: DateTime
@@ -469,8 +709,9 @@ type Offer {
   price: Int!
   name: String!
   user: User!
-  description: String
+  description: String!
   transport: String
+  gallery: Gallery!
 }
 
 type OfferConnection {
@@ -482,8 +723,8 @@ type OfferConnection {
 input OfferCreateInput {
   id: ID
   active: Boolean
-  public: Boolean
-  amount: Int
+  publicOffer: Boolean
+  amount: Int!
   deletedAt: DateTime
   email: String!
   firstName: String!
@@ -493,8 +734,9 @@ input OfferCreateInput {
   price: Int!
   name: String!
   user: UserCreateOneWithoutOffersInput!
-  description: String
+  description: String!
   transport: String
+  gallery: GalleryCreateOneInput!
 }
 
 input OfferCreateManyWithoutBeneficatorInput {
@@ -515,8 +757,8 @@ input OfferCreateOneWithoutTransactionsInput {
 input OfferCreateWithoutBeneficatorInput {
   id: ID
   active: Boolean
-  public: Boolean
-  amount: Int
+  publicOffer: Boolean
+  amount: Int!
   deletedAt: DateTime
   email: String!
   firstName: String!
@@ -525,15 +767,16 @@ input OfferCreateWithoutBeneficatorInput {
   price: Int!
   name: String!
   user: UserCreateOneWithoutOffersInput!
-  description: String
+  description: String!
   transport: String
+  gallery: GalleryCreateOneInput!
 }
 
 input OfferCreateWithoutTransactionsInput {
   id: ID
   active: Boolean
-  public: Boolean
-  amount: Int
+  publicOffer: Boolean
+  amount: Int!
   deletedAt: DateTime
   email: String!
   firstName: String!
@@ -542,15 +785,16 @@ input OfferCreateWithoutTransactionsInput {
   price: Int!
   name: String!
   user: UserCreateOneWithoutOffersInput!
-  description: String
+  description: String!
   transport: String
+  gallery: GalleryCreateOneInput!
 }
 
 input OfferCreateWithoutUserInput {
   id: ID
   active: Boolean
-  public: Boolean
-  amount: Int
+  publicOffer: Boolean
+  amount: Int!
   deletedAt: DateTime
   email: String!
   firstName: String!
@@ -559,8 +803,9 @@ input OfferCreateWithoutUserInput {
   beneficator: OrganizationCreateOneWithoutOffersInput!
   price: Int!
   name: String!
-  description: String
+  description: String!
   transport: String
+  gallery: GalleryCreateOneInput!
 }
 
 type OfferEdge {
@@ -573,8 +818,8 @@ enum OfferOrderByInput {
   id_DESC
   active_ASC
   active_DESC
-  public_ASC
-  public_DESC
+  publicOffer_ASC
+  publicOffer_DESC
   amount_ASC
   amount_DESC
   createdAt_ASC
@@ -602,8 +847,8 @@ enum OfferOrderByInput {
 type OfferPreviousValues {
   id: ID!
   active: Boolean
-  public: Boolean
-  amount: Int
+  publicOffer: Boolean
+  amount: Int!
   createdAt: DateTime
   updatedAt: DateTime
   deletedAt: DateTime
@@ -612,7 +857,7 @@ type OfferPreviousValues {
   lastName: String!
   price: Int!
   name: String!
-  description: String
+  description: String!
   transport: String
 }
 
@@ -633,8 +878,8 @@ input OfferScalarWhereInput {
   id_not_ends_with: ID
   active: Boolean
   active_not: Boolean
-  public: Boolean
-  public_not: Boolean
+  publicOffer: Boolean
+  publicOffer_not: Boolean
   amount: Int
   amount_not: Int
   amount_in: [Int!]
@@ -784,7 +1029,7 @@ input OfferSubscriptionWhereInput {
 
 input OfferUpdateInput {
   active: Boolean
-  public: Boolean
+  publicOffer: Boolean
   amount: Int
   deletedAt: DateTime
   email: String
@@ -797,11 +1042,12 @@ input OfferUpdateInput {
   user: UserUpdateOneRequiredWithoutOffersInput
   description: String
   transport: String
+  gallery: GalleryUpdateOneRequiredInput
 }
 
 input OfferUpdateManyDataInput {
   active: Boolean
-  public: Boolean
+  publicOffer: Boolean
   amount: Int
   deletedAt: DateTime
   email: String
@@ -815,7 +1061,7 @@ input OfferUpdateManyDataInput {
 
 input OfferUpdateManyMutationInput {
   active: Boolean
-  public: Boolean
+  publicOffer: Boolean
   amount: Int
   deletedAt: DateTime
   email: String
@@ -865,7 +1111,7 @@ input OfferUpdateOneRequiredWithoutTransactionsInput {
 
 input OfferUpdateWithoutBeneficatorDataInput {
   active: Boolean
-  public: Boolean
+  publicOffer: Boolean
   amount: Int
   deletedAt: DateTime
   email: String
@@ -877,11 +1123,12 @@ input OfferUpdateWithoutBeneficatorDataInput {
   user: UserUpdateOneRequiredWithoutOffersInput
   description: String
   transport: String
+  gallery: GalleryUpdateOneRequiredInput
 }
 
 input OfferUpdateWithoutTransactionsDataInput {
   active: Boolean
-  public: Boolean
+  publicOffer: Boolean
   amount: Int
   deletedAt: DateTime
   email: String
@@ -893,11 +1140,12 @@ input OfferUpdateWithoutTransactionsDataInput {
   user: UserUpdateOneRequiredWithoutOffersInput
   description: String
   transport: String
+  gallery: GalleryUpdateOneRequiredInput
 }
 
 input OfferUpdateWithoutUserDataInput {
   active: Boolean
-  public: Boolean
+  publicOffer: Boolean
   amount: Int
   deletedAt: DateTime
   email: String
@@ -909,6 +1157,7 @@ input OfferUpdateWithoutUserDataInput {
   name: String
   description: String
   transport: String
+  gallery: GalleryUpdateOneRequiredInput
 }
 
 input OfferUpdateWithWhereUniqueWithoutBeneficatorInput {
@@ -955,8 +1204,8 @@ input OfferWhereInput {
   id_not_ends_with: ID
   active: Boolean
   active_not: Boolean
-  public: Boolean
-  public_not: Boolean
+  publicOffer: Boolean
+  publicOffer_not: Boolean
   amount: Int
   amount_not: Int
   amount_in: [Int!]
@@ -1086,6 +1335,7 @@ input OfferWhereInput {
   transport_not_starts_with: String
   transport_ends_with: String
   transport_not_ends_with: String
+  gallery: GalleryWhereInput
   AND: [OfferWhereInput!]
   OR: [OfferWhereInput!]
   NOT: [OfferWhereInput!]
@@ -1416,6 +1666,9 @@ type Query {
   file(where: FileWhereUniqueInput!): File
   files(where: FileWhereInput, orderBy: FileOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [File]!
   filesConnection(where: FileWhereInput, orderBy: FileOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): FileConnection!
+  gallery(where: GalleryWhereUniqueInput!): Gallery
+  galleries(where: GalleryWhereInput, orderBy: GalleryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Gallery]!
+  galleriesConnection(where: GalleryWhereInput, orderBy: GalleryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): GalleryConnection!
   offer(where: OfferWhereUniqueInput!): Offer
   offers(where: OfferWhereInput, orderBy: OfferOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Offer]!
   offersConnection(where: OfferWhereInput, orderBy: OfferOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): OfferConnection!
@@ -1434,6 +1687,7 @@ type Query {
 type Subscription {
   adress(where: AdressSubscriptionWhereInput): AdressSubscriptionPayload
   file(where: FileSubscriptionWhereInput): FileSubscriptionPayload
+  gallery(where: GallerySubscriptionWhereInput): GallerySubscriptionPayload
   offer(where: OfferSubscriptionWhereInput): OfferSubscriptionPayload
   organization(where: OrganizationSubscriptionWhereInput): OrganizationSubscriptionPayload
   transaction(where: TransactionSubscriptionWhereInput): TransactionSubscriptionPayload

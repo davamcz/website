@@ -1,7 +1,8 @@
-import { extendType, stringArg, idArg, intArg } from 'nexus'
+import { extendType, stringArg, idArg, intArg, arg, booleanArg } from 'nexus'
 import { prismaObjectType } from 'nexus-prisma'
 import { getUserId } from '../utils'
 import { sendEmail } from '../emails'
+import { OfferValidationSchema } from '../../validation/offer'
 
 export const Offer = prismaObjectType({
   name: 'Offer',
@@ -30,24 +31,58 @@ export const OfferMutations = extendType({
       description: 'Create new Fundlamb offer',
       type: 'Offer',
       args: {
-        name: stringArg(),
-        organizationId: idArg(),
+        name: stringArg({ required: true }),
+        description: stringArg({ required: true }),
+        organizationId: idArg({ required: true }),
+        price: intArg({ required: true }),
+        amount: intArg({ required: true }),
+        transport: stringArg({ required: true }),
+        publicOffer: booleanArg({ required: true }),
         firstName: stringArg({ required: true }),
         lastName: stringArg({ required: true }),
         email: stringArg({ required: true }),
-        price: intArg({ required: true }),
-        amount: intArg({ required: true }),
+        images: idArg({ list: true, required: true }),
       },
       resolve: async (
         _,
-        { name, organizationId, firstName, lastName, email, price, amount },
+        {
+          name,
+          description,
+          organizationId,
+          price,
+          amount,
+          transport,
+          publicOffer,
+          firstName,
+          lastName,
+          email,
+          images,
+        },
         ctx
       ) => {
+
+        try {
+          await OfferValidationSchema.validate({
+            name,
+            description,
+            organizationId,
+            price,
+            amount,
+            firstName,
+            lastName,
+            email,
+            images
+          })
+        } catch(e) {
+          throw e
+        }
+
+
         let userId = getUserId(ctx)
         if (!userId) {
           const { id } = await ctx.prisma.upsertUser({
             where: {
-              email
+              email,
             },
             create: {
               firstName,
@@ -56,15 +91,15 @@ export const OfferMutations = extendType({
             },
             update: {
               firstName,
-              lastName
-            }
+              lastName,
+            },
           })
           userId = id
         } else {
           const user = await ctx.prisma.user({ id: userId })
           if (user) {
-            firstName = user.firstName
-            lastName = user.lastName
+            firstName = user.firstName || ''
+            lastName = user.lastName || ''
             email = user.email
           }
         }
@@ -72,15 +107,25 @@ export const OfferMutations = extendType({
         try {
           const createdOffer = (await ctx.prisma.createOffer({
             name,
-            firstName,
-            lastName,
-            email,
-            price,
-            amount,
+            description,
             beneficator: {
               connect: { id: organizationId },
             },
+            price,
+            amount,
+            transport,
+            publicOffer,
+            firstName,
+            lastName,
+            email,
             user: { connect: { id: userId } },
+            gallery: {
+              create: {
+                images: {
+                  connect: images.map(image => ({ id: image })),
+                },
+              },
+            },
           }).$fragment(`
             fragment createdOffer on Offer {
               id

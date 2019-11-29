@@ -2,6 +2,7 @@
   "version": 2,
   "name": "davamcz",
   "env": {
+    "WEBSITE_URL": "@website-url",
     "AIRTABLE_SECRET": "@airtable-secret",
     "PRISMA_ENDPOINT": "@prisma-endpoint",
     "PRISMA_SECRET": "@prisma-secret",
