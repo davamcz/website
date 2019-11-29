@@ -4,7 +4,7 @@ import { Container } from '../../components/Container'
 import Text from '../../components/Text'
 import Spacer from '../../components/Spacer'
 import { ButtonLink } from '../../components/ButtonLink'
-import { paymentLink } from '../../lib/paymentLink'
+// import { paymentLink } from '../../lib/paymentLink'
 
 export default () => {
   const {
@@ -37,7 +37,7 @@ export default () => {
           </Text>
           <Container row vcenter style={{ justifyContent: 'space-between' }}>
             <Text bold>{price} Kč</Text>
-            <ButtonLink href={paymentLink()} as={''}>
+            <ButtonLink href={''} as={''}>
               Darovat peníze
             </ButtonLink>
           </Container>

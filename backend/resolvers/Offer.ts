@@ -1,4 +1,4 @@
-import { extendType, stringArg, idArg, intArg, arg, booleanArg } from 'nexus'
+import { extendType, stringArg, idArg, intArg, booleanArg } from 'nexus'
 import { prismaObjectType } from 'nexus-prisma'
 import { getUserId } from '../utils'
 import { sendEmail } from '../emails'
