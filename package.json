@@ -30,7 +30,7 @@
     "cookie": "^0.3.1",
     "copy-to-clipboard": "^3.2.0",
     "formik": "^2.0.3",
-    "graphql": "14.0.2",
+    "graphql": "14.2.1",
     "graphql-middleware": "^4.0.2",
     "graphql-shield": "^7.0.2",
     "graphql-tag": "^2.10.1",
@@ -54,7 +54,7 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.7.4",
-    "@graphql-codegen/cli": "^1.7.0",
+    "@graphql-codegen/cli": "^1.9.1",
     "@graphql-codegen/introspection": "1.7.0",
     "@graphql-codegen/typescript": "^1.7.0",
     "@graphql-codegen/typescript-operations": "^1.8.3",
