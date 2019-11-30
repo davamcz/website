@@ -31,7 +31,7 @@ export const ContactForm = ({ maxWidth = '730px' }: Props) => {
         validationSchema={ContactFormValidationSchema}
         onSubmit={async (values, { setStatus }) => {
           try {
-            const res = await await fetch('/api/contact', {
+            const res = await await fetch(`${process.env.WEBSITE_URL}/api/contact`, {
               headers: {
                 'Content-Type': 'application/json',
               },
