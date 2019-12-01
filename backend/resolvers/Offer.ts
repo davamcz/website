@@ -162,7 +162,7 @@ export const OfferMutations = extendType({
                 amount,
                 offerLink,
                 imgUrl
-              },
+              }
             })
           }
 

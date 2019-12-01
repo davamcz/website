@@ -59,7 +59,7 @@ export const transactionCreatedBuyer = (data) => mjml2html(`
           <mj-column  width="70%">
             <mj-text>
               Položka: <strong>${data.product}</strong> <br />
-              Jméno dobromana: <strong>${data.sellerFirtsName} ${data.sellerLastName}</strong> <br />
+              Jméno dobromana: <strong>${data.sellerFirstName} ${data.sellerLastName}</strong> <br />
               E-mail dobromana: <strong>${data.sellerEmail}</strong> <br />
               Zpráva pro dobromana: <strong>${data.comment}</strong> <br />
               Darováno: <strong>${data.price} Kč</strong> <br />
