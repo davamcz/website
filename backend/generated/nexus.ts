@@ -844,6 +844,7 @@ export interface NexusGenArgTypes {
       logoId: string; // ID!
       name: string; // String!
       organizationId?: number | null; // Int
+      projectId: number; // Int!
       url: string; // String!
     }
     createTransaction: { // args

@@ -1,14 +1,14 @@
 import { prismaObjectType, prismaExtendType } from 'nexus-prisma'
 import { stringArg, idArg, intArg } from 'nexus'
-// import fetch from 'node-fetch'
-// import * as querystring from 'querystring'
+import fetch from 'node-fetch'
+import * as querystring from 'querystring'
 
 import {
   constants,
   isTransactionReserved,
-  // getSimplyfiedState,
+  getSimplyfiedState,
 } from '../utils'
-// import { TransactionStatus } from '../generated/prisma-client'
+import { TransactionStatus } from '../generated/prisma-client'
 
 const { PENDING, PAID } = constants.paymentStatus
 
@@ -27,10 +27,11 @@ export const TransactionQuery = prismaExtendType({
     t.field('recentTransactions', {
       type: 'Transaction',
       list: true,
-      resolve: async (_,_args , { prisma }) => {
+      resolve: async (_, _args, { prisma }) => {
         return prisma.transactions({ where: { status: 'PAID' }, last: 10 })
       },
     })
+
     t.field('getTransactionStatus', {
       type: 'Transaction',
       args: {
@@ -46,7 +47,7 @@ export const TransactionQuery = prismaExtendType({
               price
               beneficator {
                 organizationId
-                projectIds
+                projectId
                 apiId
                 apiSecret
               }
@@ -54,60 +55,61 @@ export const TransactionQuery = prismaExtendType({
           }
         `)) as any
 
-        return currentTransaction
-        //     const {
-        //       createdAt,
-        //       amount,
-        //       price,
-        //       beneficator: { organizationId, projectIds, apiId, apiSecret },
-        //     } = currentTransaction.offer
+          const {
+          createdAt,
+          amount,
+          price,
+          beneficator: { organizationId, projectId, apiId, apiSecret },
+        } = currentTransaction.offer
 
-        //     const qs = querystring.encode({
-        //       fromPledgedDate: createdAt,
-        //       projectId: projectIds[0],
-        //       apiId,
-        //       apiSecret,
-        //     })
-        //     const response = await fetch(
-        //       `https://www.darujme.cz/api/v1/organization/${organizationId}/pledges-by-filter?${qs}`,
-        //     )
-        //     const data = await response.json()
+        const qs = querystring.encode({
+          fromPledgedDate: JSON.stringify(createdAt).slice(1, 11),
+          projectId: projectId,
+          apiId,
+          apiSecret,
+        })
+        // ToDo: Adresa v configuraci.
+        const response = await fetch(
+          `https://www.darujme.cz/api/v1/organization/${organizationId}/pledges-by-filter?${qs}`,
+        )
+        const data = await response.json()
 
-        //     console.log(currentTransaction.id)
+        console.log(currentTransaction.id)
 
-        //     const pledgeResult = data.pledges.filter(pledge => {
-        //       pledge.customFields &&
-        //         pledge.customFields.tr_fundlamb_id === currentTransaction.id
-        //     })[0]
+        const pledgeResult = data.pledges.filter(pledge => {
+          console.log(pledge.customFields)
+          return pledge.customFields &&
+            pledge.customFields.transaction_id === currentTransaction.id
+        })[0]
 
-        //     console.log(pledgeResult)
-        //     if (pledgeResult === undefined) {
-        //       return prisma.transaction({ id })
-        //     }
+        console.log({ pledgeResult })
+        if (pledgeResult === undefined) {
+          throw new Error("Can't find requested pledge")
+        }
 
-        //     const transactionResult = pledgeResult.transactions[0]
-        //     if (transactionResult === undefined) {
-        //       return prisma.transaction({ id })
-        //     }
+        const transactionResult = pledgeResult.transactions[0]
+        if (transactionResult === undefined) {
+          throw new Error("Can't find requested transaction")
+        }
 
-        //     const isDonatedEnough =
-        //       price * amount * 100 > parseInt(transactionResult.sentAmount.cents)
+        const isDonatedEnough =
+          price * amount * 100 > parseInt(pledgeResult.pledgedAmount.cents)
 
-        //     return await prisma.updateTransaction({
-        //       data: {
-        //         status: getSimplyfiedState(
-        //           transactionResult.state,
-        //           isDonatedEnough,
-        //         ) as TransactionStatus,
-        //         donatedAmount: transactionResult.sentAmount.cents,
-        //       },
-        //       where: { id },
-        //     })
-        //   },
-        // })
+
+
+        return await prisma.updateTransaction({
+          data: {
+            status: getSimplyfiedState(
+              transactionResult.state,
+              isDonatedEnough,
+            ) as TransactionStatus,
+            donatedAmount: pledgeResult.pledgedAmount.cents,
+          },
+          where: { id },
+        })
       },
     })
-  },
+  }
 })
 
 export const TransactionMutation = prismaExtendType({
