@@ -4,7 +4,7 @@ export const theme: DefaultTheme = {
   sizes: {
     pageWidth: '750px',
     pageMaring: '16px',
-    pageWidthWithMaring: '1110px',
+    pageWidthWithMaring: '1142px',
     gap: 16,
     lineHeight: 24
   },
