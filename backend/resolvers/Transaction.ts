@@ -19,7 +19,7 @@ export const Transaction = prismaObjectType({
   name: 'Transaction',
   definition(t) {
     t.prismaFields({
-      pick: ['id', 'firstName', 'lastName', 'donatedAmount', 'status', 'offer'],
+      pick: ['id', 'createdAt', 'firstName', 'lastName', 'donatedAmount', 'amount', 'status', 'offer'],
     })
   },
 })

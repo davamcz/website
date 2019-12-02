@@ -1,9 +1,10 @@
 import { extendType, stringArg, idArg, intArg, booleanArg } from 'nexus'
 import { prismaObjectType } from 'nexus-prisma'
 import { vokativ } from 'vokativ'
-import { getUserId, capitalize } from '../utils'
+import { getUserId, capitalize, constants } from '../utils'
 import { sendEmail } from '../emails'
 import { OfferValidationSchema } from '../../validation/offer'
+const { PENDING, PAID } = constants.paymentStatus
  
 export const Offer = prismaObjectType({
   name: 'Offer',
@@ -17,11 +18,64 @@ export const OfferQuery = extendType({
   definition(t) {
     t.field('offers', {
       type: 'Offer',
+      args: {
+        active: booleanArg({ required: false })
+      },
       list: true,
-      resolve: async (_, {}, { prisma }) => {
-        return prisma.offers({})
+      resolve: async (_, { active }, { prisma }) => {
+        if (!active) {
+          return prisma.offers({})
+        } else {
+          const allOffers = await (prisma.offers({}).$fragment(`
+            fragment activeOffers on Offer {
+              id
+              firstName
+              lastName
+              name
+              price
+              amount
+              active
+              beneficator {
+                id
+                name
+              }
+              gallery {
+                images {
+                  key
+                }
+              }          
+              transactions {
+                amount
+                createdAt
+                status
+              }
+            }
+          `)) as any
+
+          const currentTime = new Date();
+          const filteredOffers = allOffers
+            .filter(offer => offer.active)
+            .filter(offer => {
+              return offer.transactions.length === 0 ||
+                offer.transactions
+                  .filter(transaction => {
+                    const transactionTime = new Date(transaction.createdAt)
+                    const timeDiff = (currentTime.getTime() - transactionTime.getTime()) / 1000 / 60
+                    return transaction.status === PAID ||
+                    (transaction.status === PENDING &&
+                      timeDiff <= 15
+                    )
+                  })
+                  .reduce((total, transaction) => {
+                    return total + transaction.amount
+                  }, 0) < offer.amount
+            })
+          return filteredOffers;
+        }
+        
       },
     })
+
     t.field('offer', {
       type: 'Offer',
       args: {

@@ -586,7 +586,7 @@ input OrganizationWhereUniqueInput {
 type Query {
   getTransactionStatus(id: ID!): Transaction!
   offer(id: ID!): Offer!
-  offers: [Offer!]!
+  offers(active: Boolean): [Offer!]!
   organization(where: OrganizationWhereUniqueInput!): Organization
   organizations: [Organization!]!
   recentTransactions: [Transaction!]!
@@ -594,6 +594,8 @@ type Query {
 }
 
 type Transaction {
+  amount: Int!
+  createdAt: DateTime
   donatedAmount: Int
   firstName: String!
   id: ID!
