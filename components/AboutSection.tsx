@@ -2,7 +2,7 @@ import { Container } from './Container'
 import { Title } from './Title'
 import Text from './Text'
 import Spacer from './Spacer'
-import { ButtonLink } from './ButtonLink'
+// import { ButtonLink } from './ButtonLink'
 
 export const AboutSection = () => (
   <Container row>
@@ -17,7 +17,7 @@ export const AboutSection = () => (
         tomu, kdo váš produkt koupí, a zároveň i neziskové organizaci.
       </Text>
       <Spacer />
-      <ButtonLink href="/o-nas" secondary>Více o nás</ButtonLink>
+      {/* <ButtonLink href="/o-nas" secondary>Více o nás</ButtonLink> */}
     </Container>
   </Container>
 )

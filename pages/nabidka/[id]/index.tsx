@@ -9,6 +9,7 @@ import { useRouter } from 'next/router'
 import { withApollo } from '../../../lib/apollo'
 import { useState } from 'react'
 import { AmountInput } from '../../../components/AmountInput'
+import { Image } from '../../../components/Image'
 
 export default withApollo(() => {
   const router = useRouter()
@@ -23,9 +24,17 @@ export default withApollo(() => {
 
   return (
     <>
-      <Container row>
-        <Container>Gallery</Container>
-        <Container>
+      <Container row style={{ justifyContent: 'space-between' }}>
+        <Container flex="0 0 auto">
+          {offer && (
+            <Image
+              src={`https://davamcz.imgix.net/${offer.gallery.images &&
+                offer.gallery.images[0].key}?w=505`}
+            />
+          )}
+        </Container>
+        <Container style={{ maxWidth: '475px' }}>
+          <Spacer y={2} />
           <Text h1>{offer?.name}</Text>
           <Spacer />
           <Text bold>Tento produkt daruje: {offer?.user.shortName}</Text>
@@ -38,8 +47,11 @@ export default withApollo(() => {
           <Spacer y={1.5} />
           <Container row vcenter style={{ justifyContent: 'space-between' }}>
             <Text bold>{offer?.price} Kč</Text>
-            <AmountInput amount={amount} changeAmount={setAmount}  />
-            <ButtonLink href={`/nabidka/[id]/koupit?mnozstvi=${amount}`} as={`/nabidka/${offer?.id}/koupit?mnozstvi=${amount}`}>
+            <AmountInput amount={amount} changeAmount={setAmount} />
+            <ButtonLink
+              href={`/nabidka/[id]/koupit?mnozstvi=${amount}`}
+              as={`/nabidka/${offer?.id}/koupit?mnozstvi=${amount}`}
+            >
               Darovat peníze
             </ButtonLink>
           </Container>

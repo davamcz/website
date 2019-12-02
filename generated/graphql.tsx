@@ -1053,6 +1053,12 @@ export type OffersQuery = (
     & { beneficator: (
       { __typename?: 'Organization' }
       & Pick<Organization, 'name'>
+    ), gallery: (
+      { __typename?: 'Gallery' }
+      & { images: Maybe<Array<(
+        { __typename?: 'File' }
+        & Pick<File, 'key'>
+      )>> }
     ) }
   )> }
 );
@@ -1301,6 +1307,11 @@ export const OffersDocument = gql`
     price
     beneficator {
       name
+    }
+    gallery {
+      images {
+        key
+      }
     }
   }
 }

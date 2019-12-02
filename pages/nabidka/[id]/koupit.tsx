@@ -16,6 +16,7 @@ import { Input } from '../../../components/Input'
 import { TransactionValidationSchema } from '../../../validation/transaction'
 import { TextArea } from '../../../components/TextArea'
 import { paymentLink } from '../../../lib/paymentLink'
+import { Image } from '../../../components/Image'
 
 export default withApollo(() => {
   const router = useRouter()
@@ -162,6 +163,12 @@ export default withApollo(() => {
         </Container>
         <Spacer x={5} />
         <Container flex="0 0 auto">
+        {offer && (
+            <Image
+              src={`https://davamcz.imgix.net/${offer.gallery.images &&
+                offer.gallery.images[0].key}?w=324`}
+            />
+          )}
           <Spacer />
           <Container flex="0">
             <Container row>

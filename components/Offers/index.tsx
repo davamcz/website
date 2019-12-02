@@ -12,18 +12,23 @@ export const offers = gql`
       beneficator {
         name
       }
+      gallery {
+        images {
+          key
+        }
+      }
     }
   }
 `
 
-export const Offers  = () => {
+export const Offers = () => {
   const { data, loading } = useOffersQuery()
 
   if (loading) return <div>Loading</div>
 
   return (
-    <Container row style={{ flexWrap: 'wrap', justifyContent: 'space-between'}}>
-      {data && data.offers.map((offer) => <OfferItem offer={offer} />)}
+    <Container row style={{ flexWrap: 'wrap' }}>
+      {data && data.offers.map(offer => <OfferItem offer={offer} />)}
     </Container>
   )
 }

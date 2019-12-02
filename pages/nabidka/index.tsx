@@ -3,6 +3,7 @@ import Text from '../../components/Text'
 import { Offers } from '../../components/Offers'
 import { withApollo } from '../../lib/apollo'
 import { HelpContainer } from '../../components/HelpContainer'
+import Spacer from '../../components/Spacer'
 
 export default withApollo(() => (
   <>
@@ -10,6 +11,7 @@ export default withApollo(() => (
       <Text h1 color="salmon">
         Sdílená radost. Pro vás i organizaci.
       </Text>
+      <Spacer y={2} />
       <Offers />
     </Container>
     <HelpContainer />
