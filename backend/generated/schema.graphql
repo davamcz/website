@@ -449,33 +449,6 @@ type Organization {
   url: String!
 }
 
-enum OrganizationOrderByInput {
-  active_ASC
-  active_DESC
-  apiId_ASC
-  apiId_DESC
-  apiSecret_ASC
-  apiSecret_DESC
-  createdAt_ASC
-  createdAt_DESC
-  deletedAt_ASC
-  deletedAt_DESC
-  description_ASC
-  description_DESC
-  id_ASC
-  id_DESC
-  name_ASC
-  name_DESC
-  organizationId_ASC
-  organizationId_DESC
-  projectId_ASC
-  projectId_DESC
-  updatedAt_ASC
-  updatedAt_DESC
-  url_ASC
-  url_DESC
-}
-
 input OrganizationWhereInput {
   active: Boolean
   active_not: Boolean
@@ -615,7 +588,7 @@ type Query {
   offer(id: ID!): Offer!
   offers: [Offer!]!
   organization(where: OrganizationWhereUniqueInput!): Organization
-  organizations(after: String, before: String, first: Int, last: Int, orderBy: OrganizationOrderByInput, skip: Int, where: OrganizationWhereInput): [Organization!]!
+  organizations: [Organization!]!
   recentTransactions: [Transaction!]!
   user: User!
 }
