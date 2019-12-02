@@ -61,7 +61,7 @@ export const transactionCreatedSeller = (data) => mjml2html(`
               E-mail dárce: <strong>${data.buyerEmail}</strong>
               Položka: <strong>${data.product}</strong> <br />
               Darováno: <strong>${data.price} Kč</strong> <br />
-              Příjemce finančních prostředků: <strong>${data.ngo} Kč</strong> <br />
+              Příjemce finančních prostředků: <strong>${data.ngo}</strong> <br />
               Množství: <strong>${data.amount} ks</strong> <br />
             </mj-text>
           </mj-column>

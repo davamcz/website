@@ -121,7 +121,7 @@ export const TransactionQuery = prismaExtendType({
             template: 'transactionCreatedBuyer',
             subject: `Právě jste daroval ${realDonatedAmount} Kč za ${name}`,
             data: {
-              buyerSalutation,
+              salutation: buyerSalutation,
               ngo: NGOName,
               imgUrl,
               product: name,
@@ -209,29 +209,6 @@ export const TransactionMutation = prismaExtendType({
         if (!offer || offer.active === false || !canAddRequestedAmount) {
           throw new Error("Can't create transaction")
         }
-
-        // Email for seller
-        // await sendEmail('huvikjee@gmail.com', {
-        //   template: 'transactionCreatedSeller',
-        //   subject: `Za ${offer.name} bylo právě darováno ${donatedAmount} Kč`,
-        //   data: {
-        //     beneficatorName: offer.beneficator.name,
-        //     firstName: offer.firstName,
-        //     lastName: offer.lastName,
-        //     email: offer.e,
-        //     comment,
-        //     product: offer.name,
-        //     amount,
-        //     donatedAmount
-        //   },
-        // })
-
-        // Email for buyer
-        // await sendEmail(email, {
-        //   template: 'transactionCreatedBuyer',
-        //   subject: `Právě jste daroval ${donatedAmount} Kč za ${offer.name}`,
-        //   data: {}
-        // })
 
         return await prisma.createTransaction({
           firstName,

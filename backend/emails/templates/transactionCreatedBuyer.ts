@@ -63,7 +63,7 @@ export const transactionCreatedBuyer = (data) => mjml2html(`
               E-mail dobromana: <strong>${data.sellerEmail}</strong> <br />
               Zpráva pro dobromana: <strong>${data.comment}</strong> <br />
               Darováno: <strong>${data.price} Kč</strong> <br />
-              Příjemce finančních prostředků: <strong>${data.ngo} Kč</strong> <br />
+              Příjemce finančních prostředků: <strong>${data.ngo}</strong> <br />
               Množství: <strong>${data.amount} ks</strong> <br />
             </mj-text>
           </mj-column>
