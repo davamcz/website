@@ -214,7 +214,7 @@ export const OfferMutations = extendType({
             } = createdOffer
             const salutation = capitalize(vokativ(firstName.trim()))
             const offerLink = `https://davam.cz/nabidka/${id}`
-            const imgUrl = offerImage || 'http://placekitten.com/200/200'
+            const imgUrl = offerImage || 'https://davamcz-images.s3.eu-central-1.amazonaws.com/mailing/darek.png'
             sendEmail(email, {
               template: 'linkCreated',
               subject: `Vytvoření platebního odkazu na ${name}`,
