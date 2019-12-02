@@ -21,7 +21,7 @@ export const OfferItem = ({ offer }: Props) => (
     <Spacer y={0.5} />
     <Container row vcenter style={{ justifyContent: 'space-between' }}>
       <Text bold>{offer.price} Kč</Text>
-      <ButtonLink secondary href="/catalog/[id]" as={`/katalog/${offer.id}`}>
+      <ButtonLink secondary href="/nabidka/[id]" as={`/nabidka/${offer.id}`}>
         Zjistit více
       </ButtonLink>
     </Container>

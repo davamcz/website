@@ -60,7 +60,7 @@ export default () => {
   )
 }
 
-const Step = ({
+export const Step = ({
   number,
   children,
 }: {
@@ -68,7 +68,7 @@ const Step = ({
   children: React.ReactNode
 }) => (
   <>
-    <Container style={{ maxWidth: '390px' }} row>
+    <Container style={{ maxWidth: '390px' }} row flex="0">
       <Ring>{number}</Ring>
       <Spacer />
       {children}

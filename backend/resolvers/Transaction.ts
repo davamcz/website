@@ -178,8 +178,8 @@ export const TransactionMutation = prismaExtendType({
         lastName: stringArg({ required: true }),
         email: stringArg({ required: true }),
         comment: stringArg({ required: false }),
-        amount: intArg(),
-        offerId: idArg(),
+        amount: intArg({ required: true }),
+        offerId: idArg({ required: true }),
       },
       resolve: async (
         _,

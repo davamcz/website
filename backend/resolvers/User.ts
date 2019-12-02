@@ -14,6 +14,11 @@ export const UserType = prismaObjectType({
         return `${firstName} ${lastName}`
       },
     })
+    t.string('shortName', {
+      resolve: ({ firstName, lastName }) => {
+        return `${firstName} ${lastName?.slice(0, 1)}`
+      }
+    })
   },
 })
 

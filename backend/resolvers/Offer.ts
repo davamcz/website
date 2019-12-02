@@ -22,6 +22,15 @@ export const OfferQuery = extendType({
         return prisma.offers({})
       },
     })
+    t.field('offer', {
+      type: 'Offer',
+      args: {
+        id: idArg({ required: true }),
+      },
+      resolve: async (_, { id }, { prisma }) => {
+        return prisma.offer({ id })
+      },
+    })
   },
 })
 
@@ -61,7 +70,6 @@ export const OfferMutations = extendType({
         },
         ctx
       ) => {
-
         try {
           await OfferValidationSchema.validate({
             name,
@@ -72,12 +80,11 @@ export const OfferMutations = extendType({
             firstName,
             lastName,
             email,
-            images
+            images,
           })
-        } catch(e) {
+        } catch (e) {
           throw e
         }
-
 
         let userId = getUserId(ctx)
         if (!userId) {
@@ -144,12 +151,19 @@ export const OfferMutations = extendType({
 
           if (createdOffer) {
             const {
-              id, email, name, firstName, beneficator, price, amount, offerImage
-            } = createdOffer;
-            const salutation = capitalize(vokativ(firstName.trim()));
-            const formatedPrice = parseInt(price) / 100;
-            const offerLink = `https://davam.cz/nabidka/${id}`;
-            const imgUrl = offerImage || 'http://placekitten.com/200/200';
+              id,
+              email,
+              name,
+              firstName,
+              beneficator,
+              price,
+              amount,
+              offerImage,
+            } = createdOffer
+            const salutation = capitalize(vokativ(firstName.trim()))
+            const formatedPrice = parseInt(price) / 100
+            const offerLink = `https://davam.cz/nabidka/${id}`
+            const imgUrl = offerImage || 'http://placekitten.com/200/200'
             sendEmail(email, {
               template: 'linkCreated',
               subject: `Vytvoření platebního odkazu na ${name}`,
@@ -161,8 +175,8 @@ export const OfferMutations = extendType({
                 price: formatedPrice,
                 amount,
                 offerLink,
-                imgUrl
-              }
+                imgUrl,
+              },
             })
           }
 

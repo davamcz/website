@@ -1,5 +1,5 @@
 import mjml2html from 'mjml';
-export const linkCreated = (_) => mjml2html(`
+export const linkCreated = (data) => mjml2html(`
   <mjml>
     <mj-head>
       <mj-attributes>

@@ -778,6 +778,7 @@ export interface NexusGenFieldTypes {
     user: NexusGenRootTypes['User']; // User!
   }
   Organization: { // field return type
+    apiId: number | null; // Int
     description: string; // String!
     id: string; // ID!
     logo: NexusGenRootTypes['File']; // File!
@@ -787,6 +788,7 @@ export interface NexusGenFieldTypes {
   }
   Query: { // field return type
     getTransactionStatus: NexusGenRootTypes['Transaction']; // Transaction!
+    offer: NexusGenRootTypes['Offer']; // Offer!
     offers: NexusGenRootTypes['Offer'][]; // [Offer!]!
     organization: NexusGenRootTypes['Organization'] | null; // Organization
     organizations: NexusGenRootTypes['Organization'][]; // [Organization!]!
@@ -807,6 +809,7 @@ export interface NexusGenFieldTypes {
     firstName: string | null; // String
     fullName: string; // String!
     lastName: string | null; // String
+    shortName: string; // String!
   }
 }
 
@@ -844,7 +847,6 @@ export interface NexusGenArgTypes {
       logoId: string; // ID!
       name: string; // String!
       organizationId?: number | null; // Int
-      projectId: number; // Int!
       url: string; // String!
     }
     createTransaction: { // args
@@ -901,6 +903,9 @@ export interface NexusGenArgTypes {
   }
   Query: {
     getTransactionStatus: { // args
+      id: string; // ID!
+    }
+    offer: { // args
       id: string; // ID!
     }
     organization: { // args

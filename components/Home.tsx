@@ -12,9 +12,9 @@ export const Home = () => (
     </Text>
     <Spacer />
     <Container row>
-      <ButtonLink>Chci darovat</ButtonLink>
+      <ButtonLink href="/chci-darovat">Chci darovat</ButtonLink>
       <Spacer />
-      <ButtonLink href="/katalog" secondary>Zobrazit nabídku</ButtonLink>
+      <ButtonLink href="/nabidka" secondary>Zobrazit nabídku</ButtonLink>
     </Container>
   </HomeContainer>
 )
