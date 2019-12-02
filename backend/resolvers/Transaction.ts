@@ -19,7 +19,7 @@ export const Transaction = prismaObjectType({
   name: 'Transaction',
   definition(t) {
     t.prismaFields({
-      pick: ['id', 'firstName', 'lastName', 'donatedAmount', 'status', 'offer'],
+      pick: ['id', 'createdAt', 'firstName', 'lastName', 'donatedAmount', 'amount', 'status', 'offer'],
     })
   },
 })
@@ -103,8 +103,8 @@ export const TransactionQuery = prismaExtendType({
           throw new Error("Can't find requested transaction")
         }
 
-        const realDonatedAmount = parseInt(pledgeResult.pledgedAmount.cents);
-        const isDonatedEnough = price * currentTransaction.amount * 100 <= realDonatedAmount;
+        const realDonatedAmount = parseInt(pledgeResult.pledgedAmount.cents) / 100;
+        const isDonatedEnough = price * currentTransaction.amount <= realDonatedAmount;
         const newSimplyfiedSate = getSimplyfiedState(
           transactionResult.state,
           isDonatedEnough,
@@ -119,7 +119,7 @@ export const TransactionQuery = prismaExtendType({
           // Send email to buyer
           sendEmail(currentTransaction.email, {
             template: 'transactionCreatedBuyer',
-            subject: `Právě jste daroval ${realDonatedAmount / 100} Kč za ${name}`,
+            subject: `Právě jste daroval ${realDonatedAmount} Kč za ${name}`,
             data: {
               buyerSalutation,
               ngo: NGOName,
@@ -129,7 +129,7 @@ export const TransactionQuery = prismaExtendType({
               sellerLastName: lastName,
               sellerEmail: email,
               comment: currentTransaction.comment,
-              price: realDonatedAmount / 100,
+              price: realDonatedAmount,
               amount: currentTransaction.amount
             }
           })
@@ -137,7 +137,7 @@ export const TransactionQuery = prismaExtendType({
           // Send email to seller
           sendEmail(email, {
             template: 'transactionCreatedSeller',
-            subject: `Za ${name} bylo právě darováno ${realDonatedAmount / 100} Kč`,
+            subject: `Za ${name} bylo právě darováno ${realDonatedAmount} Kč`,
             data: {
               salutation: sellerSalutation,
               ngo: NGOName,
@@ -146,7 +146,7 @@ export const TransactionQuery = prismaExtendType({
               buyerLastName: currentTransaction.lastName,
               buyerEmail: currentTransaction.email,
               product: name,
-              price: realDonatedAmount / 100,
+              price: realDonatedAmount,
               amount: currentTransaction.amount
             }
           })

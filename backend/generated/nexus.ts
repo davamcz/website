@@ -795,6 +795,8 @@ export interface NexusGenFieldTypes {
     user: NexusGenRootTypes['User']; // User!
   }
   Transaction: { // field return type
+    amount: number; // Int!
+    createdAt: any | null; // DateTime
     donatedAmount: number | null; // Int
     firstName: string; // String!
     id: string; // ID!
@@ -906,6 +908,9 @@ export interface NexusGenArgTypes {
     }
     offer: { // args
       id: string; // ID!
+    }
+    offers: { // args
+      active?: boolean | null; // Boolean
     }
     organization: { // args
       where: NexusGenInputs['OrganizationWhereUniqueInput']; // OrganizationWhereUniqueInput!
