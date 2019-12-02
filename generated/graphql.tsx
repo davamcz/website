@@ -276,9 +276,9 @@ export type MutationCreateOfferArgs = {
 
 
 export type MutationCreateOrganizationArgs = {
-  apiId?: Maybe<Scalars['Int']>,
-  apiSecret?: Maybe<Scalars['String']>,
-  organizationId?: Maybe<Scalars['Int']>,
+  apiId: Scalars['Int'],
+  apiSecret: Scalars['String'],
+  organizationId: Scalars['Int'],
   active?: Maybe<Scalars['Boolean']>,
   name: Scalars['String'],
   logoId: Scalars['ID'],
@@ -552,6 +552,7 @@ export type Organization = {
   description: Scalars['String'],
   url: Scalars['String'],
   apiId?: Maybe<Scalars['Int']>,
+  projectId?: Maybe<Scalars['Int']>,
 };
 
 
@@ -1101,7 +1102,7 @@ export type CreateTransactionMutation = (
       { __typename?: 'Offer' }
       & { beneficator: (
         { __typename?: 'Organization' }
-        & Pick<Organization, 'apiId'>
+        & Pick<Organization, 'projectId'>
       ) }
     ) }
   ) }
@@ -1145,7 +1146,8 @@ export type GetUserQuery = (
 );
 
 export type UploadFileMutationVariables = {
-  file: Scalars['Upload']
+  file: Scalars['Upload'],
+  directory?: Maybe<Scalars['String']>
 };
 
 
@@ -1154,6 +1156,25 @@ export type UploadFileMutation = (
   & { uploadFile: (
     { __typename?: 'File' }
     & Pick<File, 'id' | 'fileName' | 'key'>
+  ) }
+);
+
+export type CreateOrganizationMutationVariables = {
+  name: Scalars['String'],
+  description: Scalars['String'],
+  url: Scalars['String'],
+  logoId: Scalars['ID'],
+  apiId: Scalars['Int'],
+  apiSecret: Scalars['String'],
+  organizationId: Scalars['Int']
+};
+
+
+export type CreateOrganizationMutation = (
+  { __typename?: 'Mutation' }
+  & { createOrganization: (
+    { __typename?: 'Organization' }
+    & Pick<Organization, 'name'>
   ) }
 );
 
@@ -1386,7 +1407,7 @@ export const CreateTransactionDocument = gql`
     id
     offer {
       beneficator {
-        apiId
+        projectId
       }
     }
   }
@@ -1503,8 +1524,8 @@ export type GetUserQueryHookResult = ReturnType<typeof useGetUserQuery>;
 export type GetUserLazyQueryHookResult = ReturnType<typeof useGetUserLazyQuery>;
 export type GetUserQueryResult = ApolloReactCommon.QueryResult<GetUserQuery, GetUserQueryVariables>;
 export const UploadFileDocument = gql`
-    mutation uploadFile($file: Upload!) {
-  uploadFile(file: $file) {
+    mutation uploadFile($file: Upload!, $directory: String) {
+  uploadFile(file: $file, directory: $directory) {
     id
     fileName
     key
@@ -1527,6 +1548,7 @@ export type UploadFileMutationFn = ApolloReactCommon.MutationFunction<UploadFile
  * const [uploadFileMutation, { data, loading, error }] = useUploadFileMutation({
  *   variables: {
  *      file: // value for 'file'
+ *      directory: // value for 'directory'
  *   },
  * });
  */
@@ -1536,6 +1558,44 @@ export function useUploadFileMutation(baseOptions?: ApolloReactHooks.MutationHoo
 export type UploadFileMutationHookResult = ReturnType<typeof useUploadFileMutation>;
 export type UploadFileMutationResult = ApolloReactCommon.MutationResult<UploadFileMutation>;
 export type UploadFileMutationOptions = ApolloReactCommon.BaseMutationOptions<UploadFileMutation, UploadFileMutationVariables>;
+export const CreateOrganizationDocument = gql`
+    mutation createOrganization($name: String!, $description: String!, $url: String!, $logoId: ID!, $apiId: Int!, $apiSecret: String!, $organizationId: Int!) {
+  createOrganization(name: $name, description: $description, url: $url, logoId: $logoId, active: true, apiId: $apiId, apiSecret: $apiSecret, organizationId: $organizationId) {
+    name
+  }
+}
+    `;
+export type CreateOrganizationMutationFn = ApolloReactCommon.MutationFunction<CreateOrganizationMutation, CreateOrganizationMutationVariables>;
+
+/**
+ * __useCreateOrganizationMutation__
+ *
+ * To run a mutation, you first call `useCreateOrganizationMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateOrganizationMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createOrganizationMutation, { data, loading, error }] = useCreateOrganizationMutation({
+ *   variables: {
+ *      name: // value for 'name'
+ *      description: // value for 'description'
+ *      url: // value for 'url'
+ *      logoId: // value for 'logoId'
+ *      apiId: // value for 'apiId'
+ *      apiSecret: // value for 'apiSecret'
+ *      organizationId: // value for 'organizationId'
+ *   },
+ * });
+ */
+export function useCreateOrganizationMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<CreateOrganizationMutation, CreateOrganizationMutationVariables>) {
+        return ApolloReactHooks.useMutation<CreateOrganizationMutation, CreateOrganizationMutationVariables>(CreateOrganizationDocument, baseOptions);
+      }
+export type CreateOrganizationMutationHookResult = ReturnType<typeof useCreateOrganizationMutation>;
+export type CreateOrganizationMutationResult = ApolloReactCommon.MutationResult<CreateOrganizationMutation>;
+export type CreateOrganizationMutationOptions = ApolloReactCommon.BaseMutationOptions<CreateOrganizationMutation, CreateOrganizationMutationVariables>;
 export const CreateOfferDocument = gql`
     mutation createOffer($name: String!, $description: String!, $organizationId: ID!, $price: Int!, $amount: Int!, $transport: String!, $publicOffer: Boolean!, $firstName: String!, $lastName: String!, $email: String!, $images: [ID!]!) {
   createOffer(name: $name, description: $description, organizationId: $organizationId, price: $price, amount: $amount, transport: $transport, publicOffer: $publicOffer, firstName: $firstName, lastName: $lastName, email: $email, images: $images) {

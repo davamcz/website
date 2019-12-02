@@ -8,8 +8,8 @@ import { Container } from '../components/Container'
 import Spacer from '../components/Spacer'
 
 export const uploadFile = gql`
-  mutation uploadFile($file: Upload!) {
-    uploadFile(file: $file) {
+  mutation uploadFile($file: Upload!, $directory: String) {
+    uploadFile(file: $file, directory: $directory) {
       id
       fileName
       key
@@ -17,7 +17,10 @@ export const uploadFile = gql`
   }
 `
 
-export const useUpload = (multiple: boolean = false) => {
+export const useUpload = (
+  multiple: boolean = false,
+  directory: string | undefined = undefined
+) => {
   const [uploadFile] = useUploadFileMutation()
   const [uploadFiles, setUploadFiles] = useState<File[] | File | undefined>(
     multiple ? [] : undefined
@@ -25,13 +28,14 @@ export const useUpload = (multiple: boolean = false) => {
 
   const onDrop = useCallback(
     async acceptedFiles => {
-      
-      const files = await Promise.all(acceptedFiles.map(async file => {
-        const { data } = await uploadFile({ variables: { file } })
-        return data?.uploadFile
-      }) as File[])
+      const files = await Promise.all(
+        acceptedFiles.map(async file => {
+          const { data } = await uploadFile({ variables: { file, directory } })
+          return data?.uploadFile
+        }) as File[]
+      )
 
-      setUploadFiles(files)
+      setUploadFiles(multiple ? files : files[0])
     },
     [uploadFiles, setUploadFiles, uploadFile]
   )

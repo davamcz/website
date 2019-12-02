@@ -20,7 +20,7 @@ export const createTransaction = gql`
       id
       offer {
         beneficator {
-          apiId
+          projectId
         }
       }
     }

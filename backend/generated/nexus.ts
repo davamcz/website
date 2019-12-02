@@ -784,6 +784,7 @@ export interface NexusGenFieldTypes {
     logo: NexusGenRootTypes['File']; // File!
     name: string; // String!
     offers: NexusGenRootTypes['Offer'][] | null; // [Offer!]
+    projectId: number | null; // Int
     url: string; // String!
   }
   Query: { // field return type
@@ -841,12 +842,12 @@ export interface NexusGenArgTypes {
     }
     createOrganization: { // args
       active?: boolean | null; // Boolean
-      apiId?: number | null; // Int
-      apiSecret?: string | null; // String
+      apiId: number; // Int!
+      apiSecret: string; // String!
       description: string; // String!
       logoId: string; // ID!
       name: string; // String!
-      organizationId?: number | null; // Int
+      organizationId: number; // Int!
       url: string; // String!
     }
     createTransaction: { // args

@@ -5,7 +5,7 @@ export const Organization = prismaObjectType({
   name: 'Organization',
   definition(t) {
     t.prismaFields({
-      pick: ['id', 'name', 'logo', 'offers', 'description', 'url', 'apiId'],
+      pick: ['id', 'name', 'logo', 'offers', 'description', 'url', 'apiId', 'projectId'],
     })
   },
 })
@@ -23,9 +23,9 @@ export const OrganizationMutation = prismaExtendType({
     t.field('createOrganization', {
       type: 'Organization',
       args: {
-        apiId: intArg({ required: false }),
-        apiSecret: stringArg({ required: false }),
-        organizationId: intArg({ required: false }),
+        apiId: intArg({ required: true }),
+        apiSecret: stringArg({ required: true }),
+        organizationId: intArg({ required: true }),
         active: booleanArg({ required: false }),
         name: stringArg({ required: true }),
         logoId: idArg({ required: true }),

@@ -64,7 +64,7 @@ export default withApollo(() => {
                     lastName: values.lastName,
                     email: values.email,
                     amount: 1,
-                    projectId: data.createTransaction.offer.beneficator.apiId as number,
+                    projectId: data.createTransaction.offer.beneficator.projectId as number,
                     transactionId: data.createTransaction.id
                   })
                   window.location.href = link
