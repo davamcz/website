@@ -4,8 +4,8 @@ import { OfferItem } from './Offer'
 import { Container } from '../Container'
 
 export const offers = gql`
-  query offers {
-    offers {
+  query offers($active: Boolean) {
+    offers(active: $active) {
       id
       name
       price
@@ -22,7 +22,7 @@ export const offers = gql`
 `
 
 export const Offers = () => {
-  const { data, loading } = useOffersQuery()
+  const { data, loading } = useOffersQuery({ variables: { active: true } })
 
   if (loading) return <div>Loading</div>
 

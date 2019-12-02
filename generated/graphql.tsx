@@ -566,33 +566,6 @@ export type OrganizationOffersArgs = {
   last?: Maybe<Scalars['Int']>
 };
 
-export enum OrganizationOrderByInput {
-  IdAsc = 'id_ASC',
-  IdDesc = 'id_DESC',
-  ApiIdAsc = 'apiId_ASC',
-  ApiIdDesc = 'apiId_DESC',
-  ApiSecretAsc = 'apiSecret_ASC',
-  ApiSecretDesc = 'apiSecret_DESC',
-  OrganizationIdAsc = 'organizationId_ASC',
-  OrganizationIdDesc = 'organizationId_DESC',
-  ActiveAsc = 'active_ASC',
-  ActiveDesc = 'active_DESC',
-  CreatedAtAsc = 'createdAt_ASC',
-  CreatedAtDesc = 'createdAt_DESC',
-  UpdatedAtAsc = 'updatedAt_ASC',
-  UpdatedAtDesc = 'updatedAt_DESC',
-  DeletedAtAsc = 'deletedAt_ASC',
-  DeletedAtDesc = 'deletedAt_DESC',
-  NameAsc = 'name_ASC',
-  NameDesc = 'name_DESC',
-  ProjectIdAsc = 'projectId_ASC',
-  ProjectIdDesc = 'projectId_DESC',
-  DescriptionAsc = 'description_ASC',
-  DescriptionDesc = 'description_DESC',
-  UrlAsc = 'url_ASC',
-  UrlDesc = 'url_DESC'
-}
-
 export type OrganizationWhereInput = {
   id?: Maybe<Scalars['ID']>,
   id_not?: Maybe<Scalars['ID']>,
@@ -739,6 +712,11 @@ export type Query = {
 };
 
 
+export type QueryOffersArgs = {
+  active?: Maybe<Scalars['Boolean']>
+};
+
+
 export type QueryOfferArgs = {
   id: Scalars['ID']
 };
@@ -749,17 +727,6 @@ export type QueryOrganizationArgs = {
 };
 
 
-export type QueryOrganizationsArgs = {
-  where?: Maybe<OrganizationWhereInput>,
-  orderBy?: Maybe<OrganizationOrderByInput>,
-  skip?: Maybe<Scalars['Int']>,
-  after?: Maybe<Scalars['String']>,
-  before?: Maybe<Scalars['String']>,
-  first?: Maybe<Scalars['Int']>,
-  last?: Maybe<Scalars['Int']>
-};
-
-
 export type QueryGetTransactionStatusArgs = {
   id: Scalars['ID']
 };
@@ -767,9 +734,11 @@ export type QueryGetTransactionStatusArgs = {
 export type Transaction = {
    __typename?: 'Transaction',
   id: Scalars['ID'],
+  createdAt?: Maybe<Scalars['DateTime']>,
   firstName: Scalars['String'],
   lastName: Scalars['String'],
   donatedAmount?: Maybe<Scalars['Int']>,
+  amount: Scalars['Int'],
   status: TransactionStatus,
   offer: Offer,
 };
@@ -1042,7 +1011,9 @@ export type UserQuery = (
   ) }
 );
 
-export type OffersQueryVariables = {};
+export type OffersQueryVariables = {
+  active?: Maybe<Scalars['Boolean']>
+};
 
 
 export type OffersQuery = (
@@ -1300,8 +1271,8 @@ export type UserQueryHookResult = ReturnType<typeof useUserQuery>;
 export type UserLazyQueryHookResult = ReturnType<typeof useUserLazyQuery>;
 export type UserQueryResult = ApolloReactCommon.QueryResult<UserQuery, UserQueryVariables>;
 export const OffersDocument = gql`
-    query offers {
-  offers {
+    query offers($active: Boolean) {
+  offers(active: $active) {
     id
     name
     price
@@ -1329,6 +1300,7 @@ export const OffersDocument = gql`
  * @example
  * const { data, loading, error } = useOffersQuery({
  *   variables: {
+ *      active: // value for 'active'
  *   },
  * });
  */
