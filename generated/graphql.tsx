@@ -261,7 +261,7 @@ export type Mutation = {
 
 
 export type MutationCreateOfferArgs = {
-  name: Scalars['String'],
+  offerName: Scalars['String'],
   description: Scalars['String'],
   organizationId: Scalars['ID'],
   price: Scalars['Int'],
@@ -1185,7 +1185,7 @@ export type CreateOrganizationMutation = (
 );
 
 export type CreateOfferMutationVariables = {
-  name: Scalars['String'],
+  offerName: Scalars['String'],
   description: Scalars['String'],
   organizationId: Scalars['ID'],
   price: Scalars['Int'],
@@ -1608,8 +1608,8 @@ export type CreateOrganizationMutationHookResult = ReturnType<typeof useCreateOr
 export type CreateOrganizationMutationResult = ApolloReactCommon.MutationResult<CreateOrganizationMutation>;
 export type CreateOrganizationMutationOptions = ApolloReactCommon.BaseMutationOptions<CreateOrganizationMutation, CreateOrganizationMutationVariables>;
 export const CreateOfferDocument = gql`
-    mutation createOffer($name: String!, $description: String!, $organizationId: ID!, $price: Int!, $amount: Int!, $transport: String!, $publicOffer: Boolean!, $firstName: String!, $lastName: String!, $email: String!, $images: [ID!]!) {
-  createOffer(name: $name, description: $description, organizationId: $organizationId, price: $price, amount: $amount, transport: $transport, publicOffer: $publicOffer, firstName: $firstName, lastName: $lastName, email: $email, images: $images) {
+    mutation createOffer($offerName: String!, $description: String!, $organizationId: ID!, $price: Int!, $amount: Int!, $transport: String!, $publicOffer: Boolean!, $firstName: String!, $lastName: String!, $email: String!, $images: [ID!]!) {
+  createOffer(offerName: $offerName, description: $description, organizationId: $organizationId, price: $price, amount: $amount, transport: $transport, publicOffer: $publicOffer, firstName: $firstName, lastName: $lastName, email: $email, images: $images) {
     id
   }
 }
@@ -1629,7 +1629,7 @@ export type CreateOfferMutationFn = ApolloReactCommon.MutationFunction<CreateOff
  * @example
  * const [createOfferMutation, { data, loading, error }] = useCreateOfferMutation({
  *   variables: {
- *      name: // value for 'name'
+ *      offerName: // value for 'offerName'
  *      description: // value for 'description'
  *      organizationId: // value for 'organizationId'
  *      price: // value for 'price'

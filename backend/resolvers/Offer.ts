@@ -41,7 +41,7 @@ export const OfferMutations = extendType({
       description: 'Create new Fundlamb offer',
       type: 'Offer',
       args: {
-        name: stringArg({ required: true }),
+        offerName: stringArg({ required: true }),
         description: stringArg({ required: true }),
         organizationId: idArg({ required: true }),
         price: intArg({ required: true }),
@@ -56,7 +56,7 @@ export const OfferMutations = extendType({
       resolve: async (
         _,
         {
-          name,
+          offerName,
           description,
           organizationId,
           price,
@@ -72,7 +72,7 @@ export const OfferMutations = extendType({
       ) => {
         try {
           await OfferValidationSchema.validate({
-            name,
+            offerName,
             description,
             organizationId,
             price,
@@ -114,7 +114,7 @@ export const OfferMutations = extendType({
 
         try {
           const createdOffer = (await ctx.prisma.createOffer({
-            name,
+            name: offerName,
             description,
             beneficator: {
               connect: { id: organizationId },

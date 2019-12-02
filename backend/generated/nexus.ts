@@ -834,7 +834,7 @@ export interface NexusGenArgTypes {
       firstName: string; // String!
       images: string[]; // [ID!]!
       lastName: string; // String!
-      name: string; // String!
+      offerName: string; // String!
       organizationId: string; // ID!
       price: number; // Int!
       publicOffer: boolean; // Boolean!

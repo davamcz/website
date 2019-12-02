@@ -21,7 +21,7 @@ import { useRouter } from 'next/router'
 
 export const createOffer = gql`
   mutation createOffer(
-    $name: String!
+    $offerName: String!
     $description: String!
     $organizationId: ID!
     $price: Int!
@@ -34,7 +34,7 @@ export const createOffer = gql`
     $images: [ID!]!
   ) {
     createOffer(
-      name: $name
+      offerName: $offerName
       description: $description
       organizationId: $organizationId
       price: $price
@@ -91,36 +91,13 @@ export default withApollo(() => {
               publicOffer: true,
             }}
             validationSchema={OfferValidationSchema}
-            onSubmit={async (
-              {
-                offerName,
-                organizationId,
-                description,
-                transport,
-                amount,
-                price,
-                publicOffer,
-                firstName,
-                lastName,
-                email,
-              },
-              { setStatus }
-            ) => {
+            onSubmit={async (values, { setStatus }) => {
               if (Array.isArray(files) && files.length > 0) {
                 try {
                   const fileIds = files.map(file => file.id)
                   const { data } = await createOfferMutation({
                     variables: {
-                      name: offerName,
-                      description,
-                      organizationId,
-                      transport,
-                      amount,
-                      price,
-                      publicOffer,
-                      firstName,
-                      lastName,
-                      email,
+                      ...values,
                       images: fileIds,
                     },
                   })

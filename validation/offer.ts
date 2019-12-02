@@ -3,7 +3,7 @@ import { UserSchemaValidation } from './user'
 
 export const OfferValidationSchema = object()
   .shape({
-    name: string()
+    offerName: string()
       .min(4, 'Název nabídky je příliš krátký')
       .max(64, 'Název nabídky je příliš dlouhý')
       .required('Název nabídky je povinný'),
