@@ -3,6 +3,7 @@ import { Link } from './Link'
 import { Facebook } from './Icons/Facebook'
 import Spacer from './Spacer'
 import { Twitter } from './Icons/Twitter'
+import { Instagram } from './Icons/Instagram'
 
 export const SocialLinks = () => (
   <Container row flex="0 0 auto">
@@ -17,6 +18,15 @@ export const SocialLinks = () => (
       target="_blank"
     >
       <Twitter />
+    </Link>
+    <Spacer x={0.5} />
+    <Link
+      external
+      href="https://www.instagram.com/davam.cz/"
+      title="Davamcz Instagram"
+      target="_blank"
+    >
+      <Instagram />
     </Link>
   </Container>
 )

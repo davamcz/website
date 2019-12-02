@@ -28,6 +28,7 @@ export const Link: React.FC<Props> = ({
         title={title}
         underline={underline}
         target={target}
+        href={href}
       >
         {children}
       </StyledLink>
