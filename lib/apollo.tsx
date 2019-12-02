@@ -153,7 +153,7 @@ function createApolloClient(initialState = {}, { getToken }: any) {
   const httpLink = createUploadLink({
     uri:
       process.env.NODE_ENV === 'production'
-        ? 'https://davamcz.now.sh/api/graphql'
+        ? `${process.env.WEBSITE_URL}/api/graphql`
         : 'http://localhost:3000/api/graphql', // Server URL (must be absolute)
     credentials: 'same-origin',
     fetch,

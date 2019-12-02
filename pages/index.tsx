@@ -6,21 +6,26 @@ import { HelpContainer } from '../components/HelpContainer'
 import { OrganizationsContainer } from '../components/OrganizationsContainer'
 import { AboutSection } from '../components/AboutSection'
 import Spacer from '../components/Spacer'
+import Stats from '../components/Stats'
+import { Section } from '../components/Section'
 
 const IndexPage = () => {
   return (
-    <div> 
-      <Home />
-      <Spacer />
-      <Steps />
-      <Spacer />
+    <>
+      <Section>
+        <Home />
+        <Spacer />
+        <Steps />
+        <Spacer />
+        <Stats />
+      </Section>
       <HelpContainer />
       <Spacer />
       <OrganizationsContainer />
       <Spacer y={2} />
       <AboutSection />
       <Spacer y={4} />
-    </div>
+    </>
   )
 }
 

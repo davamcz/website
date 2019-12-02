@@ -26,10 +26,11 @@ const Block = styled.div`
   width: 100%;
   text-align: center;
   padding-top: 24px;
-  box-shadow: 0 20px 60px 0 rgba(0, 0, 0, 0.1);
+  background: ${({ theme })=> theme.colors.white};
+  box-shadow: ${({ theme }) => theme.shadow.box};
 `
 
-const Rectangle = styled.div`
+export const Rectangle = styled.div`
   width: 24px;
   height: 7px;
   background: ${({ theme }) => theme.colors.salmon};
