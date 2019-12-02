@@ -13,7 +13,15 @@ export const Organization = prismaObjectType({
 export const OrganizationQuery = prismaExtendType({
   type: 'Query',
   definition(t) {
-    t.prismaFields(['organization', 'organizations'])
+    t.prismaFields(['organization'])
+
+    t.field('organizations', {
+      type: 'Organization',
+      list: true,
+      resolve: async (_, {}, { prisma }) => {
+        return prisma.organizations({ where: { active: true } }) as any;
+      }
+    })
   },
 })
 
