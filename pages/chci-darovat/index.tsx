@@ -79,7 +79,7 @@ export default withApollo(() => {
 
           <Formik
             initialValues={{
-              name: '',
+              offerName: '',
               description: '',
               organizationId: 'no-organization',
               price: 1,
@@ -91,13 +91,36 @@ export default withApollo(() => {
               publicOffer: true,
             }}
             validationSchema={OfferValidationSchema}
-            onSubmit={async (values, { setStatus }) => {
+            onSubmit={async (
+              {
+                offerName,
+                organizationId,
+                description,
+                transport,
+                amount,
+                price,
+                publicOffer,
+                firstName,
+                lastName,
+                email,
+              },
+              { setStatus }
+            ) => {
               if (Array.isArray(files) && files.length > 0) {
                 try {
                   const fileIds = files.map(file => file.id)
                   const { data } = await createOfferMutation({
                     variables: {
-                      ...values,
+                      name: offerName,
+                      description,
+                      organizationId,
+                      transport,
+                      amount,
+                      price,
+                      publicOffer,
+                      firstName,
+                      lastName,
+                      email,
                       images: fileIds,
                     },
                   })
@@ -131,11 +154,11 @@ export default withApollo(() => {
               <Form onSubmit={handleSubmit}>
                 <Input
                   label="Název nabídky"
-                  name="name"
-                  value={values.name}
+                  name="offerName"
+                  value={values.offerName}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  error={errors.name}
+                  error={errors.offerName}
                 />
                 <Spacer />
                 <TextArea

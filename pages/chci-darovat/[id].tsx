@@ -26,7 +26,7 @@ export default () => {
           Vaši nabídku naleznete zde
         </Text>
         <Spacer y={0.5} />
-        <CopyBlock url={`${process.env.WEBSITE_URL}/katalog/${router.query.id}`} />
+        <CopyBlock url={`${process.env.WEBSITE_URL}/nabidka/${router.query.id}`} />
         <Spacer />
         <Text h4>Co bude následovat?</Text>
         <Spacer y={1.5} />
