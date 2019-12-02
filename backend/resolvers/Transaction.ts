@@ -115,7 +115,7 @@ export const TransactionQuery = prismaExtendType({
           const buyerSalutation = capitalize(vokativ(currentTransaction.firstName.trim()));
           const sellerSalutation = capitalize(vokativ(firstName.trim()));
           // TODO: get real image
-          const imgUrl = 'http://placekitten.com/200/200';
+          const imgUrl = 'https://davamcz-images.s3.eu-central-1.amazonaws.com/mailing/darek.png';
           // Send email to buyer
           sendEmail(currentTransaction.email, {
             template: 'transactionCreatedBuyer',
