@@ -4,7 +4,7 @@ import { vokativ } from 'vokativ'
 import { getUserId, capitalize } from '../utils'
 import { sendEmail } from '../emails'
 import { OfferValidationSchema } from '../../validation/offer'
-
+ 
 export const Offer = prismaObjectType({
   name: 'Offer',
   definition(t) {
