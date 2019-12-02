@@ -2,13 +2,16 @@ import { Container } from './Container'
 import { Title } from './Title'
 import Text from './Text'
 import Spacer from './Spacer'
+import { Image } from './Image'
 // import { ButtonLink } from './ButtonLink'
 
 export const AboutSection = () => (
   <Container row>
-    <Container><img src="" /></Container>
-    <Container>
+    <Container><Image src="/davam-tym.jpg" /></Container>
+    <Spacer x={2} />
+    <Container center>
       <Title description="O nás">Proč to děláme a kdo jsme?</Title>
+      <Spacer y={1.5} />
       <Text>
         Jsme parta lidí, která se vytvořením této platformy rozhodla podpořit
         neziskový sektor. Zjednodušit propojení dárce s dobročinnými

@@ -10,7 +10,7 @@ export const Steps = () => (
       </Title>
     </Container>
 
-    <Container style={{ paddingTop: '48px', paddingBottom: '48px' }} row>
+    <Container style={{ paddingTop: '48px', paddingBottom: '48px', justifyContent: 'space-between' }} row>
       <Step title="Krok č. 1" description="Nejprve si vyberte, kterou dobročinnou organizaci chcete podpořit."></Step>
       <Step title="Krok č. 2" description="Vytvořte nabídku s vaší darovanou věcí. My vám vygenerujeme platební odkaz."></Step>
       <Step title="Krok č. 3" description="Nyní můžete svůj inzerát zveřejnit a sdílet se všemi, ke kterým chcete, aby se nabídka dostala."></Step>

@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const Title = ({ children, description }: Props) => (
-  <Container>
+  <Container flex="0 0 auto">
     <Text uppercase color="orange" span>{description}</Text>
     <Spacer />
     <Text h1 as="h2" color="darkGrey">{children}</Text>

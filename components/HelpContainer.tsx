@@ -18,7 +18,7 @@ export const HelpContainer = () => (
       <Spacer />
       <Text>Každý, kdo se zapojí, rozdává radost.</Text>
       <Spacer />
-      <ButtonLink href="/kontakt">Přejít k formuláři</ButtonLink>
+      <ButtonLink href="/chci-darovat">Přejít k formuláři</ButtonLink>
       <Spacer y={4} />
     </Container>
   </Section>

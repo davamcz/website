@@ -17,8 +17,9 @@ const IndexPage = () => {
       <HelpContainer />
       <Spacer />
       <OrganizationsContainer />
-      <Spacer />
+      <Spacer y={2} />
       <AboutSection />
+      <Spacer y={4} />
     </div>
   )
 }
