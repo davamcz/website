@@ -28,8 +28,8 @@ export default withApollo(() => {
 
   const offer = data?.offer
   const user = userData?.user
-  const queryAmount = parseInt(router.query.mnozstvi as string) || 1
-  const amount = queryAmount  * (offer?.price as number)
+  const amount = parseInt(router.query.mnozstvi as string) || 1
+  const price = amount  * (offer?.price as number)
 
   return (
     <Section>
@@ -65,7 +65,7 @@ export default withApollo(() => {
                     firstName: values.firstName,
                     lastName: values.lastName,
                     email: values.email,
-                    amount,
+                    amount: price,
                     projectId: data.createTransaction.offer.beneficator.projectId as number,
                     transactionId: data.createTransaction.id
                   })
@@ -181,7 +181,7 @@ export default withApollo(() => {
             </Container>
             <Container row>
               Kolik přispějete:&nbsp;
-              <Text bold>{amount}</Text>
+              <Text bold>{price}</Text>
             </Container>
             <Container row>
               Tento produkt daruje:&nbsp;

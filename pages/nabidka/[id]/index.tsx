@@ -46,8 +46,12 @@ export default withApollo(() => {
           </Text>
           <Spacer y={1.5} />
           <Container row vcenter style={{ justifyContent: 'space-between' }}>
-            <Text bold>{offer?.price} Kč</Text>
-            <AmountInput amount={amount} changeAmount={setAmount} />
+            <Text bold>{(offer?.price as number) * amount} Kč</Text>
+            <Container row center>
+              <AmountInput amount={amount} changeAmount={setAmount} />
+              <Spacer />
+              <Text bold>ks</Text>
+            </Container>
             <ButtonLink
               href={`/nabidka/[id]/koupit?mnozstvi=${amount}`}
               as={`/nabidka/${offer?.id}/koupit?mnozstvi=${amount}`}
