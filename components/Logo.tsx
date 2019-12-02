@@ -10,8 +10,9 @@ export const Logo = () => (
 const LogoText = styled.a`
   display: block;
   width: 140px;
-  height: 44px;
+  height: 60px;
   background: url('/logo.svg');
+  background-repeat: no-repeat;
   background-size: 100%;
   text-indent: -9999px;
 `
