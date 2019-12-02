@@ -28,7 +28,7 @@ export const OfferQuery = extendType({
         id: idArg({ required: true }),
       },
       resolve: async (_, { id }, { prisma }) => {
-        return prisma.offer({ id })
+        return prisma.offer({ id }) as any
       },
     })
   },
