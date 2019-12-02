@@ -60,11 +60,9 @@ export default withApollo(() => {
             onSubmit={async (values, {resetForm}) => {
               try {
                 if (logo) {
-                  console.log(logo)
-                  const { data } = await createOrganization({
+                   await createOrganization({
                     variables: { ...values, logoId: logo.id },
                   })
-                  console.log(data)
                   resetForm()
                 }
               } catch (e) {

@@ -43,32 +43,34 @@ export const OrganizationMutation = prismaExtendType({
       resolve: async (
         _,
         {
-          apiId,
-          apiSecret,
-          organizationId,
-          // active,
-          name,
-          logoId,
-          description,
-          url,
+          // apiId,
+          // apiSecret,
+          // organizationId,
+          // // active,
+          // name,
+          // logoId,
+          // description,
+          // url,
         },
-        ctx
+        _ctx
       ) => {
-        return ctx.prisma.createOrganization({
-          apiId,
-          apiSecret,
-          organizationId,
-          active: true,
-          name,
-          logo: {
-            connect: {
-              id: logoId,
-            },
-          },
-          description,
-          url,
-        })
-      },
+        return null as any
+      //   return ctx.prisma.createOrganization({
+      //     apiId,
+      //     apiSecret,
+      //     organizationId,
+      //     active: true,
+      //     name,
+      //     logo: {
+      //       connect: {
+      //         id: logoId,
+      //       },
+      //     },
+      //     description,
+      //     url,
+      //   })
+      // },
+      }
     })
   },
 })

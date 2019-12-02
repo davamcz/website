@@ -566,33 +566,6 @@ export type OrganizationOffersArgs = {
   last?: Maybe<Scalars['Int']>
 };
 
-export enum OrganizationOrderByInput {
-  IdAsc = 'id_ASC',
-  IdDesc = 'id_DESC',
-  ApiIdAsc = 'apiId_ASC',
-  ApiIdDesc = 'apiId_DESC',
-  ApiSecretAsc = 'apiSecret_ASC',
-  ApiSecretDesc = 'apiSecret_DESC',
-  OrganizationIdAsc = 'organizationId_ASC',
-  OrganizationIdDesc = 'organizationId_DESC',
-  ActiveAsc = 'active_ASC',
-  ActiveDesc = 'active_DESC',
-  CreatedAtAsc = 'createdAt_ASC',
-  CreatedAtDesc = 'createdAt_DESC',
-  UpdatedAtAsc = 'updatedAt_ASC',
-  UpdatedAtDesc = 'updatedAt_DESC',
-  DeletedAtAsc = 'deletedAt_ASC',
-  DeletedAtDesc = 'deletedAt_DESC',
-  NameAsc = 'name_ASC',
-  NameDesc = 'name_DESC',
-  ProjectIdAsc = 'projectId_ASC',
-  ProjectIdDesc = 'projectId_DESC',
-  DescriptionAsc = 'description_ASC',
-  DescriptionDesc = 'description_DESC',
-  UrlAsc = 'url_ASC',
-  UrlDesc = 'url_DESC'
-}
-
 export type OrganizationWhereInput = {
   id?: Maybe<Scalars['ID']>,
   id_not?: Maybe<Scalars['ID']>,
@@ -746,17 +719,6 @@ export type QueryOfferArgs = {
 
 export type QueryOrganizationArgs = {
   where: OrganizationWhereUniqueInput
-};
-
-
-export type QueryOrganizationsArgs = {
-  where?: Maybe<OrganizationWhereInput>,
-  orderBy?: Maybe<OrganizationOrderByInput>,
-  skip?: Maybe<Scalars['Int']>,
-  after?: Maybe<Scalars['String']>,
-  before?: Maybe<Scalars['String']>,
-  first?: Maybe<Scalars['Int']>,
-  last?: Maybe<Scalars['Int']>
 };
 
 
@@ -1123,7 +1085,7 @@ export type OfferQuery = (
   { __typename?: 'Query' }
   & { offer: (
     { __typename?: 'Offer' }
-    & Pick<Offer, 'id' | 'name' | 'description' | 'price'>
+    & Pick<Offer, 'id' | 'name' | 'description' | 'transport' | 'price'>
     & { user: (
       { __typename?: 'User' }
       & Pick<User, 'shortName'>
@@ -1460,6 +1422,7 @@ export const OfferDocument = gql`
     id
     name
     description
+    transport
     price
     user {
       shortName

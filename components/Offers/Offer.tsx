@@ -11,7 +11,6 @@ interface Props {
 
 export const OfferItem = ({ offer }: Props) => (
   <StyledContainer>
-    {console.log(offer.gallery.images)}
     <Image src={`https://davamcz.imgix.net/${offer.gallery.images[0].key}?w=255`} />
     <Spacer y={0.5} />
     <Text span color="orange">

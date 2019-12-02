@@ -239,7 +239,6 @@ export default withApollo(() => {
                     />
                   </>
                 )}
-                {console.log(status)}
                 {status && status.type === 'error' && (
                   <>
                     <Spacer />

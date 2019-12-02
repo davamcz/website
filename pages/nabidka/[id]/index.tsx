@@ -41,11 +41,12 @@ export default withApollo(() => {
           <Spacer />
           <Text>{offer?.description}</Text>
           <Spacer />
+          {offer?.transport && offer?.transport !== '' && <Container row flex="0"><Text bold>Doprava:</Text>&nbsp;<Text>{offer?.transport}</Text></Container>}
           <Text color="orange" bold>
             Příspěvek poputuje na: {offer?.beneficator.name}
           </Text>
           <Spacer y={1.5} />
-          <Container row vcenter style={{ justifyContent: 'space-between' }}>
+          <Container row vcenter style={{ justifyContent: 'space-between' }} flex="0">
             <Text bold>{(offer?.price as number) * amount} Kč</Text>
             <Container row center>
               <AmountInput amount={amount} changeAmount={setAmount} />

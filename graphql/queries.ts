@@ -6,6 +6,7 @@ export const offer = gql`
       id
       name
       description
+      transport
       price
       user {
         shortName
