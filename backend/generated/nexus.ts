@@ -682,7 +682,6 @@ export interface NexusGenInputs {
 export interface NexusGenEnums {
   FileOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "encoding_ASC" | "encoding_DESC" | "fileName_ASC" | "fileName_DESC" | "id_ASC" | "id_DESC" | "key_ASC" | "key_DESC" | "mimeType_ASC" | "mimeType_DESC" | "updatedAt_ASC" | "updatedAt_DESC" | "url_ASC" | "url_DESC"
   OfferOrderByInput: "active_ASC" | "active_DESC" | "amount_ASC" | "amount_DESC" | "createdAt_ASC" | "createdAt_DESC" | "deletedAt_ASC" | "deletedAt_DESC" | "description_ASC" | "description_DESC" | "email_ASC" | "email_DESC" | "firstName_ASC" | "firstName_DESC" | "id_ASC" | "id_DESC" | "lastName_ASC" | "lastName_DESC" | "name_ASC" | "name_DESC" | "price_ASC" | "price_DESC" | "publicOffer_ASC" | "publicOffer_DESC" | "transport_ASC" | "transport_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
-  OrganizationOrderByInput: "active_ASC" | "active_DESC" | "apiId_ASC" | "apiId_DESC" | "apiSecret_ASC" | "apiSecret_DESC" | "createdAt_ASC" | "createdAt_DESC" | "deletedAt_ASC" | "deletedAt_DESC" | "description_ASC" | "description_DESC" | "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC" | "organizationId_ASC" | "organizationId_DESC" | "projectId_ASC" | "projectId_DESC" | "updatedAt_ASC" | "updatedAt_DESC" | "url_ASC" | "url_DESC"
   TransactionOrderByInput: "amount_ASC" | "amount_DESC" | "comment_ASC" | "comment_DESC" | "createdAt_ASC" | "createdAt_DESC" | "deletedAt_ASC" | "deletedAt_DESC" | "donatedAmount_ASC" | "donatedAmount_DESC" | "email_ASC" | "email_DESC" | "firstName_ASC" | "firstName_DESC" | "id_ASC" | "id_DESC" | "lastName_ASC" | "lastName_DESC" | "status_ASC" | "status_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
   TransactionStatus: "FAILED" | "INSUFFICIENT" | "PAID" | "PENDING"
   UserRole: "ADMIN" | "USER"
@@ -722,7 +721,6 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
   UserWhereInput: NexusGenInputs['UserWhereInput'];
   FileOrderByInput: NexusGenEnums['FileOrderByInput'];
   OfferOrderByInput: NexusGenEnums['OfferOrderByInput'];
-  OrganizationOrderByInput: NexusGenEnums['OrganizationOrderByInput'];
   TransactionOrderByInput: NexusGenEnums['TransactionOrderByInput'];
   TransactionStatus: NexusGenEnums['TransactionStatus'];
   UserRole: NexusGenEnums['UserRole'];
@@ -912,15 +910,6 @@ export interface NexusGenArgTypes {
     organization: { // args
       where: NexusGenInputs['OrganizationWhereUniqueInput']; // OrganizationWhereUniqueInput!
     }
-    organizations: { // args
-      after?: string | null; // String
-      before?: string | null; // String
-      first?: number | null; // Int
-      last?: number | null; // Int
-      orderBy?: NexusGenEnums['OrganizationOrderByInput'] | null; // OrganizationOrderByInput
-      skip?: number | null; // Int
-      where?: NexusGenInputs['OrganizationWhereInput'] | null; // OrganizationWhereInput
-    }
   }
 }
 
@@ -933,7 +922,7 @@ export type NexusGenObjectNames = "Adress" | "AuthPayload" | "File" | "Gallery" 
 
 export type NexusGenInputNames = "AdressWhereInput" | "FileWhereInput" | "GalleryWhereInput" | "OfferWhereInput" | "OrganizationWhereInput" | "OrganizationWhereUniqueInput" | "TransactionWhereInput" | "UserWhereInput";
 
-export type NexusGenEnumNames = "FileOrderByInput" | "OfferOrderByInput" | "OrganizationOrderByInput" | "TransactionOrderByInput" | "TransactionStatus" | "UserRole";
+export type NexusGenEnumNames = "FileOrderByInput" | "OfferOrderByInput" | "TransactionOrderByInput" | "TransactionStatus" | "UserRole";
 
 export type NexusGenInterfaceNames = never;
 
