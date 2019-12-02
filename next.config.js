@@ -4,8 +4,8 @@ module.exports = {
     AIRTABLE_SECRET: process.env.AIRTABLE_SECRET,
     PRISMA_ENDPOINT: process.env.PRISMA_ENDPOINT,
     PRISMA_SECRET: process.env.PRISMA_SECRET,
-    AWS_ACCESS_KEY: process.env.AWS_ACCESS_KEY,
-    AWS_SECRET_KEY: process.env.AWS_SECRET_KEY,
+    EMAIL_ACCESS_KEY: process.env.EMAIL_ACCESS_KEY,
+    EMAIL_SECRET_KEY: process.env.EMAIL_SECRET_KEY,
     PROJECT_DIRNAME: __dirname,
   },
 }

@@ -19,8 +19,8 @@ interface TemplateData {
 
 const transporter = createTransport({
   SES: new SES({
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    accessKeyId: process.env.EMAIL_ACCESS_KEY_ID,
+    secretAccessKey: process.env.EMAIL_SECRET_ACCESS_KEY,
     region: 'eu-west-1',
     apiVersion: '2010-12-01',
   }),
