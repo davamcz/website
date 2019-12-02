@@ -18,18 +18,16 @@ export const organizations = gql`
 `
 
 export const Organizations = () => {
-  const {
-    loading,
-    data,
-  } = useOrganizationsQuery()
+  const { loading, data } = useOrganizationsQuery()
 
   if (loading) return <div>Loading</div>
 
   return (
-    <Container row>
-      {data && data.organizations.map((organization, i) => (
-        <OrganizationItem organization={organization} key={i} />
-      ))}
+    <Container row style={{ flexWrap: 'wrap' }}>
+      {data &&
+        data.organizations.map((organization, i) => (
+          <OrganizationItem organization={organization} key={i} />
+        ))}
     </Container>
   )
 }
