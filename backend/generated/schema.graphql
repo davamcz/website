@@ -224,7 +224,7 @@ input GalleryWhereInput {
 type Mutation {
   """Create new Fundlamb offer"""
   createOffer(amount: Int!, description: String!, email: String!, firstName: String!, images: [ID!]!, lastName: String!, name: String!, organizationId: ID!, price: Int!, publicOffer: Boolean!, transport: String!): Offer!
-  createOrganization(active: Boolean, apiId: Int, apiSecret: String, description: String!, logoId: ID!, name: String!, organizationId: Int, url: String!): Organization!
+  createOrganization(active: Boolean, apiId: Int, apiSecret: String, description: String!, logoId: ID!, name: String!, organizationId: Int, projectId: Int!, url: String!): Organization!
   createTransaction(amount: Int!, comment: String, email: String!, firstName: String!, lastName: String!, offerId: ID!): Transaction!
   login(email: String!, password: String!): AuthPayload!
   signup(email: String!, firstName: String!, lastName: String!, password: String!): AuthPayload!

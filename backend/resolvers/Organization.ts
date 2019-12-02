@@ -26,6 +26,7 @@ export const OrganizationMutation = prismaExtendType({
         apiId: intArg({ required: false }),
         apiSecret: stringArg({ required: false }),
         organizationId: intArg({ required: false }),
+        projectId: intArg({ required: true }),
         active: booleanArg({ required: false }),
         name: stringArg({ required: true }),
         logoId: idArg({ required: true }),
@@ -38,6 +39,7 @@ export const OrganizationMutation = prismaExtendType({
           apiId,
           apiSecret,
           organizationId,
+          projectId,
           // active,
           name,
           logoId,
@@ -50,6 +52,7 @@ export const OrganizationMutation = prismaExtendType({
           apiId,
           apiSecret,
           organizationId,
+          projectId,
           active: true,
           name,
           logo: {

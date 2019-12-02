@@ -1,6 +1,7 @@
 import { extendType, stringArg, idArg, intArg, booleanArg } from 'nexus'
 import { prismaObjectType } from 'nexus-prisma'
-import { getUserId } from '../utils'
+import { vokativ } from 'vokativ'
+import { getUserId, capitalize } from '../utils'
 import { sendEmail } from '../emails'
 import { OfferValidationSchema } from '../../validation/offer'
 
@@ -142,17 +143,26 @@ export const OfferMutations = extendType({
           `)) as any
 
           if (createdOffer) {
-            const { email, name, firstName, beneficator } = createdOffer
+            const {
+              id, email, name, firstName, beneficator, price, amount, offerImage
+            } = createdOffer;
+            const salutation = capitalize(vokativ(firstName.trim()));
+            const formatedPrice = parseInt(price) / 100;
+            const offerLink = `https://davam.cz/nabidka/${id}`;
+            const imgUrl = offerImage || 'http://placekitten.com/200/200';
             sendEmail(email, {
               template: 'linkCreated',
               subject: `Vytvoření platebního odkazu na ${name}`,
               data: {
-                creatorFirstName: firstName,
+                firstName,
+                salutation,
                 product: name,
-                ngos: beneficator.name,
-                price,
+                ngo: beneficator.name,
+                price: formatedPrice,
                 amount,
-              },
+                offerLink,
+                imgUrl
+              }
             })
           }
 

@@ -1,14 +1,17 @@
 import { prismaObjectType, prismaExtendType } from 'nexus-prisma'
 import { stringArg, idArg, intArg } from 'nexus'
-// import fetch from 'node-fetch'
-// import * as querystring from 'querystring'
+import fetch from 'node-fetch'
+import * as querystring from 'querystring'
+import { vokativ } from 'vokativ'
+import { capitalize } from '../utils'
 
 import {
   constants,
   isTransactionReserved,
-  // getSimplyfiedState,
+  getSimplyfiedState,
 } from '../utils'
-// import { TransactionStatus } from '../generated/prisma-client'
+import { TransactionStatus } from '../generated/prisma-client'
+import { sendEmail } from '../emails'
 
 const { PENDING, PAID } = constants.paymentStatus
 
@@ -27,10 +30,11 @@ export const TransactionQuery = prismaExtendType({
     t.field('recentTransactions', {
       type: 'Transaction',
       list: true,
-      resolve: async (_,_args , { prisma }) => {
+      resolve: async (_, _args, { prisma }) => {
         return prisma.transactions({ where: { status: 'PAID' }, last: 10 })
       },
     })
+
     t.field('getTransactionStatus', {
       type: 'Transaction',
       args: {
@@ -40,13 +44,23 @@ export const TransactionQuery = prismaExtendType({
         const currentTransaction = (await prisma.transaction({ id }).$fragment(`
           fragment transactionApiValues on Transaction {
             id
+            status
+            email
+            firstName
+            lastName
+            comment
+            amount
             offer {
               createdAt
-              amount
+              firstName
+              lastName
+              email
+              name
               price
               beneficator {
+                name
                 organizationId
-                projectIds
+                projectId
                 apiId
                 apiSecret
               }
@@ -54,60 +68,104 @@ export const TransactionQuery = prismaExtendType({
           }
         `)) as any
 
-        return currentTransaction
-        //     const {
-        //       createdAt,
-        //       amount,
-        //       price,
-        //       beneficator: { organizationId, projectIds, apiId, apiSecret },
-        //     } = currentTransaction.offer
+        const {
+          createdAt,
+          price,
+          name,
+          firstName,
+          lastName,
+          email,
+          beneficator: { name: NGOName, organizationId, projectId, apiId, apiSecret },
+        } = currentTransaction.offer
 
-        //     const qs = querystring.encode({
-        //       fromPledgedDate: createdAt,
-        //       projectId: projectIds[0],
-        //       apiId,
-        //       apiSecret,
-        //     })
-        //     const response = await fetch(
-        //       `https://www.darujme.cz/api/v1/organization/${organizationId}/pledges-by-filter?${qs}`,
-        //     )
-        //     const data = await response.json()
+        const qs = querystring.encode({
+          fromPledgedDate: JSON.stringify(createdAt).slice(1, 11),
+          projectId: projectId,
+          apiId,
+          apiSecret,
+        })
+        // ToDo: Adresa v configuraci.
+        const response = await fetch(
+          `https://www.darujme.cz/api/v1/organization/${organizationId}/pledges-by-filter?${qs}`,
+        )
+        const data = await response.json()
 
-        //     console.log(currentTransaction.id)
+        const pledgeResult = data.pledges.filter(pledge => pledge.customFields &&
+            pledge.customFields.transaction_id === currentTransaction.id
+        )[0]
 
-        //     const pledgeResult = data.pledges.filter(pledge => {
-        //       pledge.customFields &&
-        //         pledge.customFields.tr_fundlamb_id === currentTransaction.id
-        //     })[0]
+        if (pledgeResult === undefined) {
+          throw new Error("Can't find requested pledge")
+        }
 
-        //     console.log(pledgeResult)
-        //     if (pledgeResult === undefined) {
-        //       return prisma.transaction({ id })
-        //     }
+        const transactionResult = pledgeResult.transactions[0]
+        if (transactionResult === undefined) {
+          throw new Error("Can't find requested transaction")
+        }
 
-        //     const transactionResult = pledgeResult.transactions[0]
-        //     if (transactionResult === undefined) {
-        //       return prisma.transaction({ id })
-        //     }
+        const realDonatedAmount = parseInt(pledgeResult.pledgedAmount.cents);
+        const isDonatedEnough = price * currentTransaction.amount * 100 <= realDonatedAmount;
+        const newSimplyfiedSate = getSimplyfiedState(
+          transactionResult.state,
+          isDonatedEnough,
+        ) as TransactionStatus
+        const isStatusChanged = currentTransaction.status !== newSimplyfiedSate;
+        
+        if (isStatusChanged && newSimplyfiedSate === PAID) {
+          const buyerSalutation = capitalize(vokativ(currentTransaction.firstName.trim()));
+          const sellerSalutation = capitalize(vokativ(firstName.trim()));
+          // TODO: get real image
+          const imgUrl = 'http://placekitten.com/200/200';
+          // Send email to buyer
+          sendEmail(currentTransaction.email, {
+            template: 'transactionCreatedBuyer',
+            subject: `Právě jste daroval ${realDonatedAmount / 100} Kč za ${name}`,
+            data: {
+              buyerSalutation,
+              ngo: NGOName,
+              imgUrl,
+              product: name,
+              sellerFirstName: firstName,
+              sellerLastName: lastName,
+              sellerEmail: email,
+              comment: currentTransaction.comment,
+              price: realDonatedAmount / 100,
+              amount: currentTransaction.amount
+            }
+          })
 
-        //     const isDonatedEnough =
-        //       price * amount * 100 > parseInt(transactionResult.sentAmount.cents)
+          // Send email to seller
+          sendEmail(email, {
+            template: 'transactionCreatedSeller',
+            subject: `Za ${name} bylo právě darováno ${realDonatedAmount / 100} Kč`,
+            data: {
+              salutation: sellerSalutation,
+              ngo: NGOName,
+              imgUrl,
+              buyerFirstName: currentTransaction.firstName,
+              buyerLastName: currentTransaction.lastName,
+              buyerEmail: currentTransaction.email,
+              product: name,
+              price: realDonatedAmount / 100,
+              amount: currentTransaction.amount
+            }
+          })
+        }
 
-        //     return await prisma.updateTransaction({
-        //       data: {
-        //         status: getSimplyfiedState(
-        //           transactionResult.state,
-        //           isDonatedEnough,
-        //         ) as TransactionStatus,
-        //         donatedAmount: transactionResult.sentAmount.cents,
-        //       },
-        //       where: { id },
-        //     })
-        //   },
-        // })
+        if (isStatusChanged && newSimplyfiedSate === 'FAILED') {
+          // TODO: Add failed email
+        }
+
+        return await prisma.updateTransaction({
+          data: {
+            status: newSimplyfiedSate,
+            donatedAmount: pledgeResult.pledgedAmount.cents,
+          },
+          where: { id },
+        })
       },
     })
-  },
+  }
 })
 
 export const TransactionMutation = prismaExtendType({
