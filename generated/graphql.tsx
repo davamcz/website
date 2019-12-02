@@ -712,6 +712,11 @@ export type Query = {
 };
 
 
+export type QueryOffersArgs = {
+  active?: Maybe<Scalars['Boolean']>
+};
+
+
 export type QueryOfferArgs = {
   id: Scalars['ID']
 };
@@ -729,9 +734,11 @@ export type QueryGetTransactionStatusArgs = {
 export type Transaction = {
    __typename?: 'Transaction',
   id: Scalars['ID'],
+  createdAt?: Maybe<Scalars['DateTime']>,
   firstName: Scalars['String'],
   lastName: Scalars['String'],
   donatedAmount?: Maybe<Scalars['Int']>,
+  amount: Scalars['Int'],
   status: TransactionStatus,
   offer: Offer,
 };
@@ -1004,7 +1011,9 @@ export type UserQuery = (
   ) }
 );
 
-export type OffersQueryVariables = {};
+export type OffersQueryVariables = {
+  active?: Maybe<Scalars['Boolean']>
+};
 
 
 export type OffersQuery = (
@@ -1262,8 +1271,8 @@ export type UserQueryHookResult = ReturnType<typeof useUserQuery>;
 export type UserLazyQueryHookResult = ReturnType<typeof useUserLazyQuery>;
 export type UserQueryResult = ApolloReactCommon.QueryResult<UserQuery, UserQueryVariables>;
 export const OffersDocument = gql`
-    query offers {
-  offers {
+    query offers($active: Boolean) {
+  offers(active: $active) {
     id
     name
     price
@@ -1291,6 +1300,7 @@ export const OffersDocument = gql`
  * @example
  * const { data, loading, error } = useOffersQuery({
  *   variables: {
+ *      active: // value for 'active'
  *   },
  * });
  */
