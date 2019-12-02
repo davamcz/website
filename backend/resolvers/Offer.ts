@@ -1,10 +1,15 @@
 import { extendType, stringArg, idArg, intArg, booleanArg } from 'nexus'
 import { prismaObjectType } from 'nexus-prisma'
 import { vokativ } from 'vokativ'
-import { getUserId, capitalize, constants } from '../utils'
+import {
+  getUserId,
+  capitalize,
+  constants,
+  isTransactionReserved
+} from '../utils'
 import { sendEmail } from '../emails'
 import { OfferValidationSchema } from '../../validation/offer'
-const { PENDING, PAID } = constants.paymentStatus
+const { PAID } = constants.paymentStatus
  
 export const Offer = prismaObjectType({
   name: 'Offer',
@@ -52,20 +57,13 @@ export const OfferQuery = extendType({
             }
           `)) as any
 
-          const currentTime = new Date();
           const filteredOffers = allOffers
             .filter(offer => offer.active)
             .filter(offer => {
-              return offer.transactions.length === 0 ||
+              return offer.transactions.length === 0 || 
                 offer.transactions
-                  .filter(transaction => {
-                    const transactionTime = new Date(transaction.createdAt)
-                    const timeDiff = (currentTime.getTime() - transactionTime.getTime()) / 1000 / 60
-                    return transaction.status === PAID ||
-                    (transaction.status === PENDING &&
-                      timeDiff <= 15
-                    )
-                  })
+                  .filter(transaction => 
+                    transaction.status === PAID || isTransactionReserved(transaction))
                   .reduce((total, transaction) => {
                     return total + transaction.amount
                   }, 0) < offer.amount
@@ -215,7 +213,6 @@ export const OfferMutations = extendType({
               offerImage,
             } = createdOffer
             const salutation = capitalize(vokativ(firstName.trim()))
-            const formatedPrice = parseInt(price) / 100
             const offerLink = `https://davam.cz/nabidka/${id}`
             const imgUrl = offerImage || 'http://placekitten.com/200/200'
             sendEmail(email, {
@@ -226,7 +223,7 @@ export const OfferMutations = extendType({
                 salutation,
                 product: name,
                 ngo: beneficator.name,
-                price: formatedPrice,
+                price,
                 amount,
                 offerLink,
                 imgUrl,
