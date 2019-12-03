@@ -49,7 +49,7 @@ export default withApollo(() => {
           <Container row vcenter style={{ justifyContent: 'space-between' }} flex="0">
             <Text bold>{(offer?.price as number) * amount} Kč</Text>
             <Container row center>
-              <AmountInput amount={amount} changeAmount={setAmount} />
+              <AmountInput amount={amount} changeAmount={setAmount} max={offer?.remainingAmount || 1} />
               <Spacer />
               <Text bold>ks</Text>
             </Container>

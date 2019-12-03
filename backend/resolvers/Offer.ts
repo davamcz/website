@@ -5,16 +5,29 @@ import {
   getUserId,
   capitalize,
   constants,
-  isTransactionReserved
+  isTransactionReserved,
+  offerRemainingAmount,
 } from '../utils'
 import { sendEmail } from '../emails'
 import { OfferValidationSchema } from '../../validation/offer'
 const { PAID } = constants.paymentStatus
- 
+
 export const Offer = prismaObjectType({
   name: 'Offer',
   definition(t) {
     t.prismaFields(['*'])
+    t.field('remainingAmount', {
+      type: 'Int',
+      resolve: async ({ id, amount }, _, { prisma }) => {
+        const transactions = await prisma.transactions({
+          where: { offer: { id } },
+        })
+
+        const remainingAmount = amount - offerRemainingAmount(transactions)
+
+        return remainingAmount > 0 ? remainingAmount : 0
+      },
+    })
   },
 })
 
@@ -24,14 +37,14 @@ export const OfferQuery = extendType({
     t.field('offers', {
       type: 'Offer',
       args: {
-        active: booleanArg({ required: false })
+        active: booleanArg({ required: false }),
       },
       list: true,
       resolve: async (_, { active }, { prisma }) => {
         if (!active) {
           return prisma.offers({})
         } else {
-          const allOffers = await (prisma.offers({}).$fragment(`
+          const allOffers = (await prisma.offers({}).$fragment(`
             fragment activeOffers on Offer {
               id
               firstName
@@ -60,17 +73,21 @@ export const OfferQuery = extendType({
           const filteredOffers = allOffers
             .filter(offer => offer.active)
             .filter(offer => {
-              return offer.transactions.length === 0 || 
+              return (
+                offer.transactions.length === 0 ||
                 offer.transactions
-                  .filter(transaction => 
-                    transaction.status === PAID || isTransactionReserved(transaction))
+                  .filter(
+                    transaction =>
+                      transaction.status === PAID ||
+                      isTransactionReserved(transaction)
+                  )
                   .reduce((total, transaction) => {
                     return total + transaction.amount
                   }, 0) < offer.amount
+              )
             })
-          return filteredOffers;
+          return filteredOffers
         }
-        
       },
     })
 
@@ -79,8 +96,9 @@ export const OfferQuery = extendType({
       args: {
         id: idArg({ required: true }),
       },
+      nullable: true,
       resolve: async (_, { id }, { prisma }) => {
-        return prisma.offer({ id }) as any
+        return prisma.offer({ id })
       },
     })
   },
@@ -214,7 +232,9 @@ export const OfferMutations = extendType({
             } = createdOffer
             const salutation = capitalize(vokativ(firstName.trim()))
             const offerLink = `https://davam.cz/nabidka/${id}`
-            const imgUrl = offerImage || 'https://davamcz-images.s3.eu-central-1.amazonaws.com/mailing/darek.png'
+            const imgUrl =
+              offerImage ||
+              'https://davamcz-images.s3.eu-central-1.amazonaws.com/mailing/darek.png'
             sendEmail(email, {
               template: 'linkCreated',
               subject: `Vytvoření platebního odkazu na ${name}`,

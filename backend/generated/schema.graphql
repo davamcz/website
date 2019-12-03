@@ -247,6 +247,7 @@ type Offer {
   name: String!
   price: Int!
   publicOffer: Boolean
+  remainingAmount: Int!
   transactions(after: String, before: String, first: Int, last: Int, orderBy: TransactionOrderByInput, skip: Int, where: TransactionWhereInput): [Transaction!]
   transport: String
   updatedAt: DateTime
@@ -585,7 +586,7 @@ input OrganizationWhereUniqueInput {
 
 type Query {
   getTransactionStatus(id: ID!): Transaction!
-  offer(id: ID!): Offer!
+  offer(id: ID!): Offer
   offers(active: Boolean): [Offer!]!
   organization(where: OrganizationWhereUniqueInput!): Organization
   organizations: [Organization!]!

@@ -8,6 +8,7 @@ export const offer = gql`
       description
       transport
       price
+      remainingAmount
       user {
         shortName
       }

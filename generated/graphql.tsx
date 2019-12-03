@@ -345,6 +345,7 @@ export type Offer = {
   description: Scalars['String'],
   transport?: Maybe<Scalars['String']>,
   gallery: Gallery,
+  remainingAmount: Scalars['Int'],
 };
 
 
@@ -703,12 +704,12 @@ export type OrganizationWhereUniqueInput = {
 export type Query = {
    __typename?: 'Query',
   offers: Array<Offer>,
-  offer: Offer,
+  offer?: Maybe<Offer>,
   organization?: Maybe<Organization>,
   organizations: Array<Organization>,
   recentTransactions: Array<Transaction>,
   getTransactionStatus: Transaction,
-  user: User,
+  user?: Maybe<User>,
 };
 
 
@@ -1001,14 +1002,14 @@ export type UserQueryVariables = {};
 
 export type UserQuery = (
   { __typename?: 'Query' }
-  & { user: (
+  & { user: Maybe<(
     { __typename?: 'User' }
     & Pick<User, 'email' | 'firstName' | 'lastName' | 'fullName'>
     & { adress: Maybe<(
       { __typename?: 'Adress' }
       & Pick<Adress, 'city' | 'street' | 'postalCode'>
     )> }
-  ) }
+  )> }
 );
 
 export type OffersQueryVariables = {
@@ -1092,9 +1093,9 @@ export type OfferQueryVariables = {
 
 export type OfferQuery = (
   { __typename?: 'Query' }
-  & { offer: (
+  & { offer: Maybe<(
     { __typename?: 'Offer' }
-    & Pick<Offer, 'id' | 'name' | 'description' | 'transport' | 'price'>
+    & Pick<Offer, 'id' | 'name' | 'description' | 'transport' | 'price' | 'remainingAmount'>
     & { user: (
       { __typename?: 'User' }
       & Pick<User, 'shortName'>
@@ -1108,7 +1109,7 @@ export type OfferQuery = (
       { __typename?: 'Organization' }
       & Pick<Organization, 'name' | 'apiId'>
     ) }
-  ) }
+  )> }
 );
 
 export type GetUserQueryVariables = {};
@@ -1116,10 +1117,10 @@ export type GetUserQueryVariables = {};
 
 export type GetUserQuery = (
   { __typename?: 'Query' }
-  & { user: (
+  & { user: Maybe<(
     { __typename?: 'User' }
     & Pick<User, 'fullName'>
-  ) }
+  )> }
 );
 
 export type UploadFileMutationVariables = {
@@ -1447,6 +1448,7 @@ export const OfferDocument = gql`
     description
     transport
     price
+    remainingAmount
     user {
       shortName
     }

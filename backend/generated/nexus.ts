@@ -770,6 +770,7 @@ export interface NexusGenFieldTypes {
     name: string; // String!
     price: number; // Int!
     publicOffer: boolean | null; // Boolean
+    remainingAmount: number; // Int!
     transactions: NexusGenRootTypes['Transaction'][] | null; // [Transaction!]
     transport: string | null; // String
     updatedAt: any | null; // DateTime
@@ -787,7 +788,7 @@ export interface NexusGenFieldTypes {
   }
   Query: { // field return type
     getTransactionStatus: NexusGenRootTypes['Transaction']; // Transaction!
-    offer: NexusGenRootTypes['Offer']; // Offer!
+    offer: NexusGenRootTypes['Offer'] | null; // Offer
     offers: NexusGenRootTypes['Offer'][]; // [Offer!]!
     organization: NexusGenRootTypes['Organization'] | null; // Organization
     organizations: NexusGenRootTypes['Organization'][]; // [Organization!]!

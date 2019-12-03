@@ -5,9 +5,10 @@ import { useCallback } from 'react'
 interface Props {
   amount: number
   changeAmount: (n: number) => void
+  max: number
 }
 
-export const AmountInput = ({ amount, changeAmount }: Props) => {
+export const AmountInput = ({ amount, changeAmount, max }: Props) => {
   const changeValue = useCallback(
     (n: number) => {
       if (n > 0) {
@@ -23,8 +24,8 @@ export const AmountInput = ({ amount, changeAmount }: Props) => {
     <Container row flex="0 0 auto">
       <StyledInput value={amount} type="number" />
       <Container flex="0 0 auto">
-        <Button onClick={() => changeValue(1)}>^</Button>
-        <Button onClick={() => changeValue(-1)}>v</Button>
+        <Button onClick={() => changeValue(1)} disabled={amount <= max}>^</Button>
+        <Button onClick={() => changeValue(-1)} disabled={amount <= 1}>v</Button>
       </Container>
     </Container>
   )
@@ -51,15 +52,20 @@ const StyledInput = styled.input`
   }
 `
 
-const Button = styled.div`
+const Button = styled.button`
   display: flex;
+  flex: 1;
   align-items: center;
   justify-content: center;
   width: 22px;
   background: #f5f5f5;
   border: 1px solid #b5b5b5;
+  outline: none;
   cursor: pointer;
   &:nth-child(2) {
     border-top: 0;
+  }
+  &:disabled {
+    cursor: not-allowed;
   }
 `
