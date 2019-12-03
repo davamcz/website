@@ -16,7 +16,7 @@ export const UserType = prismaObjectType({
     })
     t.string('shortName', {
       resolve: ({ firstName, lastName }) => {
-        return `${firstName} ${lastName?.slice(0, 1)}`
+        return `${firstName} ${lastName?.slice(0, 1)}.`
       }
     })
   },
@@ -27,10 +27,11 @@ export const UserQuery = extendType({
   definition(t) {
     t.field('user', {
       type: 'User',
+      nullable: true,
       resolve: async (_, {}, ctx) => {
         const id = getUserId(ctx)
 
-        return ctx.prisma.user({ id }) as any
+        return ctx.prisma.user({ id })
 
         // if (id) {
         //   return ctx.prisma.user({ id })

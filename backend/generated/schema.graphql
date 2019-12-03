@@ -590,7 +590,7 @@ type Query {
   organization(where: OrganizationWhereUniqueInput!): Organization
   organizations: [Organization!]!
   recentTransactions: [Transaction!]!
-  user: User!
+  user: User
 }
 
 type Transaction {

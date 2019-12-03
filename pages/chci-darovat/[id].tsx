@@ -1,11 +1,11 @@
-import { Container } from '../../components/Container'
-import Text from '../../components/Text'
-import Spacer from '../../components/Spacer'
-import { ButtonLink } from '../../components/ButtonLink'
-import { CopyBlock } from '../../components/CopyBlock'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
+import { ButtonLink } from '../../components/ButtonLink'
+import { Container } from '../../components/Container'
+import { CopyBlock } from '../../components/CopyBlock'
 import { Image } from '../../components/Image'
+import Spacer from '../../components/Spacer'
+import Text from '../../components/Text'
 
 export default () => {
   const router = useRouter()

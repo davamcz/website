@@ -792,7 +792,7 @@ export interface NexusGenFieldTypes {
     organization: NexusGenRootTypes['Organization'] | null; // Organization
     organizations: NexusGenRootTypes['Organization'][]; // [Organization!]!
     recentTransactions: NexusGenRootTypes['Transaction'][]; // [Transaction!]!
-    user: NexusGenRootTypes['User']; // User!
+    user: NexusGenRootTypes['User'] | null; // User
   }
   Transaction: { // field return type
     amount: number; // Int!

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { Copy } from './Icons/Copy'
 import copy from 'copy-to-clipboard'
+import { CopyButtton } from './CopyButton'
 
 interface Props {
   url: string
@@ -9,7 +9,7 @@ interface Props {
 export const CopyBlock = ({ url }: Props) => {
   return (
     <Block>
-      {url} <Copy onClick={() => copy(url)} />
+      {url} <CopyButtton onClick={() => copy(url)} />
     </Block>
   )
 }

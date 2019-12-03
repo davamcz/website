@@ -1,22 +1,18 @@
-import { withApollo } from '../../../lib/apollo'
-import { Section } from '../../../components/Section'
-import { Container } from '../../../components/Container'
-import Text from '../../../components/Text'
-import Spacer from '../../../components/Spacer'
-import { Step } from '../../chci-darovat/[id]'
-import { useRouter } from 'next/router'
-import {
-  useOfferQuery,
-  useUserQuery,
-  useCreateTransactionMutation,
-} from '../../../generated/graphql'
-import { Form } from '../../../components/Form'
 import { Formik } from 'formik'
-import { Input } from '../../../components/Input'
-import { TransactionValidationSchema } from '../../../validation/transaction'
-import { TextArea } from '../../../components/TextArea'
-import { paymentLink } from '../../../lib/paymentLink'
+import { useRouter } from 'next/router'
+import { Container } from '../../../components/Container'
+import { Form } from '../../../components/Form'
 import { Image } from '../../../components/Image'
+import { Input } from '../../../components/Input'
+import { Section } from '../../../components/Section'
+import Spacer from '../../../components/Spacer'
+import Text from '../../../components/Text'
+import { TextArea } from '../../../components/TextArea'
+import { useCreateTransactionMutation, useOfferQuery, useUserQuery } from '../../../generated/graphql'
+import { withApollo } from '../../../lib/apollo'
+import { paymentLink } from '../../../lib/paymentLink'
+import { TransactionValidationSchema } from '../../../validation/transaction'
+import { Step } from '../../chci-darovat/[id]'
 
 export default withApollo(() => {
   const router = useRouter()
@@ -29,7 +25,7 @@ export default withApollo(() => {
   const offer = data?.offer
   const user = userData?.user
   const amount = parseInt(router.query.mnozstvi as string) || 1
-  const price = amount  * (offer?.price as number)
+  const price = amount * (offer?.price as number)
 
   return (
     <Section>
@@ -66,8 +62,9 @@ export default withApollo(() => {
                     lastName: values.lastName,
                     email: values.email,
                     amount: price,
-                    projectId: data.createTransaction.offer.beneficator.projectId as number,
-                    transactionId: data.createTransaction.id
+                    projectId: data.createTransaction.offer.beneficator
+                      .projectId as number,
+                    transactionId: data.createTransaction.id,
                   })
                   window.location.href = link
                 }
@@ -117,7 +114,7 @@ export default withApollo(() => {
                 />
                 <Spacer />
                 <TextArea
-                  label="Váš dotaz"
+                  label="Komentář"
                   name="comment"
                   value={values.comment}
                   onChange={handleChange}
@@ -164,7 +161,7 @@ export default withApollo(() => {
         </Container>
         <Spacer x={5} />
         <Container flex="0 0 auto">
-        {offer && (
+          {offer && (
             <Image
               src={`https://davamcz.imgix.net/${offer.gallery.images &&
                 offer.gallery.images[0].key}?w=324`}
@@ -181,7 +178,7 @@ export default withApollo(() => {
             </Container>
             <Container row>
               Kolik přispějete:&nbsp;
-              <Text bold>{price}</Text>
+              <Text bold>{price} Kč</Text>
             </Container>
             <Container row>
               Tento produkt daruje:&nbsp;
@@ -192,19 +189,15 @@ export default withApollo(() => {
           <Text h3>Jak to bude probíhat:</Text>
           <Spacer y={1.5} />
           <Step number={1}>
-            Poté, co vyplníte své údaje, budete přesměrováni k platbě. Zadejte,
-            prosíme, požadovanou částku. Pokud byste rádi přispěli více
-            (nabízený produkt stojí např. 400 Kč a vy byste rádi podpořili
-            neziskovou organizaci vyšším darem), je to možné.
+            Poté, co vyplníte své údaje, budete přesměrováni k platbě.
           </Step>
           <Step number={2}>
-            Na váš e-mail vám bude zasláno potvrzení o platbě a shrnutí
-            důležitých informací.
+            Po úspěšné platbě bude na váš e-mail zasláno potvrzení o platbě a
+            shrnutí důležitých informací včetně kontaktu na poskytovatele služby
+            či prodkutu.
           </Step>
           <Step number={3}>
-            Obdržíte e-mail s potvrzením o platbě a shrnutím důležitých
-            informací. S dobromanem (poskytovatelem produktu) se poté
-            zkontaktujete a domluvíte na předání věci/služby.
+            Zkontaktujete se s poskytovatelem a domluvte předání.
           </Step>
         </Container>
       </Container>
