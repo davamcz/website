@@ -3,7 +3,7 @@ import { ButtonLink } from '../ButtonLink'
 import { Logo } from '../Logo'
 import { Link } from '../Link'
 import Spacer from '../Spacer'
-import { AuthButton } from '../AuthButton'
+// import { AuthButton } from '../AuthButton'
 
 export const Header = () => {
   return (
@@ -29,7 +29,7 @@ export const Header = () => {
         </Link> 
       </Container>
       <Container row flex="0 0 auto" vcenter>
-        <AuthButton />
+        {/* <AuthButton /> */}
         <Spacer x={0.5} />
         <ButtonLink href="/nabidka" secondary>
           Nabídka
