@@ -1192,6 +1192,19 @@ export type LoginMutation = (
   ) }
 );
 
+export type GetTransactionStatusQueryVariables = {
+  id: Scalars['ID']
+};
+
+
+export type GetTransactionStatusQuery = (
+  { __typename?: 'Query' }
+  & { getTransactionStatus: (
+    { __typename?: 'Transaction' }
+    & Pick<Transaction, 'status'>
+  ) }
+);
+
 export type UpdateUserMutationVariables = {
   firstName: Scalars['String'],
   lastName: Scalars['String'],
@@ -1655,6 +1668,39 @@ export function useLoginMutation(baseOptions?: ApolloReactHooks.MutationHookOpti
 export type LoginMutationHookResult = ReturnType<typeof useLoginMutation>;
 export type LoginMutationResult = ApolloReactCommon.MutationResult<LoginMutation>;
 export type LoginMutationOptions = ApolloReactCommon.BaseMutationOptions<LoginMutation, LoginMutationVariables>;
+export const GetTransactionStatusDocument = gql`
+    query getTransactionStatus($id: ID!) {
+  getTransactionStatus(id: $id) {
+    status
+  }
+}
+    `;
+
+/**
+ * __useGetTransactionStatusQuery__
+ *
+ * To run a query within a React component, call `useGetTransactionStatusQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetTransactionStatusQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetTransactionStatusQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useGetTransactionStatusQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GetTransactionStatusQuery, GetTransactionStatusQueryVariables>) {
+        return ApolloReactHooks.useQuery<GetTransactionStatusQuery, GetTransactionStatusQueryVariables>(GetTransactionStatusDocument, baseOptions);
+      }
+export function useGetTransactionStatusLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetTransactionStatusQuery, GetTransactionStatusQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<GetTransactionStatusQuery, GetTransactionStatusQueryVariables>(GetTransactionStatusDocument, baseOptions);
+        }
+export type GetTransactionStatusQueryHookResult = ReturnType<typeof useGetTransactionStatusQuery>;
+export type GetTransactionStatusLazyQueryHookResult = ReturnType<typeof useGetTransactionStatusLazyQuery>;
+export type GetTransactionStatusQueryResult = ApolloReactCommon.QueryResult<GetTransactionStatusQuery, GetTransactionStatusQueryVariables>;
 export const UpdateUserDocument = gql`
     mutation updateUser($firstName: String!, $lastName: String!, $city: String!, $street: String!, $postalCode: String!) {
   updateUser(firstName: $firstName, lastName: $lastName, city: $city, street: $street, postalCode: $postalCode) {
