@@ -36,6 +36,8 @@ const alignments = {
   },
 }
 
+type Direction = 'column' | 'row'
+
 interface Props {
   flex?: string | number
   row?: boolean
@@ -51,6 +53,7 @@ interface Props {
   inline?: boolean
   noWrapper?: boolean
   className?: string
+  responsive?: Direction[]
   style?: CSSProperties
 }
 

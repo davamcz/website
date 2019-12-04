@@ -13,7 +13,7 @@ export const CopyButtton = ({ onClick }: Props) => {
       setClicked(true)
       onClick()
     }
-  }, [])
+  }, [onClick])
 
   useEffect(() => {
     const timer = setTimeout(() => {
