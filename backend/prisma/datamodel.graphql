@@ -46,7 +46,7 @@ type Offer {
   email: String!
   firstName: String!
   lastName: String!
-  transactions: [Transaction!]!
+  transactions: [Transaction!]! @relation(name: "OfferTransactions", onDelete: CASCADE)
   beneficator: Organization!
   price: Int!
   name: String!
@@ -68,7 +68,7 @@ type Transaction {
   deletedAt: DateTime
   donatedAmount: Int
   status: TransactionStatus! @default(value: PENDING)
-  offer: Offer!
+  offer: Offer! @relation(name: "OfferTransactions")
 }
 
 enum TransactionStatus {
