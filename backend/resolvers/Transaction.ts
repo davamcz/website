@@ -159,7 +159,7 @@ export const TransactionQuery = prismaExtendType({
         return await prisma.updateTransaction({
           data: {
             status: newSimplyfiedSate,
-            donatedAmount: pledgeResult.pledgedAmount.cents,
+            donatedAmount: realDonatedAmount,
           },
           where: { id },
         })
