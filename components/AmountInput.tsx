@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { Container } from './Container'
 import { useCallback } from 'react'
+import { SmallArrow } from './Icons/SmallArrow'
 
 interface Props {
   amount: number
@@ -24,8 +25,8 @@ export const AmountInput = ({ amount, changeAmount, max }: Props) => {
     <Container row flex="0 0 auto">
       <StyledInput value={amount} type="number" />
       <Container flex="0 0 auto">
-        <Button onClick={() => changeValue(1)} disabled={amount <= max}>^</Button>
-        <Button onClick={() => changeValue(-1)} disabled={amount <= 1}>v</Button>
+        <Button onClick={() => changeValue(1)} disabled={amount >= max}><SmallArrow/></Button>
+        <Button onClick={() => changeValue(-1)} disabled={amount <= 1}><SmallArrow up={false}/></Button>
       </Container>
     </Container>
   )

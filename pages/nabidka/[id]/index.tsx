@@ -22,6 +22,8 @@ export default withApollo(() => {
 
   const offer = data?.offer
 
+  console.log(offer?.remainingAmount)
+
   return (
     <>
       <Container row style={{ justifyContent: 'space-between' }}>

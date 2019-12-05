@@ -30,7 +30,8 @@ export const OfferItem = ({ offer }: Props) => (
 
 
 const StyledContainer = styled(Container)`
-  flex: 0 0 auto;
+  flex: 1 0 calc((100% / 4) - 30px);
+  max-width: 255px;
   margin-right: 30px;
   margin-bottom: 36px;
 

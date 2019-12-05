@@ -6,7 +6,7 @@ import { useUserQuery } from '../../generated/graphql'
 import Spacer from '../Spacer'
 import Text from '../Text'
 import { Card } from '../Card'
-import { SmallArrow } from '../Icons/SmallArrow'
+import { SmallArrow } from '../Icons/Active'
 
 export const Menu = () => {
   const { data } = useUserQuery()
