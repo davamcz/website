@@ -49,13 +49,18 @@ export const sendEmail = async (
 ) => {
   const htmlContent = getTemplateFor(templateData.template, templateData.data)
   try {
-    console.log('sendign email')
+    console.log('sendign email', {templateData})
     const mailStatus = await transporter.sendMail({
       from: 'Davam.cz <info@davam.cz>',
       to: emailAddress,
       subject: templateData.subject,
       html: htmlContent,
-    } as SendMailOptions)
+    } as SendMailOptions, 
+    (err, info) => {
+      console.log('envelope: ', info.envelope);
+      console.log('messageId: ', info.messageId);
+      console.log('email error', err);
+  })
     console.log('MailStatus: ', mailStatus);
   } catch (e) {
     console.log(e)
