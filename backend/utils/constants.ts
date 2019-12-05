@@ -2,7 +2,7 @@ export const constants = {
   paymentStatus: {
     PENDING: 'PENDING',
     PAID: 'PAID',
-    FAILURE: 'FAILURE',
+    FAILED: 'FAILED',
     INSUFFICIENT: 'INSUFFICIENT'
   },
   successfulStates: [

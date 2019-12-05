@@ -4,7 +4,7 @@ import { Transaction } from '../generated/prisma-client'
 
 const {
   successfulStates,
-  paymentStatus: { PENDING, PAID, INSUFFICIENT, FAILURE },
+  paymentStatus: { PENDING, PAID, INSUFFICIENT, FAILED },
 } = constants
 
 export const isTransactionReserved = transaction => {
@@ -25,7 +25,7 @@ export const getSimplyfiedState = (state, isDonatedEnough) => {
   } else if (successful && !isDonatedEnough) {
     simplyfiedState = INSUFFICIENT
   } else {
-    simplyfiedState = FAILURE
+    simplyfiedState = FAILED
   }
 
   return simplyfiedState
