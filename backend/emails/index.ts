@@ -50,12 +50,13 @@ export const sendEmail = async (
   const htmlContent = getTemplateFor(templateData.template, templateData.data)
   try {
     console.log('sendign email')
-    await transporter.sendMail({
+    const mailStatus = await transporter.sendMail({
       from: 'Davam.cz <info@davam.cz>',
       to: emailAddress,
       subject: templateData.subject,
       html: htmlContent,
     } as SendMailOptions)
+    console.log('MailStatus: ', mailStatus);
   } catch (e) {
     console.log(e)
   }
