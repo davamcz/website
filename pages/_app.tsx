@@ -12,7 +12,8 @@ export default class Davam extends App {
     return (
       <>
         <Head>
-          <title>Dávám - Jednoduše spojujeme lidi pro dobrou věc</title>
+          <title key="title">Dávám - Jednoduše spojujeme lidi pro dobrou věc</title>
+          <meta key="description" name="description" content="Jednoduše spojujeme lidi pro dobrou věc"  />
           <link rel="shortcut icon" href="/favicon.ico" /> 
         </Head>
         <ThemeProvider theme={theme}>

@@ -10,6 +10,8 @@ import { withApollo } from '../../../lib/apollo'
 import { useState } from 'react'
 import { AmountInput } from '../../../components/AmountInput'
 import { Image } from '../../../components/Image'
+import { MetaTags } from '../../../components/MetaTags'
+
 
 export default withApollo(() => {
   const router = useRouter()
@@ -26,6 +28,7 @@ export default withApollo(() => {
 
   return (
     <>
+      <MetaTags title={`Davam.cz - ${offer?.name} za ${offer?.price}Kč pro ${offer?.beneficator.name}`} description={offer?.description as string} />
       <Container row style={{ justifyContent: 'space-between' }}>
         <Container flex="0 0 auto">
           {offer && (
