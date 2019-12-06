@@ -110,6 +110,15 @@ export const TransactionQuery = prismaExtendType({
           isDonatedEnough,
         ) as TransactionStatus
         const isStatusChanged = currentTransaction.status !== newSimplyfiedSate;
+
+        // update transaction status before emails will fail somehow
+        const updatedTransactionStatus =  await prisma.updateTransaction({
+          data: {
+            status: newSimplyfiedSate,
+            donatedAmount: realDonatedAmount,
+          },
+          where: { id },
+        })
         
         if (isStatusChanged && newSimplyfiedSate === PAID) {
           const buyerSalutation = capitalize(vokativ(currentTransaction.firstName.trim()));
@@ -117,7 +126,7 @@ export const TransactionQuery = prismaExtendType({
           // TODO: get real image
           const imgUrl = 'https://davamcz-images.s3.eu-central-1.amazonaws.com/mailing/darek.png';
           // Send email to buyer
-          sendEmail(currentTransaction.email, {
+          const mailStatus1 = await sendEmail(currentTransaction.email, {
             template: 'transactionCreatedBuyer',
             subject: `Právě jste daroval ${realDonatedAmount} Kč za ${name}`,
             data: {
@@ -133,9 +142,9 @@ export const TransactionQuery = prismaExtendType({
               amount: currentTransaction.amount
             }
           })
-
+          console.log('mailStatus1', mailStatus1);
           // Send email to seller
-          setTimeout(() => sendEmail(email, {
+          const mailStatus2 = await sendEmail(email, {
             template: 'transactionCreatedSeller',
             subject: `Za ${name} bylo právě darováno ${realDonatedAmount} Kč`,
             data: {
@@ -150,20 +159,16 @@ export const TransactionQuery = prismaExtendType({
               price: realDonatedAmount,
               amount: currentTransaction.amount
             }
-          }), 10000)
+          })
+          console.log('mailStatus2', mailStatus2);
+
         }
 
         if (isStatusChanged && newSimplyfiedSate === 'FAILED') {
           // TODO: Add failed email
         }
 
-        return await prisma.updateTransaction({
-          data: {
-            status: newSimplyfiedSate,
-            donatedAmount: realDonatedAmount,
-          },
-          where: { id },
-        })
+        return updatedTransactionStatus;
       },
     })
   }

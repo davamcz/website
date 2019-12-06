@@ -22,7 +22,7 @@ const transporter = createTransport({
     accessKeyId: process.env.EMAIL_ACCESS_KEY,
     secretAccessKey: process.env.EMAIL_SECRET_KEY,
     region: 'eu-west-1',
-    apiVersion: '2010-12-01',
+    apiVersion: '2010-12-01'
   }),
 })
 
@@ -43,25 +43,16 @@ const getTemplateFor = (templateName: string, data: any): string => {
   return mjmlObject.html
 }
 
-export const sendEmail = (
+export const sendEmail = async (
   emailAddress: string,
   templateData: TemplateData
 ) => {
   const htmlContent = getTemplateFor(templateData.template, templateData.data)
-  try {
-    console.log('sendign email', {templateData})
-    transporter.sendMail({
-      from: 'Davam.cz <info@davam.cz>',
-      to: emailAddress,
-      subject: templateData.subject,
-      html: htmlContent,
-    } as SendMailOptions, 
-    (err, info) => {
-      console.log('envelope: ', info.envelope);
-      console.log('messageId: ', info.messageId);
-      console.log('email error', err);
-  })
-  } catch (e) {
-    console.log(e)
-  }
+  console.log('seding email', templateData);
+  return transporter.sendMail({
+    from: 'Davam.cz <info@davam.cz>',
+    to: emailAddress,
+    subject: templateData.subject,
+    html: htmlContent,
+  } as SendMailOptions)
 }
