@@ -43,14 +43,14 @@ const getTemplateFor = (templateName: string, data: any): string => {
   return mjmlObject.html
 }
 
-export const sendEmail = async (
+export const sendEmail = (
   emailAddress: string,
   templateData: TemplateData
 ) => {
   const htmlContent = getTemplateFor(templateData.template, templateData.data)
   try {
     console.log('sendign email', {templateData})
-    const mailStatus = await transporter.sendMail({
+    transporter.sendMail({
       from: 'Davam.cz <info@davam.cz>',
       to: emailAddress,
       subject: templateData.subject,
@@ -61,7 +61,6 @@ export const sendEmail = async (
       console.log('messageId: ', info.messageId);
       console.log('email error', err);
   })
-    console.log('MailStatus: ', mailStatus);
   } catch (e) {
     console.log(e)
   }
