@@ -58,7 +58,8 @@ export const transactionCreatedSeller = (data) => mjml2html(`
           <mj-column  width="70%">
             <mj-text>
               Jméno dárce: <strong>${data.buyerFirstName} ${data.buyerLastName}</strong> <br />
-              E-mail dárce: <strong>${data.buyerEmail}</strong>
+              E-mail dárce: <strong>${data.buyerEmail}</strong> <br /> 
+              Zpráva pro vás: <strong>${data.comment}</strong> <br />
               Položka: <strong>${data.product}</strong> <br />
               Darováno: <strong>${data.price} Kč</strong> <br />
               Příjemce finančních prostředků: <strong>${data.ngo}</strong> <br />

@@ -135,7 +135,7 @@ export const TransactionQuery = prismaExtendType({
           })
 
           // Send email to seller
-          sendEmail(email, {
+          setTimeout(() => sendEmail(email, {
             template: 'transactionCreatedSeller',
             subject: `Za ${name} bylo právě darováno ${realDonatedAmount} Kč`,
             data: {
@@ -145,11 +145,12 @@ export const TransactionQuery = prismaExtendType({
               buyerFirstName: currentTransaction.firstName,
               buyerLastName: currentTransaction.lastName,
               buyerEmail: currentTransaction.email,
+              comment: currentTransaction.comment,
               product: name,
               price: realDonatedAmount,
               amount: currentTransaction.amount
             }
-          })
+          }), 10000)
         }
 
         if (isStatusChanged && newSimplyfiedSate === 'FAILED') {
