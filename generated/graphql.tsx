@@ -249,7 +249,9 @@ export type GalleryWhereInput = {
 
 export type Mutation = {
    __typename?: 'Mutation',
-  /** Create new Fundlamb offer */
+  /** Deactivate or activate offer */
+  changeActiveStateOffer: Offer,
+  /** Create new offer */
   createOffer: Offer,
   createOrganization: Organization,
   createTransaction: Transaction,
@@ -257,6 +259,13 @@ export type Mutation = {
   login: AuthPayload,
   updateUser: User,
   uploadFile: File,
+};
+
+
+export type MutationChangeActiveStateOfferArgs = {
+  offerId: Scalars['ID'],
+  confirmationHash: Scalars['String'],
+  active: Scalars['Boolean']
 };
 
 

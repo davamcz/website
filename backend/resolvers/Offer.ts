@@ -266,7 +266,7 @@ export const OfferMutations = extendType({
               'https://davamcz-images.s3.eu-central-1.amazonaws.com/mailing/darek.png'
             const confirmationHash = getConfirmationHash(id, createdAt)
             const deactivationLink = 
-              `https://davam.cz/nabidka/${id}/deaktivovat/${confirmationHash}`
+              `https://davam.cz/nabidka/${id}/deaktivovat?ch=${confirmationHash}`
             sendEmail(email, {
               template: 'linkCreated',
               subject: `Vytvoření platebního odkazu na ${name}`,
