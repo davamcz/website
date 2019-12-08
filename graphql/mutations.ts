@@ -26,3 +26,21 @@ export const createTransaction = gql`
     }
   }
 `
+
+export const changeActiveStateOffer = gql`
+  mutation changeActiveStateOffer(
+    $offerId: ID!
+    $confirmationHash: String!
+    $active: Boolean!
+  ) {
+    changeActiveStateOffer(
+      offerId: $offerId
+      confirmationHash: $confirmationHash
+      active: $active
+    ) {
+      id
+      name
+      active
+    }
+  }
+`
