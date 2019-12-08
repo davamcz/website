@@ -90,6 +90,14 @@ export const linkCreated = (data) => mjml2html(`
         <mj-section>
           <mj-column>
             <mj-text padding="0">
+              Pro deaktivování odkazu klikněte <a href="${data.deactivationLink}">zde</a>.
+            </mj-text>
+          </mj-column>
+        </mj-section>
+
+        <mj-section>
+          <mj-column>
+            <mj-text padding="0">
               V případě jakéhokoliv dotazu nás neváhejte kontaktovat 
               e-mailem na adresu <a href="mailto: info@davam.cz">info@davam.cz</a>.<br /><br />
               Za tým Dávám.cz<br />
@@ -97,7 +105,7 @@ export const linkCreated = (data) => mjml2html(`
               předseda spolku
             </mj-text>
           </mj-column>
-        </mj-section>
+        </mj-section>        
 
         </mj-wrapper>  
       <mj-section>

@@ -7,6 +7,7 @@ import {
   constants,
   isTransactionReserved,
   offerRemainingAmount,
+  getConfirmationHash
 } from '../utils'
 import { sendEmail } from '../emails'
 import { OfferValidationSchema } from '../../validation/offer'
@@ -107,8 +108,35 @@ export const OfferQuery = extendType({
 export const OfferMutations = extendType({
   type: 'Mutation',
   definition(t) {
+    t.field('changeActiveStateOffer', {
+      description: 'Deactivate or activate offer',
+      type: 'Offer',
+      args: {
+        offerId: idArg({ required: true }),
+        confirmationHash: stringArg({ required: true }),
+        active: booleanArg({ required: true })
+      },
+      resolve: async (
+        _, { offerId, confirmationHash, active }, { prisma }
+      ) => {
+        const offer = await prisma.offer({ id: offerId})
+        if (offer && confirmationHash === getConfirmationHash(offerId, offer.createdAt)) {
+          const updatedOffer = await prisma.updateOffer({
+            data: {
+              active
+            },
+            where: { id: offerId }
+          })
+
+          return updatedOffer;
+        } else {
+          throw new Error('Offer not found or hash does not match.')
+        }
+      }
+    })
+
     t.field('createOffer', {
-      description: 'Create new Fundlamb offer',
+      description: 'Create new offer',
       type: 'Offer',
       args: {
         offerName: stringArg({ required: true }),
@@ -210,7 +238,7 @@ export const OfferMutations = extendType({
               name
               email
               firstName
-              lastName
+              createdAt
               beneficator {
                 name
               }
@@ -225,6 +253,7 @@ export const OfferMutations = extendType({
               email,
               name,
               firstName,
+              createdAt,
               beneficator,
               price,
               amount,
@@ -235,6 +264,9 @@ export const OfferMutations = extendType({
             const imgUrl =
               offerImage ||
               'https://davamcz-images.s3.eu-central-1.amazonaws.com/mailing/darek.png'
+            const confirmationHash = getConfirmationHash(id, createdAt)
+            const deactivationLink = 
+              `https://davam.cz/nabidka/${id}/deaktivovat/${confirmationHash}`
             sendEmail(email, {
               template: 'linkCreated',
               subject: `Vytvoření platebního odkazu na ${name}`,
@@ -247,6 +279,7 @@ export const OfferMutations = extendType({
                 amount,
                 offerLink,
                 imgUrl,
+                deactivationLink
               },
             })
           }
