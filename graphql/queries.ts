@@ -4,6 +4,7 @@ export const offer = gql`
   query offer($id: ID!) {
     offer(id: $id) {
       id
+      active
       name
       description
       transport

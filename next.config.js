@@ -6,6 +6,7 @@ module.exports = {
     PRISMA_SECRET: process.env.PRISMA_SECRET,
     EMAIL_ACCESS_KEY: process.env.EMAIL_ACCESS_KEY,
     EMAIL_SECRET_KEY: process.env.EMAIL_SECRET_KEY,
+    CONFIRMATION_SECRET_KEY: process.env.CONFIRMATION_SECRET_KEY,
     PROJECT_DIRNAME: __dirname,
   },
 }

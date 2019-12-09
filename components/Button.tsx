@@ -7,6 +7,7 @@ interface Props {
   noShadow?: boolean
   disabled?: boolean
   loading?: boolean
+  onClick?: () => void
 }
 
 export const Button: FunctionComponent<Props> = ({
@@ -15,6 +16,7 @@ export const Button: FunctionComponent<Props> = ({
   disabled,
   noShadow,
   loading,
+  onClick
 }) => {
   return (
     <>
@@ -23,6 +25,7 @@ export const Button: FunctionComponent<Props> = ({
         secondary={secondary}
         noShadow={noShadow}
         loading={loading}
+        onClick={onClick}
       >
         {children}
         {loading && (
