@@ -69,9 +69,7 @@ export default withApollo(() => {
           <Text>
             Vytvořte si pomocí našeho formuláře platební odkaz, díky kterému
             druzí snadno zakoupí vaši věc/službu a přímo tak přispějí vámi
-            vybrané neziskové organizaci. Platba (ani žádná její část) nepřijde
-            ani vám, ani nám, ale v plné výši poputuje na účet neziskové
-            organizace.
+            vybrané neziskové organizaci. Platba půjde v plné výši dobročinné organizaci.
           </Text>
           <Spacer y={1.5} />
 

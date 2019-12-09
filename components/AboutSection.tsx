@@ -1,8 +1,8 @@
 import { Container } from './Container'
-import { Title } from './Title'
-import Text from './Text'
-import Spacer from './Spacer'
 import { Image } from './Image'
+import Spacer from './Spacer'
+import Text from './Text'
+import { Title } from './Title'
 // import { ButtonLink } from './ButtonLink'
 
 export const AboutSection = () => (
@@ -15,7 +15,7 @@ export const AboutSection = () => (
       <Text>
         Jsme parta lidí, která se vytvořením této platformy rozhodla podpořit
         neziskový sektor. Zjednodušit propojení dárce s dobročinnými
-        organizacemi tak, aby s tím měly obě strany co nejméně starostí. Aby pár
+        organizacemi tak, aby s tím měly obě strany co nejméně starostí. Pár
         kliknutí na této stránce znamenalo radost, kterou uděláte hned dvakrát –
         tomu, kdo váš produkt koupí, a zároveň i neziskové organizaci.
       </Text>

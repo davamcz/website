@@ -227,12 +227,9 @@ export default withApollo(() => {
             Poté, co vyplníte své údaje, budete přesměrováni k platbě.
           </Step>
           <Step number={2}>
-            Po úspěšné platbě bude na váš e-mail zasláno potvrzení o platbě a
-            shrnutí důležitých informací včetně kontaktu na poskytovatele služby
-            či prodkutu.
-          </Step>
-          <Step number={3}>
-            Zkontaktujete se s poskytovatelem a domluvte předání.
+            Pokud platba proběhne úspěšně, obdržíte e-mail s potvrzením o platbě
+            a shrnutím důležitých informací, včetně kontaktu na poskytovatele
+            produktu (služby). Neváhejte a domluvte se na předání.
           </Step>
         </Container>
       </Container>

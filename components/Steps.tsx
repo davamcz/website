@@ -1,6 +1,6 @@
 import { Container } from './Container'
-import { Title } from './Title'
 import { Step } from './Step'
+import { Title } from './Title'
 
 export const Steps = () => (
   <Container>
@@ -13,9 +13,9 @@ export const Steps = () => (
     <Container style={{ paddingTop: '48px', paddingBottom: '48px', justifyContent: 'space-between' }} row>
       <Step title="Krok č. 1" description="Nejprve si vyberte, kterou dobročinnou organizaci chcete podpořit."></Step>
       <Step title="Krok č. 2" description="Vytvořte nabídku s vaší darovanou věcí. My vám vygenerujeme platební odkaz."></Step>
-      <Step title="Krok č. 3" description="Nyní můžete svůj inzerát zveřejnit a sdílet se všemi, ke kterým chcete, aby se nabídka dostala."></Step>
-      <Step title="Krok č. 4" description="Poté, co vaše nabídka někoho zaujme, přes platební odkaz přispěje přímo vybrané organizaci."></Step>
-      <Step title="Krok č. 5" description="Oba obdržíte potvrzení o daru. Domluvíte se na způsobu předání produktu nebo poskytnutí služby."></Step>
+      <Step title="Krok č. 3" description="Svůj inzerát zveřejněte a sdílejte se všemi, ke kterým chcete, aby se nabídka dostala."></Step>
+      <Step title="Krok č. 4" description="Vyčkejte, až vaše nabídka někoho zaujme a přes platební odkaz přímo přispěje vybrané organizaci."></Step>
+      <Step title="Krok č. 5" description="Domluvte se na způsobu předání produktu nebo poskytnutí služby."></Step>
     </Container>
   </Container>
 )

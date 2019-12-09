@@ -1,20 +1,22 @@
-import { Container } from './Container'
-import Text from './Text'
-import Spacer from './Spacer'
-import { ButtonLink } from './ButtonLink'
 import styled from 'styled-components'
+import { ButtonLink } from './ButtonLink'
+import { Container } from './Container'
+import Spacer from './Spacer'
+import Text from './Text'
 
 export const Home = () => (
   <HomeContainer style={{ paddingTop: '144px', paddingBottom: '250px' }}>
-    <Text h1 style={{ maxWidth:'660px' }}>
-      Máte věc/službu, kterou chcete věnovat druhým a zároveň pomoci dobročinné
-      organizaci?
+    <Text h1 style={{ maxWidth: '660px' }}>
+      Máte věc nebo službu, kterou chcete věnovat druhým a zároveň pomoci
+      dobročinné organizaci?
     </Text>
     <Spacer />
     <Container row>
       <ButtonLink href="/chci-darovat">Chci darovat</ButtonLink>
       <Spacer />
-      <ButtonLink href="/nabidka" secondary>Zobrazit nabídku</ButtonLink>
+      <ButtonLink href="/nabidka" secondary>
+        Zobrazit nabídku
+      </ButtonLink>
     </Container>
   </HomeContainer>
 )
