@@ -1,14 +1,14 @@
-import React from 'react'
-import cookie from 'cookie'
 import { ApolloProvider } from '@apollo/react-hooks'
-import Head from 'next/head'
-import { ApolloClient } from 'apollo-client'
 import { InMemoryCache, NormalizedCacheObject } from 'apollo-cache-inmemory'
-import { createUploadLink } from 'apollo-upload-client'
+import { ApolloClient } from 'apollo-client'
 import { setContext } from 'apollo-link-context'
+import { createUploadLink } from 'apollo-upload-client'
+import cookie from 'cookie'
+import { IncomingMessage } from 'http'
 import fetch from 'isomorphic-unfetch'
 import { NextPage } from 'next'
-import { IncomingMessage } from 'http'
+import Head from 'next/head'
+import React from 'react'
 
 type Options = {
   ssr: boolean
@@ -117,7 +117,7 @@ export let apolloClient: ApolloClient<NormalizedCacheObject> | null = null
  * Always creates a new apollo client on the server
  * Creates or reuses apollo client in the browser.
  */
-function initApolloClient(initialState: NormalizedCacheObject, options: any) {
+export function initApolloClient(initialState: NormalizedCacheObject, options: any = {}) {
   // Make sure to create a new client for every server-side request so that data
   // isn't shared between connections (which would be bad)
   if (typeof window === 'undefined') {
@@ -187,7 +187,7 @@ function createApolloClient(initialState = {}, { getToken }: any) {
  * @param {Object} config
  */
 
-function getToken(req?: IncomingMessage) {
+export function getToken(req?: IncomingMessage) {
   const cookies = cookie.parse(req ? req.headers.cookie || '' : document.cookie)
   return cookies.token
 }

@@ -1086,6 +1086,15 @@ export type CreateTransactionMutation = (
   ) }
 );
 
+export type OrganizationDetailFragment = (
+  { __typename?: 'Organization' }
+  & Pick<Organization, 'id' | 'name' | 'description' | 'url'>
+  & { logo: (
+    { __typename?: 'File' }
+    & Pick<File, 'key'>
+  ) }
+);
+
 export type OfferQueryVariables = {
   id: Scalars['ID']
 };
@@ -1243,7 +1252,17 @@ export type SignupMutation = (
   ) }
 );
 
-
+export const OrganizationDetailFragmentDoc = gql`
+    fragment OrganizationDetail on Organization {
+  id
+  name
+  description
+  url
+  logo {
+    key
+  }
+}
+    `;
 export const UserDocument = gql`
     query user {
   user {

@@ -5,7 +5,7 @@
   "license": "ISC",
   "scripts": {
     "dev": "dotenv -- next",
-    "build": "next build",
+    "build": "dotenv -- next build",
     "start": "next start",
     "generate": "graphql-codegen --config codegen.yml",
     "prisma": "dotenv -- prisma deploy -p backend/prisma/prisma.yml"

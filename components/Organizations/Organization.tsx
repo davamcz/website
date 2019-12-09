@@ -1,16 +1,14 @@
-import { Organization, File } from '../../generated/graphql'
-import Text from '../Text'
-import Spacer from '../Spacer'
-import { Link } from '../Link'
-import { stripProtocol } from '../../lib/utils'
-import { Image } from '../Image'
-import { Container } from '../Container'
 import styled from 'styled-components'
+import { OrganizationDetailFragment } from '../../generated/graphql'
+import { stripProtocol } from '../../lib/utils'
+import { Container } from '../Container'
+import { Image } from '../Image'
+import { Link } from '../Link'
+import Spacer from '../Spacer'
+import Text from '../Text'
 
 interface Props {
-  organization: Pick<Organization, 'name' | 'description' | 'url'> & {
-    logo: Pick<File, 'key'>
-  }
+  organization: OrganizationDetailFragment
 }
 
 export const OrganizationItem = ({ organization }: Props) => (
