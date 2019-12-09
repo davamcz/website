@@ -1107,7 +1107,7 @@ export type OfferQuery = (
       )>> }
     ), beneficator: (
       { __typename?: 'Organization' }
-      & Pick<Organization, 'name' | 'apiId'>
+      & Pick<Organization, 'name' | 'apiId' | 'projectId'>
     ) }
   )> }
 );
@@ -1460,6 +1460,7 @@ export const OfferDocument = gql`
     beneficator {
       name
       apiId
+      projectId
     }
   }
 }

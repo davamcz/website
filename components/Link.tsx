@@ -10,6 +10,7 @@ interface Props {
   underline?: boolean
   target?: string
   color?: boolean
+  bold?: boolean
 }
 
 export const Link: React.FC<Props> = ({
@@ -20,7 +21,8 @@ export const Link: React.FC<Props> = ({
   external,
   underline,
   target,
-  color
+  color,
+  bold
 }) => {
   if (external) {
     return (
@@ -29,6 +31,8 @@ export const Link: React.FC<Props> = ({
         underline={underline}
         target={target}
         href={href}
+        bold={bold}
+        colored={color}
       >
         {children}
       </StyledLink>
@@ -41,6 +45,7 @@ export const Link: React.FC<Props> = ({
         underline={underline}
         target={target}
         colored={color}
+        bold={bold}
       >
         {children}
       </StyledLink>
@@ -51,12 +56,14 @@ export const Link: React.FC<Props> = ({
 interface StyledLinkProps {
   underline?: boolean
   colored?: boolean
+  bold?: boolean
 }
 
 const StyledLink = styled.a<StyledLinkProps>`
   display: inline-flex;
   align-items: center;
   color: ${({ theme, colored }) => (colored ? theme.colors.orange : 'inherit')};
+  font-weight: ${({ bold }) => (bold ? 'bold' : 'normal')};
   text-decoration: none;
   cursor: pointer;
   translate: color 200ms ease-in;

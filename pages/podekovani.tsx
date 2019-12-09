@@ -1,11 +1,12 @@
-import { Section } from '../components/Section'
-import { Container } from '../components/Container'
-import Spacer from '../components/Spacer'
-import Text from '../components/Text'
-import { withApollo } from '../lib/apollo'
 import gql from 'graphql-tag'
 import { useRouter } from 'next/router'
+import { useCallback } from 'react'
+import { Container } from '../components/Container'
+import { Section } from '../components/Section'
+import Spacer from '../components/Spacer'
+import Text from '../components/Text'
 import { useGetTransactionStatusQuery } from '../generated/graphql'
+import { withApollo } from '../lib/apollo'
 
 export const transactionStatus = gql`
   query getTransactionStatus($id: ID!) {
@@ -19,9 +20,12 @@ export default withApollo(
   () => {
     const router = useRouter()
 
-    useGetTransactionStatusQuery({
-      variables: { id: router.query.transaction_id as string },
-    })
+    useCallback(() => {
+      useGetTransactionStatusQuery({
+        variables: { id: router.query.transaction_id as string },
+        skip: !router.query.transaction_id,
+      })
+    }, [router.query.transaction_id])
 
     return (
       <Section>

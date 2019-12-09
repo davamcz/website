@@ -1,7 +1,7 @@
-import styled from 'styled-components'
-import { Label, Error } from './Input'
 import { ChangeEvent } from 'react'
+import styled from 'styled-components'
 import { Container } from './Container'
+import { Error, Label } from './Input'
 
 interface Props {
   name?: string
@@ -11,6 +11,7 @@ interface Props {
   onBlur?: any
   value: string
   error?: string
+  defaultValue?: any
 }
 
 export const Select = ({
@@ -20,7 +21,7 @@ export const Select = ({
   onBlur,
   onChange,
   value,
-  error
+  error,
 }: Props) => (
   <Container>
     <Container row style={{ justifyContent: 'space-between' }}>

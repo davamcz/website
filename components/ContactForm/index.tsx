@@ -1,12 +1,14 @@
 import { Formik } from 'formik'
+import { ContactFormValidationSchema } from '../../validation/contact'
+import { CheckBox } from '../CheckBox'
+import { Container } from '../Container'
 // import styled from 'styled-components'
 import { Form } from '../Form'
-import { Input } from '../Input'
-import { TextArea } from '../TextArea'
+import { Error, Input } from '../Input'
+import { Link } from '../Link'
 import Spacer from '../Spacer'
-import { Container } from '../Container'
 import Text from '../Text'
-import { ContactFormValidationSchema } from '../../validation/contact'
+import { TextArea } from '../TextArea'
 
 interface Props {
   maxWidth?: string
@@ -27,24 +29,37 @@ export const ContactForm = ({ maxWidth = '730px' }: Props) => {
           name: '',
           email: '',
           question: '',
+          conditions: false,
         }}
         validationSchema={ContactFormValidationSchema}
         onSubmit={async (values, { setStatus }) => {
-          try {
-            const res = await await fetch(`${process.env.WEBSITE_URL}/api/contact`, {
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              method: 'POST',
-              body: JSON.stringify(values),
+          if (!values.conditions) {
+            setStatus({
+              type: 'gdpr',
+              message:
+                'Neobejdeme se bez vašeho souhlasu se zpracování osobních údajů',
             })
-            if (res.status === 200) {
-              setStatus({ status: 'success' })
-            } else {
-              setStatus({ status: 'error' })
+          } else {
+            try {
+              const res = await await fetch(
+                `${process.env.WEBSITE_URL}/api/contact`,
+                {
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  method: 'POST',
+                  body: JSON.stringify(values),
+                }
+              )
+              if (res.status === 200) {
+                setStatus({ type: 'success' })
+              } else {
+                setStatus({ type: 'error' })
+              }
+            } catch (e) {
+              setStatus({ type: 'error' })
+              console.log(e)
             }
-          } catch (e) {
-            setStatus({ status: 'error' })
           }
         }}
       >
@@ -55,9 +70,10 @@ export const ContactForm = ({ maxWidth = '730px' }: Props) => {
           handleBlur,
           errors,
           status,
+          setFieldValue,
         }) => {
-          return status ? (
-            status.status === 'success' ? (
+          return status?.type === 'success' || status?.type === 'error' ? (
+            status.type === 'success' ? (
               <Container>
                 <Spacer />
                 <Text h1 as="p">
@@ -110,6 +126,31 @@ export const ContactForm = ({ maxWidth = '730px' }: Props) => {
                 onBlur={handleBlur}
                 error={errors.question}
               />
+              <Spacer x={0.5} />
+              <Container row vcenter>
+                <CheckBox
+                  checked={values.conditions}
+                  onChange={val => setFieldValue('conditions', val)}
+                />
+                <Spacer x={0.5} />
+                <Text>
+                  Souhlasím se{' '}
+                  <Link
+                    color
+                    bold
+                    external
+                    href="https://docs.google.com/document/d/13WrT-kFjyq0WZcQX2UB7i6yWUQ80V58DLXll-CvHEFw/edit"
+                  >
+                    Zpracováním údajů
+                  </Link>
+                </Text>
+              </Container>
+              {status && status.type === 'gdpr' && (
+                  <>
+                    <Spacer />
+                    <Error>{status.message}</Error>
+                  </>
+                )}
             </Form>
           )
         }}

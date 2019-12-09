@@ -1,16 +1,16 @@
-import { HelpContainer } from '../../../components/HelpContainer'
-import { OrganizationsContainer } from '../../../components/OrganizationsContainer'
-import { Container } from '../../../components/Container'
-import Text from '../../../components/Text'
-import Spacer from '../../../components/Spacer'
-import { ButtonLink } from '../../../components/ButtonLink'
-import { useOfferQuery } from '../../../generated/graphql'
 import { useRouter } from 'next/router'
-import { withApollo } from '../../../lib/apollo'
 import { useState } from 'react'
 import { AmountInput } from '../../../components/AmountInput'
+import { ButtonLink } from '../../../components/ButtonLink'
+import { Container } from '../../../components/Container'
+import { HelpContainer } from '../../../components/HelpContainer'
 import { Image } from '../../../components/Image'
 import { MetaTags } from '../../../components/MetaTags'
+import { OrganizationsContainer } from '../../../components/OrganizationsContainer'
+import Spacer from '../../../components/Spacer'
+import Text from '../../../components/Text'
+import { useOfferQuery } from '../../../generated/graphql'
+import { withApollo } from '../../../lib/apollo'
 
 
 export default withApollo(() => {
@@ -23,8 +23,6 @@ export default withApollo(() => {
   const [amount, setAmount] = useState(1)
 
   const offer = data?.offer
-
-  console.log(offer?.remainingAmount)
 
   return (
     <>

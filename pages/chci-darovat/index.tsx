@@ -1,23 +1,21 @@
-import gql from 'graphql-tag'
-import Text from '../../components/Text'
-import { Section } from '../../components/Section'
-import { Container } from '../../components/Container'
-import Spacer from '../../components/Spacer'
-import { Form } from '../../components/Form'
-import { Input, Error } from '../../components/Input'
-import { TextArea } from '../../components/TextArea'
-import { useUpload } from '../../lib/use-upload'
-import { withApollo } from '../../lib/apollo'
-import {
-  useOrganizationsQuery,
-  useUserQuery,
-  useCreateOfferMutation,
-} from '../../generated/graphql'
 import { Formik } from 'formik'
-import { Select } from '../../components/Select'
-import { OfferValidationSchema } from '../../validation/offer'
-import { SelectButton } from '../../components/SelectButton'
+import gql from 'graphql-tag'
 import { useRouter } from 'next/router'
+import { CheckBox } from '../../components/CheckBox'
+import { Container } from '../../components/Container'
+import { Form } from '../../components/Form'
+import { Error, Input } from '../../components/Input'
+import { Link } from '../../components/Link'
+import { Section } from '../../components/Section'
+import { Select } from '../../components/Select'
+import { SelectButton } from '../../components/SelectButton'
+import Spacer from '../../components/Spacer'
+import Text from '../../components/Text'
+import { TextArea } from '../../components/TextArea'
+import { useCreateOfferMutation, useOrganizationsQuery, useUserQuery } from '../../generated/graphql'
+import { withApollo } from '../../lib/apollo'
+import { useUpload } from '../../lib/use-upload'
+import { OfferValidationSchema } from '../../validation/offer'
 
 export const createOffer = gql`
   mutation createOffer(
@@ -89,10 +87,16 @@ export default withApollo(() => {
               lastName: user?.lastName || '',
               email: user?.email || '',
               publicOffer: true,
+              conditions: false,
             }}
             validationSchema={OfferValidationSchema}
             onSubmit={async (values, { setStatus }) => {
-              if (Array.isArray(files) && files.length > 0) {
+              if(!values.conditions) {
+                setStatus({
+                  type: 'error',
+                  message: 'Neobejdeme se bez vašeho souhlasu',
+                })
+              } else if (Array.isArray(files) && files.length > 0) {
                 try {
                   const fileIds = files.map(file => file.id)
                   const { data } = await createOfferMutation({
@@ -154,19 +158,19 @@ export default withApollo(() => {
                   onChange={handleChange}
                   error={errors.organizationId}
                 >
-                  <option disabled selected value="no-organization">
+                  <option disabled value="no-organization">
                     Vyberte organizaci
                   </option>
                   {data &&
                     data.organizations.map(organization => (
-                      <option value={organization.id}>
+                      <option key={organization.id} value={organization.id}>
                         {organization.name}
                       </option>
                     ))}
                 </Select>
                 <Spacer />
                 <Input
-                  label="Cena"
+                  label="Cena v Kč"
                   name="price"
                   type="number"
                   value={values.price}
@@ -239,6 +243,25 @@ export default withApollo(() => {
                     />
                   </>
                 )}
+                <Container row vcenter>
+                  <CheckBox
+                    checked={values.conditions}
+                    onChange={val => setFieldValue('conditions', val)}
+                  />
+                  <Spacer x={0.5} />
+                  <Text>
+                    Souhlasím s{' '}
+                    <Link
+                      color
+                      bold
+                      external
+                      href="https://docs.google.com/document/d/1mF2rgj4ljL3pFGjfluArTfTptObI1Bbfn8tJJjHqv3s/edit"
+                    >
+                      Provozními podmínkami
+                    </Link>{' '}
+                    platformy Davam.cz
+                  </Text>
+                </Container>
                 {status && status.type === 'error' && (
                   <>
                     <Spacer />

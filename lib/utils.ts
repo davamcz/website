@@ -1,2 +1,2 @@
 export const stripProtocol = (url: string) =>
-  url.replace(/(^\w+:|^)\/\//, '').replace(/\/$/, '')
+  url.replace(/(\w+:|^)\/\//, '').replace(/\/$/, '')
