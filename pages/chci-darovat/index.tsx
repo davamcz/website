@@ -243,6 +243,7 @@ export default withApollo(() => {
                     />
                   </>
                 )}
+                <><Spacer />
                 <Container row vcenter>
                   <CheckBox
                     checked={values.conditions}
@@ -262,6 +263,7 @@ export default withApollo(() => {
                     platformy Davam.cz
                   </Text>
                 </Container>
+                </>
                 {status && status.type === 'error' && (
                   <>
                     <Spacer />

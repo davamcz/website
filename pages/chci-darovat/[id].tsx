@@ -88,4 +88,5 @@ const Ring = styled.div`
   font-size: 20px;
   font-weight: bold;
   box-shadow: ${({ theme }) => theme.shadow.box};
+  background: ${({ theme }) => theme.colors.white};
 `

@@ -26,7 +26,7 @@ export default withApollo(() => {
 
   return (
     <>
-      <MetaTags title={`Davam.cz - ${offer?.name} za ${offer?.price}Kč pro ${offer?.beneficator.name}`} description={offer?.description as string} />
+      <MetaTags title={`Davam.cz - ${offer?.name} za ${offer?.price}Kč pro ${offer?.beneficator.name}`} description={offer?.description as string} image={`https://davamcz.imgix.net/${offer?.gallery.images && offer.gallery.images[0].key}}`} />
       <Container row style={{ justifyContent: 'space-between' }}>
         <Container flex="0 0 auto">
           {offer && (
