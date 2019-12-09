@@ -1,11 +1,11 @@
 import gql from 'graphql-tag'
-import { useMemo, useCallback, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
-import { useUploadFileMutation, File } from '../generated/graphql'
 import styled from 'styled-components'
-import Text from '../components/Text'
 import { Container } from '../components/Container'
 import Spacer from '../components/Spacer'
+import Text from '../components/Text'
+import { File, useUploadFileMutation } from '../generated/graphql'
 
 export const uploadFile = gql`
   mutation uploadFile($file: Upload!, $directory: String) {
@@ -85,6 +85,7 @@ const DropZone = styled.div`
   text-align: center;
   border: 1px dashed #999999;
   padding: 120px 24px;
+  cursor: pointer;
 `
 
 const Img = styled.img`

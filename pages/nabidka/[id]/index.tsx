@@ -1,15 +1,17 @@
-import { HelpContainer } from '../../../components/HelpContainer'
-import { OrganizationsContainer } from '../../../components/OrganizationsContainer'
-import { Container } from '../../../components/Container'
-import Text from '../../../components/Text'
-import Spacer from '../../../components/Spacer'
-import { ButtonLink } from '../../../components/ButtonLink'
-import { useOfferQuery } from '../../../generated/graphql'
 import { useRouter } from 'next/router'
-import { withApollo } from '../../../lib/apollo'
 import { useState } from 'react'
 import { AmountInput } from '../../../components/AmountInput'
+import { ButtonLink } from '../../../components/ButtonLink'
+import { Container } from '../../../components/Container'
+import { HelpContainer } from '../../../components/HelpContainer'
 import { Image } from '../../../components/Image'
+import { MetaTags } from '../../../components/MetaTags'
+import { OrganizationsContainer } from '../../../components/OrganizationsContainer'
+import Spacer from '../../../components/Spacer'
+import Text from '../../../components/Text'
+import { useOfferQuery } from '../../../generated/graphql'
+import { withApollo } from '../../../lib/apollo'
+
 
 export default withApollo(() => {
   const router = useRouter()
@@ -22,10 +24,9 @@ export default withApollo(() => {
 
   const offer = data?.offer
 
-  console.log(offer?.remainingAmount)
-
   return (
     <>
+      <MetaTags title={`Davam.cz - ${offer?.name} za ${offer?.price}Kč pro ${offer?.beneficator.name}`} description={offer?.description as string} />
       <Container row style={{ justifyContent: 'space-between' }}>
         <Container flex="0 0 auto">
           {offer && (

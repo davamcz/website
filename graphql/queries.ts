@@ -20,6 +20,7 @@ export const offer = gql`
       beneficator {
         name
         apiId
+        projectId
       }
     }
   }

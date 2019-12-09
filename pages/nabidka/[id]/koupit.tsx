@@ -1,9 +1,11 @@
 import { Formik } from 'formik'
 import { useRouter } from 'next/router'
+import { CheckBox } from '../../../components/CheckBox'
 import { Container } from '../../../components/Container'
 import { Form } from '../../../components/Form'
 import { Image } from '../../../components/Image'
 import { Input } from '../../../components/Input'
+import { Link } from '../../../components/Link'
 import { Section } from '../../../components/Section'
 import Spacer from '../../../components/Spacer'
 import Text from '../../../components/Text'
@@ -48,31 +50,41 @@ export default withApollo(() => {
               email: user?.email || '',
               amount,
               comment: '',
+              conditions: false,
               // street: user?.adress?.street || '',
               // city: user?.adress?.city || '',
               // postalCode: user?.adress?.postalCode || '',
             }}
             validationSchema={TransactionValidationSchema}
             onSubmit={async (values, { setStatus }) => {
-              try {
-                const { data } = await createTransaction({ variables: values })
-                if (data?.createTransaction) {
-                  const link = paymentLink({
-                    firstName: values.firstName,
-                    lastName: values.lastName,
-                    email: values.email,
-                    amount: price,
-                    projectId: data.createTransaction.offer.beneficator
-                      .projectId as number,
-                    transactionId: data.createTransaction.id,
-                  })
-                  window.location.href = link
-                }
-              } catch (e) {
+              if (!values.conditions) {
                 setStatus({
                   type: 'error',
-                  message: 'Nastala chyba zkuste to prosím později.',
+                  message: 'Neobejdeme se bez vašeho souhlasu',
                 })
+              } else {
+                try {
+                  const { data } = await createTransaction({
+                    variables: values,
+                  })
+                  if (data?.createTransaction) {
+                    const link = paymentLink({
+                      firstName: values.firstName,
+                      lastName: values.lastName,
+                      email: values.email,
+                      amount: price,
+                      projectId: data.createTransaction.offer.beneficator
+                        .projectId as number,
+                      transactionId: data.createTransaction.id,
+                    })
+                    window.location.href = link
+                  }
+                } catch (e) {
+                  setStatus({
+                    type: 'error',
+                    message: 'Nastala chyba zkuste to prosím později.',
+                  })
+                }
               }
             }}
           >
@@ -83,7 +95,7 @@ export default withApollo(() => {
               handleSubmit,
               errors,
               // status,
-              // setFieldValue,
+              setFieldValue,
             }) => (
               <Form onSubmit={handleSubmit}>
                 <Input
@@ -155,6 +167,29 @@ export default withApollo(() => {
                     <Error>{status.message}</Error>
                   </>
                 )} */}
+                <Container row>
+                  <CheckBox
+                    checked={values.conditions}
+                    onChange={val => setFieldValue('conditions', val)}
+                    style={{ marginTop: '4px' }}
+                  />
+                  <Spacer x={0.5} />
+                  <Text>
+                    Souhlasím s zpracování{' '}
+                    <Link
+                      color
+                      bold
+                      external
+                      href={`https://www.darujme.cz/projekt/${offer?.beneficator.projectId}/zpracovani-osobnich-udaju`}
+                    >
+                      osobních údajů
+                    </Link>{' '}
+                    organizací{' '}
+                    <Text as="span" bold>
+                      {offer?.beneficator.name}
+                    </Text>
+                  </Text>
+                </Container>
               </Form>
             )}
           </Formik>
