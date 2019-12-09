@@ -43,6 +43,7 @@ export const offer = gql`
           key
         }
       }
+      active
       beneficator {
         name
         apiId

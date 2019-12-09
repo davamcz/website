@@ -21,12 +21,7 @@ export default ({ organizations }: OrganizationsProps) => (
 )
 
 export async function unstable_getStaticProps() {
-  const client = initApolloClient(
-    {},
-    {
-      getToken: () => undefined,
-    }
-  )
+  const client = initApolloClient({})
 
   const {
     data: { organizations },

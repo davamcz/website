@@ -1128,7 +1128,7 @@ export type OfferQuery = (
   { __typename?: 'Query' }
   & { offer: Maybe<(
     { __typename?: 'Offer' }
-    & Pick<Offer, 'id' | 'name' | 'description' | 'transport' | 'price' | 'remainingAmount'>
+    & Pick<Offer, 'id' | 'name' | 'description' | 'transport' | 'price' | 'remainingAmount' | 'active'>
     & { user: (
       { __typename?: 'User' }
       & Pick<User, 'shortName'>
@@ -1536,6 +1536,7 @@ export const OfferDocument = gql`
         key
       }
     }
+    active
     beneficator {
       name
       apiId
