@@ -249,7 +249,9 @@ export type GalleryWhereInput = {
 
 export type Mutation = {
    __typename?: 'Mutation',
-  /** Create new Fundlamb offer */
+  /** Deactivate or activate offer */
+  changeActiveStateOffer: Offer,
+  /** Create new offer */
   createOffer: Offer,
   createOrganization: Organization,
   createTransaction: Transaction,
@@ -257,6 +259,13 @@ export type Mutation = {
   login: AuthPayload,
   updateUser: User,
   uploadFile: File,
+};
+
+
+export type MutationChangeActiveStateOfferArgs = {
+  offerId: Scalars['ID'],
+  confirmationHash: Scalars['String'],
+  active: Scalars['Boolean']
 };
 
 
@@ -1035,21 +1044,6 @@ export type OffersQuery = (
   )> }
 );
 
-export type OrganizationsQueryVariables = {};
-
-
-export type OrganizationsQuery = (
-  { __typename?: 'Query' }
-  & { organizations: Array<(
-    { __typename?: 'Organization' }
-    & Pick<Organization, 'id' | 'name' | 'description' | 'url'>
-    & { logo: (
-      { __typename?: 'File' }
-      & Pick<File, 'key'>
-    ) }
-  )> }
-);
-
 export type RecentTransactionsQueryVariables = {};
 
 
@@ -1086,6 +1080,21 @@ export type CreateTransactionMutation = (
   ) }
 );
 
+export type ChangeActiveStateOfferMutationVariables = {
+  offerId: Scalars['ID'],
+  confirmationHash: Scalars['String'],
+  active: Scalars['Boolean']
+};
+
+
+export type ChangeActiveStateOfferMutation = (
+  { __typename?: 'Mutation' }
+  & { changeActiveStateOffer: (
+    { __typename?: 'Offer' }
+    & Pick<Offer, 'id' | 'name' | 'active'>
+  ) }
+);
+
 export type OrganizationDetailFragment = (
   { __typename?: 'Organization' }
   & Pick<Organization, 'id' | 'name' | 'description' | 'url'>
@@ -1093,6 +1102,21 @@ export type OrganizationDetailFragment = (
     { __typename?: 'File' }
     & Pick<File, 'key'>
   ) }
+);
+
+export type OrganizationsQueryVariables = {};
+
+
+export type OrganizationsQuery = (
+  { __typename?: 'Query' }
+  & { organizations: Array<(
+    { __typename?: 'Organization' }
+    & Pick<Organization, 'id' | 'name' | 'description' | 'url'>
+    & { logo: (
+      { __typename?: 'File' }
+      & Pick<File, 'key'>
+    ) }
+  )> }
 );
 
 export type OfferQueryVariables = {
@@ -1346,44 +1370,6 @@ export function useOffersLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookO
 export type OffersQueryHookResult = ReturnType<typeof useOffersQuery>;
 export type OffersLazyQueryHookResult = ReturnType<typeof useOffersLazyQuery>;
 export type OffersQueryResult = ApolloReactCommon.QueryResult<OffersQuery, OffersQueryVariables>;
-export const OrganizationsDocument = gql`
-    query organizations {
-  organizations {
-    id
-    name
-    description
-    url
-    logo {
-      key
-    }
-  }
-}
-    `;
-
-/**
- * __useOrganizationsQuery__
- *
- * To run a query within a React component, call `useOrganizationsQuery` and pass it any options that fit your needs.
- * When your component renders, `useOrganizationsQuery` returns an object from Apollo Client that contains loading, error, and data properties 
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useOrganizationsQuery({
- *   variables: {
- *   },
- * });
- */
-export function useOrganizationsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<OrganizationsQuery, OrganizationsQueryVariables>) {
-        return ApolloReactHooks.useQuery<OrganizationsQuery, OrganizationsQueryVariables>(OrganizationsDocument, baseOptions);
-      }
-export function useOrganizationsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<OrganizationsQuery, OrganizationsQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<OrganizationsQuery, OrganizationsQueryVariables>(OrganizationsDocument, baseOptions);
-        }
-export type OrganizationsQueryHookResult = ReturnType<typeof useOrganizationsQuery>;
-export type OrganizationsLazyQueryHookResult = ReturnType<typeof useOrganizationsLazyQuery>;
-export type OrganizationsQueryResult = ApolloReactCommon.QueryResult<OrganizationsQuery, OrganizationsQueryVariables>;
 export const RecentTransactionsDocument = gql`
     query recentTransactions {
   recentTransactions {
@@ -1459,6 +1445,80 @@ export function useCreateTransactionMutation(baseOptions?: ApolloReactHooks.Muta
 export type CreateTransactionMutationHookResult = ReturnType<typeof useCreateTransactionMutation>;
 export type CreateTransactionMutationResult = ApolloReactCommon.MutationResult<CreateTransactionMutation>;
 export type CreateTransactionMutationOptions = ApolloReactCommon.BaseMutationOptions<CreateTransactionMutation, CreateTransactionMutationVariables>;
+export const ChangeActiveStateOfferDocument = gql`
+    mutation changeActiveStateOffer($offerId: ID!, $confirmationHash: String!, $active: Boolean!) {
+  changeActiveStateOffer(offerId: $offerId, confirmationHash: $confirmationHash, active: $active) {
+    id
+    name
+    active
+  }
+}
+    `;
+export type ChangeActiveStateOfferMutationFn = ApolloReactCommon.MutationFunction<ChangeActiveStateOfferMutation, ChangeActiveStateOfferMutationVariables>;
+
+/**
+ * __useChangeActiveStateOfferMutation__
+ *
+ * To run a mutation, you first call `useChangeActiveStateOfferMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useChangeActiveStateOfferMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [changeActiveStateOfferMutation, { data, loading, error }] = useChangeActiveStateOfferMutation({
+ *   variables: {
+ *      offerId: // value for 'offerId'
+ *      confirmationHash: // value for 'confirmationHash'
+ *      active: // value for 'active'
+ *   },
+ * });
+ */
+export function useChangeActiveStateOfferMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<ChangeActiveStateOfferMutation, ChangeActiveStateOfferMutationVariables>) {
+        return ApolloReactHooks.useMutation<ChangeActiveStateOfferMutation, ChangeActiveStateOfferMutationVariables>(ChangeActiveStateOfferDocument, baseOptions);
+      }
+export type ChangeActiveStateOfferMutationHookResult = ReturnType<typeof useChangeActiveStateOfferMutation>;
+export type ChangeActiveStateOfferMutationResult = ApolloReactCommon.MutationResult<ChangeActiveStateOfferMutation>;
+export type ChangeActiveStateOfferMutationOptions = ApolloReactCommon.BaseMutationOptions<ChangeActiveStateOfferMutation, ChangeActiveStateOfferMutationVariables>;
+export const OrganizationsDocument = gql`
+    query organizations {
+  organizations {
+    id
+    name
+    description
+    url
+    logo {
+      key
+    }
+  }
+}
+    `;
+
+/**
+ * __useOrganizationsQuery__
+ *
+ * To run a query within a React component, call `useOrganizationsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useOrganizationsQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useOrganizationsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useOrganizationsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<OrganizationsQuery, OrganizationsQueryVariables>) {
+        return ApolloReactHooks.useQuery<OrganizationsQuery, OrganizationsQueryVariables>(OrganizationsDocument, baseOptions);
+      }
+export function useOrganizationsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<OrganizationsQuery, OrganizationsQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<OrganizationsQuery, OrganizationsQueryVariables>(OrganizationsDocument, baseOptions);
+        }
+export type OrganizationsQueryHookResult = ReturnType<typeof useOrganizationsQuery>;
+export type OrganizationsLazyQueryHookResult = ReturnType<typeof useOrganizationsLazyQuery>;
+export type OrganizationsQueryResult = ApolloReactCommon.QueryResult<OrganizationsQuery, OrganizationsQueryVariables>;
 export const OfferDocument = gql`
     query offer($id: ID!) {
   offer(id: $id) {

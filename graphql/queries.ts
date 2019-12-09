@@ -13,7 +13,7 @@ export const organizationFragment = gql`
 `
 
 export const organizationsQuery = gql`
-  query organizationsQuery {
+  query organizations {
     organizations {
       id
       name

@@ -10,7 +10,8 @@
     "S3_ACCESS_KEY": "@s3-access-key",
     "S3_SECRET_KEY": "@s3-secret-key",
     "EMAIL_ACCESS_KEY": "@email-access-key",
-    "EMAIL_SECRET_KEY": "@email-secret-key"
+    "EMAIL_SECRET_KEY": "@email-secret-key",
+    "CONFIRMATION_SECRET_KEY": "@confirmation-secret-key"
   },
   "build": {
     "env": {
@@ -22,7 +23,8 @@
       "S3_ACCESS_KEY": "@s3-access-key",
       "S3_SECRET_KEY": "@s3-secret-key",
       "EMAIL_ACCESS_KEY": "@email-access-key",
-      "EMAIL_SECRET_KEY": "@email-secret-key"  
+      "EMAIL_SECRET_KEY": "@email-secret-key",
+      "CONFIRMATION_SECRET_KEY": "@confirmation-secret-key"
     }
   }
 }

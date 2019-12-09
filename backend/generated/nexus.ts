@@ -747,6 +747,7 @@ export interface NexusGenFieldTypes {
     images: NexusGenRootTypes['File'][] | null; // [File!]
   }
   Mutation: { // field return type
+    changeActiveStateOffer: NexusGenRootTypes['Offer']; // Offer!
     createOffer: NexusGenRootTypes['Offer']; // Offer!
     createOrganization: NexusGenRootTypes['Organization']; // Organization!
     createTransaction: NexusGenRootTypes['Transaction']; // Transaction!
@@ -828,6 +829,11 @@ export interface NexusGenArgTypes {
     }
   }
   Mutation: {
+    changeActiveStateOffer: { // args
+      active: boolean; // Boolean!
+      confirmationHash: string; // String!
+      offerId: string; // ID!
+    }
     createOffer: { // args
       amount: number; // Int!
       description: string; // String!

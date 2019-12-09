@@ -6,7 +6,6 @@ import { OrganizationDetailFragment, OrganizationsQuery } from '../generated/gra
 import { organizationsQuery } from '../graphql/queries'
 import { initApolloClient } from '../lib/apollo'
 
-
 export interface OrganizationsProps {
   organizations: Array<OrganizationDetailFragment>
 }
