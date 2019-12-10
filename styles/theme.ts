@@ -14,6 +14,7 @@ export const theme: DefaultTheme = {
     darkGrey: '#2f2f2f',
     grey: '#6d6d6d',
     salmon: '#ff9168',
+    darkSalmon: '#dd7657',
     orange: '#dbac35',
     peach: '#ffeab6',
     white: '#ffffff',

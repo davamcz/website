@@ -40,7 +40,6 @@ export default () => {
             external
             href="https://www.facebook.com/groups/2159998650981900/"
             color
-            underline
             bold
           >
             Dobročinný bazar

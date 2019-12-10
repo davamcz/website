@@ -38,7 +38,7 @@ export const Button: FunctionComponent<Props> = ({
   )
 }
 
-const StyledButton = styled.button<Props>`
+export const StyledButton = styled.button<Props>`
   position: relative;
   padding: 12px;
   font-size: 1rem;
@@ -57,6 +57,12 @@ const StyledButton = styled.button<Props>`
     secondary ? theme.colors.white : theme.colors.salmon};
   box-shadow: ${({ theme, secondary }) => !secondary && theme.shadow.button};
   font-weight: 700;
+
+  &:hover {
+    background: ${({ theme, secondary }) =>
+      secondary ? theme.colors.white : theme.colors.darkSalmon};
+    text-decoration: ${({ secondary }) => (secondary ? 'underline' : 'none')};
+  }
 
   &:disabled {
     background: ${({ theme }) => theme.colors.grey};

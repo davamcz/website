@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 import { Container } from '../Container'
-import { Logo } from '../Logo'
-import Text from '../Text'
 import { Link } from '../Link'
+import { Logo } from '../Logo'
 import { SocialLinks } from '../SocialLinks'
+import Text from '../Text'
 
 export const Footer = () => (
   <FooterContainer>
@@ -12,7 +12,7 @@ export const Footer = () => (
       <Text>&copy; {new Date().getFullYear()} Davam.cz</Text>
       <Text>
         V případe problémů a dotazů nás kontaktujte na{' '}
-        <Link external underline href="mailto:info@davam.cz">
+        <Link external color href="mailto:info@davam.cz">
           info@davam.cz
         </Link>
       </Text>

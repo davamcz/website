@@ -1,16 +1,16 @@
-import { Form } from '../components/Form'
-import { Input, Error } from '../components/Input'
 import { Formik } from 'formik'
-import { withApollo } from '../lib/apollo'
-import { saveToken } from '../lib/auth'
 import gql from 'graphql-tag'
-import { useLoginMutation } from '../generated/graphql'
+import { useRouter } from 'next/router'
+import { Container } from '../components/Container'
+import { Form } from '../components/Form'
+import { Error, Input } from '../components/Input'
+import { Link } from '../components/Link'
+import { Section } from '../components/Section'
 import Spacer from '../components/Spacer'
 import Text from '../components/Text'
-import { Container } from '../components/Container'
-import { Section } from '../components/Section'
-import { Link } from '../components/Link'
-import { useRouter } from 'next/router'
+import { useLoginMutation } from '../generated/graphql'
+import { withApollo } from '../lib/apollo'
+import { saveToken } from '../lib/auth'
 
 export const login = gql`
   mutation login($email: String!, $password: String!) {
@@ -88,7 +88,7 @@ export default withApollo(() => {
                 <Spacer />
                 <Text>
                   Pokud ještě nemáte účet, můžete se registrovat{' '}
-                  <Link color underline href="/signup">
+                  <Link color href="/signup">
                     zde
                   </Link>
                   .

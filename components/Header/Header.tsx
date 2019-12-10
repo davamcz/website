@@ -1,7 +1,7 @@
-import { Container } from '../Container'
 import { ButtonLink } from '../ButtonLink'
-import { Logo } from '../Logo'
+import { Container } from '../Container'
 import { Link } from '../Link'
+import { Logo } from '../Logo'
 import Spacer from '../Spacer'
 // import { AuthButton } from '../AuthButton'
 
@@ -14,21 +14,21 @@ export const Header = () => {
     >
       <Logo />
       <Container row flex="0 0 auto">
-        <Link href="/" title="Kontakt">
+        <Link href="/" title="Kontakt" showActive>
           Domů
         </Link>
         <Spacer />
         {/* <Link href="/about" title="Jak to funguje">
           Jak to funguje
         </Link> */}
-        <Link href="/komu-pomahame" title="Komu pomáhame">
+        <Link href="/komu-pomahame" title="Komu pomáhame" showActive>
           Komu pomáhame
         </Link>
         <Spacer x={0.5} />
         {/* <Link href="/about" title="O nás">
           O nás
         </Link> */}
-        <Link href="/kontakt" title="Kontakt">
+        <Link href="/kontakt" title="Kontakt" showActive>
           Kontakt
         </Link>
       </Container>

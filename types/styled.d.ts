@@ -30,6 +30,7 @@ declare module 'styled-components' {
       lightBlack: string
       darkGrey: string
       grey: string
+      darkSalmon: string
       salmon: string
       orange: string
       peach: string

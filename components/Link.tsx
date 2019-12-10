@@ -1,4 +1,5 @@
 import NextLink from 'next/link'
+import { useRouter } from 'next/router'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -7,10 +8,10 @@ interface Props {
   title?: string
   as?: string
   external?: boolean
-  underline?: boolean
   target?: string
   color?: boolean
   bold?: boolean
+  showActive?: boolean
 }
 
 export const Link: React.FC<Props> = ({
@@ -19,16 +20,17 @@ export const Link: React.FC<Props> = ({
   as,
   title,
   external,
-  underline,
   target,
   color,
   bold,
+  showActive,
 }) => {
+  const router = useRouter()
+
   if (external) {
     return (
       <StyledLink
         title={title}
-        underline={underline}
         target={target}
         href={href}
         bold={bold}
@@ -38,14 +40,15 @@ export const Link: React.FC<Props> = ({
       </StyledLink>
     )
   }
+
   return (
     <NextLink href={href} as={as} passHref>
       <StyledLink
         title={title}
-        underline={underline}
         target={target}
         colored={color}
         bold={bold}
+        active={showActive && href === router.pathname}
       >
         {children}
       </StyledLink>
@@ -54,15 +57,16 @@ export const Link: React.FC<Props> = ({
 }
 
 interface StyledLinkProps {
-  underline?: boolean
   colored?: boolean
   bold?: boolean
+  active?: boolean
 }
 
 const StyledLink = styled.a<StyledLinkProps>`
   display: inline-flex;
   align-items: center;
-  color: ${({ theme, colored }) => (colored ? theme.colors.orange : 'inherit')};
+  color: ${({ theme, colored, active }) =>
+    active ? theme.colors.orange : colored ? theme.colors.orange : 'inherit'};
   font-weight: ${({ bold }) => (bold ? 'bold' : 'normal')};
   text-decoration: none;
   cursor: pointer;
@@ -71,6 +75,6 @@ const StyledLink = styled.a<StyledLinkProps>`
   &:hover {
     color: ${({ theme, colored }) =>
       colored ? theme.colors.orange : 'inherit'};
-    text-decoration: ${({ underline }) => (underline ? 'underline' : 'none')};
+    text-decoration: underline;
   }
 `

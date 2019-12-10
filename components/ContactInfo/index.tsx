@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import Text from '../Text'
-import Spacer from '../Spacer'
 import { Container } from '../Container'
-import { SocialLinks } from '../SocialLinks'
 import { Link } from '../Link'
+import { SocialLinks } from '../SocialLinks'
+import Spacer from '../Spacer'
+import Text from '../Text'
 
 interface Props {
   maxWidth?: string
@@ -29,10 +29,10 @@ export const ContactInfo = ({ maxWidth = '730px' }: Props) => {
           Dávám.cz
         </Text>
         <Container>
-          <Link underline external href="tel+420737875551">
+          <Link external href="tel+420737875551">
             +420 737 875 551
           </Link>
-          <Link underline external href="mailto:info@davam.cz">
+          <Link external href="mailto:info@davam.cz">
             info@davam.cz
           </Link>
         </Container>
