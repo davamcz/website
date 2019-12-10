@@ -57,10 +57,10 @@ export default withApollo(() => {
               apiSecret: '',
               organizationId: 1,
             }}
-            onSubmit={async (values, {resetForm}) => {
+            onSubmit={async (values, { resetForm }) => {
               try {
                 if (logo) {
-                   await createOrganization({
+                  await createOrganization({
                     variables: { ...values, logoId: logo.id },
                   })
                   resetForm()
@@ -128,7 +128,6 @@ export default withApollo(() => {
                   label="OrganizationId"
                   name="organizationId"
                   type="number"
-
                   onBlur={handleBlur}
                   value={values.organizationId}
                   onChange={handleChange}

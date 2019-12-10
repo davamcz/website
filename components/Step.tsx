@@ -10,7 +10,7 @@ interface Props {
 }
 
 export const Step: FunctionComponent<Props> = ({ title, description }) => (
-  <Container hcenter style={{ maxWidth: '190px'}}>
+  <Container hcenter style={{ maxWidth: '190px' }}>
     <Block>
       <Text bold style={{ marginBottom: '17px' }}>
         {title}
@@ -26,7 +26,7 @@ const Block = styled.div`
   width: 100%;
   text-align: center;
   padding-top: 24px;
-  background: ${({ theme })=> theme.colors.white};
+  background: ${({ theme }) => theme.colors.white};
   box-shadow: ${({ theme }) => theme.shadow.box};
 `
 

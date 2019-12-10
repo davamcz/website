@@ -22,8 +22,16 @@ class Davam extends App {
             content="Jednoduše spojujeme lidi pro dobrou věc"
           />
           <meta key="og:type" property="og:type" content="website" />
-          <meta key="og:title" property="og:title" content="Dávám - Jednoduše spojujeme lidi pro dobrou věc" />
-          <meta key="og:description" property="og:description" content="Jednoduše spojujeme lidi pro dobrou věc" />
+          <meta
+            key="og:title"
+            property="og:title"
+            content="Dávám - Jednoduše spojujeme lidi pro dobrou věc"
+          />
+          <meta
+            key="og:description"
+            property="og:description"
+            content="Jednoduše spojujeme lidi pro dobrou věc"
+          />
           <meta
             key="og:image"
             property="og:image"

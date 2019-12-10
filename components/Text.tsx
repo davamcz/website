@@ -2,15 +2,7 @@ import React, { FunctionComponent, memo } from 'react'
 import styled, { css, CSSProperties } from 'styled-components'
 import { Colors } from '../types/styled'
 
-type TextComponents =
-  | 'h1'
-  | 'h2'
-  | 'h3'
-  | 'h4'
-  | 'h5'
-  | 'h6'
-  | 'p'
-  | 'span'
+type TextComponents = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span'
 
 type WrapComponents = 'mark' | 'u' | 's' | 'b' | 'i'
 
@@ -37,7 +29,7 @@ interface Modifiers {
 // Wrap the text in modifier elements like bold and italics
 const wrapModifiers = (
   component: React.ReactNode,
-  { mark, underline, strike, bold, italic }: Modifiers,
+  { mark, underline, strike, bold, italic }: Modifiers
 ) => {
   let result = component
 

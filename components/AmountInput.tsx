@@ -25,8 +25,12 @@ export const AmountInput = ({ amount, changeAmount, max }: Props) => {
     <Container row flex="0 0 auto">
       <StyledInput value={amount} type="number" />
       <Container flex="0 0 auto">
-        <Button onClick={() => changeValue(1)} disabled={amount >= max}><SmallArrow/></Button>
-        <Button onClick={() => changeValue(-1)} disabled={amount <= 1}><SmallArrow up={false}/></Button>
+        <Button onClick={() => changeValue(1)} disabled={amount >= max}>
+          <SmallArrow />
+        </Button>
+        <Button onClick={() => changeValue(-1)} disabled={amount <= 1}>
+          <SmallArrow up={false} />
+        </Button>
       </Container>
     </Container>
   )

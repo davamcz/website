@@ -17,14 +17,24 @@ export const ButtonLink: React.FC<Props> = ({
   as,
   title,
   secondary,
-  noShadow,style
+  noShadow,
+  style,
 }) => {
-  const Button = () => <StyledLink title={title} style={style}>{children}</StyledLink>
+  const Button = () => (
+    <StyledLink title={title} style={style}>
+      {children}
+    </StyledLink>
+  )
 
   if (href) {
     return (
       <Link href={href} as={as} passHref>
-        <StyledLink secondary={secondary} noShadow={noShadow} title={title} style={style}>
+        <StyledLink
+          secondary={secondary}
+          noShadow={noShadow}
+          title={title}
+          style={style}
+        >
           {children}
         </StyledLink>
       </Link>
@@ -46,8 +56,7 @@ const StyledLink = styled.a<LinkProps>`
     secondary ? theme.colors.black : theme.colors.white};
   border: 1px solid
     ${({ theme, secondary }) =>
-      secondary ? theme.colors.black : theme.colors.salmon
-      };
+      secondary ? theme.colors.black : theme.colors.salmon};
   background: ${({ theme, secondary }) =>
     secondary ? theme.colors.white : theme.colors.salmon};
   box-shadow: ${({ theme, secondary }) => !secondary && theme.shadow.button};

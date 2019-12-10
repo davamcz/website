@@ -10,8 +10,12 @@ interface Props {
 
 export const Title = ({ children, description, center }: Props) => (
   <Container flex="0 0 auto" center={center}>
-    <Text uppercase color="orange" span>{description}</Text>
+    <Text uppercase color="orange" span>
+      {description}
+    </Text>
     <Spacer />
-    <Text h1 as="h2" color="darkGrey">{children}</Text>
+    <Text h1 as="h2" color="darkGrey">
+      {children}
+    </Text>
   </Container>
 )

@@ -5,7 +5,16 @@ export const Organization = prismaObjectType({
   name: 'Organization',
   definition(t) {
     t.prismaFields({
-      pick: ['id', 'name', 'logo', 'offers', 'description', 'url', 'apiId', 'projectId'],
+      pick: [
+        'id',
+        'name',
+        'logo',
+        'offers',
+        'description',
+        'url',
+        'apiId',
+        'projectId',
+      ],
     })
   },
 })
@@ -19,8 +28,8 @@ export const OrganizationQuery = prismaExtendType({
       type: 'Organization',
       list: true,
       resolve: async (_, {}, { prisma }) => {
-        return prisma.organizations({ where: { active: true } }) as any;
-      }
+        return prisma.organizations({ where: { active: true } }) as any
+      },
     })
   },
 })
@@ -55,22 +64,22 @@ export const OrganizationMutation = prismaExtendType({
         _ctx
       ) => {
         return null as any
-      //   return ctx.prisma.createOrganization({
-      //     apiId,
-      //     apiSecret,
-      //     organizationId,
-      //     active: true,
-      //     name,
-      //     logo: {
-      //       connect: {
-      //         id: logoId,
-      //       },
-      //     },
-      //     description,
-      //     url,
-      //   })
-      // },
-      }
+        //   return ctx.prisma.createOrganization({
+        //     apiId,
+        //     apiSecret,
+        //     organizationId,
+        //     active: true,
+        //     name,
+        //     logo: {
+        //       connect: {
+        //         id: logoId,
+        //       },
+        //     },
+        //     description,
+        //     url,
+        //   })
+        // },
+      },
     })
   },
 })

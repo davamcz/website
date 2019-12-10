@@ -9,8 +9,7 @@ export default () => (
         <Text color="salmon">Rozhodli js</Text>
         <Text>Vypln</Text>
       </Container>
-      <Container>
-      </Container>
+      <Container></Container>
     </Container>
   </Section>
 )

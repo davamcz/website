@@ -72,7 +72,7 @@ export const Container: React.FC<Props> = memo(
     full,
     noWrapper,
     className,
-    style
+    style,
   }) => {
     let justify, align
     const horizontalValue = left
@@ -90,14 +90,13 @@ export const Container: React.FC<Props> = memo(
       ? 'center'
       : 'default'
 
-      
-      if (row) {
-        justify = alignments.row.justify[horizontalValue]
-        align = alignments.row.align[verticalValue]
-      } else {
-        justify = alignments.column.justify[verticalValue]
-        align = alignments.column.align[horizontalValue]
-      }
+    if (row) {
+      justify = alignments.row.justify[horizontalValue]
+      align = alignments.row.align[verticalValue]
+    } else {
+      justify = alignments.column.justify[verticalValue]
+      align = alignments.column.align[horizontalValue]
+    }
 
     const container = (
       <ContainerBox
@@ -132,7 +131,7 @@ export const Container: React.FC<Props> = memo(
     }
 
     return container
-  },
+  }
 )
 
 interface ContainerProps {
@@ -148,7 +147,7 @@ interface ContainerProps {
 const ContainerBox = styled.div<ContainerProps>`
   display: flex;
   flex: ${({ flex }) => flex};
-  flex-direction: ${({ row }) => row ? 'row': 'column'};
+  flex-direction: ${({ row }) => (row ? 'row' : 'column')};
   justify-content: ${({ justify }) => justify};
   align-items: ${({ align }) => align};
   position: relative;

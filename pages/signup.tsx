@@ -57,7 +57,9 @@ export default withApollo(() => {
               password: '',
               passwordAgain: '',
             }}
-            validationSchema={UserWithPassowordSchemaValidation.concat(PasswordAgain)}
+            validationSchema={UserWithPassowordSchemaValidation.concat(
+              PasswordAgain
+            )}
             onSubmit={async (
               { password, email, firstName, lastName },
               { setStatus }

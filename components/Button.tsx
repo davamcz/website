@@ -16,7 +16,7 @@ export const Button: FunctionComponent<Props> = ({
   disabled,
   noShadow,
   loading,
-  onClick
+  onClick,
 }) => {
   return (
     <>

@@ -7,7 +7,7 @@ import {
   constants,
   isTransactionReserved,
   offerRemainingAmount,
-  getConfirmationHash
+  getConfirmationHash,
 } from '../utils'
 import { sendEmail } from '../emails'
 import { OfferValidationSchema } from '../../validation/offer'
@@ -114,25 +114,26 @@ export const OfferMutations = extendType({
       args: {
         offerId: idArg({ required: true }),
         confirmationHash: stringArg({ required: true }),
-        active: booleanArg({ required: true })
+        active: booleanArg({ required: true }),
       },
-      resolve: async (
-        _, { offerId, confirmationHash, active }, { prisma }
-      ) => {
-        const offer = await prisma.offer({ id: offerId})
-        if (offer && confirmationHash === getConfirmationHash(offerId, offer.createdAt)) {
+      resolve: async (_, { offerId, confirmationHash, active }, { prisma }) => {
+        const offer = await prisma.offer({ id: offerId })
+        if (
+          offer &&
+          confirmationHash === getConfirmationHash(offerId, offer.createdAt)
+        ) {
           const updatedOffer = await prisma.updateOffer({
             data: {
-              active
+              active,
             },
-            where: { id: offerId }
+            where: { id: offerId },
           })
 
-          return updatedOffer;
+          return updatedOffer
         } else {
           throw new Error('Offer not found or hash does not match.')
         }
-      }
+      },
     })
 
     t.field('createOffer', {
@@ -265,8 +266,7 @@ export const OfferMutations = extendType({
               offerImage ||
               'https://davamcz-images.s3.eu-central-1.amazonaws.com/mailing/darek.png'
             const confirmationHash = getConfirmationHash(id, createdAt)
-            const deactivationLink = 
-              `https://davam.cz/nabidka/${id}/deaktivovat?ch=${confirmationHash}`
+            const deactivationLink = `https://davam.cz/nabidka/${id}/deaktivovat?ch=${confirmationHash}`
             sendEmail(email, {
               template: 'linkCreated',
               subject: `Vytvoření platebního odkazu na ${name}`,
@@ -279,7 +279,7 @@ export const OfferMutations = extendType({
                 amount,
                 offerLink,
                 imgUrl,
-                deactivationLink
+                deactivationLink,
               },
             })
           }

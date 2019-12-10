@@ -6,7 +6,7 @@ export const theme: DefaultTheme = {
     pageMaring: '16px',
     pageWidthWithMaring: '1142px',
     gap: 16,
-    lineHeight: 24
+    lineHeight: 24,
   },
   colors: {
     black: '#000000',
@@ -22,14 +22,13 @@ export const theme: DefaultTheme = {
     ice: '#e4f1fd',
     blue: '#3fa2f7',
     darkBlue: '#297fca',
-    red: '#ff6868'
+    red: '#ff6868',
   },
   shadow: {
     button: '0 10px 40px 0 rgba(255,145,104,0.3)',
-    box: '0 20px 60px 0 rgba(0,0,0,0.1)'
+    box: '0 20px 60px 0 rgba(0,0,0,0.1)',
   },
   font: {
-    body:
-     `'Open Sans', sans-serif`,
+    body: `'Open Sans', sans-serif`,
   },
-} 
+}

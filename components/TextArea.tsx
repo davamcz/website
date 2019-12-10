@@ -25,7 +25,12 @@ export const TextArea: FunctionComponent<Props> = ({
         {label && <Label>{label}</Label>}
         {error && <Error>{error}</Error>}
       </Container>
-      <StyledTextArea name={name} value={value} onChange={onChange} error={error} />
+      <StyledTextArea
+        name={name}
+        value={value}
+        onChange={onChange}
+        error={error}
+      />
     </Container>
   )
 }

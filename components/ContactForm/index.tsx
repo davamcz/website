@@ -146,11 +146,11 @@ export const ContactForm = ({ maxWidth = '730px' }: Props) => {
                 </Text>
               </Container>
               {status && status.type === 'gdpr' && (
-                  <>
-                    <Spacer />
-                    <Error>{status.message}</Error>
-                  </>
-                )}
+                <>
+                  <Spacer />
+                  <Error>{status.message}</Error>
+                </>
+              )}
             </Form>
           )
         }}

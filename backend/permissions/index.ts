@@ -24,13 +24,16 @@ import { shield, allow } from 'graphql-shield'
 //   }
 // })
 
-export const permissions = shield({
-  Query: {
-    "*": allow
+export const permissions = shield(
+  {
+    Query: {
+      '*': allow,
+    },
+    Mutation: {
+      '*': allow,
+    },
   },
-  Mutation: {
-    "*": allow
-  },
-}, {
-  fallbackRule: allow
-})
+  {
+    fallbackRule: allow,
+  }
+)

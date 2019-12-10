@@ -1,7 +1,7 @@
-import { Button } from "./Button"
-import Spacer from "./Spacer"
-import styled from "styled-components"
-import { Container } from "./Container"
+import { Button } from './Button'
+import Spacer from './Spacer'
+import styled from 'styled-components'
+import { Container } from './Container'
 
 interface Props {
   children: any
@@ -11,11 +11,17 @@ interface Props {
   loading?: boolean
 }
 
-export const Form = ({ children, onSubmit, center, buttonText, loading }: Props) => {
+export const Form = ({
+  children,
+  onSubmit,
+  center,
+  buttonText,
+  loading,
+}: Props) => {
   return (
     <StyledForm onSubmit={onSubmit} center={center}>
       {children}
-      <Spacer/>
+      <Spacer />
       <Container noWrapper row hcenter={center}>
         <Button loading={loading}>{buttonText ? buttonText : 'Odeslat'}</Button>
       </Container>
@@ -23,9 +29,6 @@ export const Form = ({ children, onSubmit, center, buttonText, loading }: Props)
   )
 }
 
-
-const StyledForm = styled.form<{center?: boolean}>`
+const StyledForm = styled.form<{ center?: boolean }>`
   width: 100%;
 `
-
-

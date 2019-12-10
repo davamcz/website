@@ -1,7 +1,6 @@
 /// <reference types="node" />
 
 declare namespace NodeJS {
-
   interface ProcessEnv {
     readonly WEBSITE_URL: string
     readonly AIRTABLE_SECRET: string

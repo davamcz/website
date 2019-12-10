@@ -10,7 +10,11 @@ import { Section } from '../../../components/Section'
 import Spacer from '../../../components/Spacer'
 import Text from '../../../components/Text'
 import { TextArea } from '../../../components/TextArea'
-import { useCreateTransactionMutation, useOfferQuery, useUserQuery } from '../../../generated/graphql'
+import {
+  useCreateTransactionMutation,
+  useOfferQuery,
+  useUserQuery,
+} from '../../../generated/graphql'
 import { withApollo } from '../../../lib/apollo'
 import { paymentLink } from '../../../lib/paymentLink'
 import { TransactionValidationSchema } from '../../../validation/transaction'

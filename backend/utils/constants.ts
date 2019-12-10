@@ -3,11 +3,11 @@ export const constants = {
     PENDING: 'PENDING',
     PAID: 'PAID',
     FAILED: 'FAILED',
-    INSUFFICIENT: 'INSUFFICIENT'
+    INSUFFICIENT: 'INSUFFICIENT',
   },
   successfulStates: [
     'success',
     'success_money_on_account',
-    'sent_to_organization'
-  ]
+    'sent_to_organization',
+  ],
 }

@@ -2,7 +2,10 @@ import { Container } from '../components/Container'
 import { Organizations } from '../components/Organizations'
 import Spacer from '../components/Spacer'
 import Text from '../components/Text'
-import { OrganizationDetailFragment, OrganizationsQuery } from '../generated/graphql'
+import {
+  OrganizationDetailFragment,
+  OrganizationsQuery,
+} from '../generated/graphql'
 import { organizationsQuery } from '../graphql/queries'
 import { initApolloClient } from '../lib/apollo'
 

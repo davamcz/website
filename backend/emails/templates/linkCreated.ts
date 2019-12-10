@@ -1,5 +1,6 @@
-import mjml2html from 'mjml';
-export const linkCreated = (data) => mjml2html(`
+import mjml2html from 'mjml'
+export const linkCreated = data =>
+  mjml2html(`
   <mjml>
     <mj-head>
       <mj-attributes>
@@ -141,4 +142,4 @@ export const linkCreated = (data) => mjml2html(`
 
     </mj-body>
   </mjml>
-`);
+`)

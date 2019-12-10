@@ -6,12 +6,14 @@ import styled from 'styled-components'
 import { Image } from '../Image'
 
 interface Props {
-  offer:  any
+  offer: any
 }
 
 export const OfferItem = ({ offer }: Props) => (
   <StyledContainer>
-    <Image src={`https://davamcz.imgix.net/${offer.gallery.images[0].key}?w=255`} />
+    <Image
+      src={`https://davamcz.imgix.net/${offer.gallery.images[0].key}?w=255`}
+    />
     <Spacer y={0.5} />
     <Text span color="orange">
       {offer.beneficator.name}
@@ -27,7 +29,6 @@ export const OfferItem = ({ offer }: Props) => (
     </Container>
   </StyledContainer>
 )
-
 
 const StyledContainer = styled(Container)`
   flex: 1 0 calc((100% / 4) - 30px);

@@ -9,7 +9,7 @@ export default (apolloClient: any) =>
             fullName
           }
         }
-      `
+      `,
     })
     .then(({ data }: any) => {
       return { loggedInUser: data }

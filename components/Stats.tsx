@@ -23,14 +23,14 @@ export default () => (
 
 const Stat = ({ value, title }: { value: string; title: string }) => (
   <Block>
-    <Spacer  />
+    <Spacer />
     <Text h1 as="span">
       {value}
     </Text>
     <Text color="salmon" span>
       {title}
     </Text>
-    <Spacer  />
+    <Spacer />
     <Rectangle />
   </Block>
 )
@@ -41,6 +41,6 @@ const Block = styled.div`
   flex-flow: column;
   max-width: 255px;
   align-items: center;
-  background: ${({ theme })=> theme.colors.white};
+  background: ${({ theme }) => theme.colors.white};
   box-shadow: ${({ theme }) => theme.shadow.box};
 `

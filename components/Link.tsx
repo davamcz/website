@@ -22,7 +22,7 @@ export const Link: React.FC<Props> = ({
   underline,
   target,
   color,
-  bold
+  bold,
 }) => {
   if (external) {
     return (
@@ -69,7 +69,8 @@ const StyledLink = styled.a<StyledLinkProps>`
   translate: color 200ms ease-in;
 
   &:hover {
-    color: ${({ theme, colored }) => (colored ? theme.colors.orange : 'inherit')};
+    color: ${({ theme, colored }) =>
+      colored ? theme.colors.orange : 'inherit'};
     text-decoration: ${({ underline }) => (underline ? 'underline' : 'none')};
   }
 `

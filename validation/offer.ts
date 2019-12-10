@@ -15,6 +15,6 @@ export const OfferValidationSchema = object()
       .notOneOf(['no-organization'], 'Prosím vyberte organizaci')
       .required('Organizace je povinná'),
     price: number().min(1, 'Cena nabídky je příliš malá'),
-    amount: number().min(1, 'Množství je příliš malé')
+    amount: number().min(1, 'Množství je příliš malé'),
   })
   .concat(UserSchemaValidation)

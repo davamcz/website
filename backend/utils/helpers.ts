@@ -8,7 +8,7 @@ interface Token {
 
 export function getToken(context: Context) {
   const authorization = context.request.headers.authorization
-  if (authorization) {  
+  if (authorization) {
     const token = authorization.replace('Bearer ', '')
     return verify(token, process.env.SECRET_KEY) as Token
   }
@@ -32,5 +32,5 @@ export function isAdmin(context: Context) {
 }
 
 export function capitalize(s: string): string {
-  return s && s[0].toUpperCase() + s.slice(1);
+  return s && s[0].toUpperCase() + s.slice(1)
 }

@@ -12,7 +12,11 @@ import { SelectButton } from '../../components/SelectButton'
 import Spacer from '../../components/Spacer'
 import Text from '../../components/Text'
 import { TextArea } from '../../components/TextArea'
-import { useCreateOfferMutation, useOrganizationsQuery, useUserQuery } from '../../generated/graphql'
+import {
+  useCreateOfferMutation,
+  useOrganizationsQuery,
+  useUserQuery,
+} from '../../generated/graphql'
 import { withApollo } from '../../lib/apollo'
 import { useUpload } from '../../lib/use-upload'
 import { OfferValidationSchema } from '../../validation/offer'
@@ -69,7 +73,8 @@ export default withApollo(() => {
           <Text>
             Vytvořte si pomocí našeho formuláře platební odkaz, díky kterému
             druzí snadno zakoupí vaši věc/službu a přímo tak přispějí vámi
-            vybrané neziskové organizaci. Platba půjde v plné výši dobročinné organizaci.
+            vybrané neziskové organizaci. Platba půjde v plné výši dobročinné
+            organizaci.
           </Text>
           <Spacer y={1.5} />
 
@@ -89,7 +94,7 @@ export default withApollo(() => {
             }}
             validationSchema={OfferValidationSchema}
             onSubmit={async (values, { setStatus }) => {
-              if(!values.conditions) {
+              if (!values.conditions) {
                 setStatus({
                   type: 'error',
                   message: 'Neobejdeme se bez vašeho souhlasu',
@@ -241,26 +246,27 @@ export default withApollo(() => {
                     />
                   </>
                 )}
-                <><Spacer />
-                <Container row vcenter>
-                  <CheckBox
-                    checked={values.conditions}
-                    onChange={val => setFieldValue('conditions', val)}
-                  />
-                  <Spacer x={0.5} />
-                  <Text>
-                    Souhlasím s{' '}
-                    <Link
-                      color
-                      bold
-                      external
-                      href="https://docs.google.com/document/d/1mF2rgj4ljL3pFGjfluArTfTptObI1Bbfn8tJJjHqv3s/edit"
-                    >
-                      Provozními podmínkami
-                    </Link>{' '}
-                    platformy Davam.cz
-                  </Text>
-                </Container>
+                <>
+                  <Spacer />
+                  <Container row vcenter>
+                    <CheckBox
+                      checked={values.conditions}
+                      onChange={val => setFieldValue('conditions', val)}
+                    />
+                    <Spacer x={0.5} />
+                    <Text>
+                      Souhlasím s{' '}
+                      <Link
+                        color
+                        bold
+                        external
+                        href="https://docs.google.com/document/d/1mF2rgj4ljL3pFGjfluArTfTptObI1Bbfn8tJJjHqv3s/edit"
+                      >
+                        Provozními podmínkami
+                      </Link>{' '}
+                      platformy Davam.cz
+                    </Text>
+                  </Container>
                 </>
                 {status && status.type === 'error' && (
                   <>

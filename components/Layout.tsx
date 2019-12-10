@@ -14,7 +14,6 @@ export const Layout = ({ children }: Props) => (
   </Main>
 )
 
-
 const Main = styled.main`
   min-height: 100vh;
 `

@@ -12,7 +12,6 @@ import Text from '../../../components/Text'
 import { useOfferQuery } from '../../../generated/graphql'
 import { withApollo } from '../../../lib/apollo'
 
-
 export default withApollo(() => {
   const router = useRouter()
 
@@ -26,7 +25,12 @@ export default withApollo(() => {
 
   return (
     <>
-      <MetaTags title={`Davam.cz - ${offer?.name} za ${offer?.price}Kč pro ${offer?.beneficator.name}`} description={offer?.description as string} image={`https://davamcz.imgix.net/${offer?.gallery.images && offer.gallery.images[0].key}`} />
+      <MetaTags
+        title={`Davam.cz - ${offer?.name} za ${offer?.price}Kč pro ${offer?.beneficator.name}`}
+        description={offer?.description as string}
+        image={`https://davamcz.imgix.net/${offer?.gallery.images &&
+          offer.gallery.images[0].key}`}
+      />
       <Container row style={{ justifyContent: 'space-between' }}>
         <Container flex="0 0 auto">
           {offer && (
@@ -44,15 +48,28 @@ export default withApollo(() => {
           <Spacer />
           <Text>{offer?.description}</Text>
           <Spacer />
-          {offer?.transport && offer?.transport !== '' && <Container row flex="0"><Text bold>Doprava:</Text>&nbsp;<Text>{offer?.transport}</Text></Container>}
+          {offer?.transport && offer?.transport !== '' && (
+            <Container row flex="0">
+              <Text bold>Doprava:</Text>&nbsp;<Text>{offer?.transport}</Text>
+            </Container>
+          )}
           <Text color="orange" bold>
             Příspěvek poputuje na: {offer?.beneficator.name}
           </Text>
           <Spacer y={1.5} />
-          <Container row vcenter style={{ justifyContent: 'space-between' }} flex="0">
+          <Container
+            row
+            vcenter
+            style={{ justifyContent: 'space-between' }}
+            flex="0"
+          >
             <Text bold>{(offer?.price as number) * amount} Kč</Text>
             <Container row center>
-              <AmountInput amount={amount} changeAmount={setAmount} max={offer?.remainingAmount || 1} />
+              <AmountInput
+                amount={amount}
+                changeAmount={setAmount}
+                max={offer?.remainingAmount || 1}
+              />
               <Spacer />
               <Text bold>ks</Text>
             </Container>

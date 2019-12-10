@@ -5,11 +5,7 @@ import * as querystring from 'querystring'
 import { vokativ } from 'vokativ'
 import { capitalize } from '../utils'
 
-import {
-  constants,
-  isTransactionReserved,
-  getSimplyfiedState,
-} from '../utils'
+import { constants, isTransactionReserved, getSimplyfiedState } from '../utils'
 import { TransactionStatus } from '../generated/prisma-client'
 import { sendEmail } from '../emails'
 
@@ -19,7 +15,16 @@ export const Transaction = prismaObjectType({
   name: 'Transaction',
   definition(t) {
     t.prismaFields({
-      pick: ['id', 'createdAt', 'firstName', 'lastName', 'donatedAmount', 'amount', 'status', 'offer'],
+      pick: [
+        'id',
+        'createdAt',
+        'firstName',
+        'lastName',
+        'donatedAmount',
+        'amount',
+        'status',
+        'offer',
+      ],
     })
   },
 })
@@ -75,7 +80,13 @@ export const TransactionQuery = prismaExtendType({
           firstName,
           lastName,
           email,
-          beneficator: { name: NGOName, organizationId, projectId, apiId, apiSecret },
+          beneficator: {
+            name: NGOName,
+            organizationId,
+            projectId,
+            apiId,
+            apiSecret,
+          },
         } = currentTransaction.offer
 
         const qs = querystring.encode({
@@ -86,11 +97,13 @@ export const TransactionQuery = prismaExtendType({
         })
         // ToDo: Adresa v configuraci.
         const response = await fetch(
-          `https://www.darujme.cz/api/v1/organization/${organizationId}/pledges-by-filter?${qs}`,
+          `https://www.darujme.cz/api/v1/organization/${organizationId}/pledges-by-filter?${qs}`
         )
         const data = await response.json()
 
-        const pledgeResult = data.pledges.filter(pledge => pledge.customFields &&
+        const pledgeResult = data.pledges.filter(
+          pledge =>
+            pledge.customFields &&
             pledge.customFields.transaction_id === currentTransaction.id
         )[0]
 
@@ -103,28 +116,33 @@ export const TransactionQuery = prismaExtendType({
           throw new Error("Can't find requested transaction")
         }
 
-        const realDonatedAmount = parseInt(pledgeResult.pledgedAmount.cents) / 100;
-        const isDonatedEnough = price * currentTransaction.amount <= realDonatedAmount;
+        const realDonatedAmount =
+          parseInt(pledgeResult.pledgedAmount.cents) / 100
+        const isDonatedEnough =
+          price * currentTransaction.amount <= realDonatedAmount
         const newSimplyfiedSate = getSimplyfiedState(
           transactionResult.state,
-          isDonatedEnough,
+          isDonatedEnough
         ) as TransactionStatus
-        const isStatusChanged = currentTransaction.status !== newSimplyfiedSate;
+        const isStatusChanged = currentTransaction.status !== newSimplyfiedSate
 
         // update transaction status before emails will fail somehow
-        const updatedTransactionStatus =  await prisma.updateTransaction({
+        const updatedTransactionStatus = await prisma.updateTransaction({
           data: {
             status: newSimplyfiedSate,
             donatedAmount: realDonatedAmount,
           },
           where: { id },
         })
-        
+
         if (isStatusChanged && newSimplyfiedSate === PAID) {
-          const buyerSalutation = capitalize(vokativ(currentTransaction.firstName.trim()));
-          const sellerSalutation = capitalize(vokativ(firstName.trim()));
+          const buyerSalutation = capitalize(
+            vokativ(currentTransaction.firstName.trim())
+          )
+          const sellerSalutation = capitalize(vokativ(firstName.trim()))
           // TODO: get real image
-          const imgUrl = 'https://davamcz-images.s3.eu-central-1.amazonaws.com/mailing/darek.png';
+          const imgUrl =
+            'https://davamcz-images.s3.eu-central-1.amazonaws.com/mailing/darek.png'
           // Send email to buyer
           const mailStatus1 = await sendEmail(currentTransaction.email, {
             template: 'transactionCreatedBuyer',
@@ -139,10 +157,10 @@ export const TransactionQuery = prismaExtendType({
               sellerEmail: email,
               comment: currentTransaction.comment,
               price: realDonatedAmount,
-              amount: currentTransaction.amount
-            }
+              amount: currentTransaction.amount,
+            },
           })
-          console.log('mailStatus1', mailStatus1);
+          console.log('mailStatus1', mailStatus1)
           // Send email to seller
           const mailStatus2 = await sendEmail(email, {
             template: 'transactionCreatedSeller',
@@ -157,21 +175,20 @@ export const TransactionQuery = prismaExtendType({
               comment: currentTransaction.comment,
               product: name,
               price: realDonatedAmount,
-              amount: currentTransaction.amount
-            }
+              amount: currentTransaction.amount,
+            },
           })
-          console.log('mailStatus2', mailStatus2);
-
+          console.log('mailStatus2', mailStatus2)
         }
 
         if (isStatusChanged && newSimplyfiedSate === 'FAILED') {
           // TODO: Add failed email
         }
 
-        return updatedTransactionStatus;
+        return updatedTransactionStatus
       },
     })
-  }
+  },
 })
 
 export const TransactionMutation = prismaExtendType({

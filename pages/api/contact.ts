@@ -17,12 +17,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       question,
     })
 
-    res
-      .status(200)
-      .json({
-        message: 'Vaše zpráva byla odeslána.',
-        detail: 'Brzy se vám ozveme.',
-      })
+    res.status(200).json({
+      message: 'Vaše zpráva byla odeslána.',
+      detail: 'Brzy se vám ozveme.',
+    })
   } catch (e) {
     res.status(400).json({ error: e.message })
   }

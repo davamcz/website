@@ -26,7 +26,7 @@ export const OrganizationItem = ({ organization }: Props) => (
 )
 
 const OrganizationCard = styled.div`
-box-shadow: ${({ theme}) => theme.shadow.box};
+  box-shadow: ${({ theme }) => theme.shadow.box};
   margin-bottom: 36px;
   margin-right: 30px;
   &:nth-child(3n) {

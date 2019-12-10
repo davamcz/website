@@ -15,7 +15,10 @@ const prismaSchema = makePrismaSchema({
   },
 
   outputs: {
-    schema: join(process.env.PROJECT_DIRNAME, './backend/generated/schema.graphql'),
+    schema: join(
+      process.env.PROJECT_DIRNAME,
+      './backend/generated/schema.graphql'
+    ),
     typegen: join(process.env.PROJECT_DIRNAME, './backend/generated/nexus.ts'),
   },
 
@@ -31,7 +34,10 @@ const prismaSchema = makePrismaSchema({
         alias: 'ctx',
       },
       {
-        source: join(process.env.PROJECT_DIRNAME, './backend/generated/prisma-client/index.ts'),
+        source: join(
+          process.env.PROJECT_DIRNAME,
+          './backend/generated/prisma-client/index.ts'
+        ),
         alias: 'prisma',
       },
     ],

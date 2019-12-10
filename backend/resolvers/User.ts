@@ -17,7 +17,7 @@ export const UserType = prismaObjectType({
     t.string('shortName', {
       resolve: ({ firstName, lastName }) => {
         return `${firstName} ${lastName?.slice(0, 1)}.`
-      }
+      },
     })
   },
 })
@@ -62,7 +62,7 @@ export const UserMutations = extendType({
             email,
             password,
           })
-        } catch(e) {
+        } catch (e) {
           throw e
         }
 

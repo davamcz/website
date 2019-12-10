@@ -7,7 +7,9 @@ import { Title } from './Title'
 
 export const AboutSection = () => (
   <Container row>
-    <Container><Image src="/davam-tym.jpg" /></Container>
+    <Container>
+      <Image src="/davam-tym.jpg" />
+    </Container>
     <Spacer x={2} />
     <Container center>
       <Title description="O nás">Proč to děláme a kdo jsme?</Title>

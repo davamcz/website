@@ -43,7 +43,8 @@ const SelectContainer = styled.div<{ error?: string }>`
   appearance: none;
   display: inline-flex;
   outline: none;
-  border: 1px solid ${({ theme, error }) => error? theme.colors.red : theme.colors.darkGrey};
+  border: 1px solid
+    ${({ theme, error }) => (error ? theme.colors.red : theme.colors.darkGrey)};
   height: 48px;
 
   select {

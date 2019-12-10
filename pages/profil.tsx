@@ -70,7 +70,7 @@ const Profile = () => {
         <Spacer y={2} />
         <Formik
           initialValues={values}
-          enableReinitialize 
+          enableReinitialize
           onSubmit={async values => {
             await updateUserMutation({ variables: values })
           }}

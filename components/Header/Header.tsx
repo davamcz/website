@@ -7,12 +7,16 @@ import Spacer from '../Spacer'
 
 export const Header = () => {
   return (
-    <Container row style={{ justifyContent: 'space-between', padding: '24px 0' }} hcenter>
+    <Container
+      row
+      style={{ justifyContent: 'space-between', padding: '24px 0' }}
+      hcenter
+    >
       <Logo />
       <Container row flex="0 0 auto">
         <Link href="/" title="Kontakt">
           Domů
-        </Link> 
+        </Link>
         <Spacer />
         {/* <Link href="/about" title="Jak to funguje">
           Jak to funguje
@@ -26,7 +30,7 @@ export const Header = () => {
         </Link> */}
         <Link href="/kontakt" title="Kontakt">
           Kontakt
-        </Link> 
+        </Link>
       </Container>
       <Container row flex="0 0 auto" vcenter>
         {/* <AuthButton /> */}
@@ -34,9 +38,9 @@ export const Header = () => {
         <ButtonLink href="/nabidka" secondary>
           Nabídka
         </ButtonLink>
-       
+
         <Spacer x={0.5} />
-        <ButtonLink href="/chci-darovat">Chci darovat</ButtonLink> 
+        <ButtonLink href="/chci-darovat">Chci darovat</ButtonLink>
       </Container>
     </Container>
   )

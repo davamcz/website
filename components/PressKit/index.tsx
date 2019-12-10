@@ -10,19 +10,30 @@ export const PressKit = () => {
     <Container row>
       <Container>
         <Card>
-          <Container style={{ padding: '24px', paddingLeft: '62.5px' }} vcenter row>
+          <Container
+            style={{ padding: '24px', paddingLeft: '62.5px' }}
+            vcenter
+            row
+          >
             <Link href="">
               <RoundedArrow />
             </Link>
             <Spacer />
-            <Text bold underline>Stáhněte si kompletní balíček pro média, který obsahuje loga, článek o nás a fotografie</Text>
+            <Text bold underline>
+              Stáhněte si kompletní balíček pro média, který obsahuje loga,
+              článek o nás a fotografie
+            </Text>
           </Container>
         </Card>
       </Container>
       <Spacer />
       <Container>
         <Card>
-          <Container style={{ padding: '24px', paddingLeft: '62.5px' }} vcenter row>
+          <Container
+            style={{ padding: '24px', paddingLeft: '62.5px' }}
+            vcenter
+            row
+          >
             <Link href="">
               <RoundedArrow />
             </Link>

@@ -13,7 +13,7 @@ const Box = styled.div`
 `
 
 export const Message = ({ children }: Props) => (
-    <Box>
-      <Text bold>{children}</Text>
-    </Box>
+  <Box>
+    <Text bold>{children}</Text>
+  </Box>
 )

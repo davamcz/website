@@ -216,16 +216,16 @@ export interface NexusPrismaTypes {
     }
   }
   enumTypes: {
-    UserRole: UserRoleValues,
-    TransactionStatus: TransactionStatusValues,
-    OfferOrderByInput: OfferOrderByInputValues,
-    TransactionOrderByInput: TransactionOrderByInputValues,
-    FileOrderByInput: FileOrderByInputValues,
-    UserOrderByInput: UserOrderByInputValues,
-    AdressOrderByInput: AdressOrderByInputValues,
-    GalleryOrderByInput: GalleryOrderByInputValues,
-    OrganizationOrderByInput: OrganizationOrderByInputValues,
-    MutationType: MutationTypeValues,
+    UserRole: UserRoleValues
+    TransactionStatus: TransactionStatusValues
+    OfferOrderByInput: OfferOrderByInputValues
+    TransactionOrderByInput: TransactionOrderByInputValues
+    FileOrderByInput: FileOrderByInputValues
+    UserOrderByInput: UserOrderByInputValues
+    AdressOrderByInput: AdressOrderByInputValues
+    GalleryOrderByInput: GalleryOrderByInputValues
+    OrganizationOrderByInput: OrganizationOrderByInputValues
+    MutationType: MutationTypeValues
   }
 }
 
@@ -233,27 +233,71 @@ export interface NexusPrismaTypes {
 
 type QueryObject =
   | QueryFields
-  | { name: 'user', args?: QueryUserArgs[] | false, alias?: string  } 
-  | { name: 'users', args?: QueryUsersArgs[] | false, alias?: string  } 
-  | { name: 'usersConnection', args?: QueryUsersConnectionArgs[] | false, alias?: string  } 
-  | { name: 'adress', args?: QueryAdressArgs[] | false, alias?: string  } 
-  | { name: 'adresses', args?: QueryAdressesArgs[] | false, alias?: string  } 
-  | { name: 'adressesConnection', args?: QueryAdressesConnectionArgs[] | false, alias?: string  } 
-  | { name: 'file', args?: QueryFileArgs[] | false, alias?: string  } 
-  | { name: 'files', args?: QueryFilesArgs[] | false, alias?: string  } 
-  | { name: 'filesConnection', args?: QueryFilesConnectionArgs[] | false, alias?: string  } 
-  | { name: 'gallery', args?: QueryGalleryArgs[] | false, alias?: string  } 
-  | { name: 'galleries', args?: QueryGalleriesArgs[] | false, alias?: string  } 
-  | { name: 'galleriesConnection', args?: QueryGalleriesConnectionArgs[] | false, alias?: string  } 
-  | { name: 'offer', args?: QueryOfferArgs[] | false, alias?: string  } 
-  | { name: 'offers', args?: QueryOffersArgs[] | false, alias?: string  } 
-  | { name: 'offersConnection', args?: QueryOffersConnectionArgs[] | false, alias?: string  } 
-  | { name: 'transaction', args?: QueryTransactionArgs[] | false, alias?: string  } 
-  | { name: 'transactions', args?: QueryTransactionsArgs[] | false, alias?: string  } 
-  | { name: 'transactionsConnection', args?: QueryTransactionsConnectionArgs[] | false, alias?: string  } 
-  | { name: 'organization', args?: QueryOrganizationArgs[] | false, alias?: string  } 
-  | { name: 'organizations', args?: QueryOrganizationsArgs[] | false, alias?: string  } 
-  | { name: 'organizationsConnection', args?: QueryOrganizationsConnectionArgs[] | false, alias?: string  } 
+  | { name: 'user'; args?: QueryUserArgs[] | false; alias?: string }
+  | { name: 'users'; args?: QueryUsersArgs[] | false; alias?: string }
+  | {
+      name: 'usersConnection'
+      args?: QueryUsersConnectionArgs[] | false
+      alias?: string
+    }
+  | { name: 'adress'; args?: QueryAdressArgs[] | false; alias?: string }
+  | { name: 'adresses'; args?: QueryAdressesArgs[] | false; alias?: string }
+  | {
+      name: 'adressesConnection'
+      args?: QueryAdressesConnectionArgs[] | false
+      alias?: string
+    }
+  | { name: 'file'; args?: QueryFileArgs[] | false; alias?: string }
+  | { name: 'files'; args?: QueryFilesArgs[] | false; alias?: string }
+  | {
+      name: 'filesConnection'
+      args?: QueryFilesConnectionArgs[] | false
+      alias?: string
+    }
+  | { name: 'gallery'; args?: QueryGalleryArgs[] | false; alias?: string }
+  | { name: 'galleries'; args?: QueryGalleriesArgs[] | false; alias?: string }
+  | {
+      name: 'galleriesConnection'
+      args?: QueryGalleriesConnectionArgs[] | false
+      alias?: string
+    }
+  | { name: 'offer'; args?: QueryOfferArgs[] | false; alias?: string }
+  | { name: 'offers'; args?: QueryOffersArgs[] | false; alias?: string }
+  | {
+      name: 'offersConnection'
+      args?: QueryOffersConnectionArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'transaction'
+      args?: QueryTransactionArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'transactions'
+      args?: QueryTransactionsArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'transactionsConnection'
+      args?: QueryTransactionsConnectionArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'organization'
+      args?: QueryOrganizationArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'organizations'
+      args?: QueryOrganizationsArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'organizationsConnection'
+      args?: QueryOrganizationsConnectionArgs[] | false
+      alias?: string
+    }
 
 type QueryFields =
   | 'user'
@@ -278,9 +322,7 @@ type QueryFields =
   | 'organizations'
   | 'organizationsConnection'
 
-
-type QueryUserArgs =
-  | 'where'
+type QueryUserArgs = 'where'
 type QueryUsersArgs =
   | 'where'
   | 'orderBy'
@@ -297,8 +339,7 @@ type QueryUsersConnectionArgs =
   | 'before'
   | 'first'
   | 'last'
-type QueryAdressArgs =
-  | 'where'
+type QueryAdressArgs = 'where'
 type QueryAdressesArgs =
   | 'where'
   | 'orderBy'
@@ -315,8 +356,7 @@ type QueryAdressesConnectionArgs =
   | 'before'
   | 'first'
   | 'last'
-type QueryFileArgs =
-  | 'where'
+type QueryFileArgs = 'where'
 type QueryFilesArgs =
   | 'where'
   | 'orderBy'
@@ -333,8 +373,7 @@ type QueryFilesConnectionArgs =
   | 'before'
   | 'first'
   | 'last'
-type QueryGalleryArgs =
-  | 'where'
+type QueryGalleryArgs = 'where'
 type QueryGalleriesArgs =
   | 'where'
   | 'orderBy'
@@ -351,8 +390,7 @@ type QueryGalleriesConnectionArgs =
   | 'before'
   | 'first'
   | 'last'
-type QueryOfferArgs =
-  | 'where'
+type QueryOfferArgs = 'where'
 type QueryOffersArgs =
   | 'where'
   | 'orderBy'
@@ -369,8 +407,7 @@ type QueryOffersConnectionArgs =
   | 'before'
   | 'first'
   | 'last'
-type QueryTransactionArgs =
-  | 'where'
+type QueryTransactionArgs = 'where'
 type QueryTransactionsArgs =
   | 'where'
   | 'orderBy'
@@ -387,8 +424,7 @@ type QueryTransactionsConnectionArgs =
   | 'before'
   | 'first'
   | 'last'
-type QueryOrganizationArgs =
-  | 'where'
+type QueryOrganizationArgs = 'where'
 type QueryOrganizationsArgs =
   | 'where'
   | 'orderBy'
@@ -405,7 +441,6 @@ type QueryOrganizationsConnectionArgs =
   | 'before'
   | 'first'
   | 'last'
-  
 
 export interface QueryFieldDetails {
   user: {
@@ -415,9 +450,9 @@ export interface QueryFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"Query">,
-      args: { where: UserWhereUniqueInput }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Query'>,
+      args: { where: UserWhereUniqueInput },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.User | null> | prisma.User | null
   }
@@ -428,9 +463,17 @@ export interface QueryFieldDetails {
     list: true
     nullable: false
     resolve: (
-      root: core.RootValue<"Query">,
-      args: { where?: UserWhereInput | null, orderBy?: prisma.UserOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Query'>,
+      args: {
+        where?: UserWhereInput | null
+        orderBy?: prisma.UserOrderByInput | null
+        skip?: number | null
+        after?: string | null
+        before?: string | null
+        first?: number | null
+        last?: number | null
+      },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.User[]> | prisma.User[]
   }
@@ -441,9 +484,17 @@ export interface QueryFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Query">,
-      args: { where?: UserWhereInput | null, orderBy?: prisma.UserOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Query'>,
+      args: {
+        where?: UserWhereInput | null
+        orderBy?: prisma.UserOrderByInput | null
+        skip?: number | null
+        after?: string | null
+        before?: string | null
+        first?: number | null
+        last?: number | null
+      },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.UserConnection> | prisma.UserConnection
   }
@@ -454,9 +505,9 @@ export interface QueryFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"Query">,
-      args: { where: AdressWhereUniqueInput }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Query'>,
+      args: { where: AdressWhereUniqueInput },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Adress | null> | prisma.Adress | null
   }
@@ -467,9 +518,17 @@ export interface QueryFieldDetails {
     list: true
     nullable: false
     resolve: (
-      root: core.RootValue<"Query">,
-      args: { where?: AdressWhereInput | null, orderBy?: prisma.AdressOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Query'>,
+      args: {
+        where?: AdressWhereInput | null
+        orderBy?: prisma.AdressOrderByInput | null
+        skip?: number | null
+        after?: string | null
+        before?: string | null
+        first?: number | null
+        last?: number | null
+      },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Adress[]> | prisma.Adress[]
   }
@@ -480,9 +539,17 @@ export interface QueryFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Query">,
-      args: { where?: AdressWhereInput | null, orderBy?: prisma.AdressOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Query'>,
+      args: {
+        where?: AdressWhereInput | null
+        orderBy?: prisma.AdressOrderByInput | null
+        skip?: number | null
+        after?: string | null
+        before?: string | null
+        first?: number | null
+        last?: number | null
+      },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.AdressConnection> | prisma.AdressConnection
   }
@@ -493,9 +560,9 @@ export interface QueryFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"Query">,
-      args: { where: FileWhereUniqueInput }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Query'>,
+      args: { where: FileWhereUniqueInput },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.File | null> | prisma.File | null
   }
@@ -506,9 +573,17 @@ export interface QueryFieldDetails {
     list: true
     nullable: false
     resolve: (
-      root: core.RootValue<"Query">,
-      args: { where?: FileWhereInput | null, orderBy?: prisma.FileOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Query'>,
+      args: {
+        where?: FileWhereInput | null
+        orderBy?: prisma.FileOrderByInput | null
+        skip?: number | null
+        after?: string | null
+        before?: string | null
+        first?: number | null
+        last?: number | null
+      },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.File[]> | prisma.File[]
   }
@@ -519,9 +594,17 @@ export interface QueryFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Query">,
-      args: { where?: FileWhereInput | null, orderBy?: prisma.FileOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Query'>,
+      args: {
+        where?: FileWhereInput | null
+        orderBy?: prisma.FileOrderByInput | null
+        skip?: number | null
+        after?: string | null
+        before?: string | null
+        first?: number | null
+        last?: number | null
+      },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.FileConnection> | prisma.FileConnection
   }
@@ -532,9 +615,9 @@ export interface QueryFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"Query">,
-      args: { where: GalleryWhereUniqueInput }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Query'>,
+      args: { where: GalleryWhereUniqueInput },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Gallery | null> | prisma.Gallery | null
   }
@@ -545,9 +628,17 @@ export interface QueryFieldDetails {
     list: true
     nullable: false
     resolve: (
-      root: core.RootValue<"Query">,
-      args: { where?: GalleryWhereInput | null, orderBy?: prisma.GalleryOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Query'>,
+      args: {
+        where?: GalleryWhereInput | null
+        orderBy?: prisma.GalleryOrderByInput | null
+        skip?: number | null
+        after?: string | null
+        before?: string | null
+        first?: number | null
+        last?: number | null
+      },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Gallery[]> | prisma.Gallery[]
   }
@@ -558,9 +649,17 @@ export interface QueryFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Query">,
-      args: { where?: GalleryWhereInput | null, orderBy?: prisma.GalleryOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Query'>,
+      args: {
+        where?: GalleryWhereInput | null
+        orderBy?: prisma.GalleryOrderByInput | null
+        skip?: number | null
+        after?: string | null
+        before?: string | null
+        first?: number | null
+        last?: number | null
+      },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.GalleryConnection> | prisma.GalleryConnection
   }
@@ -571,9 +670,9 @@ export interface QueryFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"Query">,
-      args: { where: OfferWhereUniqueInput }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Query'>,
+      args: { where: OfferWhereUniqueInput },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Offer | null> | prisma.Offer | null
   }
@@ -584,9 +683,17 @@ export interface QueryFieldDetails {
     list: true
     nullable: false
     resolve: (
-      root: core.RootValue<"Query">,
-      args: { where?: OfferWhereInput | null, orderBy?: prisma.OfferOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Query'>,
+      args: {
+        where?: OfferWhereInput | null
+        orderBy?: prisma.OfferOrderByInput | null
+        skip?: number | null
+        after?: string | null
+        before?: string | null
+        first?: number | null
+        last?: number | null
+      },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Offer[]> | prisma.Offer[]
   }
@@ -597,9 +704,17 @@ export interface QueryFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Query">,
-      args: { where?: OfferWhereInput | null, orderBy?: prisma.OfferOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Query'>,
+      args: {
+        where?: OfferWhereInput | null
+        orderBy?: prisma.OfferOrderByInput | null
+        skip?: number | null
+        after?: string | null
+        before?: string | null
+        first?: number | null
+        last?: number | null
+      },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.OfferConnection> | prisma.OfferConnection
   }
@@ -610,9 +725,9 @@ export interface QueryFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"Query">,
-      args: { where: TransactionWhereUniqueInput }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Query'>,
+      args: { where: TransactionWhereUniqueInput },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Transaction | null> | prisma.Transaction | null
   }
@@ -623,9 +738,17 @@ export interface QueryFieldDetails {
     list: true
     nullable: false
     resolve: (
-      root: core.RootValue<"Query">,
-      args: { where?: TransactionWhereInput | null, orderBy?: prisma.TransactionOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Query'>,
+      args: {
+        where?: TransactionWhereInput | null
+        orderBy?: prisma.TransactionOrderByInput | null
+        skip?: number | null
+        after?: string | null
+        before?: string | null
+        first?: number | null
+        last?: number | null
+      },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Transaction[]> | prisma.Transaction[]
   }
@@ -636,9 +759,17 @@ export interface QueryFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Query">,
-      args: { where?: TransactionWhereInput | null, orderBy?: prisma.TransactionOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Query'>,
+      args: {
+        where?: TransactionWhereInput | null
+        orderBy?: prisma.TransactionOrderByInput | null
+        skip?: number | null
+        after?: string | null
+        before?: string | null
+        first?: number | null
+        last?: number | null
+      },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.TransactionConnection> | prisma.TransactionConnection
   }
@@ -649,9 +780,9 @@ export interface QueryFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"Query">,
-      args: { where: OrganizationWhereUniqueInput }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Query'>,
+      args: { where: OrganizationWhereUniqueInput },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Organization | null> | prisma.Organization | null
   }
@@ -662,9 +793,17 @@ export interface QueryFieldDetails {
     list: true
     nullable: false
     resolve: (
-      root: core.RootValue<"Query">,
-      args: { where?: OrganizationWhereInput | null, orderBy?: prisma.OrganizationOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Query'>,
+      args: {
+        where?: OrganizationWhereInput | null
+        orderBy?: prisma.OrganizationOrderByInput | null
+        skip?: number | null
+        after?: string | null
+        before?: string | null
+        first?: number | null
+        last?: number | null
+      },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Organization[]> | prisma.Organization[]
   }
@@ -675,27 +814,34 @@ export interface QueryFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Query">,
-      args: { where?: OrganizationWhereInput | null, orderBy?: prisma.OrganizationOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Query'>,
+      args: {
+        where?: OrganizationWhereInput | null
+        orderBy?: prisma.OrganizationOrderByInput | null
+        skip?: number | null
+        after?: string | null
+        before?: string | null
+        first?: number | null
+        last?: number | null
+      },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.OrganizationConnection> | prisma.OrganizationConnection
   }
 }
-  
 
 // Types for User
 
 type UserObject =
   | UserFields
-  | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'email', args?: [] | false, alias?: string  } 
-  | { name: 'firstName', args?: [] | false, alias?: string  } 
-  | { name: 'lastName', args?: [] | false, alias?: string  } 
-  | { name: 'password', args?: [] | false, alias?: string  } 
-  | { name: 'role', args?: [] | false, alias?: string  } 
-  | { name: 'offers', args?: UserOffersArgs[] | false, alias?: string  } 
-  | { name: 'adress', args?: [] | false, alias?: string  } 
+  | { name: 'id'; args?: [] | false; alias?: string }
+  | { name: 'email'; args?: [] | false; alias?: string }
+  | { name: 'firstName'; args?: [] | false; alias?: string }
+  | { name: 'lastName'; args?: [] | false; alias?: string }
+  | { name: 'password'; args?: [] | false; alias?: string }
+  | { name: 'role'; args?: [] | false; alias?: string }
+  | { name: 'offers'; args?: UserOffersArgs[] | false; alias?: string }
+  | { name: 'adress'; args?: [] | false; alias?: string }
 
 type UserFields =
   | 'id'
@@ -707,7 +853,6 @@ type UserFields =
   | 'offers'
   | 'adress'
 
-
 type UserOffersArgs =
   | 'where'
   | 'orderBy'
@@ -716,7 +861,6 @@ type UserOffersArgs =
   | 'before'
   | 'first'
   | 'last'
-  
 
 export interface UserFieldDetails {
   id: {
@@ -766,9 +910,9 @@ export interface UserFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"User">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'User'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.UserRole> | prisma.UserRole
   }
@@ -779,9 +923,17 @@ export interface UserFieldDetails {
     list: true
     nullable: false
     resolve: (
-      root: core.RootValue<"User">,
-      args: { where?: OfferWhereInput | null, orderBy?: prisma.OfferOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'User'>,
+      args: {
+        where?: OfferWhereInput | null
+        orderBy?: prisma.OfferOrderByInput | null
+        skip?: number | null
+        after?: string | null
+        before?: string | null
+        first?: number | null
+        last?: number | null
+      },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Offer[]> | prisma.Offer[]
   }
@@ -792,37 +944,40 @@ export interface UserFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"User">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'User'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Adress | null> | prisma.Adress | null
   }
 }
-  
 
 // Types for Offer
 
 type OfferObject =
   | OfferFields
-  | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'active', args?: [] | false, alias?: string  } 
-  | { name: 'publicOffer', args?: [] | false, alias?: string  } 
-  | { name: 'amount', args?: [] | false, alias?: string  } 
-  | { name: 'createdAt', args?: [] | false, alias?: string  } 
-  | { name: 'updatedAt', args?: [] | false, alias?: string  } 
-  | { name: 'deletedAt', args?: [] | false, alias?: string  } 
-  | { name: 'email', args?: [] | false, alias?: string  } 
-  | { name: 'firstName', args?: [] | false, alias?: string  } 
-  | { name: 'lastName', args?: [] | false, alias?: string  } 
-  | { name: 'transactions', args?: OfferTransactionsArgs[] | false, alias?: string  } 
-  | { name: 'beneficator', args?: [] | false, alias?: string  } 
-  | { name: 'price', args?: [] | false, alias?: string  } 
-  | { name: 'name', args?: [] | false, alias?: string  } 
-  | { name: 'user', args?: [] | false, alias?: string  } 
-  | { name: 'description', args?: [] | false, alias?: string  } 
-  | { name: 'transport', args?: [] | false, alias?: string  } 
-  | { name: 'gallery', args?: [] | false, alias?: string  } 
+  | { name: 'id'; args?: [] | false; alias?: string }
+  | { name: 'active'; args?: [] | false; alias?: string }
+  | { name: 'publicOffer'; args?: [] | false; alias?: string }
+  | { name: 'amount'; args?: [] | false; alias?: string }
+  | { name: 'createdAt'; args?: [] | false; alias?: string }
+  | { name: 'updatedAt'; args?: [] | false; alias?: string }
+  | { name: 'deletedAt'; args?: [] | false; alias?: string }
+  | { name: 'email'; args?: [] | false; alias?: string }
+  | { name: 'firstName'; args?: [] | false; alias?: string }
+  | { name: 'lastName'; args?: [] | false; alias?: string }
+  | {
+      name: 'transactions'
+      args?: OfferTransactionsArgs[] | false
+      alias?: string
+    }
+  | { name: 'beneficator'; args?: [] | false; alias?: string }
+  | { name: 'price'; args?: [] | false; alias?: string }
+  | { name: 'name'; args?: [] | false; alias?: string }
+  | { name: 'user'; args?: [] | false; alias?: string }
+  | { name: 'description'; args?: [] | false; alias?: string }
+  | { name: 'transport'; args?: [] | false; alias?: string }
+  | { name: 'gallery'; args?: [] | false; alias?: string }
 
 type OfferFields =
   | 'id'
@@ -844,7 +999,6 @@ type OfferFields =
   | 'transport'
   | 'gallery'
 
-
 type OfferTransactionsArgs =
   | 'where'
   | 'orderBy'
@@ -853,7 +1007,6 @@ type OfferTransactionsArgs =
   | 'before'
   | 'first'
   | 'last'
-  
 
 export interface OfferFieldDetails {
   id: {
@@ -943,9 +1096,17 @@ export interface OfferFieldDetails {
     list: true
     nullable: false
     resolve: (
-      root: core.RootValue<"Offer">,
-      args: { where?: TransactionWhereInput | null, orderBy?: prisma.TransactionOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Offer'>,
+      args: {
+        where?: TransactionWhereInput | null
+        orderBy?: prisma.TransactionOrderByInput | null
+        skip?: number | null
+        after?: string | null
+        before?: string | null
+        first?: number | null
+        last?: number | null
+      },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Transaction[]> | prisma.Transaction[]
   }
@@ -956,9 +1117,9 @@ export interface OfferFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Offer">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Offer'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Organization> | prisma.Organization
   }
@@ -985,9 +1146,9 @@ export interface OfferFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Offer">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Offer'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.User> | prisma.User
   }
@@ -1014,31 +1175,30 @@ export interface OfferFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Offer">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Offer'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Gallery> | prisma.Gallery
   }
 }
-  
 
 // Types for Transaction
 
 type TransactionObject =
   | TransactionFields
-  | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'amount', args?: [] | false, alias?: string  } 
-  | { name: 'email', args?: [] | false, alias?: string  } 
-  | { name: 'firstName', args?: [] | false, alias?: string  } 
-  | { name: 'lastName', args?: [] | false, alias?: string  } 
-  | { name: 'comment', args?: [] | false, alias?: string  } 
-  | { name: 'createdAt', args?: [] | false, alias?: string  } 
-  | { name: 'updatedAt', args?: [] | false, alias?: string  } 
-  | { name: 'deletedAt', args?: [] | false, alias?: string  } 
-  | { name: 'donatedAmount', args?: [] | false, alias?: string  } 
-  | { name: 'status', args?: [] | false, alias?: string  } 
-  | { name: 'offer', args?: [] | false, alias?: string  } 
+  | { name: 'id'; args?: [] | false; alias?: string }
+  | { name: 'amount'; args?: [] | false; alias?: string }
+  | { name: 'email'; args?: [] | false; alias?: string }
+  | { name: 'firstName'; args?: [] | false; alias?: string }
+  | { name: 'lastName'; args?: [] | false; alias?: string }
+  | { name: 'comment'; args?: [] | false; alias?: string }
+  | { name: 'createdAt'; args?: [] | false; alias?: string }
+  | { name: 'updatedAt'; args?: [] | false; alias?: string }
+  | { name: 'deletedAt'; args?: [] | false; alias?: string }
+  | { name: 'donatedAmount'; args?: [] | false; alias?: string }
+  | { name: 'status'; args?: [] | false; alias?: string }
+  | { name: 'offer'; args?: [] | false; alias?: string }
 
 type TransactionFields =
   | 'id'
@@ -1053,10 +1213,6 @@ type TransactionFields =
   | 'donatedAmount'
   | 'status'
   | 'offer'
-
-
-
-  
 
 export interface TransactionFieldDetails {
   id: {
@@ -1146,9 +1302,9 @@ export interface TransactionFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Transaction">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Transaction'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.TransactionStatus> | prisma.TransactionStatus
   }
@@ -1159,33 +1315,32 @@ export interface TransactionFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Transaction">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Transaction'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Offer> | prisma.Offer
   }
 }
-  
 
 // Types for Organization
 
 type OrganizationObject =
   | OrganizationFields
-  | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'apiId', args?: [] | false, alias?: string  } 
-  | { name: 'apiSecret', args?: [] | false, alias?: string  } 
-  | { name: 'organizationId', args?: [] | false, alias?: string  } 
-  | { name: 'active', args?: [] | false, alias?: string  } 
-  | { name: 'logo', args?: [] | false, alias?: string  } 
-  | { name: 'createdAt', args?: [] | false, alias?: string  } 
-  | { name: 'updatedAt', args?: [] | false, alias?: string  } 
-  | { name: 'deletedAt', args?: [] | false, alias?: string  } 
-  | { name: 'name', args?: [] | false, alias?: string  } 
-  | { name: 'offers', args?: OrganizationOffersArgs[] | false, alias?: string  } 
-  | { name: 'projectId', args?: [] | false, alias?: string  } 
-  | { name: 'description', args?: [] | false, alias?: string  } 
-  | { name: 'url', args?: [] | false, alias?: string  } 
+  | { name: 'id'; args?: [] | false; alias?: string }
+  | { name: 'apiId'; args?: [] | false; alias?: string }
+  | { name: 'apiSecret'; args?: [] | false; alias?: string }
+  | { name: 'organizationId'; args?: [] | false; alias?: string }
+  | { name: 'active'; args?: [] | false; alias?: string }
+  | { name: 'logo'; args?: [] | false; alias?: string }
+  | { name: 'createdAt'; args?: [] | false; alias?: string }
+  | { name: 'updatedAt'; args?: [] | false; alias?: string }
+  | { name: 'deletedAt'; args?: [] | false; alias?: string }
+  | { name: 'name'; args?: [] | false; alias?: string }
+  | { name: 'offers'; args?: OrganizationOffersArgs[] | false; alias?: string }
+  | { name: 'projectId'; args?: [] | false; alias?: string }
+  | { name: 'description'; args?: [] | false; alias?: string }
+  | { name: 'url'; args?: [] | false; alias?: string }
 
 type OrganizationFields =
   | 'id'
@@ -1203,7 +1358,6 @@ type OrganizationFields =
   | 'description'
   | 'url'
 
-
 type OrganizationOffersArgs =
   | 'where'
   | 'orderBy'
@@ -1212,7 +1366,6 @@ type OrganizationOffersArgs =
   | 'before'
   | 'first'
   | 'last'
-  
 
 export interface OrganizationFieldDetails {
   id: {
@@ -1262,9 +1415,9 @@ export interface OrganizationFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Organization">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Organization'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.File> | prisma.File
   }
@@ -1307,9 +1460,17 @@ export interface OrganizationFieldDetails {
     list: true
     nullable: false
     resolve: (
-      root: core.RootValue<"Organization">,
-      args: { where?: OfferWhereInput | null, orderBy?: prisma.OfferOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Organization'>,
+      args: {
+        where?: OfferWhereInput | null
+        orderBy?: prisma.OfferOrderByInput | null
+        skip?: number | null
+        after?: string | null
+        before?: string | null
+        first?: number | null
+        last?: number | null
+      },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Offer[]> | prisma.Offer[]
   }
@@ -1338,30 +1499,19 @@ export interface OrganizationFieldDetails {
     resolve: undefined
   }
 }
-  
 
 // Types for File
 
 type FileObject =
   | FileFields
-  | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'key', args?: [] | false, alias?: string  } 
-  | { name: 'fileName', args?: [] | false, alias?: string  } 
-  | { name: 'mimeType', args?: [] | false, alias?: string  } 
-  | { name: 'encoding', args?: [] | false, alias?: string  } 
-  | { name: 'url', args?: [] | false, alias?: string  } 
+  | { name: 'id'; args?: [] | false; alias?: string }
+  | { name: 'key'; args?: [] | false; alias?: string }
+  | { name: 'fileName'; args?: [] | false; alias?: string }
+  | { name: 'mimeType'; args?: [] | false; alias?: string }
+  | { name: 'encoding'; args?: [] | false; alias?: string }
+  | { name: 'url'; args?: [] | false; alias?: string }
 
-type FileFields =
-  | 'id'
-  | 'key'
-  | 'fileName'
-  | 'mimeType'
-  | 'encoding'
-  | 'url'
-
-
-
-  
+type FileFields = 'id' | 'key' | 'fileName' | 'mimeType' | 'encoding' | 'url'
 
 export interface FileFieldDetails {
   id: {
@@ -1413,19 +1563,15 @@ export interface FileFieldDetails {
     resolve: undefined
   }
 }
-  
 
 // Types for Gallery
 
 type GalleryObject =
   | GalleryFields
-  | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'images', args?: GalleryImagesArgs[] | false, alias?: string  } 
+  | { name: 'id'; args?: [] | false; alias?: string }
+  | { name: 'images'; args?: GalleryImagesArgs[] | false; alias?: string }
 
-type GalleryFields =
-  | 'id'
-  | 'images'
-
+type GalleryFields = 'id' | 'images'
 
 type GalleryImagesArgs =
   | 'where'
@@ -1435,7 +1581,6 @@ type GalleryImagesArgs =
   | 'before'
   | 'first'
   | 'last'
-  
 
 export interface GalleryFieldDetails {
   id: {
@@ -1453,33 +1598,32 @@ export interface GalleryFieldDetails {
     list: true
     nullable: false
     resolve: (
-      root: core.RootValue<"Gallery">,
-      args: { where?: FileWhereInput | null, orderBy?: prisma.FileOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Gallery'>,
+      args: {
+        where?: FileWhereInput | null
+        orderBy?: prisma.FileOrderByInput | null
+        skip?: number | null
+        after?: string | null
+        before?: string | null
+        first?: number | null
+        last?: number | null
+      },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.File[]> | prisma.File[]
   }
 }
-  
 
 // Types for Adress
 
 type AdressObject =
   | AdressFields
-  | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'city', args?: [] | false, alias?: string  } 
-  | { name: 'street', args?: [] | false, alias?: string  } 
-  | { name: 'postalCode', args?: [] | false, alias?: string  } 
+  | { name: 'id'; args?: [] | false; alias?: string }
+  | { name: 'city'; args?: [] | false; alias?: string }
+  | { name: 'street'; args?: [] | false; alias?: string }
+  | { name: 'postalCode'; args?: [] | false; alias?: string }
 
-type AdressFields =
-  | 'id'
-  | 'city'
-  | 'street'
-  | 'postalCode'
-
-
-
-  
+type AdressFields = 'id' | 'city' | 'street' | 'postalCode'
 
 export interface AdressFieldDetails {
   id: {
@@ -1515,24 +1659,16 @@ export interface AdressFieldDetails {
     resolve: undefined
   }
 }
-  
 
 // Types for UserConnection
 
 type UserConnectionObject =
   | UserConnectionFields
-  | { name: 'pageInfo', args?: [] | false, alias?: string  } 
-  | { name: 'edges', args?: [] | false, alias?: string  } 
-  | { name: 'aggregate', args?: [] | false, alias?: string  } 
+  | { name: 'pageInfo'; args?: [] | false; alias?: string }
+  | { name: 'edges'; args?: [] | false; alias?: string }
+  | { name: 'aggregate'; args?: [] | false; alias?: string }
 
-type UserConnectionFields =
-  | 'pageInfo'
-  | 'edges'
-  | 'aggregate'
-
-
-
-  
+type UserConnectionFields = 'pageInfo' | 'edges' | 'aggregate'
 
 export interface UserConnectionFieldDetails {
   pageInfo: {
@@ -1542,9 +1678,9 @@ export interface UserConnectionFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"UserConnection">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'UserConnection'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.PageInfo> | prisma.PageInfo
   }
@@ -1555,9 +1691,9 @@ export interface UserConnectionFieldDetails {
     list: true
     nullable: false
     resolve: (
-      root: core.RootValue<"UserConnection">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'UserConnection'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.UserEdge[]> | prisma.UserEdge[]
   }
@@ -1568,33 +1704,28 @@ export interface UserConnectionFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"UserConnection">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'UserConnection'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.AggregateUser> | prisma.AggregateUser
   }
 }
-  
 
 // Types for PageInfo
 
 type PageInfoObject =
   | PageInfoFields
-  | { name: 'hasNextPage', args?: [] | false, alias?: string  } 
-  | { name: 'hasPreviousPage', args?: [] | false, alias?: string  } 
-  | { name: 'startCursor', args?: [] | false, alias?: string  } 
-  | { name: 'endCursor', args?: [] | false, alias?: string  } 
+  | { name: 'hasNextPage'; args?: [] | false; alias?: string }
+  | { name: 'hasPreviousPage'; args?: [] | false; alias?: string }
+  | { name: 'startCursor'; args?: [] | false; alias?: string }
+  | { name: 'endCursor'; args?: [] | false; alias?: string }
 
 type PageInfoFields =
   | 'hasNextPage'
   | 'hasPreviousPage'
   | 'startCursor'
   | 'endCursor'
-
-
-
-  
 
 export interface PageInfoFieldDetails {
   hasNextPage: {
@@ -1630,22 +1761,15 @@ export interface PageInfoFieldDetails {
     resolve: undefined
   }
 }
-  
 
 // Types for UserEdge
 
 type UserEdgeObject =
   | UserEdgeFields
-  | { name: 'node', args?: [] | false, alias?: string  } 
-  | { name: 'cursor', args?: [] | false, alias?: string  } 
+  | { name: 'node'; args?: [] | false; alias?: string }
+  | { name: 'cursor'; args?: [] | false; alias?: string }
 
-type UserEdgeFields =
-  | 'node'
-  | 'cursor'
-
-
-
-  
+type UserEdgeFields = 'node' | 'cursor'
 
 export interface UserEdgeFieldDetails {
   node: {
@@ -1655,9 +1779,9 @@ export interface UserEdgeFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"UserEdge">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'UserEdge'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.User> | prisma.User
   }
@@ -1670,20 +1794,14 @@ export interface UserEdgeFieldDetails {
     resolve: undefined
   }
 }
-  
 
 // Types for AggregateUser
 
 type AggregateUserObject =
   | AggregateUserFields
-  | { name: 'count', args?: [] | false, alias?: string  } 
+  | { name: 'count'; args?: [] | false; alias?: string }
 
-type AggregateUserFields =
-  | 'count'
-
-
-
-  
+type AggregateUserFields = 'count'
 
 export interface AggregateUserFieldDetails {
   count: {
@@ -1695,24 +1813,16 @@ export interface AggregateUserFieldDetails {
     resolve: undefined
   }
 }
-  
 
 // Types for AdressConnection
 
 type AdressConnectionObject =
   | AdressConnectionFields
-  | { name: 'pageInfo', args?: [] | false, alias?: string  } 
-  | { name: 'edges', args?: [] | false, alias?: string  } 
-  | { name: 'aggregate', args?: [] | false, alias?: string  } 
+  | { name: 'pageInfo'; args?: [] | false; alias?: string }
+  | { name: 'edges'; args?: [] | false; alias?: string }
+  | { name: 'aggregate'; args?: [] | false; alias?: string }
 
-type AdressConnectionFields =
-  | 'pageInfo'
-  | 'edges'
-  | 'aggregate'
-
-
-
-  
+type AdressConnectionFields = 'pageInfo' | 'edges' | 'aggregate'
 
 export interface AdressConnectionFieldDetails {
   pageInfo: {
@@ -1722,9 +1832,9 @@ export interface AdressConnectionFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"AdressConnection">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'AdressConnection'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.PageInfo> | prisma.PageInfo
   }
@@ -1735,9 +1845,9 @@ export interface AdressConnectionFieldDetails {
     list: true
     nullable: false
     resolve: (
-      root: core.RootValue<"AdressConnection">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'AdressConnection'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.AdressEdge[]> | prisma.AdressEdge[]
   }
@@ -1748,29 +1858,22 @@ export interface AdressConnectionFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"AdressConnection">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'AdressConnection'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.AggregateAdress> | prisma.AggregateAdress
   }
 }
-  
 
 // Types for AdressEdge
 
 type AdressEdgeObject =
   | AdressEdgeFields
-  | { name: 'node', args?: [] | false, alias?: string  } 
-  | { name: 'cursor', args?: [] | false, alias?: string  } 
+  | { name: 'node'; args?: [] | false; alias?: string }
+  | { name: 'cursor'; args?: [] | false; alias?: string }
 
-type AdressEdgeFields =
-  | 'node'
-  | 'cursor'
-
-
-
-  
+type AdressEdgeFields = 'node' | 'cursor'
 
 export interface AdressEdgeFieldDetails {
   node: {
@@ -1780,9 +1883,9 @@ export interface AdressEdgeFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"AdressEdge">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'AdressEdge'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Adress> | prisma.Adress
   }
@@ -1795,20 +1898,14 @@ export interface AdressEdgeFieldDetails {
     resolve: undefined
   }
 }
-  
 
 // Types for AggregateAdress
 
 type AggregateAdressObject =
   | AggregateAdressFields
-  | { name: 'count', args?: [] | false, alias?: string  } 
+  | { name: 'count'; args?: [] | false; alias?: string }
 
-type AggregateAdressFields =
-  | 'count'
-
-
-
-  
+type AggregateAdressFields = 'count'
 
 export interface AggregateAdressFieldDetails {
   count: {
@@ -1820,24 +1917,16 @@ export interface AggregateAdressFieldDetails {
     resolve: undefined
   }
 }
-  
 
 // Types for FileConnection
 
 type FileConnectionObject =
   | FileConnectionFields
-  | { name: 'pageInfo', args?: [] | false, alias?: string  } 
-  | { name: 'edges', args?: [] | false, alias?: string  } 
-  | { name: 'aggregate', args?: [] | false, alias?: string  } 
+  | { name: 'pageInfo'; args?: [] | false; alias?: string }
+  | { name: 'edges'; args?: [] | false; alias?: string }
+  | { name: 'aggregate'; args?: [] | false; alias?: string }
 
-type FileConnectionFields =
-  | 'pageInfo'
-  | 'edges'
-  | 'aggregate'
-
-
-
-  
+type FileConnectionFields = 'pageInfo' | 'edges' | 'aggregate'
 
 export interface FileConnectionFieldDetails {
   pageInfo: {
@@ -1847,9 +1936,9 @@ export interface FileConnectionFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"FileConnection">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'FileConnection'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.PageInfo> | prisma.PageInfo
   }
@@ -1860,9 +1949,9 @@ export interface FileConnectionFieldDetails {
     list: true
     nullable: false
     resolve: (
-      root: core.RootValue<"FileConnection">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'FileConnection'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.FileEdge[]> | prisma.FileEdge[]
   }
@@ -1873,29 +1962,22 @@ export interface FileConnectionFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"FileConnection">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'FileConnection'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.AggregateFile> | prisma.AggregateFile
   }
 }
-  
 
 // Types for FileEdge
 
 type FileEdgeObject =
   | FileEdgeFields
-  | { name: 'node', args?: [] | false, alias?: string  } 
-  | { name: 'cursor', args?: [] | false, alias?: string  } 
+  | { name: 'node'; args?: [] | false; alias?: string }
+  | { name: 'cursor'; args?: [] | false; alias?: string }
 
-type FileEdgeFields =
-  | 'node'
-  | 'cursor'
-
-
-
-  
+type FileEdgeFields = 'node' | 'cursor'
 
 export interface FileEdgeFieldDetails {
   node: {
@@ -1905,9 +1987,9 @@ export interface FileEdgeFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"FileEdge">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'FileEdge'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.File> | prisma.File
   }
@@ -1920,20 +2002,14 @@ export interface FileEdgeFieldDetails {
     resolve: undefined
   }
 }
-  
 
 // Types for AggregateFile
 
 type AggregateFileObject =
   | AggregateFileFields
-  | { name: 'count', args?: [] | false, alias?: string  } 
+  | { name: 'count'; args?: [] | false; alias?: string }
 
-type AggregateFileFields =
-  | 'count'
-
-
-
-  
+type AggregateFileFields = 'count'
 
 export interface AggregateFileFieldDetails {
   count: {
@@ -1945,24 +2021,16 @@ export interface AggregateFileFieldDetails {
     resolve: undefined
   }
 }
-  
 
 // Types for GalleryConnection
 
 type GalleryConnectionObject =
   | GalleryConnectionFields
-  | { name: 'pageInfo', args?: [] | false, alias?: string  } 
-  | { name: 'edges', args?: [] | false, alias?: string  } 
-  | { name: 'aggregate', args?: [] | false, alias?: string  } 
+  | { name: 'pageInfo'; args?: [] | false; alias?: string }
+  | { name: 'edges'; args?: [] | false; alias?: string }
+  | { name: 'aggregate'; args?: [] | false; alias?: string }
 
-type GalleryConnectionFields =
-  | 'pageInfo'
-  | 'edges'
-  | 'aggregate'
-
-
-
-  
+type GalleryConnectionFields = 'pageInfo' | 'edges' | 'aggregate'
 
 export interface GalleryConnectionFieldDetails {
   pageInfo: {
@@ -1972,9 +2040,9 @@ export interface GalleryConnectionFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"GalleryConnection">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'GalleryConnection'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.PageInfo> | prisma.PageInfo
   }
@@ -1985,9 +2053,9 @@ export interface GalleryConnectionFieldDetails {
     list: true
     nullable: false
     resolve: (
-      root: core.RootValue<"GalleryConnection">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'GalleryConnection'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.GalleryEdge[]> | prisma.GalleryEdge[]
   }
@@ -1998,29 +2066,22 @@ export interface GalleryConnectionFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"GalleryConnection">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'GalleryConnection'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.AggregateGallery> | prisma.AggregateGallery
   }
 }
-  
 
 // Types for GalleryEdge
 
 type GalleryEdgeObject =
   | GalleryEdgeFields
-  | { name: 'node', args?: [] | false, alias?: string  } 
-  | { name: 'cursor', args?: [] | false, alias?: string  } 
+  | { name: 'node'; args?: [] | false; alias?: string }
+  | { name: 'cursor'; args?: [] | false; alias?: string }
 
-type GalleryEdgeFields =
-  | 'node'
-  | 'cursor'
-
-
-
-  
+type GalleryEdgeFields = 'node' | 'cursor'
 
 export interface GalleryEdgeFieldDetails {
   node: {
@@ -2030,9 +2091,9 @@ export interface GalleryEdgeFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"GalleryEdge">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'GalleryEdge'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Gallery> | prisma.Gallery
   }
@@ -2045,20 +2106,14 @@ export interface GalleryEdgeFieldDetails {
     resolve: undefined
   }
 }
-  
 
 // Types for AggregateGallery
 
 type AggregateGalleryObject =
   | AggregateGalleryFields
-  | { name: 'count', args?: [] | false, alias?: string  } 
+  | { name: 'count'; args?: [] | false; alias?: string }
 
-type AggregateGalleryFields =
-  | 'count'
-
-
-
-  
+type AggregateGalleryFields = 'count'
 
 export interface AggregateGalleryFieldDetails {
   count: {
@@ -2070,24 +2125,16 @@ export interface AggregateGalleryFieldDetails {
     resolve: undefined
   }
 }
-  
 
 // Types for OfferConnection
 
 type OfferConnectionObject =
   | OfferConnectionFields
-  | { name: 'pageInfo', args?: [] | false, alias?: string  } 
-  | { name: 'edges', args?: [] | false, alias?: string  } 
-  | { name: 'aggregate', args?: [] | false, alias?: string  } 
+  | { name: 'pageInfo'; args?: [] | false; alias?: string }
+  | { name: 'edges'; args?: [] | false; alias?: string }
+  | { name: 'aggregate'; args?: [] | false; alias?: string }
 
-type OfferConnectionFields =
-  | 'pageInfo'
-  | 'edges'
-  | 'aggregate'
-
-
-
-  
+type OfferConnectionFields = 'pageInfo' | 'edges' | 'aggregate'
 
 export interface OfferConnectionFieldDetails {
   pageInfo: {
@@ -2097,9 +2144,9 @@ export interface OfferConnectionFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"OfferConnection">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'OfferConnection'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.PageInfo> | prisma.PageInfo
   }
@@ -2110,9 +2157,9 @@ export interface OfferConnectionFieldDetails {
     list: true
     nullable: false
     resolve: (
-      root: core.RootValue<"OfferConnection">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'OfferConnection'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.OfferEdge[]> | prisma.OfferEdge[]
   }
@@ -2123,29 +2170,22 @@ export interface OfferConnectionFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"OfferConnection">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'OfferConnection'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.AggregateOffer> | prisma.AggregateOffer
   }
 }
-  
 
 // Types for OfferEdge
 
 type OfferEdgeObject =
   | OfferEdgeFields
-  | { name: 'node', args?: [] | false, alias?: string  } 
-  | { name: 'cursor', args?: [] | false, alias?: string  } 
+  | { name: 'node'; args?: [] | false; alias?: string }
+  | { name: 'cursor'; args?: [] | false; alias?: string }
 
-type OfferEdgeFields =
-  | 'node'
-  | 'cursor'
-
-
-
-  
+type OfferEdgeFields = 'node' | 'cursor'
 
 export interface OfferEdgeFieldDetails {
   node: {
@@ -2155,9 +2195,9 @@ export interface OfferEdgeFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"OfferEdge">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'OfferEdge'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Offer> | prisma.Offer
   }
@@ -2170,20 +2210,14 @@ export interface OfferEdgeFieldDetails {
     resolve: undefined
   }
 }
-  
 
 // Types for AggregateOffer
 
 type AggregateOfferObject =
   | AggregateOfferFields
-  | { name: 'count', args?: [] | false, alias?: string  } 
+  | { name: 'count'; args?: [] | false; alias?: string }
 
-type AggregateOfferFields =
-  | 'count'
-
-
-
-  
+type AggregateOfferFields = 'count'
 
 export interface AggregateOfferFieldDetails {
   count: {
@@ -2195,24 +2229,16 @@ export interface AggregateOfferFieldDetails {
     resolve: undefined
   }
 }
-  
 
 // Types for TransactionConnection
 
 type TransactionConnectionObject =
   | TransactionConnectionFields
-  | { name: 'pageInfo', args?: [] | false, alias?: string  } 
-  | { name: 'edges', args?: [] | false, alias?: string  } 
-  | { name: 'aggregate', args?: [] | false, alias?: string  } 
+  | { name: 'pageInfo'; args?: [] | false; alias?: string }
+  | { name: 'edges'; args?: [] | false; alias?: string }
+  | { name: 'aggregate'; args?: [] | false; alias?: string }
 
-type TransactionConnectionFields =
-  | 'pageInfo'
-  | 'edges'
-  | 'aggregate'
-
-
-
-  
+type TransactionConnectionFields = 'pageInfo' | 'edges' | 'aggregate'
 
 export interface TransactionConnectionFieldDetails {
   pageInfo: {
@@ -2222,9 +2248,9 @@ export interface TransactionConnectionFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"TransactionConnection">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'TransactionConnection'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.PageInfo> | prisma.PageInfo
   }
@@ -2235,9 +2261,9 @@ export interface TransactionConnectionFieldDetails {
     list: true
     nullable: false
     resolve: (
-      root: core.RootValue<"TransactionConnection">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'TransactionConnection'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.TransactionEdge[]> | prisma.TransactionEdge[]
   }
@@ -2248,29 +2274,22 @@ export interface TransactionConnectionFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"TransactionConnection">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'TransactionConnection'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.AggregateTransaction> | prisma.AggregateTransaction
   }
 }
-  
 
 // Types for TransactionEdge
 
 type TransactionEdgeObject =
   | TransactionEdgeFields
-  | { name: 'node', args?: [] | false, alias?: string  } 
-  | { name: 'cursor', args?: [] | false, alias?: string  } 
+  | { name: 'node'; args?: [] | false; alias?: string }
+  | { name: 'cursor'; args?: [] | false; alias?: string }
 
-type TransactionEdgeFields =
-  | 'node'
-  | 'cursor'
-
-
-
-  
+type TransactionEdgeFields = 'node' | 'cursor'
 
 export interface TransactionEdgeFieldDetails {
   node: {
@@ -2280,9 +2299,9 @@ export interface TransactionEdgeFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"TransactionEdge">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'TransactionEdge'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Transaction> | prisma.Transaction
   }
@@ -2295,20 +2314,14 @@ export interface TransactionEdgeFieldDetails {
     resolve: undefined
   }
 }
-  
 
 // Types for AggregateTransaction
 
 type AggregateTransactionObject =
   | AggregateTransactionFields
-  | { name: 'count', args?: [] | false, alias?: string  } 
+  | { name: 'count'; args?: [] | false; alias?: string }
 
-type AggregateTransactionFields =
-  | 'count'
-
-
-
-  
+type AggregateTransactionFields = 'count'
 
 export interface AggregateTransactionFieldDetails {
   count: {
@@ -2320,24 +2333,16 @@ export interface AggregateTransactionFieldDetails {
     resolve: undefined
   }
 }
-  
 
 // Types for OrganizationConnection
 
 type OrganizationConnectionObject =
   | OrganizationConnectionFields
-  | { name: 'pageInfo', args?: [] | false, alias?: string  } 
-  | { name: 'edges', args?: [] | false, alias?: string  } 
-  | { name: 'aggregate', args?: [] | false, alias?: string  } 
+  | { name: 'pageInfo'; args?: [] | false; alias?: string }
+  | { name: 'edges'; args?: [] | false; alias?: string }
+  | { name: 'aggregate'; args?: [] | false; alias?: string }
 
-type OrganizationConnectionFields =
-  | 'pageInfo'
-  | 'edges'
-  | 'aggregate'
-
-
-
-  
+type OrganizationConnectionFields = 'pageInfo' | 'edges' | 'aggregate'
 
 export interface OrganizationConnectionFieldDetails {
   pageInfo: {
@@ -2347,9 +2352,9 @@ export interface OrganizationConnectionFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"OrganizationConnection">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'OrganizationConnection'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.PageInfo> | prisma.PageInfo
   }
@@ -2360,9 +2365,9 @@ export interface OrganizationConnectionFieldDetails {
     list: true
     nullable: false
     resolve: (
-      root: core.RootValue<"OrganizationConnection">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'OrganizationConnection'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.OrganizationEdge[]> | prisma.OrganizationEdge[]
   }
@@ -2373,29 +2378,22 @@ export interface OrganizationConnectionFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"OrganizationConnection">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'OrganizationConnection'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.AggregateOrganization> | prisma.AggregateOrganization
   }
 }
-  
 
 // Types for OrganizationEdge
 
 type OrganizationEdgeObject =
   | OrganizationEdgeFields
-  | { name: 'node', args?: [] | false, alias?: string  } 
-  | { name: 'cursor', args?: [] | false, alias?: string  } 
+  | { name: 'node'; args?: [] | false; alias?: string }
+  | { name: 'cursor'; args?: [] | false; alias?: string }
 
-type OrganizationEdgeFields =
-  | 'node'
-  | 'cursor'
-
-
-
-  
+type OrganizationEdgeFields = 'node' | 'cursor'
 
 export interface OrganizationEdgeFieldDetails {
   node: {
@@ -2405,9 +2403,9 @@ export interface OrganizationEdgeFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"OrganizationEdge">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'OrganizationEdge'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Organization> | prisma.Organization
   }
@@ -2420,20 +2418,14 @@ export interface OrganizationEdgeFieldDetails {
     resolve: undefined
   }
 }
-  
 
 // Types for AggregateOrganization
 
 type AggregateOrganizationObject =
   | AggregateOrganizationFields
-  | { name: 'count', args?: [] | false, alias?: string  } 
+  | { name: 'count'; args?: [] | false; alias?: string }
 
-type AggregateOrganizationFields =
-  | 'count'
-
-
-
-  
+type AggregateOrganizationFields = 'count'
 
 export interface AggregateOrganizationFieldDetails {
   count: {
@@ -2445,53 +2437,216 @@ export interface AggregateOrganizationFieldDetails {
     resolve: undefined
   }
 }
-  
 
 // Types for Mutation
 
 type MutationObject =
   | MutationFields
-  | { name: 'createUser', args?: MutationCreateUserArgs[] | false, alias?: string  } 
-  | { name: 'updateUser', args?: MutationUpdateUserArgs[] | false, alias?: string  } 
-  | { name: 'updateManyUsers', args?: MutationUpdateManyUsersArgs[] | false, alias?: string  } 
-  | { name: 'upsertUser', args?: MutationUpsertUserArgs[] | false, alias?: string  } 
-  | { name: 'deleteUser', args?: MutationDeleteUserArgs[] | false, alias?: string  } 
-  | { name: 'deleteManyUsers', args?: MutationDeleteManyUsersArgs[] | false, alias?: string  } 
-  | { name: 'createAdress', args?: MutationCreateAdressArgs[] | false, alias?: string  } 
-  | { name: 'updateAdress', args?: MutationUpdateAdressArgs[] | false, alias?: string  } 
-  | { name: 'updateManyAdresses', args?: MutationUpdateManyAdressesArgs[] | false, alias?: string  } 
-  | { name: 'upsertAdress', args?: MutationUpsertAdressArgs[] | false, alias?: string  } 
-  | { name: 'deleteAdress', args?: MutationDeleteAdressArgs[] | false, alias?: string  } 
-  | { name: 'deleteManyAdresses', args?: MutationDeleteManyAdressesArgs[] | false, alias?: string  } 
-  | { name: 'createFile', args?: MutationCreateFileArgs[] | false, alias?: string  } 
-  | { name: 'updateFile', args?: MutationUpdateFileArgs[] | false, alias?: string  } 
-  | { name: 'updateManyFiles', args?: MutationUpdateManyFilesArgs[] | false, alias?: string  } 
-  | { name: 'upsertFile', args?: MutationUpsertFileArgs[] | false, alias?: string  } 
-  | { name: 'deleteFile', args?: MutationDeleteFileArgs[] | false, alias?: string  } 
-  | { name: 'deleteManyFiles', args?: MutationDeleteManyFilesArgs[] | false, alias?: string  } 
-  | { name: 'createGallery', args?: MutationCreateGalleryArgs[] | false, alias?: string  } 
-  | { name: 'updateGallery', args?: MutationUpdateGalleryArgs[] | false, alias?: string  } 
-  | { name: 'upsertGallery', args?: MutationUpsertGalleryArgs[] | false, alias?: string  } 
-  | { name: 'deleteGallery', args?: MutationDeleteGalleryArgs[] | false, alias?: string  } 
-  | { name: 'deleteManyGalleries', args?: MutationDeleteManyGalleriesArgs[] | false, alias?: string  } 
-  | { name: 'createOffer', args?: MutationCreateOfferArgs[] | false, alias?: string  } 
-  | { name: 'updateOffer', args?: MutationUpdateOfferArgs[] | false, alias?: string  } 
-  | { name: 'updateManyOffers', args?: MutationUpdateManyOffersArgs[] | false, alias?: string  } 
-  | { name: 'upsertOffer', args?: MutationUpsertOfferArgs[] | false, alias?: string  } 
-  | { name: 'deleteOffer', args?: MutationDeleteOfferArgs[] | false, alias?: string  } 
-  | { name: 'deleteManyOffers', args?: MutationDeleteManyOffersArgs[] | false, alias?: string  } 
-  | { name: 'createTransaction', args?: MutationCreateTransactionArgs[] | false, alias?: string  } 
-  | { name: 'updateTransaction', args?: MutationUpdateTransactionArgs[] | false, alias?: string  } 
-  | { name: 'updateManyTransactions', args?: MutationUpdateManyTransactionsArgs[] | false, alias?: string  } 
-  | { name: 'upsertTransaction', args?: MutationUpsertTransactionArgs[] | false, alias?: string  } 
-  | { name: 'deleteTransaction', args?: MutationDeleteTransactionArgs[] | false, alias?: string  } 
-  | { name: 'deleteManyTransactions', args?: MutationDeleteManyTransactionsArgs[] | false, alias?: string  } 
-  | { name: 'createOrganization', args?: MutationCreateOrganizationArgs[] | false, alias?: string  } 
-  | { name: 'updateOrganization', args?: MutationUpdateOrganizationArgs[] | false, alias?: string  } 
-  | { name: 'updateManyOrganizations', args?: MutationUpdateManyOrganizationsArgs[] | false, alias?: string  } 
-  | { name: 'upsertOrganization', args?: MutationUpsertOrganizationArgs[] | false, alias?: string  } 
-  | { name: 'deleteOrganization', args?: MutationDeleteOrganizationArgs[] | false, alias?: string  } 
-  | { name: 'deleteManyOrganizations', args?: MutationDeleteManyOrganizationsArgs[] | false, alias?: string  } 
+  | {
+      name: 'createUser'
+      args?: MutationCreateUserArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'updateUser'
+      args?: MutationUpdateUserArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'updateManyUsers'
+      args?: MutationUpdateManyUsersArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'upsertUser'
+      args?: MutationUpsertUserArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'deleteUser'
+      args?: MutationDeleteUserArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'deleteManyUsers'
+      args?: MutationDeleteManyUsersArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'createAdress'
+      args?: MutationCreateAdressArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'updateAdress'
+      args?: MutationUpdateAdressArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'updateManyAdresses'
+      args?: MutationUpdateManyAdressesArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'upsertAdress'
+      args?: MutationUpsertAdressArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'deleteAdress'
+      args?: MutationDeleteAdressArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'deleteManyAdresses'
+      args?: MutationDeleteManyAdressesArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'createFile'
+      args?: MutationCreateFileArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'updateFile'
+      args?: MutationUpdateFileArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'updateManyFiles'
+      args?: MutationUpdateManyFilesArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'upsertFile'
+      args?: MutationUpsertFileArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'deleteFile'
+      args?: MutationDeleteFileArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'deleteManyFiles'
+      args?: MutationDeleteManyFilesArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'createGallery'
+      args?: MutationCreateGalleryArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'updateGallery'
+      args?: MutationUpdateGalleryArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'upsertGallery'
+      args?: MutationUpsertGalleryArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'deleteGallery'
+      args?: MutationDeleteGalleryArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'deleteManyGalleries'
+      args?: MutationDeleteManyGalleriesArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'createOffer'
+      args?: MutationCreateOfferArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'updateOffer'
+      args?: MutationUpdateOfferArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'updateManyOffers'
+      args?: MutationUpdateManyOffersArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'upsertOffer'
+      args?: MutationUpsertOfferArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'deleteOffer'
+      args?: MutationDeleteOfferArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'deleteManyOffers'
+      args?: MutationDeleteManyOffersArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'createTransaction'
+      args?: MutationCreateTransactionArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'updateTransaction'
+      args?: MutationUpdateTransactionArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'updateManyTransactions'
+      args?: MutationUpdateManyTransactionsArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'upsertTransaction'
+      args?: MutationUpsertTransactionArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'deleteTransaction'
+      args?: MutationDeleteTransactionArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'deleteManyTransactions'
+      args?: MutationDeleteManyTransactionsArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'createOrganization'
+      args?: MutationCreateOrganizationArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'updateOrganization'
+      args?: MutationUpdateOrganizationArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'updateManyOrganizations'
+      args?: MutationUpdateManyOrganizationsArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'upsertOrganization'
+      args?: MutationUpsertOrganizationArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'deleteOrganization'
+      args?: MutationDeleteOrganizationArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'deleteManyOrganizations'
+      args?: MutationDeleteManyOrganizationsArgs[] | false
+      alias?: string
+    }
 
 type MutationFields =
   | 'createUser'
@@ -2536,117 +2691,47 @@ type MutationFields =
   | 'deleteOrganization'
   | 'deleteManyOrganizations'
 
-
-type MutationCreateUserArgs =
-  | 'data'
-type MutationUpdateUserArgs =
-  | 'data'
-  | 'where'
-type MutationUpdateManyUsersArgs =
-  | 'data'
-  | 'where'
-type MutationUpsertUserArgs =
-  | 'where'
-  | 'create'
-  | 'update'
-type MutationDeleteUserArgs =
-  | 'where'
-type MutationDeleteManyUsersArgs =
-  | 'where'
-type MutationCreateAdressArgs =
-  | 'data'
-type MutationUpdateAdressArgs =
-  | 'data'
-  | 'where'
-type MutationUpdateManyAdressesArgs =
-  | 'data'
-  | 'where'
-type MutationUpsertAdressArgs =
-  | 'where'
-  | 'create'
-  | 'update'
-type MutationDeleteAdressArgs =
-  | 'where'
-type MutationDeleteManyAdressesArgs =
-  | 'where'
-type MutationCreateFileArgs =
-  | 'data'
-type MutationUpdateFileArgs =
-  | 'data'
-  | 'where'
-type MutationUpdateManyFilesArgs =
-  | 'data'
-  | 'where'
-type MutationUpsertFileArgs =
-  | 'where'
-  | 'create'
-  | 'update'
-type MutationDeleteFileArgs =
-  | 'where'
-type MutationDeleteManyFilesArgs =
-  | 'where'
-type MutationCreateGalleryArgs =
-  | 'data'
-type MutationUpdateGalleryArgs =
-  | 'data'
-  | 'where'
-type MutationUpsertGalleryArgs =
-  | 'where'
-  | 'create'
-  | 'update'
-type MutationDeleteGalleryArgs =
-  | 'where'
-type MutationDeleteManyGalleriesArgs =
-  | 'where'
-type MutationCreateOfferArgs =
-  | 'data'
-type MutationUpdateOfferArgs =
-  | 'data'
-  | 'where'
-type MutationUpdateManyOffersArgs =
-  | 'data'
-  | 'where'
-type MutationUpsertOfferArgs =
-  | 'where'
-  | 'create'
-  | 'update'
-type MutationDeleteOfferArgs =
-  | 'where'
-type MutationDeleteManyOffersArgs =
-  | 'where'
-type MutationCreateTransactionArgs =
-  | 'data'
-type MutationUpdateTransactionArgs =
-  | 'data'
-  | 'where'
-type MutationUpdateManyTransactionsArgs =
-  | 'data'
-  | 'where'
-type MutationUpsertTransactionArgs =
-  | 'where'
-  | 'create'
-  | 'update'
-type MutationDeleteTransactionArgs =
-  | 'where'
-type MutationDeleteManyTransactionsArgs =
-  | 'where'
-type MutationCreateOrganizationArgs =
-  | 'data'
-type MutationUpdateOrganizationArgs =
-  | 'data'
-  | 'where'
-type MutationUpdateManyOrganizationsArgs =
-  | 'data'
-  | 'where'
-type MutationUpsertOrganizationArgs =
-  | 'where'
-  | 'create'
-  | 'update'
-type MutationDeleteOrganizationArgs =
-  | 'where'
-type MutationDeleteManyOrganizationsArgs =
-  | 'where'
-  
+type MutationCreateUserArgs = 'data'
+type MutationUpdateUserArgs = 'data' | 'where'
+type MutationUpdateManyUsersArgs = 'data' | 'where'
+type MutationUpsertUserArgs = 'where' | 'create' | 'update'
+type MutationDeleteUserArgs = 'where'
+type MutationDeleteManyUsersArgs = 'where'
+type MutationCreateAdressArgs = 'data'
+type MutationUpdateAdressArgs = 'data' | 'where'
+type MutationUpdateManyAdressesArgs = 'data' | 'where'
+type MutationUpsertAdressArgs = 'where' | 'create' | 'update'
+type MutationDeleteAdressArgs = 'where'
+type MutationDeleteManyAdressesArgs = 'where'
+type MutationCreateFileArgs = 'data'
+type MutationUpdateFileArgs = 'data' | 'where'
+type MutationUpdateManyFilesArgs = 'data' | 'where'
+type MutationUpsertFileArgs = 'where' | 'create' | 'update'
+type MutationDeleteFileArgs = 'where'
+type MutationDeleteManyFilesArgs = 'where'
+type MutationCreateGalleryArgs = 'data'
+type MutationUpdateGalleryArgs = 'data' | 'where'
+type MutationUpsertGalleryArgs = 'where' | 'create' | 'update'
+type MutationDeleteGalleryArgs = 'where'
+type MutationDeleteManyGalleriesArgs = 'where'
+type MutationCreateOfferArgs = 'data'
+type MutationUpdateOfferArgs = 'data' | 'where'
+type MutationUpdateManyOffersArgs = 'data' | 'where'
+type MutationUpsertOfferArgs = 'where' | 'create' | 'update'
+type MutationDeleteOfferArgs = 'where'
+type MutationDeleteManyOffersArgs = 'where'
+type MutationCreateTransactionArgs = 'data'
+type MutationUpdateTransactionArgs = 'data' | 'where'
+type MutationUpdateManyTransactionsArgs = 'data' | 'where'
+type MutationUpsertTransactionArgs = 'where' | 'create' | 'update'
+type MutationDeleteTransactionArgs = 'where'
+type MutationDeleteManyTransactionsArgs = 'where'
+type MutationCreateOrganizationArgs = 'data'
+type MutationUpdateOrganizationArgs = 'data' | 'where'
+type MutationUpdateManyOrganizationsArgs = 'data' | 'where'
+type MutationUpsertOrganizationArgs = 'where' | 'create' | 'update'
+type MutationDeleteOrganizationArgs = 'where'
+type MutationDeleteManyOrganizationsArgs = 'where'
 
 export interface MutationFieldDetails {
   createUser: {
@@ -2656,9 +2741,9 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { data: UserCreateInput }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: { data: UserCreateInput },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.User> | prisma.User
   }
@@ -2669,9 +2754,9 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { data: UserUpdateInput, where: UserWhereUniqueInput }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: { data: UserUpdateInput; where: UserWhereUniqueInput },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.User | null> | prisma.User | null
   }
@@ -2682,9 +2767,12 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { data: UserUpdateManyMutationInput, where?: UserWhereInput | null }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: {
+        data: UserUpdateManyMutationInput
+        where?: UserWhereInput | null
+      },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
   }
@@ -2695,9 +2783,13 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { where: UserWhereUniqueInput, create: UserCreateInput, update: UserUpdateInput }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: {
+        where: UserWhereUniqueInput
+        create: UserCreateInput
+        update: UserUpdateInput
+      },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.User> | prisma.User
   }
@@ -2708,9 +2800,9 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { where: UserWhereUniqueInput }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: { where: UserWhereUniqueInput },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.User | null> | prisma.User | null
   }
@@ -2721,9 +2813,9 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { where?: UserWhereInput | null }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: { where?: UserWhereInput | null },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
   }
@@ -2734,9 +2826,9 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { data: AdressCreateInput }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: { data: AdressCreateInput },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Adress> | prisma.Adress
   }
@@ -2747,9 +2839,9 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { data: AdressUpdateInput, where: AdressWhereUniqueInput }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: { data: AdressUpdateInput; where: AdressWhereUniqueInput },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Adress | null> | prisma.Adress | null
   }
@@ -2760,9 +2852,12 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { data: AdressUpdateManyMutationInput, where?: AdressWhereInput | null }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: {
+        data: AdressUpdateManyMutationInput
+        where?: AdressWhereInput | null
+      },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
   }
@@ -2773,9 +2868,13 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { where: AdressWhereUniqueInput, create: AdressCreateInput, update: AdressUpdateInput }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: {
+        where: AdressWhereUniqueInput
+        create: AdressCreateInput
+        update: AdressUpdateInput
+      },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Adress> | prisma.Adress
   }
@@ -2786,9 +2885,9 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { where: AdressWhereUniqueInput }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: { where: AdressWhereUniqueInput },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Adress | null> | prisma.Adress | null
   }
@@ -2799,9 +2898,9 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { where?: AdressWhereInput | null }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: { where?: AdressWhereInput | null },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
   }
@@ -2812,9 +2911,9 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { data: FileCreateInput }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: { data: FileCreateInput },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.File> | prisma.File
   }
@@ -2825,9 +2924,9 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { data: FileUpdateInput, where: FileWhereUniqueInput }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: { data: FileUpdateInput; where: FileWhereUniqueInput },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.File | null> | prisma.File | null
   }
@@ -2838,9 +2937,12 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { data: FileUpdateManyMutationInput, where?: FileWhereInput | null }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: {
+        data: FileUpdateManyMutationInput
+        where?: FileWhereInput | null
+      },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
   }
@@ -2851,9 +2953,13 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { where: FileWhereUniqueInput, create: FileCreateInput, update: FileUpdateInput }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: {
+        where: FileWhereUniqueInput
+        create: FileCreateInput
+        update: FileUpdateInput
+      },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.File> | prisma.File
   }
@@ -2864,9 +2970,9 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { where: FileWhereUniqueInput }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: { where: FileWhereUniqueInput },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.File | null> | prisma.File | null
   }
@@ -2877,9 +2983,9 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { where?: FileWhereInput | null }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: { where?: FileWhereInput | null },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
   }
@@ -2890,9 +2996,9 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { data: GalleryCreateInput }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: { data: GalleryCreateInput },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Gallery> | prisma.Gallery
   }
@@ -2903,9 +3009,9 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { data: GalleryUpdateInput, where: GalleryWhereUniqueInput }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: { data: GalleryUpdateInput; where: GalleryWhereUniqueInput },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Gallery | null> | prisma.Gallery | null
   }
@@ -2916,9 +3022,13 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { where: GalleryWhereUniqueInput, create: GalleryCreateInput, update: GalleryUpdateInput }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: {
+        where: GalleryWhereUniqueInput
+        create: GalleryCreateInput
+        update: GalleryUpdateInput
+      },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Gallery> | prisma.Gallery
   }
@@ -2929,9 +3039,9 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { where: GalleryWhereUniqueInput }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: { where: GalleryWhereUniqueInput },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Gallery | null> | prisma.Gallery | null
   }
@@ -2942,9 +3052,9 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { where?: GalleryWhereInput | null }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: { where?: GalleryWhereInput | null },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
   }
@@ -2955,9 +3065,9 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { data: OfferCreateInput }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: { data: OfferCreateInput },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Offer> | prisma.Offer
   }
@@ -2968,9 +3078,9 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { data: OfferUpdateInput, where: OfferWhereUniqueInput }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: { data: OfferUpdateInput; where: OfferWhereUniqueInput },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Offer | null> | prisma.Offer | null
   }
@@ -2981,9 +3091,12 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { data: OfferUpdateManyMutationInput, where?: OfferWhereInput | null }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: {
+        data: OfferUpdateManyMutationInput
+        where?: OfferWhereInput | null
+      },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
   }
@@ -2994,9 +3107,13 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { where: OfferWhereUniqueInput, create: OfferCreateInput, update: OfferUpdateInput }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: {
+        where: OfferWhereUniqueInput
+        create: OfferCreateInput
+        update: OfferUpdateInput
+      },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Offer> | prisma.Offer
   }
@@ -3007,9 +3124,9 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { where: OfferWhereUniqueInput }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: { where: OfferWhereUniqueInput },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Offer | null> | prisma.Offer | null
   }
@@ -3020,9 +3137,9 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { where?: OfferWhereInput | null }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: { where?: OfferWhereInput | null },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
   }
@@ -3033,9 +3150,9 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { data: TransactionCreateInput }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: { data: TransactionCreateInput },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Transaction> | prisma.Transaction
   }
@@ -3046,9 +3163,12 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { data: TransactionUpdateInput, where: TransactionWhereUniqueInput }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: {
+        data: TransactionUpdateInput
+        where: TransactionWhereUniqueInput
+      },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Transaction | null> | prisma.Transaction | null
   }
@@ -3059,9 +3179,12 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { data: TransactionUpdateManyMutationInput, where?: TransactionWhereInput | null }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: {
+        data: TransactionUpdateManyMutationInput
+        where?: TransactionWhereInput | null
+      },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
   }
@@ -3072,9 +3195,13 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { where: TransactionWhereUniqueInput, create: TransactionCreateInput, update: TransactionUpdateInput }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: {
+        where: TransactionWhereUniqueInput
+        create: TransactionCreateInput
+        update: TransactionUpdateInput
+      },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Transaction> | prisma.Transaction
   }
@@ -3085,9 +3212,9 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { where: TransactionWhereUniqueInput }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: { where: TransactionWhereUniqueInput },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Transaction | null> | prisma.Transaction | null
   }
@@ -3098,9 +3225,9 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { where?: TransactionWhereInput | null }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: { where?: TransactionWhereInput | null },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
   }
@@ -3111,9 +3238,9 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { data: OrganizationCreateInput }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: { data: OrganizationCreateInput },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Organization> | prisma.Organization
   }
@@ -3124,9 +3251,12 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { data: OrganizationUpdateInput, where: OrganizationWhereUniqueInput }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: {
+        data: OrganizationUpdateInput
+        where: OrganizationWhereUniqueInput
+      },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Organization | null> | prisma.Organization | null
   }
@@ -3137,9 +3267,12 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { data: OrganizationUpdateManyMutationInput, where?: OrganizationWhereInput | null }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: {
+        data: OrganizationUpdateManyMutationInput
+        where?: OrganizationWhereInput | null
+      },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
   }
@@ -3150,9 +3283,13 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { where: OrganizationWhereUniqueInput, create: OrganizationCreateInput, update: OrganizationUpdateInput }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: {
+        where: OrganizationWhereUniqueInput
+        create: OrganizationCreateInput
+        update: OrganizationUpdateInput
+      },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Organization> | prisma.Organization
   }
@@ -3163,9 +3300,9 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { where: OrganizationWhereUniqueInput }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: { where: OrganizationWhereUniqueInput },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Organization | null> | prisma.Organization | null
   }
@@ -3176,27 +3313,21 @@ export interface MutationFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { where?: OrganizationWhereInput | null }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Mutation'>,
+      args: { where?: OrganizationWhereInput | null },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
   }
 }
-  
 
 // Types for BatchPayload
 
 type BatchPayloadObject =
   | BatchPayloadFields
-  | { name: 'count', args?: [] | false, alias?: string  } 
+  | { name: 'count'; args?: [] | false; alias?: string }
 
-type BatchPayloadFields =
-  | 'count'
-
-
-
-  
+type BatchPayloadFields = 'count'
 
 export interface BatchPayloadFieldDetails {
   count: {
@@ -3208,19 +3339,30 @@ export interface BatchPayloadFieldDetails {
     resolve: undefined
   }
 }
-  
 
 // Types for Subscription
 
 type SubscriptionObject =
   | SubscriptionFields
-  | { name: 'user', args?: SubscriptionUserArgs[] | false, alias?: string  } 
-  | { name: 'adress', args?: SubscriptionAdressArgs[] | false, alias?: string  } 
-  | { name: 'file', args?: SubscriptionFileArgs[] | false, alias?: string  } 
-  | { name: 'gallery', args?: SubscriptionGalleryArgs[] | false, alias?: string  } 
-  | { name: 'offer', args?: SubscriptionOfferArgs[] | false, alias?: string  } 
-  | { name: 'transaction', args?: SubscriptionTransactionArgs[] | false, alias?: string  } 
-  | { name: 'organization', args?: SubscriptionOrganizationArgs[] | false, alias?: string  } 
+  | { name: 'user'; args?: SubscriptionUserArgs[] | false; alias?: string }
+  | { name: 'adress'; args?: SubscriptionAdressArgs[] | false; alias?: string }
+  | { name: 'file'; args?: SubscriptionFileArgs[] | false; alias?: string }
+  | {
+      name: 'gallery'
+      args?: SubscriptionGalleryArgs[] | false
+      alias?: string
+    }
+  | { name: 'offer'; args?: SubscriptionOfferArgs[] | false; alias?: string }
+  | {
+      name: 'transaction'
+      args?: SubscriptionTransactionArgs[] | false
+      alias?: string
+    }
+  | {
+      name: 'organization'
+      args?: SubscriptionOrganizationArgs[] | false
+      alias?: string
+    }
 
 type SubscriptionFields =
   | 'user'
@@ -3231,22 +3373,13 @@ type SubscriptionFields =
   | 'transaction'
   | 'organization'
 
-
-type SubscriptionUserArgs =
-  | 'where'
-type SubscriptionAdressArgs =
-  | 'where'
-type SubscriptionFileArgs =
-  | 'where'
-type SubscriptionGalleryArgs =
-  | 'where'
-type SubscriptionOfferArgs =
-  | 'where'
-type SubscriptionTransactionArgs =
-  | 'where'
-type SubscriptionOrganizationArgs =
-  | 'where'
-  
+type SubscriptionUserArgs = 'where'
+type SubscriptionAdressArgs = 'where'
+type SubscriptionFileArgs = 'where'
+type SubscriptionGalleryArgs = 'where'
+type SubscriptionOfferArgs = 'where'
+type SubscriptionTransactionArgs = 'where'
+type SubscriptionOrganizationArgs = 'where'
 
 export interface SubscriptionFieldDetails {
   user: {
@@ -3256,11 +3389,14 @@ export interface SubscriptionFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"Subscription">,
-      args: { where?: UserSubscriptionWhereInput | null }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Subscription'>,
+      args: { where?: UserSubscriptionWhereInput | null },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.UserSubscriptionPayload | null> | prisma.UserSubscriptionPayload | null
+    ) =>
+      | Promise<prisma.UserSubscriptionPayload | null>
+      | prisma.UserSubscriptionPayload
+      | null
   }
   adress: {
     type: 'AdressSubscriptionPayload'
@@ -3269,11 +3405,14 @@ export interface SubscriptionFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"Subscription">,
-      args: { where?: AdressSubscriptionWhereInput | null }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Subscription'>,
+      args: { where?: AdressSubscriptionWhereInput | null },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.AdressSubscriptionPayload | null> | prisma.AdressSubscriptionPayload | null
+    ) =>
+      | Promise<prisma.AdressSubscriptionPayload | null>
+      | prisma.AdressSubscriptionPayload
+      | null
   }
   file: {
     type: 'FileSubscriptionPayload'
@@ -3282,11 +3421,14 @@ export interface SubscriptionFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"Subscription">,
-      args: { where?: FileSubscriptionWhereInput | null }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Subscription'>,
+      args: { where?: FileSubscriptionWhereInput | null },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.FileSubscriptionPayload | null> | prisma.FileSubscriptionPayload | null
+    ) =>
+      | Promise<prisma.FileSubscriptionPayload | null>
+      | prisma.FileSubscriptionPayload
+      | null
   }
   gallery: {
     type: 'GallerySubscriptionPayload'
@@ -3295,11 +3437,14 @@ export interface SubscriptionFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"Subscription">,
-      args: { where?: GallerySubscriptionWhereInput | null }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Subscription'>,
+      args: { where?: GallerySubscriptionWhereInput | null },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.GallerySubscriptionPayload | null> | prisma.GallerySubscriptionPayload | null
+    ) =>
+      | Promise<prisma.GallerySubscriptionPayload | null>
+      | prisma.GallerySubscriptionPayload
+      | null
   }
   offer: {
     type: 'OfferSubscriptionPayload'
@@ -3308,11 +3453,14 @@ export interface SubscriptionFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"Subscription">,
-      args: { where?: OfferSubscriptionWhereInput | null }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Subscription'>,
+      args: { where?: OfferSubscriptionWhereInput | null },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.OfferSubscriptionPayload | null> | prisma.OfferSubscriptionPayload | null
+    ) =>
+      | Promise<prisma.OfferSubscriptionPayload | null>
+      | prisma.OfferSubscriptionPayload
+      | null
   }
   transaction: {
     type: 'TransactionSubscriptionPayload'
@@ -3321,11 +3469,14 @@ export interface SubscriptionFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"Subscription">,
-      args: { where?: TransactionSubscriptionWhereInput | null }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Subscription'>,
+      args: { where?: TransactionSubscriptionWhereInput | null },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.TransactionSubscriptionPayload | null> | prisma.TransactionSubscriptionPayload | null
+    ) =>
+      | Promise<prisma.TransactionSubscriptionPayload | null>
+      | prisma.TransactionSubscriptionPayload
+      | null
   }
   organization: {
     type: 'OrganizationSubscriptionPayload'
@@ -3334,33 +3485,31 @@ export interface SubscriptionFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"Subscription">,
-      args: { where?: OrganizationSubscriptionWhereInput | null }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'Subscription'>,
+      args: { where?: OrganizationSubscriptionWhereInput | null },
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.OrganizationSubscriptionPayload | null> | prisma.OrganizationSubscriptionPayload | null
+    ) =>
+      | Promise<prisma.OrganizationSubscriptionPayload | null>
+      | prisma.OrganizationSubscriptionPayload
+      | null
   }
 }
-  
 
 // Types for UserSubscriptionPayload
 
 type UserSubscriptionPayloadObject =
   | UserSubscriptionPayloadFields
-  | { name: 'mutation', args?: [] | false, alias?: string  } 
-  | { name: 'node', args?: [] | false, alias?: string  } 
-  | { name: 'updatedFields', args?: [] | false, alias?: string  } 
-  | { name: 'previousValues', args?: [] | false, alias?: string  } 
+  | { name: 'mutation'; args?: [] | false; alias?: string }
+  | { name: 'node'; args?: [] | false; alias?: string }
+  | { name: 'updatedFields'; args?: [] | false; alias?: string }
+  | { name: 'previousValues'; args?: [] | false; alias?: string }
 
 type UserSubscriptionPayloadFields =
   | 'mutation'
   | 'node'
   | 'updatedFields'
   | 'previousValues'
-
-
-
-  
 
 export interface UserSubscriptionPayloadFieldDetails {
   mutation: {
@@ -3370,9 +3519,9 @@ export interface UserSubscriptionPayloadFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"UserSubscriptionPayload">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'UserSubscriptionPayload'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.MutationType> | prisma.MutationType
   }
@@ -3383,9 +3532,9 @@ export interface UserSubscriptionPayloadFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"UserSubscriptionPayload">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'UserSubscriptionPayload'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.User | null> | prisma.User | null
   }
@@ -3404,25 +3553,27 @@ export interface UserSubscriptionPayloadFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"UserSubscriptionPayload">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'UserSubscriptionPayload'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.UserPreviousValues | null> | prisma.UserPreviousValues | null
+    ) =>
+      | Promise<prisma.UserPreviousValues | null>
+      | prisma.UserPreviousValues
+      | null
   }
 }
-  
 
 // Types for UserPreviousValues
 
 type UserPreviousValuesObject =
   | UserPreviousValuesFields
-  | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'email', args?: [] | false, alias?: string  } 
-  | { name: 'firstName', args?: [] | false, alias?: string  } 
-  | { name: 'lastName', args?: [] | false, alias?: string  } 
-  | { name: 'password', args?: [] | false, alias?: string  } 
-  | { name: 'role', args?: [] | false, alias?: string  } 
+  | { name: 'id'; args?: [] | false; alias?: string }
+  | { name: 'email'; args?: [] | false; alias?: string }
+  | { name: 'firstName'; args?: [] | false; alias?: string }
+  | { name: 'lastName'; args?: [] | false; alias?: string }
+  | { name: 'password'; args?: [] | false; alias?: string }
+  | { name: 'role'; args?: [] | false; alias?: string }
 
 type UserPreviousValuesFields =
   | 'id'
@@ -3431,10 +3582,6 @@ type UserPreviousValuesFields =
   | 'lastName'
   | 'password'
   | 'role'
-
-
-
-  
 
 export interface UserPreviousValuesFieldDetails {
   id: {
@@ -3484,33 +3631,28 @@ export interface UserPreviousValuesFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"UserPreviousValues">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'UserPreviousValues'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.UserRole> | prisma.UserRole
   }
 }
-  
 
 // Types for AdressSubscriptionPayload
 
 type AdressSubscriptionPayloadObject =
   | AdressSubscriptionPayloadFields
-  | { name: 'mutation', args?: [] | false, alias?: string  } 
-  | { name: 'node', args?: [] | false, alias?: string  } 
-  | { name: 'updatedFields', args?: [] | false, alias?: string  } 
-  | { name: 'previousValues', args?: [] | false, alias?: string  } 
+  | { name: 'mutation'; args?: [] | false; alias?: string }
+  | { name: 'node'; args?: [] | false; alias?: string }
+  | { name: 'updatedFields'; args?: [] | false; alias?: string }
+  | { name: 'previousValues'; args?: [] | false; alias?: string }
 
 type AdressSubscriptionPayloadFields =
   | 'mutation'
   | 'node'
   | 'updatedFields'
   | 'previousValues'
-
-
-
-  
 
 export interface AdressSubscriptionPayloadFieldDetails {
   mutation: {
@@ -3520,9 +3662,9 @@ export interface AdressSubscriptionPayloadFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"AdressSubscriptionPayload">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'AdressSubscriptionPayload'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.MutationType> | prisma.MutationType
   }
@@ -3533,9 +3675,9 @@ export interface AdressSubscriptionPayloadFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"AdressSubscriptionPayload">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'AdressSubscriptionPayload'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Adress | null> | prisma.Adress | null
   }
@@ -3554,33 +3696,27 @@ export interface AdressSubscriptionPayloadFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"AdressSubscriptionPayload">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'AdressSubscriptionPayload'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.AdressPreviousValues | null> | prisma.AdressPreviousValues | null
+    ) =>
+      | Promise<prisma.AdressPreviousValues | null>
+      | prisma.AdressPreviousValues
+      | null
   }
 }
-  
 
 // Types for AdressPreviousValues
 
 type AdressPreviousValuesObject =
   | AdressPreviousValuesFields
-  | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'city', args?: [] | false, alias?: string  } 
-  | { name: 'street', args?: [] | false, alias?: string  } 
-  | { name: 'postalCode', args?: [] | false, alias?: string  } 
+  | { name: 'id'; args?: [] | false; alias?: string }
+  | { name: 'city'; args?: [] | false; alias?: string }
+  | { name: 'street'; args?: [] | false; alias?: string }
+  | { name: 'postalCode'; args?: [] | false; alias?: string }
 
-type AdressPreviousValuesFields =
-  | 'id'
-  | 'city'
-  | 'street'
-  | 'postalCode'
-
-
-
-  
+type AdressPreviousValuesFields = 'id' | 'city' | 'street' | 'postalCode'
 
 export interface AdressPreviousValuesFieldDetails {
   id: {
@@ -3616,26 +3752,21 @@ export interface AdressPreviousValuesFieldDetails {
     resolve: undefined
   }
 }
-  
 
 // Types for FileSubscriptionPayload
 
 type FileSubscriptionPayloadObject =
   | FileSubscriptionPayloadFields
-  | { name: 'mutation', args?: [] | false, alias?: string  } 
-  | { name: 'node', args?: [] | false, alias?: string  } 
-  | { name: 'updatedFields', args?: [] | false, alias?: string  } 
-  | { name: 'previousValues', args?: [] | false, alias?: string  } 
+  | { name: 'mutation'; args?: [] | false; alias?: string }
+  | { name: 'node'; args?: [] | false; alias?: string }
+  | { name: 'updatedFields'; args?: [] | false; alias?: string }
+  | { name: 'previousValues'; args?: [] | false; alias?: string }
 
 type FileSubscriptionPayloadFields =
   | 'mutation'
   | 'node'
   | 'updatedFields'
   | 'previousValues'
-
-
-
-  
 
 export interface FileSubscriptionPayloadFieldDetails {
   mutation: {
@@ -3645,9 +3776,9 @@ export interface FileSubscriptionPayloadFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"FileSubscriptionPayload">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'FileSubscriptionPayload'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.MutationType> | prisma.MutationType
   }
@@ -3658,9 +3789,9 @@ export interface FileSubscriptionPayloadFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"FileSubscriptionPayload">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'FileSubscriptionPayload'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.File | null> | prisma.File | null
   }
@@ -3679,25 +3810,27 @@ export interface FileSubscriptionPayloadFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"FileSubscriptionPayload">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'FileSubscriptionPayload'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.FilePreviousValues | null> | prisma.FilePreviousValues | null
+    ) =>
+      | Promise<prisma.FilePreviousValues | null>
+      | prisma.FilePreviousValues
+      | null
   }
 }
-  
 
 // Types for FilePreviousValues
 
 type FilePreviousValuesObject =
   | FilePreviousValuesFields
-  | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'key', args?: [] | false, alias?: string  } 
-  | { name: 'fileName', args?: [] | false, alias?: string  } 
-  | { name: 'mimeType', args?: [] | false, alias?: string  } 
-  | { name: 'encoding', args?: [] | false, alias?: string  } 
-  | { name: 'url', args?: [] | false, alias?: string  } 
+  | { name: 'id'; args?: [] | false; alias?: string }
+  | { name: 'key'; args?: [] | false; alias?: string }
+  | { name: 'fileName'; args?: [] | false; alias?: string }
+  | { name: 'mimeType'; args?: [] | false; alias?: string }
+  | { name: 'encoding'; args?: [] | false; alias?: string }
+  | { name: 'url'; args?: [] | false; alias?: string }
 
 type FilePreviousValuesFields =
   | 'id'
@@ -3706,10 +3839,6 @@ type FilePreviousValuesFields =
   | 'mimeType'
   | 'encoding'
   | 'url'
-
-
-
-  
 
 export interface FilePreviousValuesFieldDetails {
   id: {
@@ -3761,26 +3890,21 @@ export interface FilePreviousValuesFieldDetails {
     resolve: undefined
   }
 }
-  
 
 // Types for GallerySubscriptionPayload
 
 type GallerySubscriptionPayloadObject =
   | GallerySubscriptionPayloadFields
-  | { name: 'mutation', args?: [] | false, alias?: string  } 
-  | { name: 'node', args?: [] | false, alias?: string  } 
-  | { name: 'updatedFields', args?: [] | false, alias?: string  } 
-  | { name: 'previousValues', args?: [] | false, alias?: string  } 
+  | { name: 'mutation'; args?: [] | false; alias?: string }
+  | { name: 'node'; args?: [] | false; alias?: string }
+  | { name: 'updatedFields'; args?: [] | false; alias?: string }
+  | { name: 'previousValues'; args?: [] | false; alias?: string }
 
 type GallerySubscriptionPayloadFields =
   | 'mutation'
   | 'node'
   | 'updatedFields'
   | 'previousValues'
-
-
-
-  
 
 export interface GallerySubscriptionPayloadFieldDetails {
   mutation: {
@@ -3790,9 +3914,9 @@ export interface GallerySubscriptionPayloadFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"GallerySubscriptionPayload">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'GallerySubscriptionPayload'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.MutationType> | prisma.MutationType
   }
@@ -3803,9 +3927,9 @@ export interface GallerySubscriptionPayloadFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"GallerySubscriptionPayload">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'GallerySubscriptionPayload'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Gallery | null> | prisma.Gallery | null
   }
@@ -3824,27 +3948,24 @@ export interface GallerySubscriptionPayloadFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"GallerySubscriptionPayload">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'GallerySubscriptionPayload'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.GalleryPreviousValues | null> | prisma.GalleryPreviousValues | null
+    ) =>
+      | Promise<prisma.GalleryPreviousValues | null>
+      | prisma.GalleryPreviousValues
+      | null
   }
 }
-  
 
 // Types for GalleryPreviousValues
 
 type GalleryPreviousValuesObject =
   | GalleryPreviousValuesFields
-  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'id'; args?: [] | false; alias?: string }
 
-type GalleryPreviousValuesFields =
-  | 'id'
-
-
-
-  
+type GalleryPreviousValuesFields = 'id'
 
 export interface GalleryPreviousValuesFieldDetails {
   id: {
@@ -3856,26 +3977,21 @@ export interface GalleryPreviousValuesFieldDetails {
     resolve: undefined
   }
 }
-  
 
 // Types for OfferSubscriptionPayload
 
 type OfferSubscriptionPayloadObject =
   | OfferSubscriptionPayloadFields
-  | { name: 'mutation', args?: [] | false, alias?: string  } 
-  | { name: 'node', args?: [] | false, alias?: string  } 
-  | { name: 'updatedFields', args?: [] | false, alias?: string  } 
-  | { name: 'previousValues', args?: [] | false, alias?: string  } 
+  | { name: 'mutation'; args?: [] | false; alias?: string }
+  | { name: 'node'; args?: [] | false; alias?: string }
+  | { name: 'updatedFields'; args?: [] | false; alias?: string }
+  | { name: 'previousValues'; args?: [] | false; alias?: string }
 
 type OfferSubscriptionPayloadFields =
   | 'mutation'
   | 'node'
   | 'updatedFields'
   | 'previousValues'
-
-
-
-  
 
 export interface OfferSubscriptionPayloadFieldDetails {
   mutation: {
@@ -3885,9 +4001,9 @@ export interface OfferSubscriptionPayloadFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"OfferSubscriptionPayload">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'OfferSubscriptionPayload'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.MutationType> | prisma.MutationType
   }
@@ -3898,9 +4014,9 @@ export interface OfferSubscriptionPayloadFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"OfferSubscriptionPayload">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'OfferSubscriptionPayload'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Offer | null> | prisma.Offer | null
   }
@@ -3919,33 +4035,35 @@ export interface OfferSubscriptionPayloadFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"OfferSubscriptionPayload">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'OfferSubscriptionPayload'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.OfferPreviousValues | null> | prisma.OfferPreviousValues | null
+    ) =>
+      | Promise<prisma.OfferPreviousValues | null>
+      | prisma.OfferPreviousValues
+      | null
   }
 }
-  
 
 // Types for OfferPreviousValues
 
 type OfferPreviousValuesObject =
   | OfferPreviousValuesFields
-  | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'active', args?: [] | false, alias?: string  } 
-  | { name: 'publicOffer', args?: [] | false, alias?: string  } 
-  | { name: 'amount', args?: [] | false, alias?: string  } 
-  | { name: 'createdAt', args?: [] | false, alias?: string  } 
-  | { name: 'updatedAt', args?: [] | false, alias?: string  } 
-  | { name: 'deletedAt', args?: [] | false, alias?: string  } 
-  | { name: 'email', args?: [] | false, alias?: string  } 
-  | { name: 'firstName', args?: [] | false, alias?: string  } 
-  | { name: 'lastName', args?: [] | false, alias?: string  } 
-  | { name: 'price', args?: [] | false, alias?: string  } 
-  | { name: 'name', args?: [] | false, alias?: string  } 
-  | { name: 'description', args?: [] | false, alias?: string  } 
-  | { name: 'transport', args?: [] | false, alias?: string  } 
+  | { name: 'id'; args?: [] | false; alias?: string }
+  | { name: 'active'; args?: [] | false; alias?: string }
+  | { name: 'publicOffer'; args?: [] | false; alias?: string }
+  | { name: 'amount'; args?: [] | false; alias?: string }
+  | { name: 'createdAt'; args?: [] | false; alias?: string }
+  | { name: 'updatedAt'; args?: [] | false; alias?: string }
+  | { name: 'deletedAt'; args?: [] | false; alias?: string }
+  | { name: 'email'; args?: [] | false; alias?: string }
+  | { name: 'firstName'; args?: [] | false; alias?: string }
+  | { name: 'lastName'; args?: [] | false; alias?: string }
+  | { name: 'price'; args?: [] | false; alias?: string }
+  | { name: 'name'; args?: [] | false; alias?: string }
+  | { name: 'description'; args?: [] | false; alias?: string }
+  | { name: 'transport'; args?: [] | false; alias?: string }
 
 type OfferPreviousValuesFields =
   | 'id'
@@ -3962,10 +4080,6 @@ type OfferPreviousValuesFields =
   | 'name'
   | 'description'
   | 'transport'
-
-
-
-  
 
 export interface OfferPreviousValuesFieldDetails {
   id: {
@@ -4081,26 +4195,21 @@ export interface OfferPreviousValuesFieldDetails {
     resolve: undefined
   }
 }
-  
 
 // Types for TransactionSubscriptionPayload
 
 type TransactionSubscriptionPayloadObject =
   | TransactionSubscriptionPayloadFields
-  | { name: 'mutation', args?: [] | false, alias?: string  } 
-  | { name: 'node', args?: [] | false, alias?: string  } 
-  | { name: 'updatedFields', args?: [] | false, alias?: string  } 
-  | { name: 'previousValues', args?: [] | false, alias?: string  } 
+  | { name: 'mutation'; args?: [] | false; alias?: string }
+  | { name: 'node'; args?: [] | false; alias?: string }
+  | { name: 'updatedFields'; args?: [] | false; alias?: string }
+  | { name: 'previousValues'; args?: [] | false; alias?: string }
 
 type TransactionSubscriptionPayloadFields =
   | 'mutation'
   | 'node'
   | 'updatedFields'
   | 'previousValues'
-
-
-
-  
 
 export interface TransactionSubscriptionPayloadFieldDetails {
   mutation: {
@@ -4110,9 +4219,9 @@ export interface TransactionSubscriptionPayloadFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"TransactionSubscriptionPayload">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'TransactionSubscriptionPayload'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.MutationType> | prisma.MutationType
   }
@@ -4123,9 +4232,9 @@ export interface TransactionSubscriptionPayloadFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"TransactionSubscriptionPayload">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'TransactionSubscriptionPayload'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Transaction | null> | prisma.Transaction | null
   }
@@ -4144,30 +4253,32 @@ export interface TransactionSubscriptionPayloadFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"TransactionSubscriptionPayload">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'TransactionSubscriptionPayload'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.TransactionPreviousValues | null> | prisma.TransactionPreviousValues | null
+    ) =>
+      | Promise<prisma.TransactionPreviousValues | null>
+      | prisma.TransactionPreviousValues
+      | null
   }
 }
-  
 
 // Types for TransactionPreviousValues
 
 type TransactionPreviousValuesObject =
   | TransactionPreviousValuesFields
-  | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'amount', args?: [] | false, alias?: string  } 
-  | { name: 'email', args?: [] | false, alias?: string  } 
-  | { name: 'firstName', args?: [] | false, alias?: string  } 
-  | { name: 'lastName', args?: [] | false, alias?: string  } 
-  | { name: 'comment', args?: [] | false, alias?: string  } 
-  | { name: 'createdAt', args?: [] | false, alias?: string  } 
-  | { name: 'updatedAt', args?: [] | false, alias?: string  } 
-  | { name: 'deletedAt', args?: [] | false, alias?: string  } 
-  | { name: 'donatedAmount', args?: [] | false, alias?: string  } 
-  | { name: 'status', args?: [] | false, alias?: string  } 
+  | { name: 'id'; args?: [] | false; alias?: string }
+  | { name: 'amount'; args?: [] | false; alias?: string }
+  | { name: 'email'; args?: [] | false; alias?: string }
+  | { name: 'firstName'; args?: [] | false; alias?: string }
+  | { name: 'lastName'; args?: [] | false; alias?: string }
+  | { name: 'comment'; args?: [] | false; alias?: string }
+  | { name: 'createdAt'; args?: [] | false; alias?: string }
+  | { name: 'updatedAt'; args?: [] | false; alias?: string }
+  | { name: 'deletedAt'; args?: [] | false; alias?: string }
+  | { name: 'donatedAmount'; args?: [] | false; alias?: string }
+  | { name: 'status'; args?: [] | false; alias?: string }
 
 type TransactionPreviousValuesFields =
   | 'id'
@@ -4181,10 +4292,6 @@ type TransactionPreviousValuesFields =
   | 'deletedAt'
   | 'donatedAmount'
   | 'status'
-
-
-
-  
 
 export interface TransactionPreviousValuesFieldDetails {
   id: {
@@ -4274,33 +4381,28 @@ export interface TransactionPreviousValuesFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"TransactionPreviousValues">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'TransactionPreviousValues'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.TransactionStatus> | prisma.TransactionStatus
   }
 }
-  
 
 // Types for OrganizationSubscriptionPayload
 
 type OrganizationSubscriptionPayloadObject =
   | OrganizationSubscriptionPayloadFields
-  | { name: 'mutation', args?: [] | false, alias?: string  } 
-  | { name: 'node', args?: [] | false, alias?: string  } 
-  | { name: 'updatedFields', args?: [] | false, alias?: string  } 
-  | { name: 'previousValues', args?: [] | false, alias?: string  } 
+  | { name: 'mutation'; args?: [] | false; alias?: string }
+  | { name: 'node'; args?: [] | false; alias?: string }
+  | { name: 'updatedFields'; args?: [] | false; alias?: string }
+  | { name: 'previousValues'; args?: [] | false; alias?: string }
 
 type OrganizationSubscriptionPayloadFields =
   | 'mutation'
   | 'node'
   | 'updatedFields'
   | 'previousValues'
-
-
-
-  
 
 export interface OrganizationSubscriptionPayloadFieldDetails {
   mutation: {
@@ -4310,9 +4412,9 @@ export interface OrganizationSubscriptionPayloadFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"OrganizationSubscriptionPayload">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'OrganizationSubscriptionPayload'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.MutationType> | prisma.MutationType
   }
@@ -4323,9 +4425,9 @@ export interface OrganizationSubscriptionPayloadFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"OrganizationSubscriptionPayload">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'OrganizationSubscriptionPayload'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Organization | null> | prisma.Organization | null
   }
@@ -4344,31 +4446,33 @@ export interface OrganizationSubscriptionPayloadFieldDetails {
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"OrganizationSubscriptionPayload">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
+      root: core.RootValue<'OrganizationSubscriptionPayload'>,
+      args: {},
+      context: core.GetGen<'context'>,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.OrganizationPreviousValues | null> | prisma.OrganizationPreviousValues | null
+    ) =>
+      | Promise<prisma.OrganizationPreviousValues | null>
+      | prisma.OrganizationPreviousValues
+      | null
   }
 }
-  
 
 // Types for OrganizationPreviousValues
 
 type OrganizationPreviousValuesObject =
   | OrganizationPreviousValuesFields
-  | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'apiId', args?: [] | false, alias?: string  } 
-  | { name: 'apiSecret', args?: [] | false, alias?: string  } 
-  | { name: 'organizationId', args?: [] | false, alias?: string  } 
-  | { name: 'active', args?: [] | false, alias?: string  } 
-  | { name: 'createdAt', args?: [] | false, alias?: string  } 
-  | { name: 'updatedAt', args?: [] | false, alias?: string  } 
-  | { name: 'deletedAt', args?: [] | false, alias?: string  } 
-  | { name: 'name', args?: [] | false, alias?: string  } 
-  | { name: 'projectId', args?: [] | false, alias?: string  } 
-  | { name: 'description', args?: [] | false, alias?: string  } 
-  | { name: 'url', args?: [] | false, alias?: string  } 
+  | { name: 'id'; args?: [] | false; alias?: string }
+  | { name: 'apiId'; args?: [] | false; alias?: string }
+  | { name: 'apiSecret'; args?: [] | false; alias?: string }
+  | { name: 'organizationId'; args?: [] | false; alias?: string }
+  | { name: 'active'; args?: [] | false; alias?: string }
+  | { name: 'createdAt'; args?: [] | false; alias?: string }
+  | { name: 'updatedAt'; args?: [] | false; alias?: string }
+  | { name: 'deletedAt'; args?: [] | false; alias?: string }
+  | { name: 'name'; args?: [] | false; alias?: string }
+  | { name: 'projectId'; args?: [] | false; alias?: string }
+  | { name: 'description'; args?: [] | false; alias?: string }
+  | { name: 'url'; args?: [] | false; alias?: string }
 
 type OrganizationPreviousValuesFields =
   | 'id'
@@ -4383,10 +4487,6 @@ type OrganizationPreviousValuesFields =
   | 'projectId'
   | 'description'
   | 'url'
-
-
-
-  
 
 export interface OrganizationPreviousValuesFieldDetails {
   id: {
@@ -4486,8 +4586,6 @@ export interface OrganizationPreviousValuesFieldDetails {
     resolve: undefined
   }
 }
-  
-
 
 export interface UserWhereUniqueInput {
   id?: string | null
@@ -4495,9 +4593,9 @@ export interface UserWhereUniqueInput {
 }
 export type UserWhereUniqueInputInputObject =
   | Extract<keyof UserWhereUniqueInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'email', alias?: string  } 
-  
+  | { name: 'id'; alias?: string }
+  | { name: 'email'; alias?: string }
+
 export interface OfferWhereInput {
   id?: string | null
   id_not?: string | null
@@ -4653,158 +4751,158 @@ export interface OfferWhereInput {
 }
 export type OfferWhereInputInputObject =
   | Extract<keyof OfferWhereInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'id_not', alias?: string  } 
-  | { name: 'id_in', alias?: string  } 
-  | { name: 'id_not_in', alias?: string  } 
-  | { name: 'id_lt', alias?: string  } 
-  | { name: 'id_lte', alias?: string  } 
-  | { name: 'id_gt', alias?: string  } 
-  | { name: 'id_gte', alias?: string  } 
-  | { name: 'id_contains', alias?: string  } 
-  | { name: 'id_not_contains', alias?: string  } 
-  | { name: 'id_starts_with', alias?: string  } 
-  | { name: 'id_not_starts_with', alias?: string  } 
-  | { name: 'id_ends_with', alias?: string  } 
-  | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'active', alias?: string  } 
-  | { name: 'active_not', alias?: string  } 
-  | { name: 'publicOffer', alias?: string  } 
-  | { name: 'publicOffer_not', alias?: string  } 
-  | { name: 'amount', alias?: string  } 
-  | { name: 'amount_not', alias?: string  } 
-  | { name: 'amount_in', alias?: string  } 
-  | { name: 'amount_not_in', alias?: string  } 
-  | { name: 'amount_lt', alias?: string  } 
-  | { name: 'amount_lte', alias?: string  } 
-  | { name: 'amount_gt', alias?: string  } 
-  | { name: 'amount_gte', alias?: string  } 
-  | { name: 'createdAt', alias?: string  } 
-  | { name: 'createdAt_not', alias?: string  } 
-  | { name: 'createdAt_in', alias?: string  } 
-  | { name: 'createdAt_not_in', alias?: string  } 
-  | { name: 'createdAt_lt', alias?: string  } 
-  | { name: 'createdAt_lte', alias?: string  } 
-  | { name: 'createdAt_gt', alias?: string  } 
-  | { name: 'createdAt_gte', alias?: string  } 
-  | { name: 'updatedAt', alias?: string  } 
-  | { name: 'updatedAt_not', alias?: string  } 
-  | { name: 'updatedAt_in', alias?: string  } 
-  | { name: 'updatedAt_not_in', alias?: string  } 
-  | { name: 'updatedAt_lt', alias?: string  } 
-  | { name: 'updatedAt_lte', alias?: string  } 
-  | { name: 'updatedAt_gt', alias?: string  } 
-  | { name: 'updatedAt_gte', alias?: string  } 
-  | { name: 'deletedAt', alias?: string  } 
-  | { name: 'deletedAt_not', alias?: string  } 
-  | { name: 'deletedAt_in', alias?: string  } 
-  | { name: 'deletedAt_not_in', alias?: string  } 
-  | { name: 'deletedAt_lt', alias?: string  } 
-  | { name: 'deletedAt_lte', alias?: string  } 
-  | { name: 'deletedAt_gt', alias?: string  } 
-  | { name: 'deletedAt_gte', alias?: string  } 
-  | { name: 'email', alias?: string  } 
-  | { name: 'email_not', alias?: string  } 
-  | { name: 'email_in', alias?: string  } 
-  | { name: 'email_not_in', alias?: string  } 
-  | { name: 'email_lt', alias?: string  } 
-  | { name: 'email_lte', alias?: string  } 
-  | { name: 'email_gt', alias?: string  } 
-  | { name: 'email_gte', alias?: string  } 
-  | { name: 'email_contains', alias?: string  } 
-  | { name: 'email_not_contains', alias?: string  } 
-  | { name: 'email_starts_with', alias?: string  } 
-  | { name: 'email_not_starts_with', alias?: string  } 
-  | { name: 'email_ends_with', alias?: string  } 
-  | { name: 'email_not_ends_with', alias?: string  } 
-  | { name: 'firstName', alias?: string  } 
-  | { name: 'firstName_not', alias?: string  } 
-  | { name: 'firstName_in', alias?: string  } 
-  | { name: 'firstName_not_in', alias?: string  } 
-  | { name: 'firstName_lt', alias?: string  } 
-  | { name: 'firstName_lte', alias?: string  } 
-  | { name: 'firstName_gt', alias?: string  } 
-  | { name: 'firstName_gte', alias?: string  } 
-  | { name: 'firstName_contains', alias?: string  } 
-  | { name: 'firstName_not_contains', alias?: string  } 
-  | { name: 'firstName_starts_with', alias?: string  } 
-  | { name: 'firstName_not_starts_with', alias?: string  } 
-  | { name: 'firstName_ends_with', alias?: string  } 
-  | { name: 'firstName_not_ends_with', alias?: string  } 
-  | { name: 'lastName', alias?: string  } 
-  | { name: 'lastName_not', alias?: string  } 
-  | { name: 'lastName_in', alias?: string  } 
-  | { name: 'lastName_not_in', alias?: string  } 
-  | { name: 'lastName_lt', alias?: string  } 
-  | { name: 'lastName_lte', alias?: string  } 
-  | { name: 'lastName_gt', alias?: string  } 
-  | { name: 'lastName_gte', alias?: string  } 
-  | { name: 'lastName_contains', alias?: string  } 
-  | { name: 'lastName_not_contains', alias?: string  } 
-  | { name: 'lastName_starts_with', alias?: string  } 
-  | { name: 'lastName_not_starts_with', alias?: string  } 
-  | { name: 'lastName_ends_with', alias?: string  } 
-  | { name: 'lastName_not_ends_with', alias?: string  } 
-  | { name: 'transactions_every', alias?: string  } 
-  | { name: 'transactions_some', alias?: string  } 
-  | { name: 'transactions_none', alias?: string  } 
-  | { name: 'beneficator', alias?: string  } 
-  | { name: 'price', alias?: string  } 
-  | { name: 'price_not', alias?: string  } 
-  | { name: 'price_in', alias?: string  } 
-  | { name: 'price_not_in', alias?: string  } 
-  | { name: 'price_lt', alias?: string  } 
-  | { name: 'price_lte', alias?: string  } 
-  | { name: 'price_gt', alias?: string  } 
-  | { name: 'price_gte', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'name_not', alias?: string  } 
-  | { name: 'name_in', alias?: string  } 
-  | { name: 'name_not_in', alias?: string  } 
-  | { name: 'name_lt', alias?: string  } 
-  | { name: 'name_lte', alias?: string  } 
-  | { name: 'name_gt', alias?: string  } 
-  | { name: 'name_gte', alias?: string  } 
-  | { name: 'name_contains', alias?: string  } 
-  | { name: 'name_not_contains', alias?: string  } 
-  | { name: 'name_starts_with', alias?: string  } 
-  | { name: 'name_not_starts_with', alias?: string  } 
-  | { name: 'name_ends_with', alias?: string  } 
-  | { name: 'name_not_ends_with', alias?: string  } 
-  | { name: 'user', alias?: string  } 
-  | { name: 'description', alias?: string  } 
-  | { name: 'description_not', alias?: string  } 
-  | { name: 'description_in', alias?: string  } 
-  | { name: 'description_not_in', alias?: string  } 
-  | { name: 'description_lt', alias?: string  } 
-  | { name: 'description_lte', alias?: string  } 
-  | { name: 'description_gt', alias?: string  } 
-  | { name: 'description_gte', alias?: string  } 
-  | { name: 'description_contains', alias?: string  } 
-  | { name: 'description_not_contains', alias?: string  } 
-  | { name: 'description_starts_with', alias?: string  } 
-  | { name: 'description_not_starts_with', alias?: string  } 
-  | { name: 'description_ends_with', alias?: string  } 
-  | { name: 'description_not_ends_with', alias?: string  } 
-  | { name: 'transport', alias?: string  } 
-  | { name: 'transport_not', alias?: string  } 
-  | { name: 'transport_in', alias?: string  } 
-  | { name: 'transport_not_in', alias?: string  } 
-  | { name: 'transport_lt', alias?: string  } 
-  | { name: 'transport_lte', alias?: string  } 
-  | { name: 'transport_gt', alias?: string  } 
-  | { name: 'transport_gte', alias?: string  } 
-  | { name: 'transport_contains', alias?: string  } 
-  | { name: 'transport_not_contains', alias?: string  } 
-  | { name: 'transport_starts_with', alias?: string  } 
-  | { name: 'transport_not_starts_with', alias?: string  } 
-  | { name: 'transport_ends_with', alias?: string  } 
-  | { name: 'transport_not_ends_with', alias?: string  } 
-  | { name: 'gallery', alias?: string  } 
-  | { name: 'AND', alias?: string  } 
-  | { name: 'OR', alias?: string  } 
-  | { name: 'NOT', alias?: string  } 
-  
+  | { name: 'id'; alias?: string }
+  | { name: 'id_not'; alias?: string }
+  | { name: 'id_in'; alias?: string }
+  | { name: 'id_not_in'; alias?: string }
+  | { name: 'id_lt'; alias?: string }
+  | { name: 'id_lte'; alias?: string }
+  | { name: 'id_gt'; alias?: string }
+  | { name: 'id_gte'; alias?: string }
+  | { name: 'id_contains'; alias?: string }
+  | { name: 'id_not_contains'; alias?: string }
+  | { name: 'id_starts_with'; alias?: string }
+  | { name: 'id_not_starts_with'; alias?: string }
+  | { name: 'id_ends_with'; alias?: string }
+  | { name: 'id_not_ends_with'; alias?: string }
+  | { name: 'active'; alias?: string }
+  | { name: 'active_not'; alias?: string }
+  | { name: 'publicOffer'; alias?: string }
+  | { name: 'publicOffer_not'; alias?: string }
+  | { name: 'amount'; alias?: string }
+  | { name: 'amount_not'; alias?: string }
+  | { name: 'amount_in'; alias?: string }
+  | { name: 'amount_not_in'; alias?: string }
+  | { name: 'amount_lt'; alias?: string }
+  | { name: 'amount_lte'; alias?: string }
+  | { name: 'amount_gt'; alias?: string }
+  | { name: 'amount_gte'; alias?: string }
+  | { name: 'createdAt'; alias?: string }
+  | { name: 'createdAt_not'; alias?: string }
+  | { name: 'createdAt_in'; alias?: string }
+  | { name: 'createdAt_not_in'; alias?: string }
+  | { name: 'createdAt_lt'; alias?: string }
+  | { name: 'createdAt_lte'; alias?: string }
+  | { name: 'createdAt_gt'; alias?: string }
+  | { name: 'createdAt_gte'; alias?: string }
+  | { name: 'updatedAt'; alias?: string }
+  | { name: 'updatedAt_not'; alias?: string }
+  | { name: 'updatedAt_in'; alias?: string }
+  | { name: 'updatedAt_not_in'; alias?: string }
+  | { name: 'updatedAt_lt'; alias?: string }
+  | { name: 'updatedAt_lte'; alias?: string }
+  | { name: 'updatedAt_gt'; alias?: string }
+  | { name: 'updatedAt_gte'; alias?: string }
+  | { name: 'deletedAt'; alias?: string }
+  | { name: 'deletedAt_not'; alias?: string }
+  | { name: 'deletedAt_in'; alias?: string }
+  | { name: 'deletedAt_not_in'; alias?: string }
+  | { name: 'deletedAt_lt'; alias?: string }
+  | { name: 'deletedAt_lte'; alias?: string }
+  | { name: 'deletedAt_gt'; alias?: string }
+  | { name: 'deletedAt_gte'; alias?: string }
+  | { name: 'email'; alias?: string }
+  | { name: 'email_not'; alias?: string }
+  | { name: 'email_in'; alias?: string }
+  | { name: 'email_not_in'; alias?: string }
+  | { name: 'email_lt'; alias?: string }
+  | { name: 'email_lte'; alias?: string }
+  | { name: 'email_gt'; alias?: string }
+  | { name: 'email_gte'; alias?: string }
+  | { name: 'email_contains'; alias?: string }
+  | { name: 'email_not_contains'; alias?: string }
+  | { name: 'email_starts_with'; alias?: string }
+  | { name: 'email_not_starts_with'; alias?: string }
+  | { name: 'email_ends_with'; alias?: string }
+  | { name: 'email_not_ends_with'; alias?: string }
+  | { name: 'firstName'; alias?: string }
+  | { name: 'firstName_not'; alias?: string }
+  | { name: 'firstName_in'; alias?: string }
+  | { name: 'firstName_not_in'; alias?: string }
+  | { name: 'firstName_lt'; alias?: string }
+  | { name: 'firstName_lte'; alias?: string }
+  | { name: 'firstName_gt'; alias?: string }
+  | { name: 'firstName_gte'; alias?: string }
+  | { name: 'firstName_contains'; alias?: string }
+  | { name: 'firstName_not_contains'; alias?: string }
+  | { name: 'firstName_starts_with'; alias?: string }
+  | { name: 'firstName_not_starts_with'; alias?: string }
+  | { name: 'firstName_ends_with'; alias?: string }
+  | { name: 'firstName_not_ends_with'; alias?: string }
+  | { name: 'lastName'; alias?: string }
+  | { name: 'lastName_not'; alias?: string }
+  | { name: 'lastName_in'; alias?: string }
+  | { name: 'lastName_not_in'; alias?: string }
+  | { name: 'lastName_lt'; alias?: string }
+  | { name: 'lastName_lte'; alias?: string }
+  | { name: 'lastName_gt'; alias?: string }
+  | { name: 'lastName_gte'; alias?: string }
+  | { name: 'lastName_contains'; alias?: string }
+  | { name: 'lastName_not_contains'; alias?: string }
+  | { name: 'lastName_starts_with'; alias?: string }
+  | { name: 'lastName_not_starts_with'; alias?: string }
+  | { name: 'lastName_ends_with'; alias?: string }
+  | { name: 'lastName_not_ends_with'; alias?: string }
+  | { name: 'transactions_every'; alias?: string }
+  | { name: 'transactions_some'; alias?: string }
+  | { name: 'transactions_none'; alias?: string }
+  | { name: 'beneficator'; alias?: string }
+  | { name: 'price'; alias?: string }
+  | { name: 'price_not'; alias?: string }
+  | { name: 'price_in'; alias?: string }
+  | { name: 'price_not_in'; alias?: string }
+  | { name: 'price_lt'; alias?: string }
+  | { name: 'price_lte'; alias?: string }
+  | { name: 'price_gt'; alias?: string }
+  | { name: 'price_gte'; alias?: string }
+  | { name: 'name'; alias?: string }
+  | { name: 'name_not'; alias?: string }
+  | { name: 'name_in'; alias?: string }
+  | { name: 'name_not_in'; alias?: string }
+  | { name: 'name_lt'; alias?: string }
+  | { name: 'name_lte'; alias?: string }
+  | { name: 'name_gt'; alias?: string }
+  | { name: 'name_gte'; alias?: string }
+  | { name: 'name_contains'; alias?: string }
+  | { name: 'name_not_contains'; alias?: string }
+  | { name: 'name_starts_with'; alias?: string }
+  | { name: 'name_not_starts_with'; alias?: string }
+  | { name: 'name_ends_with'; alias?: string }
+  | { name: 'name_not_ends_with'; alias?: string }
+  | { name: 'user'; alias?: string }
+  | { name: 'description'; alias?: string }
+  | { name: 'description_not'; alias?: string }
+  | { name: 'description_in'; alias?: string }
+  | { name: 'description_not_in'; alias?: string }
+  | { name: 'description_lt'; alias?: string }
+  | { name: 'description_lte'; alias?: string }
+  | { name: 'description_gt'; alias?: string }
+  | { name: 'description_gte'; alias?: string }
+  | { name: 'description_contains'; alias?: string }
+  | { name: 'description_not_contains'; alias?: string }
+  | { name: 'description_starts_with'; alias?: string }
+  | { name: 'description_not_starts_with'; alias?: string }
+  | { name: 'description_ends_with'; alias?: string }
+  | { name: 'description_not_ends_with'; alias?: string }
+  | { name: 'transport'; alias?: string }
+  | { name: 'transport_not'; alias?: string }
+  | { name: 'transport_in'; alias?: string }
+  | { name: 'transport_not_in'; alias?: string }
+  | { name: 'transport_lt'; alias?: string }
+  | { name: 'transport_lte'; alias?: string }
+  | { name: 'transport_gt'; alias?: string }
+  | { name: 'transport_gte'; alias?: string }
+  | { name: 'transport_contains'; alias?: string }
+  | { name: 'transport_not_contains'; alias?: string }
+  | { name: 'transport_starts_with'; alias?: string }
+  | { name: 'transport_not_starts_with'; alias?: string }
+  | { name: 'transport_ends_with'; alias?: string }
+  | { name: 'transport_not_ends_with'; alias?: string }
+  | { name: 'gallery'; alias?: string }
+  | { name: 'AND'; alias?: string }
+  | { name: 'OR'; alias?: string }
+  | { name: 'NOT'; alias?: string }
+
 export interface TransactionWhereInput {
   id?: string | null
   id_not?: string | null
@@ -4927,125 +5025,125 @@ export interface TransactionWhereInput {
 }
 export type TransactionWhereInputInputObject =
   | Extract<keyof TransactionWhereInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'id_not', alias?: string  } 
-  | { name: 'id_in', alias?: string  } 
-  | { name: 'id_not_in', alias?: string  } 
-  | { name: 'id_lt', alias?: string  } 
-  | { name: 'id_lte', alias?: string  } 
-  | { name: 'id_gt', alias?: string  } 
-  | { name: 'id_gte', alias?: string  } 
-  | { name: 'id_contains', alias?: string  } 
-  | { name: 'id_not_contains', alias?: string  } 
-  | { name: 'id_starts_with', alias?: string  } 
-  | { name: 'id_not_starts_with', alias?: string  } 
-  | { name: 'id_ends_with', alias?: string  } 
-  | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'amount', alias?: string  } 
-  | { name: 'amount_not', alias?: string  } 
-  | { name: 'amount_in', alias?: string  } 
-  | { name: 'amount_not_in', alias?: string  } 
-  | { name: 'amount_lt', alias?: string  } 
-  | { name: 'amount_lte', alias?: string  } 
-  | { name: 'amount_gt', alias?: string  } 
-  | { name: 'amount_gte', alias?: string  } 
-  | { name: 'email', alias?: string  } 
-  | { name: 'email_not', alias?: string  } 
-  | { name: 'email_in', alias?: string  } 
-  | { name: 'email_not_in', alias?: string  } 
-  | { name: 'email_lt', alias?: string  } 
-  | { name: 'email_lte', alias?: string  } 
-  | { name: 'email_gt', alias?: string  } 
-  | { name: 'email_gte', alias?: string  } 
-  | { name: 'email_contains', alias?: string  } 
-  | { name: 'email_not_contains', alias?: string  } 
-  | { name: 'email_starts_with', alias?: string  } 
-  | { name: 'email_not_starts_with', alias?: string  } 
-  | { name: 'email_ends_with', alias?: string  } 
-  | { name: 'email_not_ends_with', alias?: string  } 
-  | { name: 'firstName', alias?: string  } 
-  | { name: 'firstName_not', alias?: string  } 
-  | { name: 'firstName_in', alias?: string  } 
-  | { name: 'firstName_not_in', alias?: string  } 
-  | { name: 'firstName_lt', alias?: string  } 
-  | { name: 'firstName_lte', alias?: string  } 
-  | { name: 'firstName_gt', alias?: string  } 
-  | { name: 'firstName_gte', alias?: string  } 
-  | { name: 'firstName_contains', alias?: string  } 
-  | { name: 'firstName_not_contains', alias?: string  } 
-  | { name: 'firstName_starts_with', alias?: string  } 
-  | { name: 'firstName_not_starts_with', alias?: string  } 
-  | { name: 'firstName_ends_with', alias?: string  } 
-  | { name: 'firstName_not_ends_with', alias?: string  } 
-  | { name: 'lastName', alias?: string  } 
-  | { name: 'lastName_not', alias?: string  } 
-  | { name: 'lastName_in', alias?: string  } 
-  | { name: 'lastName_not_in', alias?: string  } 
-  | { name: 'lastName_lt', alias?: string  } 
-  | { name: 'lastName_lte', alias?: string  } 
-  | { name: 'lastName_gt', alias?: string  } 
-  | { name: 'lastName_gte', alias?: string  } 
-  | { name: 'lastName_contains', alias?: string  } 
-  | { name: 'lastName_not_contains', alias?: string  } 
-  | { name: 'lastName_starts_with', alias?: string  } 
-  | { name: 'lastName_not_starts_with', alias?: string  } 
-  | { name: 'lastName_ends_with', alias?: string  } 
-  | { name: 'lastName_not_ends_with', alias?: string  } 
-  | { name: 'comment', alias?: string  } 
-  | { name: 'comment_not', alias?: string  } 
-  | { name: 'comment_in', alias?: string  } 
-  | { name: 'comment_not_in', alias?: string  } 
-  | { name: 'comment_lt', alias?: string  } 
-  | { name: 'comment_lte', alias?: string  } 
-  | { name: 'comment_gt', alias?: string  } 
-  | { name: 'comment_gte', alias?: string  } 
-  | { name: 'comment_contains', alias?: string  } 
-  | { name: 'comment_not_contains', alias?: string  } 
-  | { name: 'comment_starts_with', alias?: string  } 
-  | { name: 'comment_not_starts_with', alias?: string  } 
-  | { name: 'comment_ends_with', alias?: string  } 
-  | { name: 'comment_not_ends_with', alias?: string  } 
-  | { name: 'createdAt', alias?: string  } 
-  | { name: 'createdAt_not', alias?: string  } 
-  | { name: 'createdAt_in', alias?: string  } 
-  | { name: 'createdAt_not_in', alias?: string  } 
-  | { name: 'createdAt_lt', alias?: string  } 
-  | { name: 'createdAt_lte', alias?: string  } 
-  | { name: 'createdAt_gt', alias?: string  } 
-  | { name: 'createdAt_gte', alias?: string  } 
-  | { name: 'updatedAt', alias?: string  } 
-  | { name: 'updatedAt_not', alias?: string  } 
-  | { name: 'updatedAt_in', alias?: string  } 
-  | { name: 'updatedAt_not_in', alias?: string  } 
-  | { name: 'updatedAt_lt', alias?: string  } 
-  | { name: 'updatedAt_lte', alias?: string  } 
-  | { name: 'updatedAt_gt', alias?: string  } 
-  | { name: 'updatedAt_gte', alias?: string  } 
-  | { name: 'deletedAt', alias?: string  } 
-  | { name: 'deletedAt_not', alias?: string  } 
-  | { name: 'deletedAt_in', alias?: string  } 
-  | { name: 'deletedAt_not_in', alias?: string  } 
-  | { name: 'deletedAt_lt', alias?: string  } 
-  | { name: 'deletedAt_lte', alias?: string  } 
-  | { name: 'deletedAt_gt', alias?: string  } 
-  | { name: 'deletedAt_gte', alias?: string  } 
-  | { name: 'donatedAmount', alias?: string  } 
-  | { name: 'donatedAmount_not', alias?: string  } 
-  | { name: 'donatedAmount_in', alias?: string  } 
-  | { name: 'donatedAmount_not_in', alias?: string  } 
-  | { name: 'donatedAmount_lt', alias?: string  } 
-  | { name: 'donatedAmount_lte', alias?: string  } 
-  | { name: 'donatedAmount_gt', alias?: string  } 
-  | { name: 'donatedAmount_gte', alias?: string  } 
-  | { name: 'status', alias?: string  } 
-  | { name: 'status_not', alias?: string  } 
-  | { name: 'status_in', alias?: string  } 
-  | { name: 'status_not_in', alias?: string  } 
-  | { name: 'offer', alias?: string  } 
-  | { name: 'AND', alias?: string  } 
-  | { name: 'OR', alias?: string  } 
-  | { name: 'NOT', alias?: string  } 
-  
+  | { name: 'id'; alias?: string }
+  | { name: 'id_not'; alias?: string }
+  | { name: 'id_in'; alias?: string }
+  | { name: 'id_not_in'; alias?: string }
+  | { name: 'id_lt'; alias?: string }
+  | { name: 'id_lte'; alias?: string }
+  | { name: 'id_gt'; alias?: string }
+  | { name: 'id_gte'; alias?: string }
+  | { name: 'id_contains'; alias?: string }
+  | { name: 'id_not_contains'; alias?: string }
+  | { name: 'id_starts_with'; alias?: string }
+  | { name: 'id_not_starts_with'; alias?: string }
+  | { name: 'id_ends_with'; alias?: string }
+  | { name: 'id_not_ends_with'; alias?: string }
+  | { name: 'amount'; alias?: string }
+  | { name: 'amount_not'; alias?: string }
+  | { name: 'amount_in'; alias?: string }
+  | { name: 'amount_not_in'; alias?: string }
+  | { name: 'amount_lt'; alias?: string }
+  | { name: 'amount_lte'; alias?: string }
+  | { name: 'amount_gt'; alias?: string }
+  | { name: 'amount_gte'; alias?: string }
+  | { name: 'email'; alias?: string }
+  | { name: 'email_not'; alias?: string }
+  | { name: 'email_in'; alias?: string }
+  | { name: 'email_not_in'; alias?: string }
+  | { name: 'email_lt'; alias?: string }
+  | { name: 'email_lte'; alias?: string }
+  | { name: 'email_gt'; alias?: string }
+  | { name: 'email_gte'; alias?: string }
+  | { name: 'email_contains'; alias?: string }
+  | { name: 'email_not_contains'; alias?: string }
+  | { name: 'email_starts_with'; alias?: string }
+  | { name: 'email_not_starts_with'; alias?: string }
+  | { name: 'email_ends_with'; alias?: string }
+  | { name: 'email_not_ends_with'; alias?: string }
+  | { name: 'firstName'; alias?: string }
+  | { name: 'firstName_not'; alias?: string }
+  | { name: 'firstName_in'; alias?: string }
+  | { name: 'firstName_not_in'; alias?: string }
+  | { name: 'firstName_lt'; alias?: string }
+  | { name: 'firstName_lte'; alias?: string }
+  | { name: 'firstName_gt'; alias?: string }
+  | { name: 'firstName_gte'; alias?: string }
+  | { name: 'firstName_contains'; alias?: string }
+  | { name: 'firstName_not_contains'; alias?: string }
+  | { name: 'firstName_starts_with'; alias?: string }
+  | { name: 'firstName_not_starts_with'; alias?: string }
+  | { name: 'firstName_ends_with'; alias?: string }
+  | { name: 'firstName_not_ends_with'; alias?: string }
+  | { name: 'lastName'; alias?: string }
+  | { name: 'lastName_not'; alias?: string }
+  | { name: 'lastName_in'; alias?: string }
+  | { name: 'lastName_not_in'; alias?: string }
+  | { name: 'lastName_lt'; alias?: string }
+  | { name: 'lastName_lte'; alias?: string }
+  | { name: 'lastName_gt'; alias?: string }
+  | { name: 'lastName_gte'; alias?: string }
+  | { name: 'lastName_contains'; alias?: string }
+  | { name: 'lastName_not_contains'; alias?: string }
+  | { name: 'lastName_starts_with'; alias?: string }
+  | { name: 'lastName_not_starts_with'; alias?: string }
+  | { name: 'lastName_ends_with'; alias?: string }
+  | { name: 'lastName_not_ends_with'; alias?: string }
+  | { name: 'comment'; alias?: string }
+  | { name: 'comment_not'; alias?: string }
+  | { name: 'comment_in'; alias?: string }
+  | { name: 'comment_not_in'; alias?: string }
+  | { name: 'comment_lt'; alias?: string }
+  | { name: 'comment_lte'; alias?: string }
+  | { name: 'comment_gt'; alias?: string }
+  | { name: 'comment_gte'; alias?: string }
+  | { name: 'comment_contains'; alias?: string }
+  | { name: 'comment_not_contains'; alias?: string }
+  | { name: 'comment_starts_with'; alias?: string }
+  | { name: 'comment_not_starts_with'; alias?: string }
+  | { name: 'comment_ends_with'; alias?: string }
+  | { name: 'comment_not_ends_with'; alias?: string }
+  | { name: 'createdAt'; alias?: string }
+  | { name: 'createdAt_not'; alias?: string }
+  | { name: 'createdAt_in'; alias?: string }
+  | { name: 'createdAt_not_in'; alias?: string }
+  | { name: 'createdAt_lt'; alias?: string }
+  | { name: 'createdAt_lte'; alias?: string }
+  | { name: 'createdAt_gt'; alias?: string }
+  | { name: 'createdAt_gte'; alias?: string }
+  | { name: 'updatedAt'; alias?: string }
+  | { name: 'updatedAt_not'; alias?: string }
+  | { name: 'updatedAt_in'; alias?: string }
+  | { name: 'updatedAt_not_in'; alias?: string }
+  | { name: 'updatedAt_lt'; alias?: string }
+  | { name: 'updatedAt_lte'; alias?: string }
+  | { name: 'updatedAt_gt'; alias?: string }
+  | { name: 'updatedAt_gte'; alias?: string }
+  | { name: 'deletedAt'; alias?: string }
+  | { name: 'deletedAt_not'; alias?: string }
+  | { name: 'deletedAt_in'; alias?: string }
+  | { name: 'deletedAt_not_in'; alias?: string }
+  | { name: 'deletedAt_lt'; alias?: string }
+  | { name: 'deletedAt_lte'; alias?: string }
+  | { name: 'deletedAt_gt'; alias?: string }
+  | { name: 'deletedAt_gte'; alias?: string }
+  | { name: 'donatedAmount'; alias?: string }
+  | { name: 'donatedAmount_not'; alias?: string }
+  | { name: 'donatedAmount_in'; alias?: string }
+  | { name: 'donatedAmount_not_in'; alias?: string }
+  | { name: 'donatedAmount_lt'; alias?: string }
+  | { name: 'donatedAmount_lte'; alias?: string }
+  | { name: 'donatedAmount_gt'; alias?: string }
+  | { name: 'donatedAmount_gte'; alias?: string }
+  | { name: 'status'; alias?: string }
+  | { name: 'status_not'; alias?: string }
+  | { name: 'status_in'; alias?: string }
+  | { name: 'status_not_in'; alias?: string }
+  | { name: 'offer'; alias?: string }
+  | { name: 'AND'; alias?: string }
+  | { name: 'OR'; alias?: string }
+  | { name: 'NOT'; alias?: string }
+
 export interface OrganizationWhereInput {
   id?: string | null
   id_not?: string | null
@@ -5177,134 +5275,134 @@ export interface OrganizationWhereInput {
 }
 export type OrganizationWhereInputInputObject =
   | Extract<keyof OrganizationWhereInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'id_not', alias?: string  } 
-  | { name: 'id_in', alias?: string  } 
-  | { name: 'id_not_in', alias?: string  } 
-  | { name: 'id_lt', alias?: string  } 
-  | { name: 'id_lte', alias?: string  } 
-  | { name: 'id_gt', alias?: string  } 
-  | { name: 'id_gte', alias?: string  } 
-  | { name: 'id_contains', alias?: string  } 
-  | { name: 'id_not_contains', alias?: string  } 
-  | { name: 'id_starts_with', alias?: string  } 
-  | { name: 'id_not_starts_with', alias?: string  } 
-  | { name: 'id_ends_with', alias?: string  } 
-  | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'apiId', alias?: string  } 
-  | { name: 'apiId_not', alias?: string  } 
-  | { name: 'apiId_in', alias?: string  } 
-  | { name: 'apiId_not_in', alias?: string  } 
-  | { name: 'apiId_lt', alias?: string  } 
-  | { name: 'apiId_lte', alias?: string  } 
-  | { name: 'apiId_gt', alias?: string  } 
-  | { name: 'apiId_gte', alias?: string  } 
-  | { name: 'apiSecret', alias?: string  } 
-  | { name: 'apiSecret_not', alias?: string  } 
-  | { name: 'apiSecret_in', alias?: string  } 
-  | { name: 'apiSecret_not_in', alias?: string  } 
-  | { name: 'apiSecret_lt', alias?: string  } 
-  | { name: 'apiSecret_lte', alias?: string  } 
-  | { name: 'apiSecret_gt', alias?: string  } 
-  | { name: 'apiSecret_gte', alias?: string  } 
-  | { name: 'apiSecret_contains', alias?: string  } 
-  | { name: 'apiSecret_not_contains', alias?: string  } 
-  | { name: 'apiSecret_starts_with', alias?: string  } 
-  | { name: 'apiSecret_not_starts_with', alias?: string  } 
-  | { name: 'apiSecret_ends_with', alias?: string  } 
-  | { name: 'apiSecret_not_ends_with', alias?: string  } 
-  | { name: 'organizationId', alias?: string  } 
-  | { name: 'organizationId_not', alias?: string  } 
-  | { name: 'organizationId_in', alias?: string  } 
-  | { name: 'organizationId_not_in', alias?: string  } 
-  | { name: 'organizationId_lt', alias?: string  } 
-  | { name: 'organizationId_lte', alias?: string  } 
-  | { name: 'organizationId_gt', alias?: string  } 
-  | { name: 'organizationId_gte', alias?: string  } 
-  | { name: 'active', alias?: string  } 
-  | { name: 'active_not', alias?: string  } 
-  | { name: 'logo', alias?: string  } 
-  | { name: 'createdAt', alias?: string  } 
-  | { name: 'createdAt_not', alias?: string  } 
-  | { name: 'createdAt_in', alias?: string  } 
-  | { name: 'createdAt_not_in', alias?: string  } 
-  | { name: 'createdAt_lt', alias?: string  } 
-  | { name: 'createdAt_lte', alias?: string  } 
-  | { name: 'createdAt_gt', alias?: string  } 
-  | { name: 'createdAt_gte', alias?: string  } 
-  | { name: 'updatedAt', alias?: string  } 
-  | { name: 'updatedAt_not', alias?: string  } 
-  | { name: 'updatedAt_in', alias?: string  } 
-  | { name: 'updatedAt_not_in', alias?: string  } 
-  | { name: 'updatedAt_lt', alias?: string  } 
-  | { name: 'updatedAt_lte', alias?: string  } 
-  | { name: 'updatedAt_gt', alias?: string  } 
-  | { name: 'updatedAt_gte', alias?: string  } 
-  | { name: 'deletedAt', alias?: string  } 
-  | { name: 'deletedAt_not', alias?: string  } 
-  | { name: 'deletedAt_in', alias?: string  } 
-  | { name: 'deletedAt_not_in', alias?: string  } 
-  | { name: 'deletedAt_lt', alias?: string  } 
-  | { name: 'deletedAt_lte', alias?: string  } 
-  | { name: 'deletedAt_gt', alias?: string  } 
-  | { name: 'deletedAt_gte', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'name_not', alias?: string  } 
-  | { name: 'name_in', alias?: string  } 
-  | { name: 'name_not_in', alias?: string  } 
-  | { name: 'name_lt', alias?: string  } 
-  | { name: 'name_lte', alias?: string  } 
-  | { name: 'name_gt', alias?: string  } 
-  | { name: 'name_gte', alias?: string  } 
-  | { name: 'name_contains', alias?: string  } 
-  | { name: 'name_not_contains', alias?: string  } 
-  | { name: 'name_starts_with', alias?: string  } 
-  | { name: 'name_not_starts_with', alias?: string  } 
-  | { name: 'name_ends_with', alias?: string  } 
-  | { name: 'name_not_ends_with', alias?: string  } 
-  | { name: 'offers_every', alias?: string  } 
-  | { name: 'offers_some', alias?: string  } 
-  | { name: 'offers_none', alias?: string  } 
-  | { name: 'projectId', alias?: string  } 
-  | { name: 'projectId_not', alias?: string  } 
-  | { name: 'projectId_in', alias?: string  } 
-  | { name: 'projectId_not_in', alias?: string  } 
-  | { name: 'projectId_lt', alias?: string  } 
-  | { name: 'projectId_lte', alias?: string  } 
-  | { name: 'projectId_gt', alias?: string  } 
-  | { name: 'projectId_gte', alias?: string  } 
-  | { name: 'description', alias?: string  } 
-  | { name: 'description_not', alias?: string  } 
-  | { name: 'description_in', alias?: string  } 
-  | { name: 'description_not_in', alias?: string  } 
-  | { name: 'description_lt', alias?: string  } 
-  | { name: 'description_lte', alias?: string  } 
-  | { name: 'description_gt', alias?: string  } 
-  | { name: 'description_gte', alias?: string  } 
-  | { name: 'description_contains', alias?: string  } 
-  | { name: 'description_not_contains', alias?: string  } 
-  | { name: 'description_starts_with', alias?: string  } 
-  | { name: 'description_not_starts_with', alias?: string  } 
-  | { name: 'description_ends_with', alias?: string  } 
-  | { name: 'description_not_ends_with', alias?: string  } 
-  | { name: 'url', alias?: string  } 
-  | { name: 'url_not', alias?: string  } 
-  | { name: 'url_in', alias?: string  } 
-  | { name: 'url_not_in', alias?: string  } 
-  | { name: 'url_lt', alias?: string  } 
-  | { name: 'url_lte', alias?: string  } 
-  | { name: 'url_gt', alias?: string  } 
-  | { name: 'url_gte', alias?: string  } 
-  | { name: 'url_contains', alias?: string  } 
-  | { name: 'url_not_contains', alias?: string  } 
-  | { name: 'url_starts_with', alias?: string  } 
-  | { name: 'url_not_starts_with', alias?: string  } 
-  | { name: 'url_ends_with', alias?: string  } 
-  | { name: 'url_not_ends_with', alias?: string  } 
-  | { name: 'AND', alias?: string  } 
-  | { name: 'OR', alias?: string  } 
-  | { name: 'NOT', alias?: string  } 
-  
+  | { name: 'id'; alias?: string }
+  | { name: 'id_not'; alias?: string }
+  | { name: 'id_in'; alias?: string }
+  | { name: 'id_not_in'; alias?: string }
+  | { name: 'id_lt'; alias?: string }
+  | { name: 'id_lte'; alias?: string }
+  | { name: 'id_gt'; alias?: string }
+  | { name: 'id_gte'; alias?: string }
+  | { name: 'id_contains'; alias?: string }
+  | { name: 'id_not_contains'; alias?: string }
+  | { name: 'id_starts_with'; alias?: string }
+  | { name: 'id_not_starts_with'; alias?: string }
+  | { name: 'id_ends_with'; alias?: string }
+  | { name: 'id_not_ends_with'; alias?: string }
+  | { name: 'apiId'; alias?: string }
+  | { name: 'apiId_not'; alias?: string }
+  | { name: 'apiId_in'; alias?: string }
+  | { name: 'apiId_not_in'; alias?: string }
+  | { name: 'apiId_lt'; alias?: string }
+  | { name: 'apiId_lte'; alias?: string }
+  | { name: 'apiId_gt'; alias?: string }
+  | { name: 'apiId_gte'; alias?: string }
+  | { name: 'apiSecret'; alias?: string }
+  | { name: 'apiSecret_not'; alias?: string }
+  | { name: 'apiSecret_in'; alias?: string }
+  | { name: 'apiSecret_not_in'; alias?: string }
+  | { name: 'apiSecret_lt'; alias?: string }
+  | { name: 'apiSecret_lte'; alias?: string }
+  | { name: 'apiSecret_gt'; alias?: string }
+  | { name: 'apiSecret_gte'; alias?: string }
+  | { name: 'apiSecret_contains'; alias?: string }
+  | { name: 'apiSecret_not_contains'; alias?: string }
+  | { name: 'apiSecret_starts_with'; alias?: string }
+  | { name: 'apiSecret_not_starts_with'; alias?: string }
+  | { name: 'apiSecret_ends_with'; alias?: string }
+  | { name: 'apiSecret_not_ends_with'; alias?: string }
+  | { name: 'organizationId'; alias?: string }
+  | { name: 'organizationId_not'; alias?: string }
+  | { name: 'organizationId_in'; alias?: string }
+  | { name: 'organizationId_not_in'; alias?: string }
+  | { name: 'organizationId_lt'; alias?: string }
+  | { name: 'organizationId_lte'; alias?: string }
+  | { name: 'organizationId_gt'; alias?: string }
+  | { name: 'organizationId_gte'; alias?: string }
+  | { name: 'active'; alias?: string }
+  | { name: 'active_not'; alias?: string }
+  | { name: 'logo'; alias?: string }
+  | { name: 'createdAt'; alias?: string }
+  | { name: 'createdAt_not'; alias?: string }
+  | { name: 'createdAt_in'; alias?: string }
+  | { name: 'createdAt_not_in'; alias?: string }
+  | { name: 'createdAt_lt'; alias?: string }
+  | { name: 'createdAt_lte'; alias?: string }
+  | { name: 'createdAt_gt'; alias?: string }
+  | { name: 'createdAt_gte'; alias?: string }
+  | { name: 'updatedAt'; alias?: string }
+  | { name: 'updatedAt_not'; alias?: string }
+  | { name: 'updatedAt_in'; alias?: string }
+  | { name: 'updatedAt_not_in'; alias?: string }
+  | { name: 'updatedAt_lt'; alias?: string }
+  | { name: 'updatedAt_lte'; alias?: string }
+  | { name: 'updatedAt_gt'; alias?: string }
+  | { name: 'updatedAt_gte'; alias?: string }
+  | { name: 'deletedAt'; alias?: string }
+  | { name: 'deletedAt_not'; alias?: string }
+  | { name: 'deletedAt_in'; alias?: string }
+  | { name: 'deletedAt_not_in'; alias?: string }
+  | { name: 'deletedAt_lt'; alias?: string }
+  | { name: 'deletedAt_lte'; alias?: string }
+  | { name: 'deletedAt_gt'; alias?: string }
+  | { name: 'deletedAt_gte'; alias?: string }
+  | { name: 'name'; alias?: string }
+  | { name: 'name_not'; alias?: string }
+  | { name: 'name_in'; alias?: string }
+  | { name: 'name_not_in'; alias?: string }
+  | { name: 'name_lt'; alias?: string }
+  | { name: 'name_lte'; alias?: string }
+  | { name: 'name_gt'; alias?: string }
+  | { name: 'name_gte'; alias?: string }
+  | { name: 'name_contains'; alias?: string }
+  | { name: 'name_not_contains'; alias?: string }
+  | { name: 'name_starts_with'; alias?: string }
+  | { name: 'name_not_starts_with'; alias?: string }
+  | { name: 'name_ends_with'; alias?: string }
+  | { name: 'name_not_ends_with'; alias?: string }
+  | { name: 'offers_every'; alias?: string }
+  | { name: 'offers_some'; alias?: string }
+  | { name: 'offers_none'; alias?: string }
+  | { name: 'projectId'; alias?: string }
+  | { name: 'projectId_not'; alias?: string }
+  | { name: 'projectId_in'; alias?: string }
+  | { name: 'projectId_not_in'; alias?: string }
+  | { name: 'projectId_lt'; alias?: string }
+  | { name: 'projectId_lte'; alias?: string }
+  | { name: 'projectId_gt'; alias?: string }
+  | { name: 'projectId_gte'; alias?: string }
+  | { name: 'description'; alias?: string }
+  | { name: 'description_not'; alias?: string }
+  | { name: 'description_in'; alias?: string }
+  | { name: 'description_not_in'; alias?: string }
+  | { name: 'description_lt'; alias?: string }
+  | { name: 'description_lte'; alias?: string }
+  | { name: 'description_gt'; alias?: string }
+  | { name: 'description_gte'; alias?: string }
+  | { name: 'description_contains'; alias?: string }
+  | { name: 'description_not_contains'; alias?: string }
+  | { name: 'description_starts_with'; alias?: string }
+  | { name: 'description_not_starts_with'; alias?: string }
+  | { name: 'description_ends_with'; alias?: string }
+  | { name: 'description_not_ends_with'; alias?: string }
+  | { name: 'url'; alias?: string }
+  | { name: 'url_not'; alias?: string }
+  | { name: 'url_in'; alias?: string }
+  | { name: 'url_not_in'; alias?: string }
+  | { name: 'url_lt'; alias?: string }
+  | { name: 'url_lte'; alias?: string }
+  | { name: 'url_gt'; alias?: string }
+  | { name: 'url_gte'; alias?: string }
+  | { name: 'url_contains'; alias?: string }
+  | { name: 'url_not_contains'; alias?: string }
+  | { name: 'url_starts_with'; alias?: string }
+  | { name: 'url_not_starts_with'; alias?: string }
+  | { name: 'url_ends_with'; alias?: string }
+  | { name: 'url_not_ends_with'; alias?: string }
+  | { name: 'AND'; alias?: string }
+  | { name: 'OR'; alias?: string }
+  | { name: 'NOT'; alias?: string }
+
 export interface FileWhereInput {
   id?: string | null
   id_not?: string | null
@@ -5396,94 +5494,94 @@ export interface FileWhereInput {
 }
 export type FileWhereInputInputObject =
   | Extract<keyof FileWhereInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'id_not', alias?: string  } 
-  | { name: 'id_in', alias?: string  } 
-  | { name: 'id_not_in', alias?: string  } 
-  | { name: 'id_lt', alias?: string  } 
-  | { name: 'id_lte', alias?: string  } 
-  | { name: 'id_gt', alias?: string  } 
-  | { name: 'id_gte', alias?: string  } 
-  | { name: 'id_contains', alias?: string  } 
-  | { name: 'id_not_contains', alias?: string  } 
-  | { name: 'id_starts_with', alias?: string  } 
-  | { name: 'id_not_starts_with', alias?: string  } 
-  | { name: 'id_ends_with', alias?: string  } 
-  | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'key', alias?: string  } 
-  | { name: 'key_not', alias?: string  } 
-  | { name: 'key_in', alias?: string  } 
-  | { name: 'key_not_in', alias?: string  } 
-  | { name: 'key_lt', alias?: string  } 
-  | { name: 'key_lte', alias?: string  } 
-  | { name: 'key_gt', alias?: string  } 
-  | { name: 'key_gte', alias?: string  } 
-  | { name: 'key_contains', alias?: string  } 
-  | { name: 'key_not_contains', alias?: string  } 
-  | { name: 'key_starts_with', alias?: string  } 
-  | { name: 'key_not_starts_with', alias?: string  } 
-  | { name: 'key_ends_with', alias?: string  } 
-  | { name: 'key_not_ends_with', alias?: string  } 
-  | { name: 'fileName', alias?: string  } 
-  | { name: 'fileName_not', alias?: string  } 
-  | { name: 'fileName_in', alias?: string  } 
-  | { name: 'fileName_not_in', alias?: string  } 
-  | { name: 'fileName_lt', alias?: string  } 
-  | { name: 'fileName_lte', alias?: string  } 
-  | { name: 'fileName_gt', alias?: string  } 
-  | { name: 'fileName_gte', alias?: string  } 
-  | { name: 'fileName_contains', alias?: string  } 
-  | { name: 'fileName_not_contains', alias?: string  } 
-  | { name: 'fileName_starts_with', alias?: string  } 
-  | { name: 'fileName_not_starts_with', alias?: string  } 
-  | { name: 'fileName_ends_with', alias?: string  } 
-  | { name: 'fileName_not_ends_with', alias?: string  } 
-  | { name: 'mimeType', alias?: string  } 
-  | { name: 'mimeType_not', alias?: string  } 
-  | { name: 'mimeType_in', alias?: string  } 
-  | { name: 'mimeType_not_in', alias?: string  } 
-  | { name: 'mimeType_lt', alias?: string  } 
-  | { name: 'mimeType_lte', alias?: string  } 
-  | { name: 'mimeType_gt', alias?: string  } 
-  | { name: 'mimeType_gte', alias?: string  } 
-  | { name: 'mimeType_contains', alias?: string  } 
-  | { name: 'mimeType_not_contains', alias?: string  } 
-  | { name: 'mimeType_starts_with', alias?: string  } 
-  | { name: 'mimeType_not_starts_with', alias?: string  } 
-  | { name: 'mimeType_ends_with', alias?: string  } 
-  | { name: 'mimeType_not_ends_with', alias?: string  } 
-  | { name: 'encoding', alias?: string  } 
-  | { name: 'encoding_not', alias?: string  } 
-  | { name: 'encoding_in', alias?: string  } 
-  | { name: 'encoding_not_in', alias?: string  } 
-  | { name: 'encoding_lt', alias?: string  } 
-  | { name: 'encoding_lte', alias?: string  } 
-  | { name: 'encoding_gt', alias?: string  } 
-  | { name: 'encoding_gte', alias?: string  } 
-  | { name: 'encoding_contains', alias?: string  } 
-  | { name: 'encoding_not_contains', alias?: string  } 
-  | { name: 'encoding_starts_with', alias?: string  } 
-  | { name: 'encoding_not_starts_with', alias?: string  } 
-  | { name: 'encoding_ends_with', alias?: string  } 
-  | { name: 'encoding_not_ends_with', alias?: string  } 
-  | { name: 'url', alias?: string  } 
-  | { name: 'url_not', alias?: string  } 
-  | { name: 'url_in', alias?: string  } 
-  | { name: 'url_not_in', alias?: string  } 
-  | { name: 'url_lt', alias?: string  } 
-  | { name: 'url_lte', alias?: string  } 
-  | { name: 'url_gt', alias?: string  } 
-  | { name: 'url_gte', alias?: string  } 
-  | { name: 'url_contains', alias?: string  } 
-  | { name: 'url_not_contains', alias?: string  } 
-  | { name: 'url_starts_with', alias?: string  } 
-  | { name: 'url_not_starts_with', alias?: string  } 
-  | { name: 'url_ends_with', alias?: string  } 
-  | { name: 'url_not_ends_with', alias?: string  } 
-  | { name: 'AND', alias?: string  } 
-  | { name: 'OR', alias?: string  } 
-  | { name: 'NOT', alias?: string  } 
-  
+  | { name: 'id'; alias?: string }
+  | { name: 'id_not'; alias?: string }
+  | { name: 'id_in'; alias?: string }
+  | { name: 'id_not_in'; alias?: string }
+  | { name: 'id_lt'; alias?: string }
+  | { name: 'id_lte'; alias?: string }
+  | { name: 'id_gt'; alias?: string }
+  | { name: 'id_gte'; alias?: string }
+  | { name: 'id_contains'; alias?: string }
+  | { name: 'id_not_contains'; alias?: string }
+  | { name: 'id_starts_with'; alias?: string }
+  | { name: 'id_not_starts_with'; alias?: string }
+  | { name: 'id_ends_with'; alias?: string }
+  | { name: 'id_not_ends_with'; alias?: string }
+  | { name: 'key'; alias?: string }
+  | { name: 'key_not'; alias?: string }
+  | { name: 'key_in'; alias?: string }
+  | { name: 'key_not_in'; alias?: string }
+  | { name: 'key_lt'; alias?: string }
+  | { name: 'key_lte'; alias?: string }
+  | { name: 'key_gt'; alias?: string }
+  | { name: 'key_gte'; alias?: string }
+  | { name: 'key_contains'; alias?: string }
+  | { name: 'key_not_contains'; alias?: string }
+  | { name: 'key_starts_with'; alias?: string }
+  | { name: 'key_not_starts_with'; alias?: string }
+  | { name: 'key_ends_with'; alias?: string }
+  | { name: 'key_not_ends_with'; alias?: string }
+  | { name: 'fileName'; alias?: string }
+  | { name: 'fileName_not'; alias?: string }
+  | { name: 'fileName_in'; alias?: string }
+  | { name: 'fileName_not_in'; alias?: string }
+  | { name: 'fileName_lt'; alias?: string }
+  | { name: 'fileName_lte'; alias?: string }
+  | { name: 'fileName_gt'; alias?: string }
+  | { name: 'fileName_gte'; alias?: string }
+  | { name: 'fileName_contains'; alias?: string }
+  | { name: 'fileName_not_contains'; alias?: string }
+  | { name: 'fileName_starts_with'; alias?: string }
+  | { name: 'fileName_not_starts_with'; alias?: string }
+  | { name: 'fileName_ends_with'; alias?: string }
+  | { name: 'fileName_not_ends_with'; alias?: string }
+  | { name: 'mimeType'; alias?: string }
+  | { name: 'mimeType_not'; alias?: string }
+  | { name: 'mimeType_in'; alias?: string }
+  | { name: 'mimeType_not_in'; alias?: string }
+  | { name: 'mimeType_lt'; alias?: string }
+  | { name: 'mimeType_lte'; alias?: string }
+  | { name: 'mimeType_gt'; alias?: string }
+  | { name: 'mimeType_gte'; alias?: string }
+  | { name: 'mimeType_contains'; alias?: string }
+  | { name: 'mimeType_not_contains'; alias?: string }
+  | { name: 'mimeType_starts_with'; alias?: string }
+  | { name: 'mimeType_not_starts_with'; alias?: string }
+  | { name: 'mimeType_ends_with'; alias?: string }
+  | { name: 'mimeType_not_ends_with'; alias?: string }
+  | { name: 'encoding'; alias?: string }
+  | { name: 'encoding_not'; alias?: string }
+  | { name: 'encoding_in'; alias?: string }
+  | { name: 'encoding_not_in'; alias?: string }
+  | { name: 'encoding_lt'; alias?: string }
+  | { name: 'encoding_lte'; alias?: string }
+  | { name: 'encoding_gt'; alias?: string }
+  | { name: 'encoding_gte'; alias?: string }
+  | { name: 'encoding_contains'; alias?: string }
+  | { name: 'encoding_not_contains'; alias?: string }
+  | { name: 'encoding_starts_with'; alias?: string }
+  | { name: 'encoding_not_starts_with'; alias?: string }
+  | { name: 'encoding_ends_with'; alias?: string }
+  | { name: 'encoding_not_ends_with'; alias?: string }
+  | { name: 'url'; alias?: string }
+  | { name: 'url_not'; alias?: string }
+  | { name: 'url_in'; alias?: string }
+  | { name: 'url_not_in'; alias?: string }
+  | { name: 'url_lt'; alias?: string }
+  | { name: 'url_lte'; alias?: string }
+  | { name: 'url_gt'; alias?: string }
+  | { name: 'url_gte'; alias?: string }
+  | { name: 'url_contains'; alias?: string }
+  | { name: 'url_not_contains'; alias?: string }
+  | { name: 'url_starts_with'; alias?: string }
+  | { name: 'url_not_starts_with'; alias?: string }
+  | { name: 'url_ends_with'; alias?: string }
+  | { name: 'url_not_ends_with'; alias?: string }
+  | { name: 'AND'; alias?: string }
+  | { name: 'OR'; alias?: string }
+  | { name: 'NOT'; alias?: string }
+
 export interface UserWhereInput {
   id?: string | null
   id_not?: string | null
@@ -5569,88 +5667,88 @@ export interface UserWhereInput {
 }
 export type UserWhereInputInputObject =
   | Extract<keyof UserWhereInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'id_not', alias?: string  } 
-  | { name: 'id_in', alias?: string  } 
-  | { name: 'id_not_in', alias?: string  } 
-  | { name: 'id_lt', alias?: string  } 
-  | { name: 'id_lte', alias?: string  } 
-  | { name: 'id_gt', alias?: string  } 
-  | { name: 'id_gte', alias?: string  } 
-  | { name: 'id_contains', alias?: string  } 
-  | { name: 'id_not_contains', alias?: string  } 
-  | { name: 'id_starts_with', alias?: string  } 
-  | { name: 'id_not_starts_with', alias?: string  } 
-  | { name: 'id_ends_with', alias?: string  } 
-  | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'email', alias?: string  } 
-  | { name: 'email_not', alias?: string  } 
-  | { name: 'email_in', alias?: string  } 
-  | { name: 'email_not_in', alias?: string  } 
-  | { name: 'email_lt', alias?: string  } 
-  | { name: 'email_lte', alias?: string  } 
-  | { name: 'email_gt', alias?: string  } 
-  | { name: 'email_gte', alias?: string  } 
-  | { name: 'email_contains', alias?: string  } 
-  | { name: 'email_not_contains', alias?: string  } 
-  | { name: 'email_starts_with', alias?: string  } 
-  | { name: 'email_not_starts_with', alias?: string  } 
-  | { name: 'email_ends_with', alias?: string  } 
-  | { name: 'email_not_ends_with', alias?: string  } 
-  | { name: 'firstName', alias?: string  } 
-  | { name: 'firstName_not', alias?: string  } 
-  | { name: 'firstName_in', alias?: string  } 
-  | { name: 'firstName_not_in', alias?: string  } 
-  | { name: 'firstName_lt', alias?: string  } 
-  | { name: 'firstName_lte', alias?: string  } 
-  | { name: 'firstName_gt', alias?: string  } 
-  | { name: 'firstName_gte', alias?: string  } 
-  | { name: 'firstName_contains', alias?: string  } 
-  | { name: 'firstName_not_contains', alias?: string  } 
-  | { name: 'firstName_starts_with', alias?: string  } 
-  | { name: 'firstName_not_starts_with', alias?: string  } 
-  | { name: 'firstName_ends_with', alias?: string  } 
-  | { name: 'firstName_not_ends_with', alias?: string  } 
-  | { name: 'lastName', alias?: string  } 
-  | { name: 'lastName_not', alias?: string  } 
-  | { name: 'lastName_in', alias?: string  } 
-  | { name: 'lastName_not_in', alias?: string  } 
-  | { name: 'lastName_lt', alias?: string  } 
-  | { name: 'lastName_lte', alias?: string  } 
-  | { name: 'lastName_gt', alias?: string  } 
-  | { name: 'lastName_gte', alias?: string  } 
-  | { name: 'lastName_contains', alias?: string  } 
-  | { name: 'lastName_not_contains', alias?: string  } 
-  | { name: 'lastName_starts_with', alias?: string  } 
-  | { name: 'lastName_not_starts_with', alias?: string  } 
-  | { name: 'lastName_ends_with', alias?: string  } 
-  | { name: 'lastName_not_ends_with', alias?: string  } 
-  | { name: 'password', alias?: string  } 
-  | { name: 'password_not', alias?: string  } 
-  | { name: 'password_in', alias?: string  } 
-  | { name: 'password_not_in', alias?: string  } 
-  | { name: 'password_lt', alias?: string  } 
-  | { name: 'password_lte', alias?: string  } 
-  | { name: 'password_gt', alias?: string  } 
-  | { name: 'password_gte', alias?: string  } 
-  | { name: 'password_contains', alias?: string  } 
-  | { name: 'password_not_contains', alias?: string  } 
-  | { name: 'password_starts_with', alias?: string  } 
-  | { name: 'password_not_starts_with', alias?: string  } 
-  | { name: 'password_ends_with', alias?: string  } 
-  | { name: 'password_not_ends_with', alias?: string  } 
-  | { name: 'role', alias?: string  } 
-  | { name: 'role_not', alias?: string  } 
-  | { name: 'role_in', alias?: string  } 
-  | { name: 'role_not_in', alias?: string  } 
-  | { name: 'offers_every', alias?: string  } 
-  | { name: 'offers_some', alias?: string  } 
-  | { name: 'offers_none', alias?: string  } 
-  | { name: 'adress', alias?: string  } 
-  | { name: 'AND', alias?: string  } 
-  | { name: 'OR', alias?: string  } 
-  | { name: 'NOT', alias?: string  } 
-  
+  | { name: 'id'; alias?: string }
+  | { name: 'id_not'; alias?: string }
+  | { name: 'id_in'; alias?: string }
+  | { name: 'id_not_in'; alias?: string }
+  | { name: 'id_lt'; alias?: string }
+  | { name: 'id_lte'; alias?: string }
+  | { name: 'id_gt'; alias?: string }
+  | { name: 'id_gte'; alias?: string }
+  | { name: 'id_contains'; alias?: string }
+  | { name: 'id_not_contains'; alias?: string }
+  | { name: 'id_starts_with'; alias?: string }
+  | { name: 'id_not_starts_with'; alias?: string }
+  | { name: 'id_ends_with'; alias?: string }
+  | { name: 'id_not_ends_with'; alias?: string }
+  | { name: 'email'; alias?: string }
+  | { name: 'email_not'; alias?: string }
+  | { name: 'email_in'; alias?: string }
+  | { name: 'email_not_in'; alias?: string }
+  | { name: 'email_lt'; alias?: string }
+  | { name: 'email_lte'; alias?: string }
+  | { name: 'email_gt'; alias?: string }
+  | { name: 'email_gte'; alias?: string }
+  | { name: 'email_contains'; alias?: string }
+  | { name: 'email_not_contains'; alias?: string }
+  | { name: 'email_starts_with'; alias?: string }
+  | { name: 'email_not_starts_with'; alias?: string }
+  | { name: 'email_ends_with'; alias?: string }
+  | { name: 'email_not_ends_with'; alias?: string }
+  | { name: 'firstName'; alias?: string }
+  | { name: 'firstName_not'; alias?: string }
+  | { name: 'firstName_in'; alias?: string }
+  | { name: 'firstName_not_in'; alias?: string }
+  | { name: 'firstName_lt'; alias?: string }
+  | { name: 'firstName_lte'; alias?: string }
+  | { name: 'firstName_gt'; alias?: string }
+  | { name: 'firstName_gte'; alias?: string }
+  | { name: 'firstName_contains'; alias?: string }
+  | { name: 'firstName_not_contains'; alias?: string }
+  | { name: 'firstName_starts_with'; alias?: string }
+  | { name: 'firstName_not_starts_with'; alias?: string }
+  | { name: 'firstName_ends_with'; alias?: string }
+  | { name: 'firstName_not_ends_with'; alias?: string }
+  | { name: 'lastName'; alias?: string }
+  | { name: 'lastName_not'; alias?: string }
+  | { name: 'lastName_in'; alias?: string }
+  | { name: 'lastName_not_in'; alias?: string }
+  | { name: 'lastName_lt'; alias?: string }
+  | { name: 'lastName_lte'; alias?: string }
+  | { name: 'lastName_gt'; alias?: string }
+  | { name: 'lastName_gte'; alias?: string }
+  | { name: 'lastName_contains'; alias?: string }
+  | { name: 'lastName_not_contains'; alias?: string }
+  | { name: 'lastName_starts_with'; alias?: string }
+  | { name: 'lastName_not_starts_with'; alias?: string }
+  | { name: 'lastName_ends_with'; alias?: string }
+  | { name: 'lastName_not_ends_with'; alias?: string }
+  | { name: 'password'; alias?: string }
+  | { name: 'password_not'; alias?: string }
+  | { name: 'password_in'; alias?: string }
+  | { name: 'password_not_in'; alias?: string }
+  | { name: 'password_lt'; alias?: string }
+  | { name: 'password_lte'; alias?: string }
+  | { name: 'password_gt'; alias?: string }
+  | { name: 'password_gte'; alias?: string }
+  | { name: 'password_contains'; alias?: string }
+  | { name: 'password_not_contains'; alias?: string }
+  | { name: 'password_starts_with'; alias?: string }
+  | { name: 'password_not_starts_with'; alias?: string }
+  | { name: 'password_ends_with'; alias?: string }
+  | { name: 'password_not_ends_with'; alias?: string }
+  | { name: 'role'; alias?: string }
+  | { name: 'role_not'; alias?: string }
+  | { name: 'role_in'; alias?: string }
+  | { name: 'role_not_in'; alias?: string }
+  | { name: 'offers_every'; alias?: string }
+  | { name: 'offers_some'; alias?: string }
+  | { name: 'offers_none'; alias?: string }
+  | { name: 'adress'; alias?: string }
+  | { name: 'AND'; alias?: string }
+  | { name: 'OR'; alias?: string }
+  | { name: 'NOT'; alias?: string }
+
 export interface AdressWhereInput {
   id?: string | null
   id_not?: string | null
@@ -5714,66 +5812,66 @@ export interface AdressWhereInput {
 }
 export type AdressWhereInputInputObject =
   | Extract<keyof AdressWhereInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'id_not', alias?: string  } 
-  | { name: 'id_in', alias?: string  } 
-  | { name: 'id_not_in', alias?: string  } 
-  | { name: 'id_lt', alias?: string  } 
-  | { name: 'id_lte', alias?: string  } 
-  | { name: 'id_gt', alias?: string  } 
-  | { name: 'id_gte', alias?: string  } 
-  | { name: 'id_contains', alias?: string  } 
-  | { name: 'id_not_contains', alias?: string  } 
-  | { name: 'id_starts_with', alias?: string  } 
-  | { name: 'id_not_starts_with', alias?: string  } 
-  | { name: 'id_ends_with', alias?: string  } 
-  | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'city', alias?: string  } 
-  | { name: 'city_not', alias?: string  } 
-  | { name: 'city_in', alias?: string  } 
-  | { name: 'city_not_in', alias?: string  } 
-  | { name: 'city_lt', alias?: string  } 
-  | { name: 'city_lte', alias?: string  } 
-  | { name: 'city_gt', alias?: string  } 
-  | { name: 'city_gte', alias?: string  } 
-  | { name: 'city_contains', alias?: string  } 
-  | { name: 'city_not_contains', alias?: string  } 
-  | { name: 'city_starts_with', alias?: string  } 
-  | { name: 'city_not_starts_with', alias?: string  } 
-  | { name: 'city_ends_with', alias?: string  } 
-  | { name: 'city_not_ends_with', alias?: string  } 
-  | { name: 'street', alias?: string  } 
-  | { name: 'street_not', alias?: string  } 
-  | { name: 'street_in', alias?: string  } 
-  | { name: 'street_not_in', alias?: string  } 
-  | { name: 'street_lt', alias?: string  } 
-  | { name: 'street_lte', alias?: string  } 
-  | { name: 'street_gt', alias?: string  } 
-  | { name: 'street_gte', alias?: string  } 
-  | { name: 'street_contains', alias?: string  } 
-  | { name: 'street_not_contains', alias?: string  } 
-  | { name: 'street_starts_with', alias?: string  } 
-  | { name: 'street_not_starts_with', alias?: string  } 
-  | { name: 'street_ends_with', alias?: string  } 
-  | { name: 'street_not_ends_with', alias?: string  } 
-  | { name: 'postalCode', alias?: string  } 
-  | { name: 'postalCode_not', alias?: string  } 
-  | { name: 'postalCode_in', alias?: string  } 
-  | { name: 'postalCode_not_in', alias?: string  } 
-  | { name: 'postalCode_lt', alias?: string  } 
-  | { name: 'postalCode_lte', alias?: string  } 
-  | { name: 'postalCode_gt', alias?: string  } 
-  | { name: 'postalCode_gte', alias?: string  } 
-  | { name: 'postalCode_contains', alias?: string  } 
-  | { name: 'postalCode_not_contains', alias?: string  } 
-  | { name: 'postalCode_starts_with', alias?: string  } 
-  | { name: 'postalCode_not_starts_with', alias?: string  } 
-  | { name: 'postalCode_ends_with', alias?: string  } 
-  | { name: 'postalCode_not_ends_with', alias?: string  } 
-  | { name: 'AND', alias?: string  } 
-  | { name: 'OR', alias?: string  } 
-  | { name: 'NOT', alias?: string  } 
-  
+  | { name: 'id'; alias?: string }
+  | { name: 'id_not'; alias?: string }
+  | { name: 'id_in'; alias?: string }
+  | { name: 'id_not_in'; alias?: string }
+  | { name: 'id_lt'; alias?: string }
+  | { name: 'id_lte'; alias?: string }
+  | { name: 'id_gt'; alias?: string }
+  | { name: 'id_gte'; alias?: string }
+  | { name: 'id_contains'; alias?: string }
+  | { name: 'id_not_contains'; alias?: string }
+  | { name: 'id_starts_with'; alias?: string }
+  | { name: 'id_not_starts_with'; alias?: string }
+  | { name: 'id_ends_with'; alias?: string }
+  | { name: 'id_not_ends_with'; alias?: string }
+  | { name: 'city'; alias?: string }
+  | { name: 'city_not'; alias?: string }
+  | { name: 'city_in'; alias?: string }
+  | { name: 'city_not_in'; alias?: string }
+  | { name: 'city_lt'; alias?: string }
+  | { name: 'city_lte'; alias?: string }
+  | { name: 'city_gt'; alias?: string }
+  | { name: 'city_gte'; alias?: string }
+  | { name: 'city_contains'; alias?: string }
+  | { name: 'city_not_contains'; alias?: string }
+  | { name: 'city_starts_with'; alias?: string }
+  | { name: 'city_not_starts_with'; alias?: string }
+  | { name: 'city_ends_with'; alias?: string }
+  | { name: 'city_not_ends_with'; alias?: string }
+  | { name: 'street'; alias?: string }
+  | { name: 'street_not'; alias?: string }
+  | { name: 'street_in'; alias?: string }
+  | { name: 'street_not_in'; alias?: string }
+  | { name: 'street_lt'; alias?: string }
+  | { name: 'street_lte'; alias?: string }
+  | { name: 'street_gt'; alias?: string }
+  | { name: 'street_gte'; alias?: string }
+  | { name: 'street_contains'; alias?: string }
+  | { name: 'street_not_contains'; alias?: string }
+  | { name: 'street_starts_with'; alias?: string }
+  | { name: 'street_not_starts_with'; alias?: string }
+  | { name: 'street_ends_with'; alias?: string }
+  | { name: 'street_not_ends_with'; alias?: string }
+  | { name: 'postalCode'; alias?: string }
+  | { name: 'postalCode_not'; alias?: string }
+  | { name: 'postalCode_in'; alias?: string }
+  | { name: 'postalCode_not_in'; alias?: string }
+  | { name: 'postalCode_lt'; alias?: string }
+  | { name: 'postalCode_lte'; alias?: string }
+  | { name: 'postalCode_gt'; alias?: string }
+  | { name: 'postalCode_gte'; alias?: string }
+  | { name: 'postalCode_contains'; alias?: string }
+  | { name: 'postalCode_not_contains'; alias?: string }
+  | { name: 'postalCode_starts_with'; alias?: string }
+  | { name: 'postalCode_not_starts_with'; alias?: string }
+  | { name: 'postalCode_ends_with'; alias?: string }
+  | { name: 'postalCode_not_ends_with'; alias?: string }
+  | { name: 'AND'; alias?: string }
+  | { name: 'OR'; alias?: string }
+  | { name: 'NOT'; alias?: string }
+
 export interface GalleryWhereInput {
   id?: string | null
   id_not?: string | null
@@ -5798,69 +5896,69 @@ export interface GalleryWhereInput {
 }
 export type GalleryWhereInputInputObject =
   | Extract<keyof GalleryWhereInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'id_not', alias?: string  } 
-  | { name: 'id_in', alias?: string  } 
-  | { name: 'id_not_in', alias?: string  } 
-  | { name: 'id_lt', alias?: string  } 
-  | { name: 'id_lte', alias?: string  } 
-  | { name: 'id_gt', alias?: string  } 
-  | { name: 'id_gte', alias?: string  } 
-  | { name: 'id_contains', alias?: string  } 
-  | { name: 'id_not_contains', alias?: string  } 
-  | { name: 'id_starts_with', alias?: string  } 
-  | { name: 'id_not_starts_with', alias?: string  } 
-  | { name: 'id_ends_with', alias?: string  } 
-  | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'images_every', alias?: string  } 
-  | { name: 'images_some', alias?: string  } 
-  | { name: 'images_none', alias?: string  } 
-  | { name: 'AND', alias?: string  } 
-  | { name: 'OR', alias?: string  } 
-  | { name: 'NOT', alias?: string  } 
-  
+  | { name: 'id'; alias?: string }
+  | { name: 'id_not'; alias?: string }
+  | { name: 'id_in'; alias?: string }
+  | { name: 'id_not_in'; alias?: string }
+  | { name: 'id_lt'; alias?: string }
+  | { name: 'id_lte'; alias?: string }
+  | { name: 'id_gt'; alias?: string }
+  | { name: 'id_gte'; alias?: string }
+  | { name: 'id_contains'; alias?: string }
+  | { name: 'id_not_contains'; alias?: string }
+  | { name: 'id_starts_with'; alias?: string }
+  | { name: 'id_not_starts_with'; alias?: string }
+  | { name: 'id_ends_with'; alias?: string }
+  | { name: 'id_not_ends_with'; alias?: string }
+  | { name: 'images_every'; alias?: string }
+  | { name: 'images_some'; alias?: string }
+  | { name: 'images_none'; alias?: string }
+  | { name: 'AND'; alias?: string }
+  | { name: 'OR'; alias?: string }
+  | { name: 'NOT'; alias?: string }
+
 export interface AdressWhereUniqueInput {
   id?: string | null
 }
 export type AdressWhereUniqueInputInputObject =
   | Extract<keyof AdressWhereUniqueInput, string>
-  | { name: 'id', alias?: string  } 
-  
+  | { name: 'id'; alias?: string }
+
 export interface FileWhereUniqueInput {
   id?: string | null
 }
 export type FileWhereUniqueInputInputObject =
   | Extract<keyof FileWhereUniqueInput, string>
-  | { name: 'id', alias?: string  } 
-  
+  | { name: 'id'; alias?: string }
+
 export interface GalleryWhereUniqueInput {
   id?: string | null
 }
 export type GalleryWhereUniqueInputInputObject =
   | Extract<keyof GalleryWhereUniqueInput, string>
-  | { name: 'id', alias?: string  } 
-  
+  | { name: 'id'; alias?: string }
+
 export interface OfferWhereUniqueInput {
   id?: string | null
 }
 export type OfferWhereUniqueInputInputObject =
   | Extract<keyof OfferWhereUniqueInput, string>
-  | { name: 'id', alias?: string  } 
-  
+  | { name: 'id'; alias?: string }
+
 export interface TransactionWhereUniqueInput {
   id?: string | null
 }
 export type TransactionWhereUniqueInputInputObject =
   | Extract<keyof TransactionWhereUniqueInput, string>
-  | { name: 'id', alias?: string  } 
-  
+  | { name: 'id'; alias?: string }
+
 export interface OrganizationWhereUniqueInput {
   id?: string | null
 }
 export type OrganizationWhereUniqueInputInputObject =
   | Extract<keyof OrganizationWhereUniqueInput, string>
-  | { name: 'id', alias?: string  } 
-  
+  | { name: 'id'; alias?: string }
+
 export interface UserCreateInput {
   id?: string | null
   email?: string
@@ -5873,24 +5971,24 @@ export interface UserCreateInput {
 }
 export type UserCreateInputInputObject =
   | Extract<keyof UserCreateInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'email', alias?: string  } 
-  | { name: 'firstName', alias?: string  } 
-  | { name: 'lastName', alias?: string  } 
-  | { name: 'password', alias?: string  } 
-  | { name: 'role', alias?: string  } 
-  | { name: 'offers', alias?: string  } 
-  | { name: 'adress', alias?: string  } 
-  
+  | { name: 'id'; alias?: string }
+  | { name: 'email'; alias?: string }
+  | { name: 'firstName'; alias?: string }
+  | { name: 'lastName'; alias?: string }
+  | { name: 'password'; alias?: string }
+  | { name: 'role'; alias?: string }
+  | { name: 'offers'; alias?: string }
+  | { name: 'adress'; alias?: string }
+
 export interface OfferCreateManyWithoutUserInput {
   create?: OfferCreateWithoutUserInput[]
   connect?: OfferWhereUniqueInput[]
 }
 export type OfferCreateManyWithoutUserInputInputObject =
   | Extract<keyof OfferCreateManyWithoutUserInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
+  | { name: 'create'; alias?: string }
+  | { name: 'connect'; alias?: string }
+
 export interface OfferCreateWithoutUserInput {
   id?: string | null
   active?: boolean | null
@@ -5910,31 +6008,31 @@ export interface OfferCreateWithoutUserInput {
 }
 export type OfferCreateWithoutUserInputInputObject =
   | Extract<keyof OfferCreateWithoutUserInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'active', alias?: string  } 
-  | { name: 'publicOffer', alias?: string  } 
-  | { name: 'amount', alias?: string  } 
-  | { name: 'deletedAt', alias?: string  } 
-  | { name: 'email', alias?: string  } 
-  | { name: 'firstName', alias?: string  } 
-  | { name: 'lastName', alias?: string  } 
-  | { name: 'transactions', alias?: string  } 
-  | { name: 'beneficator', alias?: string  } 
-  | { name: 'price', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'description', alias?: string  } 
-  | { name: 'transport', alias?: string  } 
-  | { name: 'gallery', alias?: string  } 
-  
+  | { name: 'id'; alias?: string }
+  | { name: 'active'; alias?: string }
+  | { name: 'publicOffer'; alias?: string }
+  | { name: 'amount'; alias?: string }
+  | { name: 'deletedAt'; alias?: string }
+  | { name: 'email'; alias?: string }
+  | { name: 'firstName'; alias?: string }
+  | { name: 'lastName'; alias?: string }
+  | { name: 'transactions'; alias?: string }
+  | { name: 'beneficator'; alias?: string }
+  | { name: 'price'; alias?: string }
+  | { name: 'name'; alias?: string }
+  | { name: 'description'; alias?: string }
+  | { name: 'transport'; alias?: string }
+  | { name: 'gallery'; alias?: string }
+
 export interface TransactionCreateManyWithoutOfferInput {
   create?: TransactionCreateWithoutOfferInput[]
   connect?: TransactionWhereUniqueInput[]
 }
 export type TransactionCreateManyWithoutOfferInputInputObject =
   | Extract<keyof TransactionCreateManyWithoutOfferInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
+  | { name: 'create'; alias?: string }
+  | { name: 'connect'; alias?: string }
+
 export interface TransactionCreateWithoutOfferInput {
   id?: string | null
   amount?: number
@@ -5948,25 +6046,25 @@ export interface TransactionCreateWithoutOfferInput {
 }
 export type TransactionCreateWithoutOfferInputInputObject =
   | Extract<keyof TransactionCreateWithoutOfferInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'amount', alias?: string  } 
-  | { name: 'email', alias?: string  } 
-  | { name: 'firstName', alias?: string  } 
-  | { name: 'lastName', alias?: string  } 
-  | { name: 'comment', alias?: string  } 
-  | { name: 'deletedAt', alias?: string  } 
-  | { name: 'donatedAmount', alias?: string  } 
-  | { name: 'status', alias?: string  } 
-  
+  | { name: 'id'; alias?: string }
+  | { name: 'amount'; alias?: string }
+  | { name: 'email'; alias?: string }
+  | { name: 'firstName'; alias?: string }
+  | { name: 'lastName'; alias?: string }
+  | { name: 'comment'; alias?: string }
+  | { name: 'deletedAt'; alias?: string }
+  | { name: 'donatedAmount'; alias?: string }
+  | { name: 'status'; alias?: string }
+
 export interface OrganizationCreateOneWithoutOffersInput {
   create?: OrganizationCreateWithoutOffersInput | null
   connect?: OrganizationWhereUniqueInput | null
 }
 export type OrganizationCreateOneWithoutOffersInputInputObject =
   | Extract<keyof OrganizationCreateOneWithoutOffersInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
+  | { name: 'create'; alias?: string }
+  | { name: 'connect'; alias?: string }
+
 export interface OrganizationCreateWithoutOffersInput {
   id?: string | null
   apiId?: number | null
@@ -5982,27 +6080,27 @@ export interface OrganizationCreateWithoutOffersInput {
 }
 export type OrganizationCreateWithoutOffersInputInputObject =
   | Extract<keyof OrganizationCreateWithoutOffersInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'apiId', alias?: string  } 
-  | { name: 'apiSecret', alias?: string  } 
-  | { name: 'organizationId', alias?: string  } 
-  | { name: 'active', alias?: string  } 
-  | { name: 'logo', alias?: string  } 
-  | { name: 'deletedAt', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'projectId', alias?: string  } 
-  | { name: 'description', alias?: string  } 
-  | { name: 'url', alias?: string  } 
-  
+  | { name: 'id'; alias?: string }
+  | { name: 'apiId'; alias?: string }
+  | { name: 'apiSecret'; alias?: string }
+  | { name: 'organizationId'; alias?: string }
+  | { name: 'active'; alias?: string }
+  | { name: 'logo'; alias?: string }
+  | { name: 'deletedAt'; alias?: string }
+  | { name: 'name'; alias?: string }
+  | { name: 'projectId'; alias?: string }
+  | { name: 'description'; alias?: string }
+  | { name: 'url'; alias?: string }
+
 export interface FileCreateOneInput {
   create?: FileCreateInput | null
   connect?: FileWhereUniqueInput | null
 }
 export type FileCreateOneInputInputObject =
   | Extract<keyof FileCreateOneInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
+  | { name: 'create'; alias?: string }
+  | { name: 'connect'; alias?: string }
+
 export interface FileCreateInput {
   id?: string | null
   key?: string
@@ -6013,49 +6111,49 @@ export interface FileCreateInput {
 }
 export type FileCreateInputInputObject =
   | Extract<keyof FileCreateInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'key', alias?: string  } 
-  | { name: 'fileName', alias?: string  } 
-  | { name: 'mimeType', alias?: string  } 
-  | { name: 'encoding', alias?: string  } 
-  | { name: 'url', alias?: string  } 
-  
+  | { name: 'id'; alias?: string }
+  | { name: 'key'; alias?: string }
+  | { name: 'fileName'; alias?: string }
+  | { name: 'mimeType'; alias?: string }
+  | { name: 'encoding'; alias?: string }
+  | { name: 'url'; alias?: string }
+
 export interface GalleryCreateOneInput {
   create?: GalleryCreateInput | null
   connect?: GalleryWhereUniqueInput | null
 }
 export type GalleryCreateOneInputInputObject =
   | Extract<keyof GalleryCreateOneInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
+  | { name: 'create'; alias?: string }
+  | { name: 'connect'; alias?: string }
+
 export interface GalleryCreateInput {
   id?: string | null
   images?: FileCreateManyInput | null
 }
 export type GalleryCreateInputInputObject =
   | Extract<keyof GalleryCreateInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'images', alias?: string  } 
-  
+  | { name: 'id'; alias?: string }
+  | { name: 'images'; alias?: string }
+
 export interface FileCreateManyInput {
   create?: FileCreateInput[]
   connect?: FileWhereUniqueInput[]
 }
 export type FileCreateManyInputInputObject =
   | Extract<keyof FileCreateManyInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
+  | { name: 'create'; alias?: string }
+  | { name: 'connect'; alias?: string }
+
 export interface AdressCreateOneInput {
   create?: AdressCreateInput | null
   connect?: AdressWhereUniqueInput | null
 }
 export type AdressCreateOneInputInputObject =
   | Extract<keyof AdressCreateOneInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
+  | { name: 'create'; alias?: string }
+  | { name: 'connect'; alias?: string }
+
 export interface AdressCreateInput {
   id?: string | null
   city?: string | null
@@ -6064,11 +6162,11 @@ export interface AdressCreateInput {
 }
 export type AdressCreateInputInputObject =
   | Extract<keyof AdressCreateInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'city', alias?: string  } 
-  | { name: 'street', alias?: string  } 
-  | { name: 'postalCode', alias?: string  } 
-  
+  | { name: 'id'; alias?: string }
+  | { name: 'city'; alias?: string }
+  | { name: 'street'; alias?: string }
+  | { name: 'postalCode'; alias?: string }
+
 export interface UserUpdateInput {
   email?: string | null
   firstName?: string | null
@@ -6080,14 +6178,14 @@ export interface UserUpdateInput {
 }
 export type UserUpdateInputInputObject =
   | Extract<keyof UserUpdateInput, string>
-  | { name: 'email', alias?: string  } 
-  | { name: 'firstName', alias?: string  } 
-  | { name: 'lastName', alias?: string  } 
-  | { name: 'password', alias?: string  } 
-  | { name: 'role', alias?: string  } 
-  | { name: 'offers', alias?: string  } 
-  | { name: 'adress', alias?: string  } 
-  
+  | { name: 'email'; alias?: string }
+  | { name: 'firstName'; alias?: string }
+  | { name: 'lastName'; alias?: string }
+  | { name: 'password'; alias?: string }
+  | { name: 'role'; alias?: string }
+  | { name: 'offers'; alias?: string }
+  | { name: 'adress'; alias?: string }
+
 export interface OfferUpdateManyWithoutUserInput {
   create?: OfferCreateWithoutUserInput[]
   delete?: OfferWhereUniqueInput[]
@@ -6101,25 +6199,25 @@ export interface OfferUpdateManyWithoutUserInput {
 }
 export type OfferUpdateManyWithoutUserInputInputObject =
   | Extract<keyof OfferUpdateManyWithoutUserInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'delete', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  | { name: 'set', alias?: string  } 
-  | { name: 'disconnect', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'upsert', alias?: string  } 
-  | { name: 'deleteMany', alias?: string  } 
-  | { name: 'updateMany', alias?: string  } 
-  
+  | { name: 'create'; alias?: string }
+  | { name: 'delete'; alias?: string }
+  | { name: 'connect'; alias?: string }
+  | { name: 'set'; alias?: string }
+  | { name: 'disconnect'; alias?: string }
+  | { name: 'update'; alias?: string }
+  | { name: 'upsert'; alias?: string }
+  | { name: 'deleteMany'; alias?: string }
+  | { name: 'updateMany'; alias?: string }
+
 export interface OfferUpdateWithWhereUniqueWithoutUserInput {
   where?: OfferWhereUniqueInput
   data?: OfferUpdateWithoutUserDataInput
 }
 export type OfferUpdateWithWhereUniqueWithoutUserInputInputObject =
   | Extract<keyof OfferUpdateWithWhereUniqueWithoutUserInput, string>
-  | { name: 'where', alias?: string  } 
-  | { name: 'data', alias?: string  } 
-  
+  | { name: 'where'; alias?: string }
+  | { name: 'data'; alias?: string }
+
 export interface OfferUpdateWithoutUserDataInput {
   active?: boolean | null
   publicOffer?: boolean | null
@@ -6138,21 +6236,21 @@ export interface OfferUpdateWithoutUserDataInput {
 }
 export type OfferUpdateWithoutUserDataInputInputObject =
   | Extract<keyof OfferUpdateWithoutUserDataInput, string>
-  | { name: 'active', alias?: string  } 
-  | { name: 'publicOffer', alias?: string  } 
-  | { name: 'amount', alias?: string  } 
-  | { name: 'deletedAt', alias?: string  } 
-  | { name: 'email', alias?: string  } 
-  | { name: 'firstName', alias?: string  } 
-  | { name: 'lastName', alias?: string  } 
-  | { name: 'transactions', alias?: string  } 
-  | { name: 'beneficator', alias?: string  } 
-  | { name: 'price', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'description', alias?: string  } 
-  | { name: 'transport', alias?: string  } 
-  | { name: 'gallery', alias?: string  } 
-  
+  | { name: 'active'; alias?: string }
+  | { name: 'publicOffer'; alias?: string }
+  | { name: 'amount'; alias?: string }
+  | { name: 'deletedAt'; alias?: string }
+  | { name: 'email'; alias?: string }
+  | { name: 'firstName'; alias?: string }
+  | { name: 'lastName'; alias?: string }
+  | { name: 'transactions'; alias?: string }
+  | { name: 'beneficator'; alias?: string }
+  | { name: 'price'; alias?: string }
+  | { name: 'name'; alias?: string }
+  | { name: 'description'; alias?: string }
+  | { name: 'transport'; alias?: string }
+  | { name: 'gallery'; alias?: string }
+
 export interface TransactionUpdateManyWithoutOfferInput {
   create?: TransactionCreateWithoutOfferInput[]
   delete?: TransactionWhereUniqueInput[]
@@ -6166,25 +6264,25 @@ export interface TransactionUpdateManyWithoutOfferInput {
 }
 export type TransactionUpdateManyWithoutOfferInputInputObject =
   | Extract<keyof TransactionUpdateManyWithoutOfferInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'delete', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  | { name: 'set', alias?: string  } 
-  | { name: 'disconnect', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'upsert', alias?: string  } 
-  | { name: 'deleteMany', alias?: string  } 
-  | { name: 'updateMany', alias?: string  } 
-  
+  | { name: 'create'; alias?: string }
+  | { name: 'delete'; alias?: string }
+  | { name: 'connect'; alias?: string }
+  | { name: 'set'; alias?: string }
+  | { name: 'disconnect'; alias?: string }
+  | { name: 'update'; alias?: string }
+  | { name: 'upsert'; alias?: string }
+  | { name: 'deleteMany'; alias?: string }
+  | { name: 'updateMany'; alias?: string }
+
 export interface TransactionUpdateWithWhereUniqueWithoutOfferInput {
   where?: TransactionWhereUniqueInput
   data?: TransactionUpdateWithoutOfferDataInput
 }
 export type TransactionUpdateWithWhereUniqueWithoutOfferInputInputObject =
   | Extract<keyof TransactionUpdateWithWhereUniqueWithoutOfferInput, string>
-  | { name: 'where', alias?: string  } 
-  | { name: 'data', alias?: string  } 
-  
+  | { name: 'where'; alias?: string }
+  | { name: 'data'; alias?: string }
+
 export interface TransactionUpdateWithoutOfferDataInput {
   amount?: number | null
   email?: string | null
@@ -6197,15 +6295,15 @@ export interface TransactionUpdateWithoutOfferDataInput {
 }
 export type TransactionUpdateWithoutOfferDataInputInputObject =
   | Extract<keyof TransactionUpdateWithoutOfferDataInput, string>
-  | { name: 'amount', alias?: string  } 
-  | { name: 'email', alias?: string  } 
-  | { name: 'firstName', alias?: string  } 
-  | { name: 'lastName', alias?: string  } 
-  | { name: 'comment', alias?: string  } 
-  | { name: 'deletedAt', alias?: string  } 
-  | { name: 'donatedAmount', alias?: string  } 
-  | { name: 'status', alias?: string  } 
-  
+  | { name: 'amount'; alias?: string }
+  | { name: 'email'; alias?: string }
+  | { name: 'firstName'; alias?: string }
+  | { name: 'lastName'; alias?: string }
+  | { name: 'comment'; alias?: string }
+  | { name: 'deletedAt'; alias?: string }
+  | { name: 'donatedAmount'; alias?: string }
+  | { name: 'status'; alias?: string }
+
 export interface TransactionUpsertWithWhereUniqueWithoutOfferInput {
   where?: TransactionWhereUniqueInput
   update?: TransactionUpdateWithoutOfferDataInput
@@ -6213,10 +6311,10 @@ export interface TransactionUpsertWithWhereUniqueWithoutOfferInput {
 }
 export type TransactionUpsertWithWhereUniqueWithoutOfferInputInputObject =
   | Extract<keyof TransactionUpsertWithWhereUniqueWithoutOfferInput, string>
-  | { name: 'where', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'create', alias?: string  } 
-  
+  | { name: 'where'; alias?: string }
+  | { name: 'update'; alias?: string }
+  | { name: 'create'; alias?: string }
+
 export interface TransactionScalarWhereInput {
   id?: string | null
   id_not?: string | null
@@ -6338,133 +6436,133 @@ export interface TransactionScalarWhereInput {
 }
 export type TransactionScalarWhereInputInputObject =
   | Extract<keyof TransactionScalarWhereInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'id_not', alias?: string  } 
-  | { name: 'id_in', alias?: string  } 
-  | { name: 'id_not_in', alias?: string  } 
-  | { name: 'id_lt', alias?: string  } 
-  | { name: 'id_lte', alias?: string  } 
-  | { name: 'id_gt', alias?: string  } 
-  | { name: 'id_gte', alias?: string  } 
-  | { name: 'id_contains', alias?: string  } 
-  | { name: 'id_not_contains', alias?: string  } 
-  | { name: 'id_starts_with', alias?: string  } 
-  | { name: 'id_not_starts_with', alias?: string  } 
-  | { name: 'id_ends_with', alias?: string  } 
-  | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'amount', alias?: string  } 
-  | { name: 'amount_not', alias?: string  } 
-  | { name: 'amount_in', alias?: string  } 
-  | { name: 'amount_not_in', alias?: string  } 
-  | { name: 'amount_lt', alias?: string  } 
-  | { name: 'amount_lte', alias?: string  } 
-  | { name: 'amount_gt', alias?: string  } 
-  | { name: 'amount_gte', alias?: string  } 
-  | { name: 'email', alias?: string  } 
-  | { name: 'email_not', alias?: string  } 
-  | { name: 'email_in', alias?: string  } 
-  | { name: 'email_not_in', alias?: string  } 
-  | { name: 'email_lt', alias?: string  } 
-  | { name: 'email_lte', alias?: string  } 
-  | { name: 'email_gt', alias?: string  } 
-  | { name: 'email_gte', alias?: string  } 
-  | { name: 'email_contains', alias?: string  } 
-  | { name: 'email_not_contains', alias?: string  } 
-  | { name: 'email_starts_with', alias?: string  } 
-  | { name: 'email_not_starts_with', alias?: string  } 
-  | { name: 'email_ends_with', alias?: string  } 
-  | { name: 'email_not_ends_with', alias?: string  } 
-  | { name: 'firstName', alias?: string  } 
-  | { name: 'firstName_not', alias?: string  } 
-  | { name: 'firstName_in', alias?: string  } 
-  | { name: 'firstName_not_in', alias?: string  } 
-  | { name: 'firstName_lt', alias?: string  } 
-  | { name: 'firstName_lte', alias?: string  } 
-  | { name: 'firstName_gt', alias?: string  } 
-  | { name: 'firstName_gte', alias?: string  } 
-  | { name: 'firstName_contains', alias?: string  } 
-  | { name: 'firstName_not_contains', alias?: string  } 
-  | { name: 'firstName_starts_with', alias?: string  } 
-  | { name: 'firstName_not_starts_with', alias?: string  } 
-  | { name: 'firstName_ends_with', alias?: string  } 
-  | { name: 'firstName_not_ends_with', alias?: string  } 
-  | { name: 'lastName', alias?: string  } 
-  | { name: 'lastName_not', alias?: string  } 
-  | { name: 'lastName_in', alias?: string  } 
-  | { name: 'lastName_not_in', alias?: string  } 
-  | { name: 'lastName_lt', alias?: string  } 
-  | { name: 'lastName_lte', alias?: string  } 
-  | { name: 'lastName_gt', alias?: string  } 
-  | { name: 'lastName_gte', alias?: string  } 
-  | { name: 'lastName_contains', alias?: string  } 
-  | { name: 'lastName_not_contains', alias?: string  } 
-  | { name: 'lastName_starts_with', alias?: string  } 
-  | { name: 'lastName_not_starts_with', alias?: string  } 
-  | { name: 'lastName_ends_with', alias?: string  } 
-  | { name: 'lastName_not_ends_with', alias?: string  } 
-  | { name: 'comment', alias?: string  } 
-  | { name: 'comment_not', alias?: string  } 
-  | { name: 'comment_in', alias?: string  } 
-  | { name: 'comment_not_in', alias?: string  } 
-  | { name: 'comment_lt', alias?: string  } 
-  | { name: 'comment_lte', alias?: string  } 
-  | { name: 'comment_gt', alias?: string  } 
-  | { name: 'comment_gte', alias?: string  } 
-  | { name: 'comment_contains', alias?: string  } 
-  | { name: 'comment_not_contains', alias?: string  } 
-  | { name: 'comment_starts_with', alias?: string  } 
-  | { name: 'comment_not_starts_with', alias?: string  } 
-  | { name: 'comment_ends_with', alias?: string  } 
-  | { name: 'comment_not_ends_with', alias?: string  } 
-  | { name: 'createdAt', alias?: string  } 
-  | { name: 'createdAt_not', alias?: string  } 
-  | { name: 'createdAt_in', alias?: string  } 
-  | { name: 'createdAt_not_in', alias?: string  } 
-  | { name: 'createdAt_lt', alias?: string  } 
-  | { name: 'createdAt_lte', alias?: string  } 
-  | { name: 'createdAt_gt', alias?: string  } 
-  | { name: 'createdAt_gte', alias?: string  } 
-  | { name: 'updatedAt', alias?: string  } 
-  | { name: 'updatedAt_not', alias?: string  } 
-  | { name: 'updatedAt_in', alias?: string  } 
-  | { name: 'updatedAt_not_in', alias?: string  } 
-  | { name: 'updatedAt_lt', alias?: string  } 
-  | { name: 'updatedAt_lte', alias?: string  } 
-  | { name: 'updatedAt_gt', alias?: string  } 
-  | { name: 'updatedAt_gte', alias?: string  } 
-  | { name: 'deletedAt', alias?: string  } 
-  | { name: 'deletedAt_not', alias?: string  } 
-  | { name: 'deletedAt_in', alias?: string  } 
-  | { name: 'deletedAt_not_in', alias?: string  } 
-  | { name: 'deletedAt_lt', alias?: string  } 
-  | { name: 'deletedAt_lte', alias?: string  } 
-  | { name: 'deletedAt_gt', alias?: string  } 
-  | { name: 'deletedAt_gte', alias?: string  } 
-  | { name: 'donatedAmount', alias?: string  } 
-  | { name: 'donatedAmount_not', alias?: string  } 
-  | { name: 'donatedAmount_in', alias?: string  } 
-  | { name: 'donatedAmount_not_in', alias?: string  } 
-  | { name: 'donatedAmount_lt', alias?: string  } 
-  | { name: 'donatedAmount_lte', alias?: string  } 
-  | { name: 'donatedAmount_gt', alias?: string  } 
-  | { name: 'donatedAmount_gte', alias?: string  } 
-  | { name: 'status', alias?: string  } 
-  | { name: 'status_not', alias?: string  } 
-  | { name: 'status_in', alias?: string  } 
-  | { name: 'status_not_in', alias?: string  } 
-  | { name: 'AND', alias?: string  } 
-  | { name: 'OR', alias?: string  } 
-  | { name: 'NOT', alias?: string  } 
-  
+  | { name: 'id'; alias?: string }
+  | { name: 'id_not'; alias?: string }
+  | { name: 'id_in'; alias?: string }
+  | { name: 'id_not_in'; alias?: string }
+  | { name: 'id_lt'; alias?: string }
+  | { name: 'id_lte'; alias?: string }
+  | { name: 'id_gt'; alias?: string }
+  | { name: 'id_gte'; alias?: string }
+  | { name: 'id_contains'; alias?: string }
+  | { name: 'id_not_contains'; alias?: string }
+  | { name: 'id_starts_with'; alias?: string }
+  | { name: 'id_not_starts_with'; alias?: string }
+  | { name: 'id_ends_with'; alias?: string }
+  | { name: 'id_not_ends_with'; alias?: string }
+  | { name: 'amount'; alias?: string }
+  | { name: 'amount_not'; alias?: string }
+  | { name: 'amount_in'; alias?: string }
+  | { name: 'amount_not_in'; alias?: string }
+  | { name: 'amount_lt'; alias?: string }
+  | { name: 'amount_lte'; alias?: string }
+  | { name: 'amount_gt'; alias?: string }
+  | { name: 'amount_gte'; alias?: string }
+  | { name: 'email'; alias?: string }
+  | { name: 'email_not'; alias?: string }
+  | { name: 'email_in'; alias?: string }
+  | { name: 'email_not_in'; alias?: string }
+  | { name: 'email_lt'; alias?: string }
+  | { name: 'email_lte'; alias?: string }
+  | { name: 'email_gt'; alias?: string }
+  | { name: 'email_gte'; alias?: string }
+  | { name: 'email_contains'; alias?: string }
+  | { name: 'email_not_contains'; alias?: string }
+  | { name: 'email_starts_with'; alias?: string }
+  | { name: 'email_not_starts_with'; alias?: string }
+  | { name: 'email_ends_with'; alias?: string }
+  | { name: 'email_not_ends_with'; alias?: string }
+  | { name: 'firstName'; alias?: string }
+  | { name: 'firstName_not'; alias?: string }
+  | { name: 'firstName_in'; alias?: string }
+  | { name: 'firstName_not_in'; alias?: string }
+  | { name: 'firstName_lt'; alias?: string }
+  | { name: 'firstName_lte'; alias?: string }
+  | { name: 'firstName_gt'; alias?: string }
+  | { name: 'firstName_gte'; alias?: string }
+  | { name: 'firstName_contains'; alias?: string }
+  | { name: 'firstName_not_contains'; alias?: string }
+  | { name: 'firstName_starts_with'; alias?: string }
+  | { name: 'firstName_not_starts_with'; alias?: string }
+  | { name: 'firstName_ends_with'; alias?: string }
+  | { name: 'firstName_not_ends_with'; alias?: string }
+  | { name: 'lastName'; alias?: string }
+  | { name: 'lastName_not'; alias?: string }
+  | { name: 'lastName_in'; alias?: string }
+  | { name: 'lastName_not_in'; alias?: string }
+  | { name: 'lastName_lt'; alias?: string }
+  | { name: 'lastName_lte'; alias?: string }
+  | { name: 'lastName_gt'; alias?: string }
+  | { name: 'lastName_gte'; alias?: string }
+  | { name: 'lastName_contains'; alias?: string }
+  | { name: 'lastName_not_contains'; alias?: string }
+  | { name: 'lastName_starts_with'; alias?: string }
+  | { name: 'lastName_not_starts_with'; alias?: string }
+  | { name: 'lastName_ends_with'; alias?: string }
+  | { name: 'lastName_not_ends_with'; alias?: string }
+  | { name: 'comment'; alias?: string }
+  | { name: 'comment_not'; alias?: string }
+  | { name: 'comment_in'; alias?: string }
+  | { name: 'comment_not_in'; alias?: string }
+  | { name: 'comment_lt'; alias?: string }
+  | { name: 'comment_lte'; alias?: string }
+  | { name: 'comment_gt'; alias?: string }
+  | { name: 'comment_gte'; alias?: string }
+  | { name: 'comment_contains'; alias?: string }
+  | { name: 'comment_not_contains'; alias?: string }
+  | { name: 'comment_starts_with'; alias?: string }
+  | { name: 'comment_not_starts_with'; alias?: string }
+  | { name: 'comment_ends_with'; alias?: string }
+  | { name: 'comment_not_ends_with'; alias?: string }
+  | { name: 'createdAt'; alias?: string }
+  | { name: 'createdAt_not'; alias?: string }
+  | { name: 'createdAt_in'; alias?: string }
+  | { name: 'createdAt_not_in'; alias?: string }
+  | { name: 'createdAt_lt'; alias?: string }
+  | { name: 'createdAt_lte'; alias?: string }
+  | { name: 'createdAt_gt'; alias?: string }
+  | { name: 'createdAt_gte'; alias?: string }
+  | { name: 'updatedAt'; alias?: string }
+  | { name: 'updatedAt_not'; alias?: string }
+  | { name: 'updatedAt_in'; alias?: string }
+  | { name: 'updatedAt_not_in'; alias?: string }
+  | { name: 'updatedAt_lt'; alias?: string }
+  | { name: 'updatedAt_lte'; alias?: string }
+  | { name: 'updatedAt_gt'; alias?: string }
+  | { name: 'updatedAt_gte'; alias?: string }
+  | { name: 'deletedAt'; alias?: string }
+  | { name: 'deletedAt_not'; alias?: string }
+  | { name: 'deletedAt_in'; alias?: string }
+  | { name: 'deletedAt_not_in'; alias?: string }
+  | { name: 'deletedAt_lt'; alias?: string }
+  | { name: 'deletedAt_lte'; alias?: string }
+  | { name: 'deletedAt_gt'; alias?: string }
+  | { name: 'deletedAt_gte'; alias?: string }
+  | { name: 'donatedAmount'; alias?: string }
+  | { name: 'donatedAmount_not'; alias?: string }
+  | { name: 'donatedAmount_in'; alias?: string }
+  | { name: 'donatedAmount_not_in'; alias?: string }
+  | { name: 'donatedAmount_lt'; alias?: string }
+  | { name: 'donatedAmount_lte'; alias?: string }
+  | { name: 'donatedAmount_gt'; alias?: string }
+  | { name: 'donatedAmount_gte'; alias?: string }
+  | { name: 'status'; alias?: string }
+  | { name: 'status_not'; alias?: string }
+  | { name: 'status_in'; alias?: string }
+  | { name: 'status_not_in'; alias?: string }
+  | { name: 'AND'; alias?: string }
+  | { name: 'OR'; alias?: string }
+  | { name: 'NOT'; alias?: string }
+
 export interface TransactionUpdateManyWithWhereNestedInput {
   where?: TransactionScalarWhereInput
   data?: TransactionUpdateManyDataInput
 }
 export type TransactionUpdateManyWithWhereNestedInputInputObject =
   | Extract<keyof TransactionUpdateManyWithWhereNestedInput, string>
-  | { name: 'where', alias?: string  } 
-  | { name: 'data', alias?: string  } 
-  
+  | { name: 'where'; alias?: string }
+  | { name: 'data'; alias?: string }
+
 export interface TransactionUpdateManyDataInput {
   amount?: number | null
   email?: string | null
@@ -6477,15 +6575,15 @@ export interface TransactionUpdateManyDataInput {
 }
 export type TransactionUpdateManyDataInputInputObject =
   | Extract<keyof TransactionUpdateManyDataInput, string>
-  | { name: 'amount', alias?: string  } 
-  | { name: 'email', alias?: string  } 
-  | { name: 'firstName', alias?: string  } 
-  | { name: 'lastName', alias?: string  } 
-  | { name: 'comment', alias?: string  } 
-  | { name: 'deletedAt', alias?: string  } 
-  | { name: 'donatedAmount', alias?: string  } 
-  | { name: 'status', alias?: string  } 
-  
+  | { name: 'amount'; alias?: string }
+  | { name: 'email'; alias?: string }
+  | { name: 'firstName'; alias?: string }
+  | { name: 'lastName'; alias?: string }
+  | { name: 'comment'; alias?: string }
+  | { name: 'deletedAt'; alias?: string }
+  | { name: 'donatedAmount'; alias?: string }
+  | { name: 'status'; alias?: string }
+
 export interface OrganizationUpdateOneRequiredWithoutOffersInput {
   create?: OrganizationCreateWithoutOffersInput | null
   update?: OrganizationUpdateWithoutOffersDataInput | null
@@ -6494,11 +6592,11 @@ export interface OrganizationUpdateOneRequiredWithoutOffersInput {
 }
 export type OrganizationUpdateOneRequiredWithoutOffersInputInputObject =
   | Extract<keyof OrganizationUpdateOneRequiredWithoutOffersInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'upsert', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
+  | { name: 'create'; alias?: string }
+  | { name: 'update'; alias?: string }
+  | { name: 'upsert'; alias?: string }
+  | { name: 'connect'; alias?: string }
+
 export interface OrganizationUpdateWithoutOffersDataInput {
   apiId?: number | null
   apiSecret?: string | null
@@ -6513,17 +6611,17 @@ export interface OrganizationUpdateWithoutOffersDataInput {
 }
 export type OrganizationUpdateWithoutOffersDataInputInputObject =
   | Extract<keyof OrganizationUpdateWithoutOffersDataInput, string>
-  | { name: 'apiId', alias?: string  } 
-  | { name: 'apiSecret', alias?: string  } 
-  | { name: 'organizationId', alias?: string  } 
-  | { name: 'active', alias?: string  } 
-  | { name: 'logo', alias?: string  } 
-  | { name: 'deletedAt', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'projectId', alias?: string  } 
-  | { name: 'description', alias?: string  } 
-  | { name: 'url', alias?: string  } 
-  
+  | { name: 'apiId'; alias?: string }
+  | { name: 'apiSecret'; alias?: string }
+  | { name: 'organizationId'; alias?: string }
+  | { name: 'active'; alias?: string }
+  | { name: 'logo'; alias?: string }
+  | { name: 'deletedAt'; alias?: string }
+  | { name: 'name'; alias?: string }
+  | { name: 'projectId'; alias?: string }
+  | { name: 'description'; alias?: string }
+  | { name: 'url'; alias?: string }
+
 export interface FileUpdateOneRequiredInput {
   create?: FileCreateInput | null
   update?: FileUpdateDataInput | null
@@ -6532,11 +6630,11 @@ export interface FileUpdateOneRequiredInput {
 }
 export type FileUpdateOneRequiredInputInputObject =
   | Extract<keyof FileUpdateOneRequiredInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'upsert', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
+  | { name: 'create'; alias?: string }
+  | { name: 'update'; alias?: string }
+  | { name: 'upsert'; alias?: string }
+  | { name: 'connect'; alias?: string }
+
 export interface FileUpdateDataInput {
   key?: string | null
   fileName?: string | null
@@ -6546,30 +6644,30 @@ export interface FileUpdateDataInput {
 }
 export type FileUpdateDataInputInputObject =
   | Extract<keyof FileUpdateDataInput, string>
-  | { name: 'key', alias?: string  } 
-  | { name: 'fileName', alias?: string  } 
-  | { name: 'mimeType', alias?: string  } 
-  | { name: 'encoding', alias?: string  } 
-  | { name: 'url', alias?: string  } 
-  
+  | { name: 'key'; alias?: string }
+  | { name: 'fileName'; alias?: string }
+  | { name: 'mimeType'; alias?: string }
+  | { name: 'encoding'; alias?: string }
+  | { name: 'url'; alias?: string }
+
 export interface FileUpsertNestedInput {
   update?: FileUpdateDataInput
   create?: FileCreateInput
 }
 export type FileUpsertNestedInputInputObject =
   | Extract<keyof FileUpsertNestedInput, string>
-  | { name: 'update', alias?: string  } 
-  | { name: 'create', alias?: string  } 
-  
+  | { name: 'update'; alias?: string }
+  | { name: 'create'; alias?: string }
+
 export interface OrganizationUpsertWithoutOffersInput {
   update?: OrganizationUpdateWithoutOffersDataInput
   create?: OrganizationCreateWithoutOffersInput
 }
 export type OrganizationUpsertWithoutOffersInputInputObject =
   | Extract<keyof OrganizationUpsertWithoutOffersInput, string>
-  | { name: 'update', alias?: string  } 
-  | { name: 'create', alias?: string  } 
-  
+  | { name: 'update'; alias?: string }
+  | { name: 'create'; alias?: string }
+
 export interface GalleryUpdateOneRequiredInput {
   create?: GalleryCreateInput | null
   update?: GalleryUpdateDataInput | null
@@ -6578,18 +6676,18 @@ export interface GalleryUpdateOneRequiredInput {
 }
 export type GalleryUpdateOneRequiredInputInputObject =
   | Extract<keyof GalleryUpdateOneRequiredInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'upsert', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
+  | { name: 'create'; alias?: string }
+  | { name: 'update'; alias?: string }
+  | { name: 'upsert'; alias?: string }
+  | { name: 'connect'; alias?: string }
+
 export interface GalleryUpdateDataInput {
   images?: FileUpdateManyInput | null
 }
 export type GalleryUpdateDataInputInputObject =
   | Extract<keyof GalleryUpdateDataInput, string>
-  | { name: 'images', alias?: string  } 
-  
+  | { name: 'images'; alias?: string }
+
 export interface FileUpdateManyInput {
   create?: FileCreateInput[]
   update?: FileUpdateWithWhereUniqueNestedInput[]
@@ -6603,25 +6701,25 @@ export interface FileUpdateManyInput {
 }
 export type FileUpdateManyInputInputObject =
   | Extract<keyof FileUpdateManyInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'upsert', alias?: string  } 
-  | { name: 'delete', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  | { name: 'set', alias?: string  } 
-  | { name: 'disconnect', alias?: string  } 
-  | { name: 'deleteMany', alias?: string  } 
-  | { name: 'updateMany', alias?: string  } 
-  
+  | { name: 'create'; alias?: string }
+  | { name: 'update'; alias?: string }
+  | { name: 'upsert'; alias?: string }
+  | { name: 'delete'; alias?: string }
+  | { name: 'connect'; alias?: string }
+  | { name: 'set'; alias?: string }
+  | { name: 'disconnect'; alias?: string }
+  | { name: 'deleteMany'; alias?: string }
+  | { name: 'updateMany'; alias?: string }
+
 export interface FileUpdateWithWhereUniqueNestedInput {
   where?: FileWhereUniqueInput
   data?: FileUpdateDataInput
 }
 export type FileUpdateWithWhereUniqueNestedInputInputObject =
   | Extract<keyof FileUpdateWithWhereUniqueNestedInput, string>
-  | { name: 'where', alias?: string  } 
-  | { name: 'data', alias?: string  } 
-  
+  | { name: 'where'; alias?: string }
+  | { name: 'data'; alias?: string }
+
 export interface FileUpsertWithWhereUniqueNestedInput {
   where?: FileWhereUniqueInput
   update?: FileUpdateDataInput
@@ -6629,10 +6727,10 @@ export interface FileUpsertWithWhereUniqueNestedInput {
 }
 export type FileUpsertWithWhereUniqueNestedInputInputObject =
   | Extract<keyof FileUpsertWithWhereUniqueNestedInput, string>
-  | { name: 'where', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'create', alias?: string  } 
-  
+  | { name: 'where'; alias?: string }
+  | { name: 'update'; alias?: string }
+  | { name: 'create'; alias?: string }
+
 export interface FileScalarWhereInput {
   id?: string | null
   id_not?: string | null
@@ -6724,103 +6822,103 @@ export interface FileScalarWhereInput {
 }
 export type FileScalarWhereInputInputObject =
   | Extract<keyof FileScalarWhereInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'id_not', alias?: string  } 
-  | { name: 'id_in', alias?: string  } 
-  | { name: 'id_not_in', alias?: string  } 
-  | { name: 'id_lt', alias?: string  } 
-  | { name: 'id_lte', alias?: string  } 
-  | { name: 'id_gt', alias?: string  } 
-  | { name: 'id_gte', alias?: string  } 
-  | { name: 'id_contains', alias?: string  } 
-  | { name: 'id_not_contains', alias?: string  } 
-  | { name: 'id_starts_with', alias?: string  } 
-  | { name: 'id_not_starts_with', alias?: string  } 
-  | { name: 'id_ends_with', alias?: string  } 
-  | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'key', alias?: string  } 
-  | { name: 'key_not', alias?: string  } 
-  | { name: 'key_in', alias?: string  } 
-  | { name: 'key_not_in', alias?: string  } 
-  | { name: 'key_lt', alias?: string  } 
-  | { name: 'key_lte', alias?: string  } 
-  | { name: 'key_gt', alias?: string  } 
-  | { name: 'key_gte', alias?: string  } 
-  | { name: 'key_contains', alias?: string  } 
-  | { name: 'key_not_contains', alias?: string  } 
-  | { name: 'key_starts_with', alias?: string  } 
-  | { name: 'key_not_starts_with', alias?: string  } 
-  | { name: 'key_ends_with', alias?: string  } 
-  | { name: 'key_not_ends_with', alias?: string  } 
-  | { name: 'fileName', alias?: string  } 
-  | { name: 'fileName_not', alias?: string  } 
-  | { name: 'fileName_in', alias?: string  } 
-  | { name: 'fileName_not_in', alias?: string  } 
-  | { name: 'fileName_lt', alias?: string  } 
-  | { name: 'fileName_lte', alias?: string  } 
-  | { name: 'fileName_gt', alias?: string  } 
-  | { name: 'fileName_gte', alias?: string  } 
-  | { name: 'fileName_contains', alias?: string  } 
-  | { name: 'fileName_not_contains', alias?: string  } 
-  | { name: 'fileName_starts_with', alias?: string  } 
-  | { name: 'fileName_not_starts_with', alias?: string  } 
-  | { name: 'fileName_ends_with', alias?: string  } 
-  | { name: 'fileName_not_ends_with', alias?: string  } 
-  | { name: 'mimeType', alias?: string  } 
-  | { name: 'mimeType_not', alias?: string  } 
-  | { name: 'mimeType_in', alias?: string  } 
-  | { name: 'mimeType_not_in', alias?: string  } 
-  | { name: 'mimeType_lt', alias?: string  } 
-  | { name: 'mimeType_lte', alias?: string  } 
-  | { name: 'mimeType_gt', alias?: string  } 
-  | { name: 'mimeType_gte', alias?: string  } 
-  | { name: 'mimeType_contains', alias?: string  } 
-  | { name: 'mimeType_not_contains', alias?: string  } 
-  | { name: 'mimeType_starts_with', alias?: string  } 
-  | { name: 'mimeType_not_starts_with', alias?: string  } 
-  | { name: 'mimeType_ends_with', alias?: string  } 
-  | { name: 'mimeType_not_ends_with', alias?: string  } 
-  | { name: 'encoding', alias?: string  } 
-  | { name: 'encoding_not', alias?: string  } 
-  | { name: 'encoding_in', alias?: string  } 
-  | { name: 'encoding_not_in', alias?: string  } 
-  | { name: 'encoding_lt', alias?: string  } 
-  | { name: 'encoding_lte', alias?: string  } 
-  | { name: 'encoding_gt', alias?: string  } 
-  | { name: 'encoding_gte', alias?: string  } 
-  | { name: 'encoding_contains', alias?: string  } 
-  | { name: 'encoding_not_contains', alias?: string  } 
-  | { name: 'encoding_starts_with', alias?: string  } 
-  | { name: 'encoding_not_starts_with', alias?: string  } 
-  | { name: 'encoding_ends_with', alias?: string  } 
-  | { name: 'encoding_not_ends_with', alias?: string  } 
-  | { name: 'url', alias?: string  } 
-  | { name: 'url_not', alias?: string  } 
-  | { name: 'url_in', alias?: string  } 
-  | { name: 'url_not_in', alias?: string  } 
-  | { name: 'url_lt', alias?: string  } 
-  | { name: 'url_lte', alias?: string  } 
-  | { name: 'url_gt', alias?: string  } 
-  | { name: 'url_gte', alias?: string  } 
-  | { name: 'url_contains', alias?: string  } 
-  | { name: 'url_not_contains', alias?: string  } 
-  | { name: 'url_starts_with', alias?: string  } 
-  | { name: 'url_not_starts_with', alias?: string  } 
-  | { name: 'url_ends_with', alias?: string  } 
-  | { name: 'url_not_ends_with', alias?: string  } 
-  | { name: 'AND', alias?: string  } 
-  | { name: 'OR', alias?: string  } 
-  | { name: 'NOT', alias?: string  } 
-  
+  | { name: 'id'; alias?: string }
+  | { name: 'id_not'; alias?: string }
+  | { name: 'id_in'; alias?: string }
+  | { name: 'id_not_in'; alias?: string }
+  | { name: 'id_lt'; alias?: string }
+  | { name: 'id_lte'; alias?: string }
+  | { name: 'id_gt'; alias?: string }
+  | { name: 'id_gte'; alias?: string }
+  | { name: 'id_contains'; alias?: string }
+  | { name: 'id_not_contains'; alias?: string }
+  | { name: 'id_starts_with'; alias?: string }
+  | { name: 'id_not_starts_with'; alias?: string }
+  | { name: 'id_ends_with'; alias?: string }
+  | { name: 'id_not_ends_with'; alias?: string }
+  | { name: 'key'; alias?: string }
+  | { name: 'key_not'; alias?: string }
+  | { name: 'key_in'; alias?: string }
+  | { name: 'key_not_in'; alias?: string }
+  | { name: 'key_lt'; alias?: string }
+  | { name: 'key_lte'; alias?: string }
+  | { name: 'key_gt'; alias?: string }
+  | { name: 'key_gte'; alias?: string }
+  | { name: 'key_contains'; alias?: string }
+  | { name: 'key_not_contains'; alias?: string }
+  | { name: 'key_starts_with'; alias?: string }
+  | { name: 'key_not_starts_with'; alias?: string }
+  | { name: 'key_ends_with'; alias?: string }
+  | { name: 'key_not_ends_with'; alias?: string }
+  | { name: 'fileName'; alias?: string }
+  | { name: 'fileName_not'; alias?: string }
+  | { name: 'fileName_in'; alias?: string }
+  | { name: 'fileName_not_in'; alias?: string }
+  | { name: 'fileName_lt'; alias?: string }
+  | { name: 'fileName_lte'; alias?: string }
+  | { name: 'fileName_gt'; alias?: string }
+  | { name: 'fileName_gte'; alias?: string }
+  | { name: 'fileName_contains'; alias?: string }
+  | { name: 'fileName_not_contains'; alias?: string }
+  | { name: 'fileName_starts_with'; alias?: string }
+  | { name: 'fileName_not_starts_with'; alias?: string }
+  | { name: 'fileName_ends_with'; alias?: string }
+  | { name: 'fileName_not_ends_with'; alias?: string }
+  | { name: 'mimeType'; alias?: string }
+  | { name: 'mimeType_not'; alias?: string }
+  | { name: 'mimeType_in'; alias?: string }
+  | { name: 'mimeType_not_in'; alias?: string }
+  | { name: 'mimeType_lt'; alias?: string }
+  | { name: 'mimeType_lte'; alias?: string }
+  | { name: 'mimeType_gt'; alias?: string }
+  | { name: 'mimeType_gte'; alias?: string }
+  | { name: 'mimeType_contains'; alias?: string }
+  | { name: 'mimeType_not_contains'; alias?: string }
+  | { name: 'mimeType_starts_with'; alias?: string }
+  | { name: 'mimeType_not_starts_with'; alias?: string }
+  | { name: 'mimeType_ends_with'; alias?: string }
+  | { name: 'mimeType_not_ends_with'; alias?: string }
+  | { name: 'encoding'; alias?: string }
+  | { name: 'encoding_not'; alias?: string }
+  | { name: 'encoding_in'; alias?: string }
+  | { name: 'encoding_not_in'; alias?: string }
+  | { name: 'encoding_lt'; alias?: string }
+  | { name: 'encoding_lte'; alias?: string }
+  | { name: 'encoding_gt'; alias?: string }
+  | { name: 'encoding_gte'; alias?: string }
+  | { name: 'encoding_contains'; alias?: string }
+  | { name: 'encoding_not_contains'; alias?: string }
+  | { name: 'encoding_starts_with'; alias?: string }
+  | { name: 'encoding_not_starts_with'; alias?: string }
+  | { name: 'encoding_ends_with'; alias?: string }
+  | { name: 'encoding_not_ends_with'; alias?: string }
+  | { name: 'url'; alias?: string }
+  | { name: 'url_not'; alias?: string }
+  | { name: 'url_in'; alias?: string }
+  | { name: 'url_not_in'; alias?: string }
+  | { name: 'url_lt'; alias?: string }
+  | { name: 'url_lte'; alias?: string }
+  | { name: 'url_gt'; alias?: string }
+  | { name: 'url_gte'; alias?: string }
+  | { name: 'url_contains'; alias?: string }
+  | { name: 'url_not_contains'; alias?: string }
+  | { name: 'url_starts_with'; alias?: string }
+  | { name: 'url_not_starts_with'; alias?: string }
+  | { name: 'url_ends_with'; alias?: string }
+  | { name: 'url_not_ends_with'; alias?: string }
+  | { name: 'AND'; alias?: string }
+  | { name: 'OR'; alias?: string }
+  | { name: 'NOT'; alias?: string }
+
 export interface FileUpdateManyWithWhereNestedInput {
   where?: FileScalarWhereInput
   data?: FileUpdateManyDataInput
 }
 export type FileUpdateManyWithWhereNestedInputInputObject =
   | Extract<keyof FileUpdateManyWithWhereNestedInput, string>
-  | { name: 'where', alias?: string  } 
-  | { name: 'data', alias?: string  } 
-  
+  | { name: 'where'; alias?: string }
+  | { name: 'data'; alias?: string }
+
 export interface FileUpdateManyDataInput {
   key?: string | null
   fileName?: string | null
@@ -6830,21 +6928,21 @@ export interface FileUpdateManyDataInput {
 }
 export type FileUpdateManyDataInputInputObject =
   | Extract<keyof FileUpdateManyDataInput, string>
-  | { name: 'key', alias?: string  } 
-  | { name: 'fileName', alias?: string  } 
-  | { name: 'mimeType', alias?: string  } 
-  | { name: 'encoding', alias?: string  } 
-  | { name: 'url', alias?: string  } 
-  
+  | { name: 'key'; alias?: string }
+  | { name: 'fileName'; alias?: string }
+  | { name: 'mimeType'; alias?: string }
+  | { name: 'encoding'; alias?: string }
+  | { name: 'url'; alias?: string }
+
 export interface GalleryUpsertNestedInput {
   update?: GalleryUpdateDataInput
   create?: GalleryCreateInput
 }
 export type GalleryUpsertNestedInputInputObject =
   | Extract<keyof GalleryUpsertNestedInput, string>
-  | { name: 'update', alias?: string  } 
-  | { name: 'create', alias?: string  } 
-  
+  | { name: 'update'; alias?: string }
+  | { name: 'create'; alias?: string }
+
 export interface OfferUpsertWithWhereUniqueWithoutUserInput {
   where?: OfferWhereUniqueInput
   update?: OfferUpdateWithoutUserDataInput
@@ -6852,10 +6950,10 @@ export interface OfferUpsertWithWhereUniqueWithoutUserInput {
 }
 export type OfferUpsertWithWhereUniqueWithoutUserInputInputObject =
   | Extract<keyof OfferUpsertWithWhereUniqueWithoutUserInput, string>
-  | { name: 'where', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'create', alias?: string  } 
-  
+  | { name: 'where'; alias?: string }
+  | { name: 'update'; alias?: string }
+  | { name: 'create'; alias?: string }
+
 export interface OfferScalarWhereInput {
   id?: string | null
   id_not?: string | null
@@ -7005,161 +7103,161 @@ export interface OfferScalarWhereInput {
 }
 export type OfferScalarWhereInputInputObject =
   | Extract<keyof OfferScalarWhereInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'id_not', alias?: string  } 
-  | { name: 'id_in', alias?: string  } 
-  | { name: 'id_not_in', alias?: string  } 
-  | { name: 'id_lt', alias?: string  } 
-  | { name: 'id_lte', alias?: string  } 
-  | { name: 'id_gt', alias?: string  } 
-  | { name: 'id_gte', alias?: string  } 
-  | { name: 'id_contains', alias?: string  } 
-  | { name: 'id_not_contains', alias?: string  } 
-  | { name: 'id_starts_with', alias?: string  } 
-  | { name: 'id_not_starts_with', alias?: string  } 
-  | { name: 'id_ends_with', alias?: string  } 
-  | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'active', alias?: string  } 
-  | { name: 'active_not', alias?: string  } 
-  | { name: 'publicOffer', alias?: string  } 
-  | { name: 'publicOffer_not', alias?: string  } 
-  | { name: 'amount', alias?: string  } 
-  | { name: 'amount_not', alias?: string  } 
-  | { name: 'amount_in', alias?: string  } 
-  | { name: 'amount_not_in', alias?: string  } 
-  | { name: 'amount_lt', alias?: string  } 
-  | { name: 'amount_lte', alias?: string  } 
-  | { name: 'amount_gt', alias?: string  } 
-  | { name: 'amount_gte', alias?: string  } 
-  | { name: 'createdAt', alias?: string  } 
-  | { name: 'createdAt_not', alias?: string  } 
-  | { name: 'createdAt_in', alias?: string  } 
-  | { name: 'createdAt_not_in', alias?: string  } 
-  | { name: 'createdAt_lt', alias?: string  } 
-  | { name: 'createdAt_lte', alias?: string  } 
-  | { name: 'createdAt_gt', alias?: string  } 
-  | { name: 'createdAt_gte', alias?: string  } 
-  | { name: 'updatedAt', alias?: string  } 
-  | { name: 'updatedAt_not', alias?: string  } 
-  | { name: 'updatedAt_in', alias?: string  } 
-  | { name: 'updatedAt_not_in', alias?: string  } 
-  | { name: 'updatedAt_lt', alias?: string  } 
-  | { name: 'updatedAt_lte', alias?: string  } 
-  | { name: 'updatedAt_gt', alias?: string  } 
-  | { name: 'updatedAt_gte', alias?: string  } 
-  | { name: 'deletedAt', alias?: string  } 
-  | { name: 'deletedAt_not', alias?: string  } 
-  | { name: 'deletedAt_in', alias?: string  } 
-  | { name: 'deletedAt_not_in', alias?: string  } 
-  | { name: 'deletedAt_lt', alias?: string  } 
-  | { name: 'deletedAt_lte', alias?: string  } 
-  | { name: 'deletedAt_gt', alias?: string  } 
-  | { name: 'deletedAt_gte', alias?: string  } 
-  | { name: 'email', alias?: string  } 
-  | { name: 'email_not', alias?: string  } 
-  | { name: 'email_in', alias?: string  } 
-  | { name: 'email_not_in', alias?: string  } 
-  | { name: 'email_lt', alias?: string  } 
-  | { name: 'email_lte', alias?: string  } 
-  | { name: 'email_gt', alias?: string  } 
-  | { name: 'email_gte', alias?: string  } 
-  | { name: 'email_contains', alias?: string  } 
-  | { name: 'email_not_contains', alias?: string  } 
-  | { name: 'email_starts_with', alias?: string  } 
-  | { name: 'email_not_starts_with', alias?: string  } 
-  | { name: 'email_ends_with', alias?: string  } 
-  | { name: 'email_not_ends_with', alias?: string  } 
-  | { name: 'firstName', alias?: string  } 
-  | { name: 'firstName_not', alias?: string  } 
-  | { name: 'firstName_in', alias?: string  } 
-  | { name: 'firstName_not_in', alias?: string  } 
-  | { name: 'firstName_lt', alias?: string  } 
-  | { name: 'firstName_lte', alias?: string  } 
-  | { name: 'firstName_gt', alias?: string  } 
-  | { name: 'firstName_gte', alias?: string  } 
-  | { name: 'firstName_contains', alias?: string  } 
-  | { name: 'firstName_not_contains', alias?: string  } 
-  | { name: 'firstName_starts_with', alias?: string  } 
-  | { name: 'firstName_not_starts_with', alias?: string  } 
-  | { name: 'firstName_ends_with', alias?: string  } 
-  | { name: 'firstName_not_ends_with', alias?: string  } 
-  | { name: 'lastName', alias?: string  } 
-  | { name: 'lastName_not', alias?: string  } 
-  | { name: 'lastName_in', alias?: string  } 
-  | { name: 'lastName_not_in', alias?: string  } 
-  | { name: 'lastName_lt', alias?: string  } 
-  | { name: 'lastName_lte', alias?: string  } 
-  | { name: 'lastName_gt', alias?: string  } 
-  | { name: 'lastName_gte', alias?: string  } 
-  | { name: 'lastName_contains', alias?: string  } 
-  | { name: 'lastName_not_contains', alias?: string  } 
-  | { name: 'lastName_starts_with', alias?: string  } 
-  | { name: 'lastName_not_starts_with', alias?: string  } 
-  | { name: 'lastName_ends_with', alias?: string  } 
-  | { name: 'lastName_not_ends_with', alias?: string  } 
-  | { name: 'price', alias?: string  } 
-  | { name: 'price_not', alias?: string  } 
-  | { name: 'price_in', alias?: string  } 
-  | { name: 'price_not_in', alias?: string  } 
-  | { name: 'price_lt', alias?: string  } 
-  | { name: 'price_lte', alias?: string  } 
-  | { name: 'price_gt', alias?: string  } 
-  | { name: 'price_gte', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'name_not', alias?: string  } 
-  | { name: 'name_in', alias?: string  } 
-  | { name: 'name_not_in', alias?: string  } 
-  | { name: 'name_lt', alias?: string  } 
-  | { name: 'name_lte', alias?: string  } 
-  | { name: 'name_gt', alias?: string  } 
-  | { name: 'name_gte', alias?: string  } 
-  | { name: 'name_contains', alias?: string  } 
-  | { name: 'name_not_contains', alias?: string  } 
-  | { name: 'name_starts_with', alias?: string  } 
-  | { name: 'name_not_starts_with', alias?: string  } 
-  | { name: 'name_ends_with', alias?: string  } 
-  | { name: 'name_not_ends_with', alias?: string  } 
-  | { name: 'description', alias?: string  } 
-  | { name: 'description_not', alias?: string  } 
-  | { name: 'description_in', alias?: string  } 
-  | { name: 'description_not_in', alias?: string  } 
-  | { name: 'description_lt', alias?: string  } 
-  | { name: 'description_lte', alias?: string  } 
-  | { name: 'description_gt', alias?: string  } 
-  | { name: 'description_gte', alias?: string  } 
-  | { name: 'description_contains', alias?: string  } 
-  | { name: 'description_not_contains', alias?: string  } 
-  | { name: 'description_starts_with', alias?: string  } 
-  | { name: 'description_not_starts_with', alias?: string  } 
-  | { name: 'description_ends_with', alias?: string  } 
-  | { name: 'description_not_ends_with', alias?: string  } 
-  | { name: 'transport', alias?: string  } 
-  | { name: 'transport_not', alias?: string  } 
-  | { name: 'transport_in', alias?: string  } 
-  | { name: 'transport_not_in', alias?: string  } 
-  | { name: 'transport_lt', alias?: string  } 
-  | { name: 'transport_lte', alias?: string  } 
-  | { name: 'transport_gt', alias?: string  } 
-  | { name: 'transport_gte', alias?: string  } 
-  | { name: 'transport_contains', alias?: string  } 
-  | { name: 'transport_not_contains', alias?: string  } 
-  | { name: 'transport_starts_with', alias?: string  } 
-  | { name: 'transport_not_starts_with', alias?: string  } 
-  | { name: 'transport_ends_with', alias?: string  } 
-  | { name: 'transport_not_ends_with', alias?: string  } 
-  | { name: 'AND', alias?: string  } 
-  | { name: 'OR', alias?: string  } 
-  | { name: 'NOT', alias?: string  } 
-  
+  | { name: 'id'; alias?: string }
+  | { name: 'id_not'; alias?: string }
+  | { name: 'id_in'; alias?: string }
+  | { name: 'id_not_in'; alias?: string }
+  | { name: 'id_lt'; alias?: string }
+  | { name: 'id_lte'; alias?: string }
+  | { name: 'id_gt'; alias?: string }
+  | { name: 'id_gte'; alias?: string }
+  | { name: 'id_contains'; alias?: string }
+  | { name: 'id_not_contains'; alias?: string }
+  | { name: 'id_starts_with'; alias?: string }
+  | { name: 'id_not_starts_with'; alias?: string }
+  | { name: 'id_ends_with'; alias?: string }
+  | { name: 'id_not_ends_with'; alias?: string }
+  | { name: 'active'; alias?: string }
+  | { name: 'active_not'; alias?: string }
+  | { name: 'publicOffer'; alias?: string }
+  | { name: 'publicOffer_not'; alias?: string }
+  | { name: 'amount'; alias?: string }
+  | { name: 'amount_not'; alias?: string }
+  | { name: 'amount_in'; alias?: string }
+  | { name: 'amount_not_in'; alias?: string }
+  | { name: 'amount_lt'; alias?: string }
+  | { name: 'amount_lte'; alias?: string }
+  | { name: 'amount_gt'; alias?: string }
+  | { name: 'amount_gte'; alias?: string }
+  | { name: 'createdAt'; alias?: string }
+  | { name: 'createdAt_not'; alias?: string }
+  | { name: 'createdAt_in'; alias?: string }
+  | { name: 'createdAt_not_in'; alias?: string }
+  | { name: 'createdAt_lt'; alias?: string }
+  | { name: 'createdAt_lte'; alias?: string }
+  | { name: 'createdAt_gt'; alias?: string }
+  | { name: 'createdAt_gte'; alias?: string }
+  | { name: 'updatedAt'; alias?: string }
+  | { name: 'updatedAt_not'; alias?: string }
+  | { name: 'updatedAt_in'; alias?: string }
+  | { name: 'updatedAt_not_in'; alias?: string }
+  | { name: 'updatedAt_lt'; alias?: string }
+  | { name: 'updatedAt_lte'; alias?: string }
+  | { name: 'updatedAt_gt'; alias?: string }
+  | { name: 'updatedAt_gte'; alias?: string }
+  | { name: 'deletedAt'; alias?: string }
+  | { name: 'deletedAt_not'; alias?: string }
+  | { name: 'deletedAt_in'; alias?: string }
+  | { name: 'deletedAt_not_in'; alias?: string }
+  | { name: 'deletedAt_lt'; alias?: string }
+  | { name: 'deletedAt_lte'; alias?: string }
+  | { name: 'deletedAt_gt'; alias?: string }
+  | { name: 'deletedAt_gte'; alias?: string }
+  | { name: 'email'; alias?: string }
+  | { name: 'email_not'; alias?: string }
+  | { name: 'email_in'; alias?: string }
+  | { name: 'email_not_in'; alias?: string }
+  | { name: 'email_lt'; alias?: string }
+  | { name: 'email_lte'; alias?: string }
+  | { name: 'email_gt'; alias?: string }
+  | { name: 'email_gte'; alias?: string }
+  | { name: 'email_contains'; alias?: string }
+  | { name: 'email_not_contains'; alias?: string }
+  | { name: 'email_starts_with'; alias?: string }
+  | { name: 'email_not_starts_with'; alias?: string }
+  | { name: 'email_ends_with'; alias?: string }
+  | { name: 'email_not_ends_with'; alias?: string }
+  | { name: 'firstName'; alias?: string }
+  | { name: 'firstName_not'; alias?: string }
+  | { name: 'firstName_in'; alias?: string }
+  | { name: 'firstName_not_in'; alias?: string }
+  | { name: 'firstName_lt'; alias?: string }
+  | { name: 'firstName_lte'; alias?: string }
+  | { name: 'firstName_gt'; alias?: string }
+  | { name: 'firstName_gte'; alias?: string }
+  | { name: 'firstName_contains'; alias?: string }
+  | { name: 'firstName_not_contains'; alias?: string }
+  | { name: 'firstName_starts_with'; alias?: string }
+  | { name: 'firstName_not_starts_with'; alias?: string }
+  | { name: 'firstName_ends_with'; alias?: string }
+  | { name: 'firstName_not_ends_with'; alias?: string }
+  | { name: 'lastName'; alias?: string }
+  | { name: 'lastName_not'; alias?: string }
+  | { name: 'lastName_in'; alias?: string }
+  | { name: 'lastName_not_in'; alias?: string }
+  | { name: 'lastName_lt'; alias?: string }
+  | { name: 'lastName_lte'; alias?: string }
+  | { name: 'lastName_gt'; alias?: string }
+  | { name: 'lastName_gte'; alias?: string }
+  | { name: 'lastName_contains'; alias?: string }
+  | { name: 'lastName_not_contains'; alias?: string }
+  | { name: 'lastName_starts_with'; alias?: string }
+  | { name: 'lastName_not_starts_with'; alias?: string }
+  | { name: 'lastName_ends_with'; alias?: string }
+  | { name: 'lastName_not_ends_with'; alias?: string }
+  | { name: 'price'; alias?: string }
+  | { name: 'price_not'; alias?: string }
+  | { name: 'price_in'; alias?: string }
+  | { name: 'price_not_in'; alias?: string }
+  | { name: 'price_lt'; alias?: string }
+  | { name: 'price_lte'; alias?: string }
+  | { name: 'price_gt'; alias?: string }
+  | { name: 'price_gte'; alias?: string }
+  | { name: 'name'; alias?: string }
+  | { name: 'name_not'; alias?: string }
+  | { name: 'name_in'; alias?: string }
+  | { name: 'name_not_in'; alias?: string }
+  | { name: 'name_lt'; alias?: string }
+  | { name: 'name_lte'; alias?: string }
+  | { name: 'name_gt'; alias?: string }
+  | { name: 'name_gte'; alias?: string }
+  | { name: 'name_contains'; alias?: string }
+  | { name: 'name_not_contains'; alias?: string }
+  | { name: 'name_starts_with'; alias?: string }
+  | { name: 'name_not_starts_with'; alias?: string }
+  | { name: 'name_ends_with'; alias?: string }
+  | { name: 'name_not_ends_with'; alias?: string }
+  | { name: 'description'; alias?: string }
+  | { name: 'description_not'; alias?: string }
+  | { name: 'description_in'; alias?: string }
+  | { name: 'description_not_in'; alias?: string }
+  | { name: 'description_lt'; alias?: string }
+  | { name: 'description_lte'; alias?: string }
+  | { name: 'description_gt'; alias?: string }
+  | { name: 'description_gte'; alias?: string }
+  | { name: 'description_contains'; alias?: string }
+  | { name: 'description_not_contains'; alias?: string }
+  | { name: 'description_starts_with'; alias?: string }
+  | { name: 'description_not_starts_with'; alias?: string }
+  | { name: 'description_ends_with'; alias?: string }
+  | { name: 'description_not_ends_with'; alias?: string }
+  | { name: 'transport'; alias?: string }
+  | { name: 'transport_not'; alias?: string }
+  | { name: 'transport_in'; alias?: string }
+  | { name: 'transport_not_in'; alias?: string }
+  | { name: 'transport_lt'; alias?: string }
+  | { name: 'transport_lte'; alias?: string }
+  | { name: 'transport_gt'; alias?: string }
+  | { name: 'transport_gte'; alias?: string }
+  | { name: 'transport_contains'; alias?: string }
+  | { name: 'transport_not_contains'; alias?: string }
+  | { name: 'transport_starts_with'; alias?: string }
+  | { name: 'transport_not_starts_with'; alias?: string }
+  | { name: 'transport_ends_with'; alias?: string }
+  | { name: 'transport_not_ends_with'; alias?: string }
+  | { name: 'AND'; alias?: string }
+  | { name: 'OR'; alias?: string }
+  | { name: 'NOT'; alias?: string }
+
 export interface OfferUpdateManyWithWhereNestedInput {
   where?: OfferScalarWhereInput
   data?: OfferUpdateManyDataInput
 }
 export type OfferUpdateManyWithWhereNestedInputInputObject =
   | Extract<keyof OfferUpdateManyWithWhereNestedInput, string>
-  | { name: 'where', alias?: string  } 
-  | { name: 'data', alias?: string  } 
-  
+  | { name: 'where'; alias?: string }
+  | { name: 'data'; alias?: string }
+
 export interface OfferUpdateManyDataInput {
   active?: boolean | null
   publicOffer?: boolean | null
@@ -7175,18 +7273,18 @@ export interface OfferUpdateManyDataInput {
 }
 export type OfferUpdateManyDataInputInputObject =
   | Extract<keyof OfferUpdateManyDataInput, string>
-  | { name: 'active', alias?: string  } 
-  | { name: 'publicOffer', alias?: string  } 
-  | { name: 'amount', alias?: string  } 
-  | { name: 'deletedAt', alias?: string  } 
-  | { name: 'email', alias?: string  } 
-  | { name: 'firstName', alias?: string  } 
-  | { name: 'lastName', alias?: string  } 
-  | { name: 'price', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'description', alias?: string  } 
-  | { name: 'transport', alias?: string  } 
-  
+  | { name: 'active'; alias?: string }
+  | { name: 'publicOffer'; alias?: string }
+  | { name: 'amount'; alias?: string }
+  | { name: 'deletedAt'; alias?: string }
+  | { name: 'email'; alias?: string }
+  | { name: 'firstName'; alias?: string }
+  | { name: 'lastName'; alias?: string }
+  | { name: 'price'; alias?: string }
+  | { name: 'name'; alias?: string }
+  | { name: 'description'; alias?: string }
+  | { name: 'transport'; alias?: string }
+
 export interface AdressUpdateOneInput {
   create?: AdressCreateInput | null
   update?: AdressUpdateDataInput | null
@@ -7197,13 +7295,13 @@ export interface AdressUpdateOneInput {
 }
 export type AdressUpdateOneInputInputObject =
   | Extract<keyof AdressUpdateOneInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'upsert', alias?: string  } 
-  | { name: 'delete', alias?: string  } 
-  | { name: 'disconnect', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
+  | { name: 'create'; alias?: string }
+  | { name: 'update'; alias?: string }
+  | { name: 'upsert'; alias?: string }
+  | { name: 'delete'; alias?: string }
+  | { name: 'disconnect'; alias?: string }
+  | { name: 'connect'; alias?: string }
+
 export interface AdressUpdateDataInput {
   city?: string | null
   street?: string | null
@@ -7211,19 +7309,19 @@ export interface AdressUpdateDataInput {
 }
 export type AdressUpdateDataInputInputObject =
   | Extract<keyof AdressUpdateDataInput, string>
-  | { name: 'city', alias?: string  } 
-  | { name: 'street', alias?: string  } 
-  | { name: 'postalCode', alias?: string  } 
-  
+  | { name: 'city'; alias?: string }
+  | { name: 'street'; alias?: string }
+  | { name: 'postalCode'; alias?: string }
+
 export interface AdressUpsertNestedInput {
   update?: AdressUpdateDataInput
   create?: AdressCreateInput
 }
 export type AdressUpsertNestedInputInputObject =
   | Extract<keyof AdressUpsertNestedInput, string>
-  | { name: 'update', alias?: string  } 
-  | { name: 'create', alias?: string  } 
-  
+  | { name: 'update'; alias?: string }
+  | { name: 'create'; alias?: string }
+
 export interface UserUpdateManyMutationInput {
   email?: string | null
   firstName?: string | null
@@ -7233,12 +7331,12 @@ export interface UserUpdateManyMutationInput {
 }
 export type UserUpdateManyMutationInputInputObject =
   | Extract<keyof UserUpdateManyMutationInput, string>
-  | { name: 'email', alias?: string  } 
-  | { name: 'firstName', alias?: string  } 
-  | { name: 'lastName', alias?: string  } 
-  | { name: 'password', alias?: string  } 
-  | { name: 'role', alias?: string  } 
-  
+  | { name: 'email'; alias?: string }
+  | { name: 'firstName'; alias?: string }
+  | { name: 'lastName'; alias?: string }
+  | { name: 'password'; alias?: string }
+  | { name: 'role'; alias?: string }
+
 export interface AdressUpdateInput {
   city?: string | null
   street?: string | null
@@ -7246,10 +7344,10 @@ export interface AdressUpdateInput {
 }
 export type AdressUpdateInputInputObject =
   | Extract<keyof AdressUpdateInput, string>
-  | { name: 'city', alias?: string  } 
-  | { name: 'street', alias?: string  } 
-  | { name: 'postalCode', alias?: string  } 
-  
+  | { name: 'city'; alias?: string }
+  | { name: 'street'; alias?: string }
+  | { name: 'postalCode'; alias?: string }
+
 export interface AdressUpdateManyMutationInput {
   city?: string | null
   street?: string | null
@@ -7257,10 +7355,10 @@ export interface AdressUpdateManyMutationInput {
 }
 export type AdressUpdateManyMutationInputInputObject =
   | Extract<keyof AdressUpdateManyMutationInput, string>
-  | { name: 'city', alias?: string  } 
-  | { name: 'street', alias?: string  } 
-  | { name: 'postalCode', alias?: string  } 
-  
+  | { name: 'city'; alias?: string }
+  | { name: 'street'; alias?: string }
+  | { name: 'postalCode'; alias?: string }
+
 export interface FileUpdateInput {
   key?: string | null
   fileName?: string | null
@@ -7270,12 +7368,12 @@ export interface FileUpdateInput {
 }
 export type FileUpdateInputInputObject =
   | Extract<keyof FileUpdateInput, string>
-  | { name: 'key', alias?: string  } 
-  | { name: 'fileName', alias?: string  } 
-  | { name: 'mimeType', alias?: string  } 
-  | { name: 'encoding', alias?: string  } 
-  | { name: 'url', alias?: string  } 
-  
+  | { name: 'key'; alias?: string }
+  | { name: 'fileName'; alias?: string }
+  | { name: 'mimeType'; alias?: string }
+  | { name: 'encoding'; alias?: string }
+  | { name: 'url'; alias?: string }
+
 export interface FileUpdateManyMutationInput {
   key?: string | null
   fileName?: string | null
@@ -7285,19 +7383,19 @@ export interface FileUpdateManyMutationInput {
 }
 export type FileUpdateManyMutationInputInputObject =
   | Extract<keyof FileUpdateManyMutationInput, string>
-  | { name: 'key', alias?: string  } 
-  | { name: 'fileName', alias?: string  } 
-  | { name: 'mimeType', alias?: string  } 
-  | { name: 'encoding', alias?: string  } 
-  | { name: 'url', alias?: string  } 
-  
+  | { name: 'key'; alias?: string }
+  | { name: 'fileName'; alias?: string }
+  | { name: 'mimeType'; alias?: string }
+  | { name: 'encoding'; alias?: string }
+  | { name: 'url'; alias?: string }
+
 export interface GalleryUpdateInput {
   images?: FileUpdateManyInput | null
 }
 export type GalleryUpdateInputInputObject =
   | Extract<keyof GalleryUpdateInput, string>
-  | { name: 'images', alias?: string  } 
-  
+  | { name: 'images'; alias?: string }
+
 export interface OfferCreateInput {
   id?: string | null
   active?: boolean | null
@@ -7318,32 +7416,32 @@ export interface OfferCreateInput {
 }
 export type OfferCreateInputInputObject =
   | Extract<keyof OfferCreateInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'active', alias?: string  } 
-  | { name: 'publicOffer', alias?: string  } 
-  | { name: 'amount', alias?: string  } 
-  | { name: 'deletedAt', alias?: string  } 
-  | { name: 'email', alias?: string  } 
-  | { name: 'firstName', alias?: string  } 
-  | { name: 'lastName', alias?: string  } 
-  | { name: 'transactions', alias?: string  } 
-  | { name: 'beneficator', alias?: string  } 
-  | { name: 'price', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'user', alias?: string  } 
-  | { name: 'description', alias?: string  } 
-  | { name: 'transport', alias?: string  } 
-  | { name: 'gallery', alias?: string  } 
-  
+  | { name: 'id'; alias?: string }
+  | { name: 'active'; alias?: string }
+  | { name: 'publicOffer'; alias?: string }
+  | { name: 'amount'; alias?: string }
+  | { name: 'deletedAt'; alias?: string }
+  | { name: 'email'; alias?: string }
+  | { name: 'firstName'; alias?: string }
+  | { name: 'lastName'; alias?: string }
+  | { name: 'transactions'; alias?: string }
+  | { name: 'beneficator'; alias?: string }
+  | { name: 'price'; alias?: string }
+  | { name: 'name'; alias?: string }
+  | { name: 'user'; alias?: string }
+  | { name: 'description'; alias?: string }
+  | { name: 'transport'; alias?: string }
+  | { name: 'gallery'; alias?: string }
+
 export interface UserCreateOneWithoutOffersInput {
   create?: UserCreateWithoutOffersInput | null
   connect?: UserWhereUniqueInput | null
 }
 export type UserCreateOneWithoutOffersInputInputObject =
   | Extract<keyof UserCreateOneWithoutOffersInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
+  | { name: 'create'; alias?: string }
+  | { name: 'connect'; alias?: string }
+
 export interface UserCreateWithoutOffersInput {
   id?: string | null
   email?: string
@@ -7355,14 +7453,14 @@ export interface UserCreateWithoutOffersInput {
 }
 export type UserCreateWithoutOffersInputInputObject =
   | Extract<keyof UserCreateWithoutOffersInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'email', alias?: string  } 
-  | { name: 'firstName', alias?: string  } 
-  | { name: 'lastName', alias?: string  } 
-  | { name: 'password', alias?: string  } 
-  | { name: 'role', alias?: string  } 
-  | { name: 'adress', alias?: string  } 
-  
+  | { name: 'id'; alias?: string }
+  | { name: 'email'; alias?: string }
+  | { name: 'firstName'; alias?: string }
+  | { name: 'lastName'; alias?: string }
+  | { name: 'password'; alias?: string }
+  | { name: 'role'; alias?: string }
+  | { name: 'adress'; alias?: string }
+
 export interface OfferUpdateInput {
   active?: boolean | null
   publicOffer?: boolean | null
@@ -7382,22 +7480,22 @@ export interface OfferUpdateInput {
 }
 export type OfferUpdateInputInputObject =
   | Extract<keyof OfferUpdateInput, string>
-  | { name: 'active', alias?: string  } 
-  | { name: 'publicOffer', alias?: string  } 
-  | { name: 'amount', alias?: string  } 
-  | { name: 'deletedAt', alias?: string  } 
-  | { name: 'email', alias?: string  } 
-  | { name: 'firstName', alias?: string  } 
-  | { name: 'lastName', alias?: string  } 
-  | { name: 'transactions', alias?: string  } 
-  | { name: 'beneficator', alias?: string  } 
-  | { name: 'price', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'user', alias?: string  } 
-  | { name: 'description', alias?: string  } 
-  | { name: 'transport', alias?: string  } 
-  | { name: 'gallery', alias?: string  } 
-  
+  | { name: 'active'; alias?: string }
+  | { name: 'publicOffer'; alias?: string }
+  | { name: 'amount'; alias?: string }
+  | { name: 'deletedAt'; alias?: string }
+  | { name: 'email'; alias?: string }
+  | { name: 'firstName'; alias?: string }
+  | { name: 'lastName'; alias?: string }
+  | { name: 'transactions'; alias?: string }
+  | { name: 'beneficator'; alias?: string }
+  | { name: 'price'; alias?: string }
+  | { name: 'name'; alias?: string }
+  | { name: 'user'; alias?: string }
+  | { name: 'description'; alias?: string }
+  | { name: 'transport'; alias?: string }
+  | { name: 'gallery'; alias?: string }
+
 export interface UserUpdateOneRequiredWithoutOffersInput {
   create?: UserCreateWithoutOffersInput | null
   update?: UserUpdateWithoutOffersDataInput | null
@@ -7406,11 +7504,11 @@ export interface UserUpdateOneRequiredWithoutOffersInput {
 }
 export type UserUpdateOneRequiredWithoutOffersInputInputObject =
   | Extract<keyof UserUpdateOneRequiredWithoutOffersInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'upsert', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
+  | { name: 'create'; alias?: string }
+  | { name: 'update'; alias?: string }
+  | { name: 'upsert'; alias?: string }
+  | { name: 'connect'; alias?: string }
+
 export interface UserUpdateWithoutOffersDataInput {
   email?: string | null
   firstName?: string | null
@@ -7421,22 +7519,22 @@ export interface UserUpdateWithoutOffersDataInput {
 }
 export type UserUpdateWithoutOffersDataInputInputObject =
   | Extract<keyof UserUpdateWithoutOffersDataInput, string>
-  | { name: 'email', alias?: string  } 
-  | { name: 'firstName', alias?: string  } 
-  | { name: 'lastName', alias?: string  } 
-  | { name: 'password', alias?: string  } 
-  | { name: 'role', alias?: string  } 
-  | { name: 'adress', alias?: string  } 
-  
+  | { name: 'email'; alias?: string }
+  | { name: 'firstName'; alias?: string }
+  | { name: 'lastName'; alias?: string }
+  | { name: 'password'; alias?: string }
+  | { name: 'role'; alias?: string }
+  | { name: 'adress'; alias?: string }
+
 export interface UserUpsertWithoutOffersInput {
   update?: UserUpdateWithoutOffersDataInput
   create?: UserCreateWithoutOffersInput
 }
 export type UserUpsertWithoutOffersInputInputObject =
   | Extract<keyof UserUpsertWithoutOffersInput, string>
-  | { name: 'update', alias?: string  } 
-  | { name: 'create', alias?: string  } 
-  
+  | { name: 'update'; alias?: string }
+  | { name: 'create'; alias?: string }
+
 export interface OfferUpdateManyMutationInput {
   active?: boolean | null
   publicOffer?: boolean | null
@@ -7452,18 +7550,18 @@ export interface OfferUpdateManyMutationInput {
 }
 export type OfferUpdateManyMutationInputInputObject =
   | Extract<keyof OfferUpdateManyMutationInput, string>
-  | { name: 'active', alias?: string  } 
-  | { name: 'publicOffer', alias?: string  } 
-  | { name: 'amount', alias?: string  } 
-  | { name: 'deletedAt', alias?: string  } 
-  | { name: 'email', alias?: string  } 
-  | { name: 'firstName', alias?: string  } 
-  | { name: 'lastName', alias?: string  } 
-  | { name: 'price', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'description', alias?: string  } 
-  | { name: 'transport', alias?: string  } 
-  
+  | { name: 'active'; alias?: string }
+  | { name: 'publicOffer'; alias?: string }
+  | { name: 'amount'; alias?: string }
+  | { name: 'deletedAt'; alias?: string }
+  | { name: 'email'; alias?: string }
+  | { name: 'firstName'; alias?: string }
+  | { name: 'lastName'; alias?: string }
+  | { name: 'price'; alias?: string }
+  | { name: 'name'; alias?: string }
+  | { name: 'description'; alias?: string }
+  | { name: 'transport'; alias?: string }
+
 export interface TransactionCreateInput {
   id?: string | null
   amount?: number
@@ -7478,26 +7576,26 @@ export interface TransactionCreateInput {
 }
 export type TransactionCreateInputInputObject =
   | Extract<keyof TransactionCreateInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'amount', alias?: string  } 
-  | { name: 'email', alias?: string  } 
-  | { name: 'firstName', alias?: string  } 
-  | { name: 'lastName', alias?: string  } 
-  | { name: 'comment', alias?: string  } 
-  | { name: 'deletedAt', alias?: string  } 
-  | { name: 'donatedAmount', alias?: string  } 
-  | { name: 'status', alias?: string  } 
-  | { name: 'offer', alias?: string  } 
-  
+  | { name: 'id'; alias?: string }
+  | { name: 'amount'; alias?: string }
+  | { name: 'email'; alias?: string }
+  | { name: 'firstName'; alias?: string }
+  | { name: 'lastName'; alias?: string }
+  | { name: 'comment'; alias?: string }
+  | { name: 'deletedAt'; alias?: string }
+  | { name: 'donatedAmount'; alias?: string }
+  | { name: 'status'; alias?: string }
+  | { name: 'offer'; alias?: string }
+
 export interface OfferCreateOneWithoutTransactionsInput {
   create?: OfferCreateWithoutTransactionsInput | null
   connect?: OfferWhereUniqueInput | null
 }
 export type OfferCreateOneWithoutTransactionsInputInputObject =
   | Extract<keyof OfferCreateOneWithoutTransactionsInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
+  | { name: 'create'; alias?: string }
+  | { name: 'connect'; alias?: string }
+
 export interface OfferCreateWithoutTransactionsInput {
   id?: string | null
   active?: boolean | null
@@ -7517,22 +7615,22 @@ export interface OfferCreateWithoutTransactionsInput {
 }
 export type OfferCreateWithoutTransactionsInputInputObject =
   | Extract<keyof OfferCreateWithoutTransactionsInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'active', alias?: string  } 
-  | { name: 'publicOffer', alias?: string  } 
-  | { name: 'amount', alias?: string  } 
-  | { name: 'deletedAt', alias?: string  } 
-  | { name: 'email', alias?: string  } 
-  | { name: 'firstName', alias?: string  } 
-  | { name: 'lastName', alias?: string  } 
-  | { name: 'beneficator', alias?: string  } 
-  | { name: 'price', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'user', alias?: string  } 
-  | { name: 'description', alias?: string  } 
-  | { name: 'transport', alias?: string  } 
-  | { name: 'gallery', alias?: string  } 
-  
+  | { name: 'id'; alias?: string }
+  | { name: 'active'; alias?: string }
+  | { name: 'publicOffer'; alias?: string }
+  | { name: 'amount'; alias?: string }
+  | { name: 'deletedAt'; alias?: string }
+  | { name: 'email'; alias?: string }
+  | { name: 'firstName'; alias?: string }
+  | { name: 'lastName'; alias?: string }
+  | { name: 'beneficator'; alias?: string }
+  | { name: 'price'; alias?: string }
+  | { name: 'name'; alias?: string }
+  | { name: 'user'; alias?: string }
+  | { name: 'description'; alias?: string }
+  | { name: 'transport'; alias?: string }
+  | { name: 'gallery'; alias?: string }
+
 export interface TransactionUpdateInput {
   amount?: number | null
   email?: string | null
@@ -7546,16 +7644,16 @@ export interface TransactionUpdateInput {
 }
 export type TransactionUpdateInputInputObject =
   | Extract<keyof TransactionUpdateInput, string>
-  | { name: 'amount', alias?: string  } 
-  | { name: 'email', alias?: string  } 
-  | { name: 'firstName', alias?: string  } 
-  | { name: 'lastName', alias?: string  } 
-  | { name: 'comment', alias?: string  } 
-  | { name: 'deletedAt', alias?: string  } 
-  | { name: 'donatedAmount', alias?: string  } 
-  | { name: 'status', alias?: string  } 
-  | { name: 'offer', alias?: string  } 
-  
+  | { name: 'amount'; alias?: string }
+  | { name: 'email'; alias?: string }
+  | { name: 'firstName'; alias?: string }
+  | { name: 'lastName'; alias?: string }
+  | { name: 'comment'; alias?: string }
+  | { name: 'deletedAt'; alias?: string }
+  | { name: 'donatedAmount'; alias?: string }
+  | { name: 'status'; alias?: string }
+  | { name: 'offer'; alias?: string }
+
 export interface OfferUpdateOneRequiredWithoutTransactionsInput {
   create?: OfferCreateWithoutTransactionsInput | null
   update?: OfferUpdateWithoutTransactionsDataInput | null
@@ -7564,11 +7662,11 @@ export interface OfferUpdateOneRequiredWithoutTransactionsInput {
 }
 export type OfferUpdateOneRequiredWithoutTransactionsInputInputObject =
   | Extract<keyof OfferUpdateOneRequiredWithoutTransactionsInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'upsert', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
+  | { name: 'create'; alias?: string }
+  | { name: 'update'; alias?: string }
+  | { name: 'upsert'; alias?: string }
+  | { name: 'connect'; alias?: string }
+
 export interface OfferUpdateWithoutTransactionsDataInput {
   active?: boolean | null
   publicOffer?: boolean | null
@@ -7587,30 +7685,30 @@ export interface OfferUpdateWithoutTransactionsDataInput {
 }
 export type OfferUpdateWithoutTransactionsDataInputInputObject =
   | Extract<keyof OfferUpdateWithoutTransactionsDataInput, string>
-  | { name: 'active', alias?: string  } 
-  | { name: 'publicOffer', alias?: string  } 
-  | { name: 'amount', alias?: string  } 
-  | { name: 'deletedAt', alias?: string  } 
-  | { name: 'email', alias?: string  } 
-  | { name: 'firstName', alias?: string  } 
-  | { name: 'lastName', alias?: string  } 
-  | { name: 'beneficator', alias?: string  } 
-  | { name: 'price', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'user', alias?: string  } 
-  | { name: 'description', alias?: string  } 
-  | { name: 'transport', alias?: string  } 
-  | { name: 'gallery', alias?: string  } 
-  
+  | { name: 'active'; alias?: string }
+  | { name: 'publicOffer'; alias?: string }
+  | { name: 'amount'; alias?: string }
+  | { name: 'deletedAt'; alias?: string }
+  | { name: 'email'; alias?: string }
+  | { name: 'firstName'; alias?: string }
+  | { name: 'lastName'; alias?: string }
+  | { name: 'beneficator'; alias?: string }
+  | { name: 'price'; alias?: string }
+  | { name: 'name'; alias?: string }
+  | { name: 'user'; alias?: string }
+  | { name: 'description'; alias?: string }
+  | { name: 'transport'; alias?: string }
+  | { name: 'gallery'; alias?: string }
+
 export interface OfferUpsertWithoutTransactionsInput {
   update?: OfferUpdateWithoutTransactionsDataInput
   create?: OfferCreateWithoutTransactionsInput
 }
 export type OfferUpsertWithoutTransactionsInputInputObject =
   | Extract<keyof OfferUpsertWithoutTransactionsInput, string>
-  | { name: 'update', alias?: string  } 
-  | { name: 'create', alias?: string  } 
-  
+  | { name: 'update'; alias?: string }
+  | { name: 'create'; alias?: string }
+
 export interface TransactionUpdateManyMutationInput {
   amount?: number | null
   email?: string | null
@@ -7623,15 +7721,15 @@ export interface TransactionUpdateManyMutationInput {
 }
 export type TransactionUpdateManyMutationInputInputObject =
   | Extract<keyof TransactionUpdateManyMutationInput, string>
-  | { name: 'amount', alias?: string  } 
-  | { name: 'email', alias?: string  } 
-  | { name: 'firstName', alias?: string  } 
-  | { name: 'lastName', alias?: string  } 
-  | { name: 'comment', alias?: string  } 
-  | { name: 'deletedAt', alias?: string  } 
-  | { name: 'donatedAmount', alias?: string  } 
-  | { name: 'status', alias?: string  } 
-  
+  | { name: 'amount'; alias?: string }
+  | { name: 'email'; alias?: string }
+  | { name: 'firstName'; alias?: string }
+  | { name: 'lastName'; alias?: string }
+  | { name: 'comment'; alias?: string }
+  | { name: 'deletedAt'; alias?: string }
+  | { name: 'donatedAmount'; alias?: string }
+  | { name: 'status'; alias?: string }
+
 export interface OrganizationCreateInput {
   id?: string | null
   apiId?: number | null
@@ -7648,28 +7746,28 @@ export interface OrganizationCreateInput {
 }
 export type OrganizationCreateInputInputObject =
   | Extract<keyof OrganizationCreateInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'apiId', alias?: string  } 
-  | { name: 'apiSecret', alias?: string  } 
-  | { name: 'organizationId', alias?: string  } 
-  | { name: 'active', alias?: string  } 
-  | { name: 'logo', alias?: string  } 
-  | { name: 'deletedAt', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'offers', alias?: string  } 
-  | { name: 'projectId', alias?: string  } 
-  | { name: 'description', alias?: string  } 
-  | { name: 'url', alias?: string  } 
-  
+  | { name: 'id'; alias?: string }
+  | { name: 'apiId'; alias?: string }
+  | { name: 'apiSecret'; alias?: string }
+  | { name: 'organizationId'; alias?: string }
+  | { name: 'active'; alias?: string }
+  | { name: 'logo'; alias?: string }
+  | { name: 'deletedAt'; alias?: string }
+  | { name: 'name'; alias?: string }
+  | { name: 'offers'; alias?: string }
+  | { name: 'projectId'; alias?: string }
+  | { name: 'description'; alias?: string }
+  | { name: 'url'; alias?: string }
+
 export interface OfferCreateManyWithoutBeneficatorInput {
   create?: OfferCreateWithoutBeneficatorInput[]
   connect?: OfferWhereUniqueInput[]
 }
 export type OfferCreateManyWithoutBeneficatorInputInputObject =
   | Extract<keyof OfferCreateManyWithoutBeneficatorInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
+  | { name: 'create'; alias?: string }
+  | { name: 'connect'; alias?: string }
+
 export interface OfferCreateWithoutBeneficatorInput {
   id?: string | null
   active?: boolean | null
@@ -7689,22 +7787,22 @@ export interface OfferCreateWithoutBeneficatorInput {
 }
 export type OfferCreateWithoutBeneficatorInputInputObject =
   | Extract<keyof OfferCreateWithoutBeneficatorInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'active', alias?: string  } 
-  | { name: 'publicOffer', alias?: string  } 
-  | { name: 'amount', alias?: string  } 
-  | { name: 'deletedAt', alias?: string  } 
-  | { name: 'email', alias?: string  } 
-  | { name: 'firstName', alias?: string  } 
-  | { name: 'lastName', alias?: string  } 
-  | { name: 'transactions', alias?: string  } 
-  | { name: 'price', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'user', alias?: string  } 
-  | { name: 'description', alias?: string  } 
-  | { name: 'transport', alias?: string  } 
-  | { name: 'gallery', alias?: string  } 
-  
+  | { name: 'id'; alias?: string }
+  | { name: 'active'; alias?: string }
+  | { name: 'publicOffer'; alias?: string }
+  | { name: 'amount'; alias?: string }
+  | { name: 'deletedAt'; alias?: string }
+  | { name: 'email'; alias?: string }
+  | { name: 'firstName'; alias?: string }
+  | { name: 'lastName'; alias?: string }
+  | { name: 'transactions'; alias?: string }
+  | { name: 'price'; alias?: string }
+  | { name: 'name'; alias?: string }
+  | { name: 'user'; alias?: string }
+  | { name: 'description'; alias?: string }
+  | { name: 'transport'; alias?: string }
+  | { name: 'gallery'; alias?: string }
+
 export interface OrganizationUpdateInput {
   apiId?: number | null
   apiSecret?: string | null
@@ -7720,18 +7818,18 @@ export interface OrganizationUpdateInput {
 }
 export type OrganizationUpdateInputInputObject =
   | Extract<keyof OrganizationUpdateInput, string>
-  | { name: 'apiId', alias?: string  } 
-  | { name: 'apiSecret', alias?: string  } 
-  | { name: 'organizationId', alias?: string  } 
-  | { name: 'active', alias?: string  } 
-  | { name: 'logo', alias?: string  } 
-  | { name: 'deletedAt', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'offers', alias?: string  } 
-  | { name: 'projectId', alias?: string  } 
-  | { name: 'description', alias?: string  } 
-  | { name: 'url', alias?: string  } 
-  
+  | { name: 'apiId'; alias?: string }
+  | { name: 'apiSecret'; alias?: string }
+  | { name: 'organizationId'; alias?: string }
+  | { name: 'active'; alias?: string }
+  | { name: 'logo'; alias?: string }
+  | { name: 'deletedAt'; alias?: string }
+  | { name: 'name'; alias?: string }
+  | { name: 'offers'; alias?: string }
+  | { name: 'projectId'; alias?: string }
+  | { name: 'description'; alias?: string }
+  | { name: 'url'; alias?: string }
+
 export interface OfferUpdateManyWithoutBeneficatorInput {
   create?: OfferCreateWithoutBeneficatorInput[]
   delete?: OfferWhereUniqueInput[]
@@ -7745,25 +7843,25 @@ export interface OfferUpdateManyWithoutBeneficatorInput {
 }
 export type OfferUpdateManyWithoutBeneficatorInputInputObject =
   | Extract<keyof OfferUpdateManyWithoutBeneficatorInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'delete', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  | { name: 'set', alias?: string  } 
-  | { name: 'disconnect', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'upsert', alias?: string  } 
-  | { name: 'deleteMany', alias?: string  } 
-  | { name: 'updateMany', alias?: string  } 
-  
+  | { name: 'create'; alias?: string }
+  | { name: 'delete'; alias?: string }
+  | { name: 'connect'; alias?: string }
+  | { name: 'set'; alias?: string }
+  | { name: 'disconnect'; alias?: string }
+  | { name: 'update'; alias?: string }
+  | { name: 'upsert'; alias?: string }
+  | { name: 'deleteMany'; alias?: string }
+  | { name: 'updateMany'; alias?: string }
+
 export interface OfferUpdateWithWhereUniqueWithoutBeneficatorInput {
   where?: OfferWhereUniqueInput
   data?: OfferUpdateWithoutBeneficatorDataInput
 }
 export type OfferUpdateWithWhereUniqueWithoutBeneficatorInputInputObject =
   | Extract<keyof OfferUpdateWithWhereUniqueWithoutBeneficatorInput, string>
-  | { name: 'where', alias?: string  } 
-  | { name: 'data', alias?: string  } 
-  
+  | { name: 'where'; alias?: string }
+  | { name: 'data'; alias?: string }
+
 export interface OfferUpdateWithoutBeneficatorDataInput {
   active?: boolean | null
   publicOffer?: boolean | null
@@ -7782,21 +7880,21 @@ export interface OfferUpdateWithoutBeneficatorDataInput {
 }
 export type OfferUpdateWithoutBeneficatorDataInputInputObject =
   | Extract<keyof OfferUpdateWithoutBeneficatorDataInput, string>
-  | { name: 'active', alias?: string  } 
-  | { name: 'publicOffer', alias?: string  } 
-  | { name: 'amount', alias?: string  } 
-  | { name: 'deletedAt', alias?: string  } 
-  | { name: 'email', alias?: string  } 
-  | { name: 'firstName', alias?: string  } 
-  | { name: 'lastName', alias?: string  } 
-  | { name: 'transactions', alias?: string  } 
-  | { name: 'price', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'user', alias?: string  } 
-  | { name: 'description', alias?: string  } 
-  | { name: 'transport', alias?: string  } 
-  | { name: 'gallery', alias?: string  } 
-  
+  | { name: 'active'; alias?: string }
+  | { name: 'publicOffer'; alias?: string }
+  | { name: 'amount'; alias?: string }
+  | { name: 'deletedAt'; alias?: string }
+  | { name: 'email'; alias?: string }
+  | { name: 'firstName'; alias?: string }
+  | { name: 'lastName'; alias?: string }
+  | { name: 'transactions'; alias?: string }
+  | { name: 'price'; alias?: string }
+  | { name: 'name'; alias?: string }
+  | { name: 'user'; alias?: string }
+  | { name: 'description'; alias?: string }
+  | { name: 'transport'; alias?: string }
+  | { name: 'gallery'; alias?: string }
+
 export interface OfferUpsertWithWhereUniqueWithoutBeneficatorInput {
   where?: OfferWhereUniqueInput
   update?: OfferUpdateWithoutBeneficatorDataInput
@@ -7804,10 +7902,10 @@ export interface OfferUpsertWithWhereUniqueWithoutBeneficatorInput {
 }
 export type OfferUpsertWithWhereUniqueWithoutBeneficatorInputInputObject =
   | Extract<keyof OfferUpsertWithWhereUniqueWithoutBeneficatorInput, string>
-  | { name: 'where', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'create', alias?: string  } 
-  
+  | { name: 'where'; alias?: string }
+  | { name: 'update'; alias?: string }
+  | { name: 'create'; alias?: string }
+
 export interface OrganizationUpdateManyMutationInput {
   apiId?: number | null
   apiSecret?: string | null
@@ -7821,16 +7919,16 @@ export interface OrganizationUpdateManyMutationInput {
 }
 export type OrganizationUpdateManyMutationInputInputObject =
   | Extract<keyof OrganizationUpdateManyMutationInput, string>
-  | { name: 'apiId', alias?: string  } 
-  | { name: 'apiSecret', alias?: string  } 
-  | { name: 'organizationId', alias?: string  } 
-  | { name: 'active', alias?: string  } 
-  | { name: 'deletedAt', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'projectId', alias?: string  } 
-  | { name: 'description', alias?: string  } 
-  | { name: 'url', alias?: string  } 
-  
+  | { name: 'apiId'; alias?: string }
+  | { name: 'apiSecret'; alias?: string }
+  | { name: 'organizationId'; alias?: string }
+  | { name: 'active'; alias?: string }
+  | { name: 'deletedAt'; alias?: string }
+  | { name: 'name'; alias?: string }
+  | { name: 'projectId'; alias?: string }
+  | { name: 'description'; alias?: string }
+  | { name: 'url'; alias?: string }
+
 export interface UserSubscriptionWhereInput {
   mutation_in?: prisma.MutationType[]
   updatedFields_contains?: string | null
@@ -7843,15 +7941,15 @@ export interface UserSubscriptionWhereInput {
 }
 export type UserSubscriptionWhereInputInputObject =
   | Extract<keyof UserSubscriptionWhereInput, string>
-  | { name: 'mutation_in', alias?: string  } 
-  | { name: 'updatedFields_contains', alias?: string  } 
-  | { name: 'updatedFields_contains_every', alias?: string  } 
-  | { name: 'updatedFields_contains_some', alias?: string  } 
-  | { name: 'node', alias?: string  } 
-  | { name: 'AND', alias?: string  } 
-  | { name: 'OR', alias?: string  } 
-  | { name: 'NOT', alias?: string  } 
-  
+  | { name: 'mutation_in'; alias?: string }
+  | { name: 'updatedFields_contains'; alias?: string }
+  | { name: 'updatedFields_contains_every'; alias?: string }
+  | { name: 'updatedFields_contains_some'; alias?: string }
+  | { name: 'node'; alias?: string }
+  | { name: 'AND'; alias?: string }
+  | { name: 'OR'; alias?: string }
+  | { name: 'NOT'; alias?: string }
+
 export interface AdressSubscriptionWhereInput {
   mutation_in?: prisma.MutationType[]
   updatedFields_contains?: string | null
@@ -7864,15 +7962,15 @@ export interface AdressSubscriptionWhereInput {
 }
 export type AdressSubscriptionWhereInputInputObject =
   | Extract<keyof AdressSubscriptionWhereInput, string>
-  | { name: 'mutation_in', alias?: string  } 
-  | { name: 'updatedFields_contains', alias?: string  } 
-  | { name: 'updatedFields_contains_every', alias?: string  } 
-  | { name: 'updatedFields_contains_some', alias?: string  } 
-  | { name: 'node', alias?: string  } 
-  | { name: 'AND', alias?: string  } 
-  | { name: 'OR', alias?: string  } 
-  | { name: 'NOT', alias?: string  } 
-  
+  | { name: 'mutation_in'; alias?: string }
+  | { name: 'updatedFields_contains'; alias?: string }
+  | { name: 'updatedFields_contains_every'; alias?: string }
+  | { name: 'updatedFields_contains_some'; alias?: string }
+  | { name: 'node'; alias?: string }
+  | { name: 'AND'; alias?: string }
+  | { name: 'OR'; alias?: string }
+  | { name: 'NOT'; alias?: string }
+
 export interface FileSubscriptionWhereInput {
   mutation_in?: prisma.MutationType[]
   updatedFields_contains?: string | null
@@ -7885,15 +7983,15 @@ export interface FileSubscriptionWhereInput {
 }
 export type FileSubscriptionWhereInputInputObject =
   | Extract<keyof FileSubscriptionWhereInput, string>
-  | { name: 'mutation_in', alias?: string  } 
-  | { name: 'updatedFields_contains', alias?: string  } 
-  | { name: 'updatedFields_contains_every', alias?: string  } 
-  | { name: 'updatedFields_contains_some', alias?: string  } 
-  | { name: 'node', alias?: string  } 
-  | { name: 'AND', alias?: string  } 
-  | { name: 'OR', alias?: string  } 
-  | { name: 'NOT', alias?: string  } 
-  
+  | { name: 'mutation_in'; alias?: string }
+  | { name: 'updatedFields_contains'; alias?: string }
+  | { name: 'updatedFields_contains_every'; alias?: string }
+  | { name: 'updatedFields_contains_some'; alias?: string }
+  | { name: 'node'; alias?: string }
+  | { name: 'AND'; alias?: string }
+  | { name: 'OR'; alias?: string }
+  | { name: 'NOT'; alias?: string }
+
 export interface GallerySubscriptionWhereInput {
   mutation_in?: prisma.MutationType[]
   updatedFields_contains?: string | null
@@ -7906,15 +8004,15 @@ export interface GallerySubscriptionWhereInput {
 }
 export type GallerySubscriptionWhereInputInputObject =
   | Extract<keyof GallerySubscriptionWhereInput, string>
-  | { name: 'mutation_in', alias?: string  } 
-  | { name: 'updatedFields_contains', alias?: string  } 
-  | { name: 'updatedFields_contains_every', alias?: string  } 
-  | { name: 'updatedFields_contains_some', alias?: string  } 
-  | { name: 'node', alias?: string  } 
-  | { name: 'AND', alias?: string  } 
-  | { name: 'OR', alias?: string  } 
-  | { name: 'NOT', alias?: string  } 
-  
+  | { name: 'mutation_in'; alias?: string }
+  | { name: 'updatedFields_contains'; alias?: string }
+  | { name: 'updatedFields_contains_every'; alias?: string }
+  | { name: 'updatedFields_contains_some'; alias?: string }
+  | { name: 'node'; alias?: string }
+  | { name: 'AND'; alias?: string }
+  | { name: 'OR'; alias?: string }
+  | { name: 'NOT'; alias?: string }
+
 export interface OfferSubscriptionWhereInput {
   mutation_in?: prisma.MutationType[]
   updatedFields_contains?: string | null
@@ -7927,15 +8025,15 @@ export interface OfferSubscriptionWhereInput {
 }
 export type OfferSubscriptionWhereInputInputObject =
   | Extract<keyof OfferSubscriptionWhereInput, string>
-  | { name: 'mutation_in', alias?: string  } 
-  | { name: 'updatedFields_contains', alias?: string  } 
-  | { name: 'updatedFields_contains_every', alias?: string  } 
-  | { name: 'updatedFields_contains_some', alias?: string  } 
-  | { name: 'node', alias?: string  } 
-  | { name: 'AND', alias?: string  } 
-  | { name: 'OR', alias?: string  } 
-  | { name: 'NOT', alias?: string  } 
-  
+  | { name: 'mutation_in'; alias?: string }
+  | { name: 'updatedFields_contains'; alias?: string }
+  | { name: 'updatedFields_contains_every'; alias?: string }
+  | { name: 'updatedFields_contains_some'; alias?: string }
+  | { name: 'node'; alias?: string }
+  | { name: 'AND'; alias?: string }
+  | { name: 'OR'; alias?: string }
+  | { name: 'NOT'; alias?: string }
+
 export interface TransactionSubscriptionWhereInput {
   mutation_in?: prisma.MutationType[]
   updatedFields_contains?: string | null
@@ -7948,15 +8046,15 @@ export interface TransactionSubscriptionWhereInput {
 }
 export type TransactionSubscriptionWhereInputInputObject =
   | Extract<keyof TransactionSubscriptionWhereInput, string>
-  | { name: 'mutation_in', alias?: string  } 
-  | { name: 'updatedFields_contains', alias?: string  } 
-  | { name: 'updatedFields_contains_every', alias?: string  } 
-  | { name: 'updatedFields_contains_some', alias?: string  } 
-  | { name: 'node', alias?: string  } 
-  | { name: 'AND', alias?: string  } 
-  | { name: 'OR', alias?: string  } 
-  | { name: 'NOT', alias?: string  } 
-  
+  | { name: 'mutation_in'; alias?: string }
+  | { name: 'updatedFields_contains'; alias?: string }
+  | { name: 'updatedFields_contains_every'; alias?: string }
+  | { name: 'updatedFields_contains_some'; alias?: string }
+  | { name: 'node'; alias?: string }
+  | { name: 'AND'; alias?: string }
+  | { name: 'OR'; alias?: string }
+  | { name: 'NOT'; alias?: string }
+
 export interface OrganizationSubscriptionWhereInput {
   mutation_in?: prisma.MutationType[]
   updatedFields_contains?: string | null
@@ -7969,26 +8067,23 @@ export interface OrganizationSubscriptionWhereInput {
 }
 export type OrganizationSubscriptionWhereInputInputObject =
   | Extract<keyof OrganizationSubscriptionWhereInput, string>
-  | { name: 'mutation_in', alias?: string  } 
-  | { name: 'updatedFields_contains', alias?: string  } 
-  | { name: 'updatedFields_contains_every', alias?: string  } 
-  | { name: 'updatedFields_contains_some', alias?: string  } 
-  | { name: 'node', alias?: string  } 
-  | { name: 'AND', alias?: string  } 
-  | { name: 'OR', alias?: string  } 
-  | { name: 'NOT', alias?: string  } 
-  
+  | { name: 'mutation_in'; alias?: string }
+  | { name: 'updatedFields_contains'; alias?: string }
+  | { name: 'updatedFields_contains_every'; alias?: string }
+  | { name: 'updatedFields_contains_some'; alias?: string }
+  | { name: 'node'; alias?: string }
+  | { name: 'AND'; alias?: string }
+  | { name: 'OR'; alias?: string }
+  | { name: 'NOT'; alias?: string }
 
-export type UserRoleValues =
-  | 'USER'
-  | 'ADMIN'
-  
+export type UserRoleValues = 'USER' | 'ADMIN'
+
 export type TransactionStatusValues =
   | 'PENDING'
   | 'PAID'
   | 'FAILED'
   | 'INSUFFICIENT'
-  
+
 export type OfferOrderByInputValues =
   | 'id_ASC'
   | 'id_DESC'
@@ -8018,7 +8113,7 @@ export type OfferOrderByInputValues =
   | 'description_DESC'
   | 'transport_ASC'
   | 'transport_DESC'
-  
+
 export type TransactionOrderByInputValues =
   | 'id_ASC'
   | 'id_DESC'
@@ -8042,7 +8137,7 @@ export type TransactionOrderByInputValues =
   | 'donatedAmount_DESC'
   | 'status_ASC'
   | 'status_DESC'
-  
+
 export type FileOrderByInputValues =
   | 'id_ASC'
   | 'id_DESC'
@@ -8060,7 +8155,7 @@ export type FileOrderByInputValues =
   | 'createdAt_DESC'
   | 'updatedAt_ASC'
   | 'updatedAt_DESC'
-  
+
 export type UserOrderByInputValues =
   | 'id_ASC'
   | 'id_DESC'
@@ -8078,7 +8173,7 @@ export type UserOrderByInputValues =
   | 'createdAt_DESC'
   | 'updatedAt_ASC'
   | 'updatedAt_DESC'
-  
+
 export type AdressOrderByInputValues =
   | 'id_ASC'
   | 'id_DESC'
@@ -8092,7 +8187,7 @@ export type AdressOrderByInputValues =
   | 'createdAt_DESC'
   | 'updatedAt_ASC'
   | 'updatedAt_DESC'
-  
+
 export type GalleryOrderByInputValues =
   | 'id_ASC'
   | 'id_DESC'
@@ -8100,7 +8195,7 @@ export type GalleryOrderByInputValues =
   | 'createdAt_DESC'
   | 'updatedAt_ASC'
   | 'updatedAt_DESC'
-  
+
 export type OrganizationOrderByInputValues =
   | 'id_ASC'
   | 'id_DESC'
@@ -8126,10 +8221,5 @@ export type OrganizationOrderByInputValues =
   | 'description_DESC'
   | 'url_ASC'
   | 'url_DESC'
-  
-export type MutationTypeValues =
-  | 'CREATED'
-  | 'UPDATED'
-  | 'DELETED'
-  
-  
+
+export type MutationTypeValues = 'CREATED' | 'UPDATED' | 'DELETED'
