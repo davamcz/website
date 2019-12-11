@@ -7,6 +7,7 @@ interface Props {
   noShadow?: boolean
   disabled?: boolean
   loading?: boolean
+  small?: boolean
   onClick?: () => void
 }
 
@@ -17,6 +18,7 @@ export const Button: FunctionComponent<Props> = ({
   noShadow,
   loading,
   onClick,
+  small,
 }) => {
   return (
     <>
@@ -26,6 +28,7 @@ export const Button: FunctionComponent<Props> = ({
         noShadow={noShadow}
         loading={loading}
         onClick={onClick}
+        small={small}
       >
         {children}
         {loading && (
@@ -40,8 +43,8 @@ export const Button: FunctionComponent<Props> = ({
 
 export const StyledButton = styled.button<Props>`
   position: relative;
-  padding: 12px;
-  font-size: 1rem;
+  padding: ${({ small }) => (small ? 6 : 12)}px;
+  font-size: ${({ small }) => (small ? 14 : 16)}px;
   text-decoration: none;
   cursor: pointer;
   color: ${({ theme, secondary, loading }) =>

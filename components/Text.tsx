@@ -147,6 +147,7 @@ const presets = {
   `,
   span: `
     font-size: 12px;
+    line-height: 24px;
     font-weight: 700;
   `,
 }

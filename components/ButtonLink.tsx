@@ -8,6 +8,7 @@ interface Props {
   secondary?: boolean
   title?: string
   noShadow?: boolean
+  small?: boolean
   style?: CSSProperties
 }
 
@@ -19,6 +20,7 @@ export const ButtonLink: React.FC<Props> = ({
   secondary,
   noShadow,
   style,
+  small
 }) => {
   return (
     <Link href={href} as={as} passHref>
@@ -27,6 +29,7 @@ export const ButtonLink: React.FC<Props> = ({
         noShadow={noShadow}
         title={title}
         style={style}
+        small={small}
         as="a"
       >
         {children}
