@@ -6,7 +6,11 @@ import Text from './Text'
 
 export const Home = () => (
   <HomeContainer style={{ paddingTop: '144px', paddingBottom: '250px' }}>
-    <Text h1 style={{ maxWidth: '660px' }}>
+    <Text h1 style={{ maxWidth: '480px' }}>
+      Jednoduše spojujeme lidi pro dobrou věc
+    </Text>
+    <Spacer />
+    <Text style={{ maxWidth: '420px' }}>
       Máte věc nebo službu, kterou chcete věnovat druhým a zároveň pomoci
       dobročinné organizaci?
     </Text>

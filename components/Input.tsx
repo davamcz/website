@@ -1,6 +1,8 @@
-import { ChangeEvent } from 'react'
+import { ChangeEvent, memo } from 'react'
 import styled, { css } from 'styled-components'
 import { Container } from './Container'
+import Spacer from './Spacer'
+import { Tooltip } from './Tooltip'
 
 interface Props {
   value: any
@@ -12,6 +14,7 @@ interface Props {
   onBlur?: any
   error?: string
   disabled?: boolean
+  tooltip?: string
 }
 
 export const Input = ({
@@ -24,11 +27,16 @@ export const Input = ({
   placeholder,
   error,
   disabled,
+  tooltip,
 }: Props) => {
   return (
     <Container full>
       <Container row style={{ justifyContent: 'space-between' }}>
-        {label && <Label>{label}</Label>}
+        {label && (
+          <Container row vcenter>
+            <Label tooltip={tooltip}>{label}</Label>
+          </Container>
+        )}
         {error && <Error>{error}</Error>}
       </Container>
       <StyledInput
@@ -45,10 +53,23 @@ export const Input = ({
   )
 }
 
-export const Label = styled.label`
+export const Label = memo<{ children: React.ReactNode; tooltip?: string }>(
+  ({ children, tooltip }) => (
+    <Container row vcenter style={{ marginBottom: '16px' }}>
+      <StyledLabel>{children}</StyledLabel>
+      {tooltip && (
+        <>
+          <Spacer x={0.5} />
+          <Tooltip message={tooltip} />
+        </>
+      )}
+    </Container>
+  )
+)
+
+const StyledLabel = styled.label`
   font-size: 16px;
   color: ${({ theme }) => theme.colors.orange};
-  margin-bottom: 12px;
   font-weight: 700;
 `
 

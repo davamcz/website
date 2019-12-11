@@ -7,11 +7,11 @@ interface Props {
 export const FadeIn = ({ children }: Props) => <Fade>{children}</Fade>
 
 const fadeIn = keyframes`
-  from {
-    opacity: 0.3;
-  }
-  to {
-    opacity: 1;
+  from {	 
+    opacity: 0.3;	   
+  }	  
+  to {	 
+    opacity: 1;	  
   }
 `
 
