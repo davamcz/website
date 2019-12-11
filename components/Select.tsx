@@ -12,6 +12,7 @@ interface Props {
   value: string
   error?: string
   defaultValue?: any
+  tooltip?: string
 }
 
 export const Select = ({
@@ -22,10 +23,11 @@ export const Select = ({
   onChange,
   value,
   error,
+  tooltip
 }: Props) => (
   <Container>
     <Container row style={{ justifyContent: 'space-between' }}>
-      {label && <Label>{label}</Label>}
+      {label && <Label tooltip={tooltip}>{label}</Label>}
       {error && <Error>{error}</Error>}
     </Container>
     <SelectContainer error={error}>

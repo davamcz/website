@@ -12,11 +12,7 @@ import { SelectButton } from '../../components/SelectButton'
 import Spacer from '../../components/Spacer'
 import Text from '../../components/Text'
 import { TextArea } from '../../components/TextArea'
-import {
-  useCreateOfferMutation,
-  useOrganizationsQuery,
-  useUserQuery,
-} from '../../generated/graphql'
+import { useCreateOfferMutation, useOrganizationsQuery, useUserQuery } from '../../generated/graphql'
 import { withApollo } from '../../lib/apollo'
 import { useUpload } from '../../lib/use-upload'
 import { OfferValidationSchema } from '../../validation/offer'
@@ -160,6 +156,7 @@ export default withApollo(() => {
                   label="Organizace"
                   onChange={handleChange}
                   error={errors.organizationId}
+                  tooltip="Vyberte dobročinnou organizaci, které chcete, abyste přispěli."
                 >
                   <option disabled value="no-organization">
                     Vyberte organizaci
@@ -198,6 +195,7 @@ export default withApollo(() => {
                   value={values.transport}
                   onChange={handleChange}
                   onBlur={handleBlur}
+                  tooltip="Napište způsob dopravy. Pošlete poštou, online nebo osobně předáte?"
                 />
                 <Spacer />
                 <Container row>
@@ -205,14 +203,14 @@ export default withApollo(() => {
                     active={values.publicOffer}
                     onClick={() => setFieldValue('publicOffer', true)}
                   >
-                    Veřejné
+                    Veřejná nabídka
                   </SelectButton>
                   <Spacer />
                   <SelectButton
                     active={!values.publicOffer}
                     onClick={() => setFieldValue('publicOffer', false)}
                   >
-                    Neveřejné
+                    Neveřejná nabídka
                   </SelectButton>
                 </Container>
                 <Spacer />
