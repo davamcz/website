@@ -1,9 +1,9 @@
-import { Container } from '../Container'
-import Text from '../Text'
-import { ButtonLink } from '../ButtonLink'
-import Spacer from '../Spacer'
 import styled from 'styled-components'
+import { ButtonLink } from '../ButtonLink'
+import { Container } from '../Container'
 import { Image } from '../Image'
+import Spacer from '../Spacer'
+import Text from '../Text'
 
 interface Props {
   offer: any
@@ -11,15 +11,13 @@ interface Props {
 
 export const OfferItem = ({ offer }: Props) => (
   <StyledContainer>
-    <Image
-      src={`https://davamcz.imgix.net/${offer.gallery.images[0].key}?w=255`}
-    />
+    <Image src={`https://davamcz.imgix.net/${offer.gallery.images[0].key}?w=255&h=255&fit=fillmax&fill=solid&fill-color=fff`} />
     <Spacer y={0.5} />
     <Text span color="orange">
       {offer.beneficator.name}
     </Text>
     <Spacer y={0.5} />
-    <Text>{offer.name}</Text>
+    <Text ellipsis>{offer.name}</Text>
     <Spacer y={0.5} />
     <Container row vcenter style={{ justifyContent: 'space-between' }}>
       <Text bold>{offer.price} Kč</Text>

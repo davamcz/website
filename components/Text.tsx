@@ -62,6 +62,7 @@ interface Props {
   italic?: boolean
   uppercase?: boolean
   capitalize?: boolean
+  ellipsis?: boolean
   weight?: Weight
   color?: Colors
   style?: CSSProperties
@@ -169,4 +170,15 @@ const StyledText = styled.p<NestedProps>`
     css`
       ${presets[preset]}
     `};
+
+  ${({ ellipsis }) =>
+    ellipsis &&
+    css`
+      display: inline-block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      word-wrap: normal;
+      max-width: 100%;
+    `}
 `
