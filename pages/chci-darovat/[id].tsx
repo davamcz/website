@@ -54,10 +54,10 @@ export default () => {
           na dárce - co nejdříve se tedy domluvte na předání produktu či
           poskytnutí služby
         </Step>
-        <Step number={4}>
+        {/* <Step number={4}>
           Jako poděkování za podporu dobročinné organizace zašleme vám i dárci
           certifikát o věnovaném daru
-        </Step>
+        </Step> */}
         <ButtonLink href="/chci-darovat" style={{ alignSelf: 'flex-start' }}>
           Vytvořit nový platební odkaz
         </ButtonLink>

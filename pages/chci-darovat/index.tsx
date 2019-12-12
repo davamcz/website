@@ -156,7 +156,7 @@ export default withApollo(() => {
                   label="Organizace"
                   onChange={handleChange}
                   error={errors.organizationId}
-                  tooltip="Vyberte dobročinnou organizaci, které chcete, abyste přispěli."
+                  tooltip="Vyberte dobročinnou organizaci, které se má za tuto nabídkou přispět."
                 >
                   <option disabled value="no-organization">
                     Vyberte organizaci

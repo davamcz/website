@@ -10,11 +10,7 @@ import { Section } from '../../../components/Section'
 import Spacer from '../../../components/Spacer'
 import Text from '../../../components/Text'
 import { TextArea } from '../../../components/TextArea'
-import {
-  useCreateTransactionMutation,
-  useOfferQuery,
-  useUserQuery,
-} from '../../../generated/graphql'
+import { useCreateTransactionMutation, useOfferQuery, useUserQuery } from '../../../generated/graphql'
 import { withApollo } from '../../../lib/apollo'
 import { paymentLink } from '../../../lib/paymentLink'
 import { TransactionValidationSchema } from '../../../validation/transaction'
@@ -30,6 +26,7 @@ export default withApollo(() => {
 
   const offer = data?.offer
   const user = userData?.user
+
   const amount = parseInt(router.query.mnozstvi as string) || 1
   const price = amount * (offer?.price as number)
 
@@ -179,19 +176,24 @@ export default withApollo(() => {
                   />
                   <Spacer x={0.5} />
                   <Text>
-                    Souhlasím s zpracování{' '}
+                    Souhlasím s zpracování osobních údajů{' '}
+                    <Link
+                      color
+                      bold
+                      external
+                      href="https://docs.google.com/document/d/1mF2rgj4ljL3pFGjfluArTfTptObI1Bbfn8tJJjHqv3s/edit"
+                    >
+                      Davam.cz
+                    </Link>{' '}
+                    organizací{' '}
                     <Link
                       color
                       bold
                       external
                       href={`https://www.darujme.cz/projekt/${offer?.beneficator.projectId}/zpracovani-osobnich-udaju`}
                     >
-                      osobních údajů
-                    </Link>{' '}
-                    organizací{' '}
-                    <Text as="span" bold>
                       {offer?.beneficator.name}
-                    </Text>
+                    </Link>
                   </Text>
                 </Container>
               </Form>
