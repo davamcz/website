@@ -15,7 +15,7 @@ export const OrganizationsContainer = () => (
       center
       style={{ justifyContent: 'space-between' }}
     >
-      <Image src="https://davamcz.imgix.net/organizace/zdravotni-klaun.svg" />
+      <Image src="https://davamcz.imgix.net/organizace/zdravotni-klaun.svg" maxWidth={151} />
       <Spacer />
       <Image
         src="https://davamcz.imgix.net/organizace/hnuti-brontosaurus.png"
@@ -29,7 +29,7 @@ export const OrganizationsContainer = () => (
       />
       <Spacer />
 
-      <Image src="https://davamcz.imgix.net/organizace/armada-spasy.svg" />
+      <Image src="https://davamcz.imgix.net/organizace/armada-spasy.svg" maxWidth={35} />
       <Spacer />
 
       <Image

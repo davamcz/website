@@ -6,9 +6,15 @@ interface Props {
 }
 
 export const Image = ({ src, maxWidth }: Props) => {
-  return <Img src={src} style={{ maxWidth }} />
+  return <Box><Img src={src} style={{ maxWidth }} /></Box>
 }
 
-const Img = styled.img`
+const Box = styled.div`
+flex: 1;
+  width: 100%;
   height: auto;
+`
+
+const Img = styled.img`
+  width: 100%;
 `
