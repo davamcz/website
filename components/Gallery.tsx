@@ -2,6 +2,7 @@ import { memo } from 'react'
 import { Container } from './Container'
 import { Image } from './Image'
 import { Placeholder } from './Placeholder'
+import Spacer from './Spacer'
 
 interface Props {
   loading?: boolean
@@ -18,6 +19,7 @@ export const Gallery = memo<Props>(({ loading, images }) => {
           src={`https://davamcz.imgix.net/${images[0].key}?w=505&h=505&fit=fillmax&fill=solid&fill-color=fff`}
         />
       )}
+      <Spacer />
     </Container>
   )
 })

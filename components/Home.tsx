@@ -29,4 +29,12 @@ const HomeContainer = styled(Container)`
   object-fit: contain;
   background: 100% no-repeat url('/home-background.jpg');
   background-position: bottom right;
+
+  @media only screen and (min-device-pixel-ratio: 2),
+    only screen and (min-resolution: 192dpi),
+    only screen and (min-resolution: 2dppx) {
+    background: 100% no-repeat url('/home-background@2x.jpg');
+    background-size: 420px auto;
+    background-position: bottom right;
+  }
 `

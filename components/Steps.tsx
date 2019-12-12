@@ -16,7 +16,8 @@ export const Steps = () => (
         paddingBottom: '48px',
         justifyContent: 'space-between',
       }}
-      row
+      hcenter
+      direction={['column', 'row', 'row']}
     >
       <Step
         title="Krok č. 1"

@@ -13,7 +13,7 @@ interface Props {
 
 export const OrganizationItem = ({ organization }: Props) => (
   <OrganizationCard>
-    <Container center style={{ width: '350px', padding: '30px 60px' }}>
+    <Container center style={{ padding: '30px 60px' }}>
       <Image src={`https://davamcz.imgix.net/${organization.logo.key}?h=68`} />
       <Spacer y={1.5} />
       <Text>{organization.description}</Text>
@@ -26,6 +26,7 @@ export const OrganizationItem = ({ organization }: Props) => (
 )
 
 const OrganizationCard = styled.div`
+  width: 28.5714286%;
   box-shadow: ${({ theme }) => theme.shadow.box};
   margin-bottom: 36px;
   margin-right: 30px;

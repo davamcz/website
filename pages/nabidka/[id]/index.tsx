@@ -34,7 +34,7 @@ export default withApollo(
             offer.gallery.images[0].key}`}
         />
         <Spacer y={2} />
-        <Container row style={{ justifyContent: 'space-between' }}>
+        <Container direction={['column', 'column', 'row']} style={{ justifyContent: 'space-between' }}>
           <Gallery
             loading={loading}
             images={offer?.gallery.images as Array<any>}

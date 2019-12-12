@@ -60,7 +60,7 @@ export default withApollo(() => {
 
   return (
     <Section>
-      <Container row>
+      <Container direction={['column', 'column', 'row']}>
         <Container>
           <Text h1 color="salmon" style={{ maxWidth: '420px' }}>
             Rozhodli jste se darovat

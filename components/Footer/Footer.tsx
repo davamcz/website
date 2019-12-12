@@ -7,10 +7,10 @@ import Text from '../Text'
 
 export const Footer = () => (
   <FooterContainer>
-    <Container row vcenter style={{ justifyContent: 'space-between' }}>
+    <Container center style={{ justifyContent: 'space-between' }} direction={['column', 'column', 'row']}>
       <Logo />
       <Text>&copy; {new Date().getFullYear()} Davam.cz</Text>
-      <Text>
+      <Text center>
         V případe problémů a dotazů nás kontaktujte na{' '}
         <Link external color href="mailto:info@davam.cz">
           info@davam.cz

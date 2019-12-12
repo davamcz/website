@@ -21,7 +21,6 @@ export const ContactForm = ({ maxWidth = '730px' }: Props) => {
         width: '100%',
         maxWidth,
         paddingTop: '36px',
-        paddingRight: '62px',
       }}
     >
       <Formik

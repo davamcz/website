@@ -16,10 +16,9 @@ export const ContactInfo = ({ maxWidth = '730px' }: Props) => {
         width: '100%',
         maxWidth,
         paddingTop: '36px',
-        paddingLeft: '62.5px',
       }}
     >
-      <ContactInfoContainer>
+      <ContactInfoContainer>  
         <Text>
           Máte nějaké dotazy, náměty, nápady? Napište nám! Využijte náš
           kontaktní formulář nebo oslovte konkrétního člověka z našeho týmu.

@@ -1,12 +1,12 @@
-import { Container } from './Container'
-import { Image } from './Image'
-import Spacer from './Spacer'
-import Text from './Text'
-import { Title } from './Title'
+import { Container } from '../Container'
+import { Image } from '../Image'
+import Spacer from '../Spacer'
+import Text from '../Text'
+import { Title } from '../Title'
 // import { ButtonLink } from './ButtonLink'
 
 export const AboutSection = () => (
-  <Container row>
+  <Container direction={['column', 'column', 'row']}>
     <Container>
       <Image src="/davam-tym.jpg" />
     </Container>

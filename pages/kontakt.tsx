@@ -1,10 +1,10 @@
-import { Container } from '../components/Container'
-import Text from '../components/Text'
-import Spacer from '../components/Spacer'
 import { ContactForm } from '../components/ContactForm'
 import { ContactInfo } from '../components/ContactInfo'
+import { Container } from '../components/Container'
 // import { PressKit } from '../components/PressKit'
 import { FAQ } from '../components/FAQ'
+import Spacer from '../components/Spacer'
+import Text from '../components/Text'
 
 export default () => (
   <Container>
@@ -14,8 +14,12 @@ export default () => (
       </Text>
     </Container>
     <Spacer></Spacer>
-    <Container row style={{ paddingBottom: '36px' }}>
+    <Container
+      style={{ paddingBottom: '36px' }}
+      direction={['column', 'column', 'row']}
+    >
       <ContactForm />
+      <Spacer x={4} />
       <ContactInfo />
     </Container>
 

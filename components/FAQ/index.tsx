@@ -3,7 +3,7 @@ import { Faq } from './Faq'
 
 export const FAQ = () => {
   return (
-    <Container row style={{ flexWrap: 'wrap' }}>
+    <Container direction={['column', 'column', 'row']} style={{ flexWrap: 'wrap' }}>
       <Faq
         question="Kdo vybírá, jaké organizaci peníze půjdou?"
         answer="Výběr dobročinné organizace je v rukou Dobromana – člověka, který nabízí svou věc nebo službu."

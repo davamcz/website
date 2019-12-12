@@ -1,8 +1,8 @@
 import { FunctionComponent } from 'react'
-import { Container } from './Container'
-import Text from './Text'
-import Spacer from './Spacer'
 import styled from 'styled-components'
+import { Container } from './Container'
+import Spacer from './Spacer'
+import Text from './Text'
 
 interface Props {
   title: string
@@ -10,12 +10,12 @@ interface Props {
 }
 
 export const Step: FunctionComponent<Props> = ({ title, description }) => (
-  <Container hcenter style={{ maxWidth: '190px' }}>
+  <Container style={{ maxWidth: '190px' }}>
     <Block>
       <Text bold style={{ marginBottom: '17px' }}>
         {title}
       </Text>
-      <Rectangle />
+      <Rectangle /> 
     </Block>
     <Spacer />
     <Text center>{description}</Text>

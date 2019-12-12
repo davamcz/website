@@ -1,5 +1,14 @@
-import { memo, createContext, useContext, CSSProperties } from 'react'
+import { createContext, CSSProperties, memo, useContext, useMemo } from 'react'
 import styled, { css } from 'styled-components'
+import { cn } from '../lib/utils'
+
+const BREAKPOINTS = {
+  MOBILE: 'mobile',
+  TABLET: 'tablet',
+  DESKTOP: 'desktop',
+}
+const BREAKPOINT_NUM = Object.keys(BREAKPOINTS).length
+const ROW_ARR = Array(BREAKPOINT_NUM).fill('row')
 
 const ContainerContext = createContext<undefined | boolean>(undefined)
 const useContainer = () => useContext(ContainerContext)
@@ -53,7 +62,7 @@ interface Props {
   inline?: boolean
   noWrapper?: boolean
   className?: string
-  responsive?: Direction[]
+  direction?: Direction[]
   style?: CSSProperties
 }
 
@@ -73,6 +82,7 @@ export const Container: React.FC<Props> = memo(
     noWrapper,
     className,
     style,
+    direction,
   }) => {
     let justify, align
     const horizontalValue = left
@@ -98,12 +108,50 @@ export const Container: React.FC<Props> = memo(
       align = alignments.column.align[horizontalValue]
     }
 
+    const responsive = useMemo(() => {
+      if (direction) {
+        if (Array.isArray(direction)) {
+          if (process.env.VERSION === 'development') {
+            // Error check the string values
+            direction.forEach(v => {
+              if (v !== 'row' && v !== 'column') {
+                throw new Error(
+                  `Invalid direction value '${v}'. Only 'row' and 'column' are accepted.`
+                )
+              }
+            })
+          }
+
+          if (direction.length === BREAKPOINT_NUM) return direction
+
+          // "extend" the direction value to be filled with the last value
+          // ['row', 'column'] => ['row', 'column', 'column']
+          // ['column'] => ['column', 'column', 'column']
+          return direction.concat(
+            Array(BREAKPOINT_NUM - direction.length).fill(
+              direction[direction.length - 1]
+            )
+          )
+        } else {
+          // direction="row" => ['row', 'row', 'row']
+          return ROW_ARR.fill(direction)
+        }
+      } else if (row) {
+        return ROW_ARR
+      }
+      return []
+    }, [Array.isArray(direction) ? direction.join(',') : direction, row])
+
     const container = (
       <ContainerBox
         flex={flex}
         justify={justify}
         align={align}
-        className={className}
+        className={cn(className, {
+          'sm-row': responsive[0] === 'row',
+          'md-row': responsive[1] === 'row',
+          'lg-row': responsive[2] === 'row',
+        })}
         row={row}
         style={style}
         full={full}
@@ -153,6 +201,63 @@ const ContainerBox = styled.div<ContainerProps>`
   position: relative;
   min-width: 1px;
   max-width: 100%;
+
+  @media screen and (min-width: 961px) {
+  &.lg-row {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  &:not(.lg-row) > & {
+    margin-top: 0;
+  }
+  &:not(.lg-row) > & ~ & {
+    margin-top: calc(var(--geist-gap) * var(--gap-ratio));
+  }
+  &.lg-row > & {
+    margin-left: 0;
+  }
+  &.lg-row > & ~ & {
+    margin-left: calc(var(--geist-gap) * var(--gap-ratio));
+  }
+}
+
+@media screen and (min-width: 601px) and (max-width: 960px) {
+  &.md-row {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  &:not(.md-row) > & {
+    margin-top: 0;
+  }
+  &:not(.md-row) > & ~ & {
+    margin-top: calc(var(--geist-gap) * var(--gap-ratio));
+  }
+  &.md-row > & {
+    margin-left: 0;
+  }
+  &.md-row > & ~ & {
+    margin-left: calc(var(--geist-gap) * var(--gap-ratio));
+  }
+}
+
+@media screen and (max-width: 600px) {
+  &.sm-row {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  &:not(.sm-row) > & {
+    margin-top: 0;
+  }
+  &:not(.sm-row) > & ~ & {
+    margin-top: calc(var(--geist-gap) * var(--gap-ratio));
+  }
+  &.sm-row > & {
+    margin-left: 0;
+  }
+  &.sm-row > & ~ & {
+    margin-left: calc(var(--geist-gap) * var(--gap-ratio));
+  }
+}
 
   ${({ inline }) => inline && `display: inline-flex;`}
   ${({ noWrap }) => noWrap && `flex-wrap: nowrap;`}

@@ -4,7 +4,7 @@ import { OrganizationItem } from './Organization'
 
 export const Organizations = ({ organizations }: OrganizationsProps) => {
   return (
-    <Container row style={{ flexWrap: 'wrap' }}>
+    <Container direction={['column', 'row', 'row']} style={{ flexWrap: 'wrap' }}>
       {organizations.map((organization, i) => (
         <OrganizationItem organization={organization} key={i} />
       ))}
