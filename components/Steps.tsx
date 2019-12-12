@@ -1,3 +1,4 @@
+import styled from 'styled-components'
 import { Container } from './Container'
 import { Step } from './Step'
 import { Title } from './Title'
@@ -10,14 +11,8 @@ export const Steps = () => (
       </Title>
     </Container>
 
-    <Container
-      style={{
-        paddingTop: '48px',
-        paddingBottom: '48px',
-        justifyContent: 'space-between',
-      }}
-      hcenter
-      direction={['column', 'row', 'row']}
+    <StyledContainer
+      direction={['column', 'column', 'row']}
     >
       <Step
         title="Krok č. 1"
@@ -39,6 +34,15 @@ export const Steps = () => (
         title="Krok č. 5"
         description="Domluvte se na způsobu předání produktu nebo poskytnutí služby."
       ></Step>
-    </Container>
+    </StyledContainer>
   </Container>
 )
+
+const StyledContainer = styled(Container)`
+  padding: 48px 0;
+  justify-content: space-between;
+
+  @media screen  and (max-width: 960px) {
+    align-items: center;
+  }
+`
