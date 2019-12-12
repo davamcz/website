@@ -26,11 +26,33 @@ export const OrganizationItem = ({ organization }: Props) => (
 )
 
 const OrganizationCard = styled.div`
-  width: 28.5714286%;
+  width: 32%;
   box-shadow: ${({ theme }) => theme.shadow.box};
   margin-bottom: 36px;
-  margin-right: 30px;
+  margin-right: 2%;
   &:nth-child(3n) {
     margin-right: 0;
+  }
+
+  @media screen and (min-width: 601px) and (max-width: 960px) {
+    width: 48%;
+    margin-right: 4%;
+    &:nth-child(3n) {
+      margin-right: 4%;
+    }
+
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    margin-right: 0;
+
+    &:nth-child(3n),
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
   }
 `

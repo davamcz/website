@@ -32,7 +32,7 @@ export default withApollo(() => {
 
   return (
     <Section>
-      <Container row>
+      <Container direction={['column', 'column', 'row']}>
         <Container style={{ maxWidth: '540px' }}>
           <Text h1 color="salmon">
             Rozhodli jste se přispět na dobrou věc - děkujeme!
@@ -175,7 +175,7 @@ export default withApollo(() => {
                     style={{ marginTop: '4px' }}
                   />
                   <Spacer x={0.5} />
-                  <Text>
+                  <Text style={{ flex: '1' }}>
                     Souhlasím s zpracování osobních údajů{' '}
                     <Link
                       color

@@ -12,7 +12,7 @@ export default () => {
   const router = useRouter()
 
   return (
-    <Container row style={{ justifyContent: 'space-between' }}>
+    <Container direction={['column', 'column', 'row']} style={{ justifyContent: 'space-between' }}>
       <Container style={{ maxWidth: '440px' }}>
         <Text h1 color="salmon">
           Výborně, vaše nabídka je nyní aktivní!
@@ -83,7 +83,7 @@ export const Step = ({
     <Container style={{ maxWidth: '390px' }} row flex="0">
       <Ring>{number}</Ring>
       <Spacer />
-      <Text>{children}</Text>
+      <Text style={{ flex: '1' }}>{children}</Text>
     </Container>
     <Spacer y={1.5} />
   </>

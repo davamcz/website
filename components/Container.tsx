@@ -124,16 +124,12 @@ export const Container: React.FC<Props> = memo(
 
           if (direction.length === BREAKPOINT_NUM) return direction
 
-          // "extend" the direction value to be filled with the last value
-          // ['row', 'column'] => ['row', 'column', 'column']
-          // ['column'] => ['column', 'column', 'column']
           return direction.concat(
             Array(BREAKPOINT_NUM - direction.length).fill(
               direction[direction.length - 1]
             )
           )
         } else {
-          // direction="row" => ['row', 'row', 'row']
           return ROW_ARR.fill(direction)
         }
       } else if (row) {

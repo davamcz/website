@@ -15,7 +15,7 @@ export const OfferItem = ({ offer }: Props) => (
   <StyledContainer>
     <OfferLink id={offer.id}>
       <Image
-        src={`https://davamcz.imgix.net/${offer.gallery.images[0].key}?w=255&h=255&fit=fillmax&fill=solid&fill-color=fff`}
+        src={`https://davamcz.imgix.net/${offer.gallery.images[0].key}?w=600&h=600&fit=fillmax&fill=solid&fill-color=fff`}
       />
     </OfferLink>
     <Spacer y={0.5} />
@@ -31,7 +31,12 @@ export const OfferItem = ({ offer }: Props) => (
     <Spacer y={0.5} />
     <Container row vcenter style={{ justifyContent: 'space-between' }}>
       <Text bold>{offer.price} Kč</Text>
-      <ButtonLink secondary small href="/nabidka/[id]" as={`/nabidka/${offer.id}`}>
+      <ButtonLink
+        secondary
+        small
+        href="/nabidka/[id]"
+        as={`/nabidka/${offer.id}`}
+      >
         Zjistit více
       </ButtonLink>
     </Container>
@@ -63,12 +68,39 @@ const OfferLink = ({
 )
 
 const StyledContainer = styled(Container)`
-  flex: 1 0 calc((100% / 4) - 30px);
-  margin-right: 30px;
+  flex: 1 1 auto;
+  width: 23%;
   margin-bottom: 36px;
+  margin-right: calc((100% - 92%) / 3);
+  max-width: 255px;
 
   &:nth-child(4n) {
     margin-right: 0;
+  }
+
+  @media screen and (min-width: 601px) and (max-width: 960px) {
+    width: 32%;
+    margin-right: 2%;
+
+    max-width: 100%;
+    &:nth-child(4n) {
+      margin-right: 2%;
+    }
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    margin-right: 0;
+    max-width: 100%;
+    
+    &:nth-child(4n),
+    &:nth-child(3n),
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
   }
 `
 

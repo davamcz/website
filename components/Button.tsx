@@ -46,6 +46,7 @@ export const StyledButton = styled.button<Props>`
   padding: ${({ small }) => (small ? 6 : 12)}px;
   font-size: ${({ small }) => (small ? 14 : 16)}px;
   text-decoration: none;
+  text-align: center;
   cursor: pointer;
   color: ${({ theme, secondary, loading }) =>
     loading
