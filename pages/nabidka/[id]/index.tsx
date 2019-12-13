@@ -27,12 +27,14 @@ export default withApollo(
 
     return (
       <>
-        <MetaTags
-          title={`Davam.cz - ${offer?.name} za ${offer?.price}Kč pro ${offer?.beneficator.name}`}
-          description={offer?.description as string}
-          image={`https://davamcz.imgix.net/${offer?.gallery.images &&
-            offer.gallery.images[0].key}`}
-        />
+        {offer &&
+          <MetaTags
+            title={`Davam.cz - ${offer?.name} za ${offer?.price}Kč pro ${offer?.beneficator.name}`}
+            description={offer?.description as string}
+            image={`https://davamcz.imgix.net/${offer?.gallery.images &&
+              offer.gallery.images[0].key}`}
+          />
+        }
         <Spacer y={2} />
         <Container direction={['column', 'column', 'row']} style={{ justifyContent: 'space-between' }}>
           <Gallery
