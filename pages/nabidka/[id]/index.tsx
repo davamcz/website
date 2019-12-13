@@ -104,5 +104,5 @@ export default withApollo(
       </>
     )
   },
-  { ssr: false }
+  { ssr: true }
 )
