@@ -246,23 +246,35 @@ export default withApollo(() => {
                 )}
                 <>
                   <Spacer />
-                  <Container row vcenter>
+                  <Container row>
                     <CheckBox
                       checked={values.conditions}
                       onChange={val => setFieldValue('conditions', val)}
+                      style={{ marginTop: '4px' }}
                     />
                     <Spacer x={0.5} />
-                    <Text>
+                    <Text style={{ flex: '1' }}>
                       Souhlasím s{' '}
                       <Link
                         color
                         bold
                         external
+                        target="_blank"
                         href="https://docs.google.com/document/d/1mF2rgj4ljL3pFGjfluArTfTptObI1Bbfn8tJJjHqv3s/edit"
                       >
-                        Provozními podmínkami
+                        obchodními podmínkami
                       </Link>{' '}
-                      platformy Davam.cz
+                      a{' '}
+                      <Link
+                        color
+                        bold
+                        external
+                        target="_blank"
+                        href="https://docs.google.com/document/d/13WrT-kFjyq0WZcQX2UB7i6yWUQ80V58DLXll-CvHEFw/edit"
+                      >
+                        směrnicí gdpr
+                      </Link>{' '}
+                      platformy Dávám.cz.
                     </Text>
                   </Container>
                 </>
