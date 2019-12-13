@@ -12,6 +12,7 @@ import Spacer from '../../../components/Spacer'
 import Text from '../../../components/Text'
 import { useOfferQuery } from '../../../generated/graphql'
 import { withApollo } from '../../../lib/apollo'
+import { Message } from '../../../components/Message'
 
 export default withApollo(
   () => {
@@ -56,6 +57,11 @@ export default withApollo(
             ) : (
               <>
                 <Text h1>{offer?.name}</Text>
+                {!offer?.active &&
+                  <Message>
+                    Tato nabídka není aktivní
+                  </Message>
+                }
                 <Spacer x={0.5} />
                 <Text bold>Tento produkt daruje: {offer?.user.shortName}</Text>
                 <Spacer />
@@ -87,12 +93,14 @@ export default withApollo(
                     <Spacer />
                     <Text bold>ks</Text>
                   </Container>
-                  <ButtonLink
-                    href={`/nabidka/[id]/koupit?mnozstvi=${amount}`}
-                    as={`/nabidka/${offer?.id}/koupit?mnozstvi=${amount}`}
-                  >
-                    Darovat peníze
-                  </ButtonLink>
+                  {offer?.active &&
+                    <ButtonLink
+                      href={`/nabidka/[id]/koupit?mnozstvi=${amount}`}
+                      as={`/nabidka/${offer?.id}/koupit?mnozstvi=${amount}`}
+                    >
+                      Darovat peníze
+                    </ButtonLink>
+                  }
                 </Container>
               </>
             )}
