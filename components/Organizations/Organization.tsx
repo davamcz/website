@@ -6,6 +6,7 @@ import { Image } from '../Image'
 import { Link } from '../Link'
 import Spacer from '../Spacer'
 import Text from '../Text'
+import { ButtonLink } from '../ButtonLink'
 
 interface Props {
   organization: OrganizationDetailFragment
@@ -21,6 +22,20 @@ export const OrganizationItem = ({ organization }: Props) => (
       <Link href={organization.url} title={organization.name} color>
         {stripProtocol(organization.url)}
       </Link>
+    </Container>
+  </OrganizationCard>
+)
+
+export const MissingOrganization = () => (
+  <OrganizationCard style={{ display: 'flex', alignItems: 'center' }}>
+    <Container center style={{ padding: '30px 60px' }}>
+      <Text h1 center as="span">
+        Chybí vám zde nějaká?
+      </Text>
+      <Spacer />
+      <ButtonLink secondary href="/kontakt">
+        Kontaktujte nás
+      </ButtonLink>
     </Container>
   </OrganizationCard>
 )
