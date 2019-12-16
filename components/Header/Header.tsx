@@ -14,6 +14,12 @@ export const Header = () => {
     setActive(!active)
   }, [active, setActive])
 
+  const closeMenu = useCallback(() => {
+    if (active) {
+      setActive(false)
+    }
+  }, [active, setActive])
+
   return (
     <Container
       row
@@ -23,17 +29,22 @@ export const Header = () => {
       <Logo />
       <Menu active={active}>
         <MiddleMenu direction={['column', 'column', 'row']} vcenter>
-          <Link href="/" title="Kontakt" showActive>
+          <Link href="/" title="Kontakt" onClick={closeMenu} showActive>
             Domů
           </Link>
           <Spacer />
 
-          <Link href="/komu-pomahame" title="Komu pomáhame" showActive>
+          <Link
+            href="/komu-pomahame"
+            title="Komu pomáhame"
+            onClick={closeMenu}
+            showActive
+          >
             Komu pomáhame
           </Link>
           <Spacer x={0.5} />
 
-          <Link href="/kontakt" title="Kontakt" showActive>
+          <Link href="/kontakt" title="Kontakt" onClick={closeMenu} showActive>
             Kontakt
           </Link>
         </MiddleMenu>
@@ -51,9 +62,7 @@ export const Header = () => {
           <ButtonLink href="/vytvorit-nabidku">Vytvořit nabídku</ButtonLink>
         </Container>
       </Menu>
-      <MenuButton active={active} onClick={toogleMenu}>
-        X
-      </MenuButton>
+      <MenuButton active={active} onClick={toogleMenu} />
     </Container>
   )
 }
