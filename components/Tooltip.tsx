@@ -86,6 +86,7 @@ export const Tooltip = memo<Props>(({ message, delayTime }) => {
       tabIndex={0}
       onMouseEnter={onMouseEnter}
       onFocus={show}
+      onBlur={hide}
       onMouseLeave={hide}
       ref={tooltipRef}
     >

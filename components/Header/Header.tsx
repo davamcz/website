@@ -44,11 +44,11 @@ export const Header = () => {
         >
           <Spacer x={0.5} />
           <ButtonLink href="/nabidka" secondary>
-            Nabídka
+            Zobrazit nabídku
           </ButtonLink>
 
           <Spacer x={0.5} />
-          <ButtonLink href="/chci-darovat">Chci darovat</ButtonLink>
+          <ButtonLink href="/vytvorit-nabidku">Vytvořit nabídku</ButtonLink>
         </Container>
       </Menu>
       <MenuButton active={active} onClick={toogleMenu}>

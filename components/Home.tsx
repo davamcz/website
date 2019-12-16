@@ -15,8 +15,11 @@ export const Home = () => (
       dobročinné organizaci?
     </Text>
     <Spacer />
-    <Container style={{ alignItems: 'flex-start'}} direction={['column', 'row', 'row']}>
-      <ButtonLink href="/chci-darovat">Chci darovat</ButtonLink>
+    <Container
+      style={{ alignItems: 'flex-start' }}
+      direction={['column', 'row', 'row']}
+    >
+      <ButtonLink href="/vytvorit-nabidku">Vytvořit nabídku</ButtonLink>
       <Spacer />
       <ButtonLink href="/nabidka" secondary>
         Zobrazit nabídku
@@ -30,7 +33,10 @@ const HomeContainer = styled(Container)`
   background: 100% no-repeat url('/home-background.jpg');
   background-position: bottom right;
 
-  @media only screen and (min-device-pixel-ratio: 2),
+  @media only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (min--moz-device-pixel-ratio: 2),
+    only screen and (-o-min-device-pixel-ratio: 2/1),
+    only screen and (min-device-pixel-ratio: 2),
     only screen and (min-resolution: 192dpi),
     only screen and (min-resolution: 2dppx) {
     background: 100% no-repeat url('/home-background@2x.jpg');

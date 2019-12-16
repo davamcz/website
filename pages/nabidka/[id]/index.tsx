@@ -25,6 +25,8 @@ export default withApollo(
 
     const offer = data?.offer
 
+    console.log(offer?.description)
+
     return (
       <>
         {offer &&
@@ -36,7 +38,10 @@ export default withApollo(
           />
         }
         <Spacer y={2} />
-        <Container direction={['column', 'column', 'row']} style={{ justifyContent: 'space-between' }}>
+        <Container
+          direction={['column', 'column', 'row']}
+          style={{ justifyContent: 'space-between' }}
+        >
           <Gallery
             loading={loading}
             images={offer?.gallery.images as Array<any>}
@@ -59,10 +64,17 @@ export default withApollo(
                 <Spacer x={0.5} />
                 <Text bold>Tento produkt daruje: {offer?.user.shortName}</Text>
                 <Spacer />
-                <Text>{offer?.description}</Text>
+                <Text>
+                  {offer?.description.split('\n').map(text => (
+                    <>
+                      {text}
+                      <br />
+                    </>
+                  ))}
+                </Text>
                 <Spacer />
                 {offer?.transport && offer?.transport !== '' && (
-                  <Container row flex="0">
+                  <Container row flex="0 0 auto">
                     <Text bold>Doprava:</Text>&nbsp;
                     <Text>{offer?.transport}</Text>
                   </Container>

@@ -31,7 +31,7 @@ export const Link: React.FC<Props> = ({
     return (
       <StyledLink
         title={title}
-        target={target}
+        target={target ? target : '_blank'}
         href={href}
         bold={bold}
         colored={color}
