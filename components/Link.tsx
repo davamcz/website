@@ -12,6 +12,7 @@ interface Props {
   color?: boolean
   bold?: boolean
   showActive?: boolean
+  onClick?: () => void
 }
 
 export const Link: React.FC<Props> = ({
@@ -24,6 +25,7 @@ export const Link: React.FC<Props> = ({
   color,
   bold,
   showActive,
+  onClick
 }) => {
   const router = useRouter()
 
@@ -35,6 +37,7 @@ export const Link: React.FC<Props> = ({
         href={href}
         bold={bold}
         colored={color}
+        onClick={onClick}
       >
         {children}
       </StyledLink>
@@ -49,6 +52,7 @@ export const Link: React.FC<Props> = ({
         colored={color}
         bold={bold}
         active={showActive && href === router.pathname}
+        onClick={onClick}
       >
         {children}
       </StyledLink>
