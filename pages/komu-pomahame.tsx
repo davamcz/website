@@ -8,6 +8,7 @@ import {
 } from '../generated/graphql'
 import { organizationsQuery } from '../graphql/queries'
 import { initApolloClient } from '../lib/apollo'
+import { ActionSection } from '../components/sections/ActionSection'
 
 export interface OrganizationsProps {
   organizations: Array<OrganizationDetailFragment>
@@ -20,6 +21,8 @@ export default ({ organizations }: OrganizationsProps) => (
     </Text>
     <Spacer y={2} />
     <Organizations organizations={organizations} />
+    <Spacer y={2} />
+    <ActionSection />
   </Container>
 )
 
