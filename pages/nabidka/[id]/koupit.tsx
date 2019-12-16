@@ -14,7 +14,7 @@ import { useCreateTransactionMutation, useOfferQuery, useUserQuery } from '../..
 import { withApollo } from '../../../lib/apollo'
 import { paymentLink } from '../../../lib/paymentLink'
 import { TransactionValidationSchema } from '../../../validation/transaction'
-import { Step } from '../../chci-darovat/[id]'
+import { Step } from '../../vytvorit-nabidku/[id]'
 
 export default withApollo(() => {
   const router = useRouter()

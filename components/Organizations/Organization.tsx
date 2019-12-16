@@ -18,7 +18,7 @@ export const OrganizationItem = ({ organization }: Props) => (
       <Spacer y={1.5} />
       <Text>{organization.description}</Text>
       <Spacer y={0.5} />
-      <Link href={organization.url} title={organization.name} color>
+      <Link external href={organization.url} title={organization.name} color>
         {stripProtocol(organization.url)}
       </Link>
     </Container>

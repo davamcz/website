@@ -58,7 +58,7 @@ export default () => {
           Jako poděkování za podporu dobročinné organizace zašleme vám i dárci
           certifikát o věnovaném daru
         </Step> */}
-        <ButtonLink href="/chci-darovat" style={{ alignSelf: 'flex-start' }}>
+        <ButtonLink href="/vytvorit-nabidku" style={{ alignSelf: 'flex-start' }}>
           Vytvořit nový platební odkaz
         </ButtonLink>
         <Spacer y={7} />

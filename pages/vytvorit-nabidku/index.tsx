@@ -105,7 +105,7 @@ export default withApollo(() => {
                     },
                   })
                   if (data?.createOffer) {
-                    router.push(`/chci-darovat/${data.createOffer.id}`)
+                    router.push(`/vytvorit-nabidku/${data.createOffer.id}`)
                   }
                 } catch {
                   setStatus({
