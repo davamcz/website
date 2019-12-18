@@ -181,7 +181,6 @@ export default withApollo(() => {
                       color
                       bold
                       external
-                      target="_blank"
                       href="https://docs.google.com/document/d/1mF2rgj4ljL3pFGjfluArTfTptObI1Bbfn8tJJjHqv3s/edit"
                     >
                       obchodními podmínkami
@@ -191,7 +190,6 @@ export default withApollo(() => {
                       color
                       bold
                       external
-                      target="_blank"
                       href="https://docs.google.com/document/d/13WrT-kFjyq0WZcQX2UB7i6yWUQ80V58DLXll-CvHEFw/edit"
                     >
                       směrnicí gdpr
@@ -201,7 +199,6 @@ export default withApollo(() => {
                       color
                       bold
                       external
-                      target="_blank"
                       href={`https://www.darujme.cz/projekt/${offer?.beneficator.projectId}/zpracovani-osobnich-udaju`}
                     >
                       osobních údajů organizací {offer?.beneficator.name}.
