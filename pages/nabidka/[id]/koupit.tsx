@@ -176,23 +176,32 @@ export default withApollo(() => {
                   />
                   <Spacer x={0.5} />
                   <Text style={{ flex: '1' }}>
-                    Souhlasím s zpracování osobních údajů{' '}
+                    Souhlasím s{' '}
                     <Link
                       color
                       bold
                       external
                       href="https://docs.google.com/document/d/1mF2rgj4ljL3pFGjfluArTfTptObI1Bbfn8tJJjHqv3s/edit"
                     >
-                      Davam.cz
+                      obchodními podmínkami
                     </Link>{' '}
-                    organizací{' '}
+                    a{' '}
+                    <Link
+                      color
+                      bold
+                      external
+                      href="https://docs.google.com/document/d/13WrT-kFjyq0WZcQX2UB7i6yWUQ80V58DLXll-CvHEFw/edit"
+                    >
+                      směrnicí gdpr
+                    </Link>{' '}
+                     platformy Dávám.cz a se zpracováním mých{' '}
                     <Link
                       color
                       bold
                       external
                       href={`https://www.darujme.cz/projekt/${offer?.beneficator.projectId}/zpracovani-osobnich-udaju`}
                     >
-                      {offer?.beneficator.name}
+                      osobních údajů organizací {offer?.beneficator.name}.
                     </Link>
                   </Text>
                 </Container>
