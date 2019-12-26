@@ -1,4 +1,13 @@
-export const constants = {
+import { TransactionStatus } from '../generated/prisma-client'
+
+type Constants = {
+  paymentStatus: {
+    [key: string]: TransactionStatus
+  }
+  successfulStates: string[]
+}
+
+export const constants: Constants = {
   paymentStatus: {
     PENDING: 'PENDING',
     PAID: 'PAID',

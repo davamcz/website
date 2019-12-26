@@ -1,5 +1,5 @@
 import { prismaObjectType, prismaExtendType } from 'nexus-prisma'
-import { stringArg, idArg, intArg } from 'nexus'
+import { stringArg, idArg, intArg, objectType } from 'nexus'
 import fetch from 'node-fetch'
 import * as querystring from 'querystring'
 import { vokativ } from 'vokativ'
@@ -10,6 +10,14 @@ import { TransactionStatus } from '../generated/prisma-client'
 import { sendEmail } from '../emails'
 
 const { PENDING, PAID } = constants.paymentStatus
+
+export const TransactionsStatistics = objectType({
+  name: 'TransactionsStatistics',
+  definition(t) {
+    t.int('donatedAmount')
+    t.int('donationsCount')
+  },
+})
 
 export const Transaction = prismaObjectType({
   name: 'Transaction',
@@ -32,11 +40,32 @@ export const Transaction = prismaObjectType({
 export const TransactionQuery = prismaExtendType({
   type: 'Query',
   definition(t) {
+    t.prismaFields(['transactions'])
     t.field('recentTransactions', {
       type: 'Transaction',
       list: true,
       resolve: async (_, _args, { prisma }) => {
-        return prisma.transactions({ where: { status: 'PAID' }, last: 10 })
+        return prisma.transactions({ where: { status: PAID }, last: 10 })
+      },
+    })
+
+    t.field('getTransactionsStatistics', {
+      type: 'TransactionsStatistics',
+      resolve: async (_, {}, { prisma }) => {
+        const allPaidTransactions = await prisma.transactions({
+          where: { status: PAID },
+        })
+        const donatedAmount = allPaidTransactions.reduce(
+          (total, transaction) => {
+            return total + (transaction.donatedAmount || 0)
+          },
+          0
+        )
+        const donationsCount = allPaidTransactions.length
+        return {
+          donatedAmount,
+          donationsCount,
+        }
       },
     })
 
