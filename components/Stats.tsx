@@ -46,7 +46,7 @@ export default () => {
 const Stat = ({ value, title, loading = false }: { value: string; title: string, loading: boolean }) => (
   <Block>
     <Spacer />
-    {loading && <Loading />}
+    {loading && <Loading height={48} />}
     {!loading && 
       <Text h1 as="span">
         {value}
