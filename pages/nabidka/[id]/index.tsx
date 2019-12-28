@@ -25,8 +25,8 @@ export default withApollo(
     const [amount, setAmount] = useState(1)
 
     const offer = data?.offer
-
-    console.log(offer?.description)
+    const remainingAmount = offer?.remainingAmount
+    const canBuy = offer?.active && Boolean(remainingAmount)
 
     return (
       <>
@@ -67,6 +67,11 @@ export default withApollo(
                     Tato nabídka není aktivní
                   </Message>
                 }
+                {!remainingAmount &&
+                  <Message>
+                    Tato nabídka již byla vyčerpána
+                  </Message>
+                }                
                 <Spacer x={0.5} />
                 <Text bold>Tento produkt daruje: {offer?.user.shortName}</Text>
                 <Spacer />
@@ -95,23 +100,25 @@ export default withApollo(
                   style={{ justifyContent: 'space-between' }}
                   flex="0"
                 >
-                  <Text bold>{(offer?.price as number) * amount} Kč</Text>
-                  <Container row center>
-                    <AmountInput
-                      amount={amount}
-                      changeAmount={setAmount}
-                      max={offer?.remainingAmount || 1}
-                    />
-                    <Spacer />
-                    <Text bold>ks</Text>
-                  </Container>
-                  {offer?.active &&
-                    <ButtonLink
-                      href={`/nabidka/[id]/koupit?mnozstvi=${amount}`}
-                      as={`/nabidka/${offer?.id}/koupit?mnozstvi=${amount}`}
-                    >
-                      Darovat peníze
-                    </ButtonLink>
+                  <Text bold style={{ fontSize: 40 }}>{(offer?.price as number) * amount} Kč</Text>
+                  {canBuy &&
+                    <>
+                      <Container row center>
+                        <AmountInput
+                          amount={amount}
+                          changeAmount={setAmount}
+                          max={remainingAmount || 1}
+                        />
+                        <Spacer />
+                        <Text bold>ks</Text>
+                      </Container>
+                      <ButtonLink
+                        href={`/nabidka/[id]/koupit?mnozstvi=${amount}`}
+                        as={`/nabidka/${offer?.id}/koupit?mnozstvi=${amount}`}
+                      >
+                        Darovat peníze
+                      </ButtonLink>
+                    </>
                   }
                 </Container>
               </>
