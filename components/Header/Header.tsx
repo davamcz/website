@@ -55,7 +55,7 @@ export const Header = () => {
         >
           <Spacer x={0.5} />
           <ButtonLink href="/nabidka" secondary>
-            Zobrazit nabídku
+            Zobrazit nabídky
           </ButtonLink>
 
           <Spacer x={0.5} />
