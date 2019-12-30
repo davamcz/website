@@ -700,6 +700,10 @@ export interface NexusGenRootTypes {
   Organization: prisma.Organization;
   Query: {};
   Transaction: prisma.Transaction;
+  TransactionsStatistics: { // root type
+    donatedAmount: number; // Int!
+    donationsCount: number; // Int!
+  }
   User: prisma.User;
   String: string;
   Int: number;
@@ -788,12 +792,14 @@ export interface NexusGenFieldTypes {
     url: string; // String!
   }
   Query: { // field return type
+    getTransactionsStatistics: NexusGenRootTypes['TransactionsStatistics']; // TransactionsStatistics!
     getTransactionStatus: NexusGenRootTypes['Transaction']; // Transaction!
     offer: NexusGenRootTypes['Offer'] | null; // Offer
     offers: NexusGenRootTypes['Offer'][]; // [Offer!]!
     organization: NexusGenRootTypes['Organization'] | null; // Organization
     organizations: NexusGenRootTypes['Organization'][]; // [Organization!]!
     recentTransactions: NexusGenRootTypes['Transaction'][]; // [Transaction!]!
+    transactions: NexusGenRootTypes['Transaction'][]; // [Transaction!]!
     user: NexusGenRootTypes['User'] | null; // User
   }
   Transaction: { // field return type
@@ -805,6 +811,10 @@ export interface NexusGenFieldTypes {
     lastName: string; // String!
     offer: NexusGenRootTypes['Offer']; // Offer!
     status: NexusGenEnums['TransactionStatus']; // TransactionStatus!
+  }
+  TransactionsStatistics: { // field return type
+    donatedAmount: number; // Int!
+    donationsCount: number; // Int!
   }
   User: { // field return type
     adress: NexusGenRootTypes['Adress'] | null; // Adress
@@ -922,6 +932,15 @@ export interface NexusGenArgTypes {
     organization: { // args
       where: NexusGenInputs['OrganizationWhereUniqueInput']; // OrganizationWhereUniqueInput!
     }
+    transactions: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      orderBy?: NexusGenEnums['TransactionOrderByInput'] | null; // TransactionOrderByInput
+      skip?: number | null; // Int
+      where?: NexusGenInputs['TransactionWhereInput'] | null; // TransactionWhereInput
+    }
   }
 }
 
@@ -930,7 +949,7 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "Adress" | "AuthPayload" | "File" | "Gallery" | "Mutation" | "Offer" | "Organization" | "Query" | "Transaction" | "User";
+export type NexusGenObjectNames = "Adress" | "AuthPayload" | "File" | "Gallery" | "Mutation" | "Offer" | "Organization" | "Query" | "Transaction" | "TransactionsStatistics" | "User";
 
 export type NexusGenInputNames = "AdressWhereInput" | "FileWhereInput" | "GalleryWhereInput" | "OfferWhereInput" | "OrganizationWhereInput" | "OrganizationWhereUniqueInput" | "TransactionWhereInput" | "UserWhereInput";
 
