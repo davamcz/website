@@ -22,7 +22,7 @@ export const Home = () => (
       <ButtonLink href="/vytvorit-nabidku">Vytvořit nabídku</ButtonLink>
       <Spacer />
       <ButtonLink href="/nabidka" secondary>
-        Zobrazit nabídku
+        Zobrazit nabídky
       </ButtonLink>
     </Container>
   </HomeContainer>
