@@ -46,8 +46,8 @@ export const ActionSection = () => (
               Pomozte koupí darované věci
             </Text>
             <Spacer y={1.5} />
-            <ButtonLink secondary href="/vytvorit-nabidku">
-              Zobrazit nabídku
+            <ButtonLink secondary href="/nabidka">
+              Zobrazit nabídky
             </ButtonLink>
             <Spacer y={2} />
           </Container>
