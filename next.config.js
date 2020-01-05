@@ -8,5 +8,6 @@ module.exports = {
     EMAIL_SECRET_KEY: process.env.EMAIL_SECRET_KEY,
     CONFIRMATION_SECRET_KEY: process.env.CONFIRMATION_SECRET_KEY,
     PROJECT_DIRNAME: __dirname,
+    MYSQL_URL: process.env.MYSQL_URL
   },
 }

@@ -1,0 +1,108 @@
+generator photon {
+  provider = "photonjs"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("MYSQL_URL")
+}
+
+model Adress {
+  city       String?
+  id         String  @id @default(cuid())
+  postalCode String?
+  street     String?
+  users      User[]  @relation(references: [adress], onDelete: CASCADE)
+}
+
+model File {
+  encoding      String
+  fileName      String
+  id            String         @id @default(cuid())
+  key           String
+  mimeType      String
+  url           String
+  organizations Organization[] @relation(references: [logo], onDelete: CASCADE)
+  galleries     Gallery[]
+}
+
+model Gallery {
+  id     String  @id @default(cuid())
+  offers Offer[] @relation(references: [gallery], onDelete: CASCADE)
+  images  File[]
+}
+
+model Offer {
+  active       Boolean?
+  amount       Int
+  beneficator  Organization?
+  createdAt    DateTime?
+  deletedAt    DateTime?
+  description  String
+  email        String
+  firstName    String
+  gallery      Gallery
+  id           String        @id @default(cuid())
+  lastName     String
+  name         String
+  price        Int
+  publicOffer  Boolean?
+  transport    String?
+  updatedAt    DateTime      @updatedAt
+  user         User?
+  transactions Transaction[] @relation(references: [offer], onDelete: CASCADE)
+}
+
+model Organization {
+  active         Boolean
+  apiId          Int?
+  apiSecret      String?
+  createdAt      DateTime  @default(now())
+  deletedAt      DateTime?
+  description    String
+  id             String    @id @default(cuid())
+  logo           File?
+  name           String
+  organizationId Int?
+  projectId      Int?
+  updatedAt      DateTime  @updatedAt
+  url            String
+  offers         Offer[]   @relation(onDelete: CASCADE)
+}
+
+model Transaction {
+  amount        Int
+  comment       String?
+  createdAt     DateTime @default(now())
+  deletedAt     DateTime?
+  donatedAmount Int?
+  email         String
+  firstName     String
+  id            String    @id @default(cuid())
+  lastName      String
+  offer         Offer
+  status        TransactionStatus @default(PENDING)
+  updatedAt     DateTime  @updatedAt
+}
+
+enum TransactionStatus {
+  PENDING
+  PAID
+  FAILED
+  INSUFFICIENT
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+model User {
+  adress    Adress?
+  email     String   @unique
+  firstName String   @default("")
+  id        String   @id @default(cuid())
+  lastName  String   @default("")
+  password  String?
+  role      UserRole @default(USER)
+}

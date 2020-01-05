@@ -1,13 +1,10 @@
 import { ApolloServer } from 'apollo-server-micro'
-import { schema } from '../../backend/schema'
-import { Prisma } from '../../backend/generated/prisma-client'
+import { schema } from '../../nexus/schema'
+import { createContext } from '../../nexus/context'
 
 const server = new ApolloServer({
-  schema,
-  context: ({ req }) => ({
-    request: req,
-    prisma: new Prisma(),
-  }),
+  schema: schema,
+  context: createContext
 })
 
 export const config = {

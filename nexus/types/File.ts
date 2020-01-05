@@ -1,7 +1,6 @@
-import { extendType, scalarType, arg, stringArg } from 'nexus'
+import { extendType, scalarType, arg, stringArg, objectType } from 'nexus'
 import { GraphQLUpload } from 'apollo-server-micro'
 import { S3 } from 'aws-sdk'
-import { prismaObjectType } from 'nexus-prisma'
 
 const client = new S3({
   accessKeyId: process.env.S3_ACCESS_KEY,
@@ -31,10 +30,12 @@ const readFS = (stream: {
   )
 }
 
-export const File = prismaObjectType({
+export const File = objectType({
   name: 'File',
-  definition(t) {
-    t.prismaFields(['id', 'fileName', 'key'])
+  definition: t => {
+    t.model.id()
+    t.model.fileName()
+    t.model.key()
   },
 })
 
@@ -47,7 +48,7 @@ export const FileMutation = extendType({
         directory: stringArg({ required: false }),
         file: arg({ type: 'Upload' }),
       },
-      resolve: async (_, { file, directory }, { prisma }) => {
+      resolve: async (_, { file, directory }, { photon }) => {
         const {
           createReadStream,
           filename: fileName,
@@ -71,12 +72,14 @@ export const FileMutation = extendType({
           })
           .promise()
 
-        return prisma.createFile({
-          fileName,
-          encoding,
-          mimeType: mimetype,
-          key,
-          url: upload.Location,
+        return photon.files.create({
+          data: {
+            fileName,
+            encoding,
+            mimeType: mimetype,
+            key,
+            url: upload.Location,
+          },
         })
       },
     })
