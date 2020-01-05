@@ -14,6 +14,14 @@ import { sendEmail } from '../../emails'
 
 const { PENDING, PAID } = constants.paymentStatus
 
+export const TransactionsStatistics = objectType({
+  name: 'TransactionsStatistics',
+  definition(t) {
+    t.int('donatedAmount')
+    t.int('donationsCount')
+  },
+})
+
 export const Transaction = objectType({
   name: 'Transaction',
   definition: t => {
@@ -39,6 +47,27 @@ export const TransactionQuery = extendType({
           where: { status: 'PAID' },
           last: 10,
         })
+      }})
+      
+      
+
+    t.field('getTransactionsStatistics', {
+      type: 'TransactionsStatistics',
+      resolve: async (_, {}, { photon }) => {
+        const allPaidTransactions = await photon.transactions.findMany({
+          where: { status: PAID },
+        })
+        const donatedAmount = allPaidTransactions.reduce(
+          (total, transaction) => {
+            return total + (transaction.donatedAmount || 0)
+          },
+          0
+        )
+        const donationsCount = allPaidTransactions.length
+        return {
+          donatedAmount,
+          donationsCount,
+        }
       },
     })
 

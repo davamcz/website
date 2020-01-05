@@ -48,6 +48,10 @@ export interface NexusGenRootTypes {
   Organization: photon.Organization;
   Query: {};
   Transaction: photon.Transaction;
+  TransactionsStatistics: { // root type
+    donatedAmount: number; // Int!
+    donationsCount: number; // Int!
+  }
   User: photon.User;
   String: string;
   Int: number;
@@ -113,6 +117,7 @@ export interface NexusGenFieldTypes {
     url: string; // String!
   }
   Query: { // field return type
+    getTransactionsStatistics: NexusGenRootTypes['TransactionsStatistics']; // TransactionsStatistics!
     getTransactionStatus: NexusGenRootTypes['Transaction']; // Transaction!
     offer: NexusGenRootTypes['Offer'] | null; // Offer
     offers: NexusGenRootTypes['Offer'][]; // [Offer!]!
@@ -128,6 +133,10 @@ export interface NexusGenFieldTypes {
     lastName: string; // String!
     offer: NexusGenRootTypes['Offer']; // Offer!
     status: NexusGenEnums['TransactionStatus']; // TransactionStatus!
+  }
+  TransactionsStatistics: { // field return type
+    donatedAmount: number; // Int!
+    donationsCount: number; // Int!
   }
   User: { // field return type
     adress: NexusGenRootTypes['Adress'] | null; // Adress
@@ -227,7 +236,7 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "Adress" | "AuthPayload" | "File" | "Gallery" | "Mutation" | "Offer" | "Organization" | "Query" | "Transaction" | "User";
+export type NexusGenObjectNames = "Adress" | "AuthPayload" | "File" | "Gallery" | "Mutation" | "Offer" | "Organization" | "Query" | "Transaction" | "TransactionsStatistics" | "User";
 
 export type NexusGenInputNames = never;
 

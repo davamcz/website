@@ -63,6 +63,7 @@ type Organization {
 }
 
 type Query {
+  getTransactionsStatistics: TransactionsStatistics!
   getTransactionStatus(id: ID!): Transaction!
   offer(id: ID!): Offer
   offers(active: Boolean): [Offer!]!
@@ -79,6 +80,11 @@ type Transaction {
   lastName: String!
   offer: Offer!
   status: TransactionStatus!
+}
+
+type TransactionsStatistics {
+  donatedAmount: Int!
+  donationsCount: Int!
 }
 
 enum TransactionStatus {
