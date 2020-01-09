@@ -43,7 +43,7 @@ type Offer {
   amount: Int!
   beneficator: Organization
   description: String!
-  gallery: Gallery
+  gallery: Gallery!
   id: ID!
   name: String!
   price: Int!

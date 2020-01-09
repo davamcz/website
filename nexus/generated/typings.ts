@@ -99,7 +99,7 @@ export interface NexusGenFieldTypes {
     amount: number; // Int!
     beneficator: NexusGenRootTypes['Organization'] | null; // Organization
     description: string; // String!
-    gallery: NexusGenRootTypes['Gallery'] | null; // Gallery
+    gallery: NexusGenRootTypes['Gallery']; // Gallery!
     id: string; // ID!
     name: string; // String!
     price: number; // Int!
