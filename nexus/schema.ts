@@ -1,17 +1,16 @@
 import { makeSchema, fieldAuthorizePlugin } from 'nexus'
-import { join } from 'path'
+import { join, resolve } from 'path'
 import { nexusPrismaPlugin } from 'nexus-prisma'
 import * as types from './types'
 
+const dirname = process.env.PROJECT_DIRNAM || resolve(__dirname, '..')
+
 export const schema = makeSchema({
   types,
-  plugins: [
-    fieldAuthorizePlugin(),
-    nexusPrismaPlugin(),
-  ],
+  plugins: [fieldAuthorizePlugin(), nexusPrismaPlugin()],
   outputs: {
-    schema: join(process.env.PROJECT_DIRNAME, 'nexus/generated/schema.graphql'),
-    typegen: join(process.env.PROJECT_DIRNAME, 'nexus/generated/typings.ts'),
+    schema: join(dirname, 'nexus/generated/schema.graphql'),
+    typegen: join(dirname, 'nexus/generated/typings.ts'),
   },
   typegenAutoConfig: {
     sources: [
@@ -20,7 +19,7 @@ export const schema = makeSchema({
         alias: 'photon',
       },
       {
-        source: join(process.env.PROJECT_DIRNAME, 'nexus/context.ts'),
+        source: join(dirname, 'nexus/context.ts'),
         alias: 'Context',
       },
     ],

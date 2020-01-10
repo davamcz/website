@@ -13,8 +13,8 @@
     "prettier-fix": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx,css,html,yml,yaml,scss,sass}\"",
     "lint-staged": "lint-staged",
     "generate:prisma": "prisma2 generate",
-    "generate:nexus": "ts-node --transpile-only nexus/schema",
-    "generate:backend": "yarn run generate:prisma",
+    "generate:nexus": "dotenv -- ts-node --skip-project --transpile-only nexus/schema",
+    "generate:backend": "yarn run generate:prisma && yarn run generate:nexus",
     "postinstall": "yarn run generate:backend"
   },
   "pre-commit": "lint-staged",
