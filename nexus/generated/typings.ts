@@ -227,6 +227,7 @@ export interface NexusGenArgTypes {
     }
     offers: { // args
       active?: boolean | null; // Boolean
+      publicOffer?: boolean | null; // Boolean
     }
   }
 }

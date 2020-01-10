@@ -53,14 +53,18 @@ export const OfferQuery = extendType({
       type: 'Offer',
       args: {
         active: booleanArg({ required: false }),
+        publicOffer: booleanArg(),
       },
       list: true,
-      resolve: async (_, { active }, { photon }) => {
+      resolve: async (_, { active, publicOffer }, { photon }) => {
         if (!active) {
-          return photon.offers.findMany({ orderBy: { createdAt: 'desc' } })
+          return photon.offers.findMany({
+            where: { publicOffer: publicOffer },
+            orderBy: { createdAt: 'desc' },
+          })
         } else {
           const allOffers = await photon.offers.findMany({
-            where: { active: true },
+            where: { active: true, publicOffer: publicOffer },
             orderBy: { createdAt: 'desc' },
             include: {
               beneficator: true,

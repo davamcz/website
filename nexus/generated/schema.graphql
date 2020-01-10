@@ -66,7 +66,7 @@ type Query {
   getTransactionsStatistics: TransactionsStatistics!
   getTransactionStatus(id: ID!): Transaction!
   offer(id: ID!): Offer
-  offers(active: Boolean): [Offer!]!
+  offers(active: Boolean, publicOffer: Boolean): [Offer!]!
   organizations: [Organization!]!
   recentTransactions: [Transaction!]!
   user: User!
