@@ -11,7 +11,8 @@
     "S3_SECRET_KEY": "@s3-secret-key",
     "EMAIL_ACCESS_KEY": "@email-access-key",
     "EMAIL_SECRET_KEY": "@email-secret-key",
-    "CONFIRMATION_SECRET_KEY": "@confirmation-secret-key"
+    "CONFIRMATION_SECRET_KEY": "@confirmation-secret-key",
+    "MYSQL_URL": "@mysql-url"
   },
   "build": {
     "env": {
@@ -24,7 +25,8 @@
       "S3_SECRET_KEY": "@s3-secret-key",
       "EMAIL_ACCESS_KEY": "@email-access-key",
       "EMAIL_SECRET_KEY": "@email-secret-key",
-      "CONFIRMATION_SECRET_KEY": "@confirmation-secret-key"
+      "CONFIRMATION_SECRET_KEY": "@confirmation-secret-key",
+      "MYSQL_URL": "@mysql-url"
     }
   }
 }
