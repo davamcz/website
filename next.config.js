@@ -1,4 +1,5 @@
 module.exports = {
+  target: 'experimental-serverless-trace',
   env: {
     WEBSITE_URL: process.env.WEBSITE_URL,
     AIRTABLE_SECRET: process.env.AIRTABLE_SECRET,
