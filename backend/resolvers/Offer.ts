@@ -3,7 +3,14 @@ import { prismaObjectType } from 'nexus-prisma'
 import { vokativ } from 'vokativ'
 import { OfferValidationSchema } from '../../validation/offer'
 import { sendEmail } from '../emails'
-import { capitalize, constants, getConfirmationHash, getUserId, isTransactionReserved, offerRemainingAmount } from '../utils'
+import {
+  capitalize,
+  constants,
+  getConfirmationHash,
+  getUserId,
+  isTransactionReserved,
+  offerRemainingAmount,
+} from '../utils'
 const { PAID } = constants.paymentStatus
 
 export const Offer = prismaObjectType({
@@ -32,14 +39,20 @@ export const OfferQuery = extendType({
       type: 'Offer',
       args: {
         active: booleanArg({ required: false }),
+        publicOffer: booleanArg()
       },
       list: true,
-      resolve: async (_, { active }, { prisma }) => {
+      resolve: async (_, { active, publicOffer }, { prisma }) => {
         if (!active) {
-          return prisma.offers({ orderBy: 'createdAt_DESC' })
+          return prisma.offers({
+            orderBy: 'createdAt_DESC',
+            where: { publicOffer: publicOffer },
+          })
         } else {
-          const allOffers = (await prisma.offers({ orderBy: 'createdAt_DESC' })
-            .$fragment(`
+          const allOffers = (await prisma.offers({
+            orderBy: 'createdAt_DESC',
+            where: { publicOffer: publicOffer },
+          }).$fragment(`
             fragment activeOffers on Offer {
               id
               firstName
