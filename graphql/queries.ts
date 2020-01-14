@@ -12,20 +12,6 @@ export const organizationFragment = gql`
   }
 `
 
-export const organizationsQuery = gql`
-  query organizations {
-    organizations {
-      id
-      name
-      description
-      url
-      logo {
-        key
-      }
-    }
-  }
-`
-
 export const offerFragment = gql`
   fragment OfferDetail on Offer {
     id
@@ -48,7 +34,21 @@ export const offers = gql`
       ...OfferDetail
     }
   }
-  ${offerFragment.originalDocument}
+  ${offerFragment}
+`
+
+export const organizationsQuery = gql`
+  query organizations {
+    organizations {
+      id
+      name
+      description
+      url
+      logo {
+        key
+      }
+    }
+  }
 `
 
 export const offer = gql`

@@ -3,8 +3,10 @@ import { Container } from '../Container'
 import { OfferItem, OfferPlaceholder } from './Offer'
 
 export const Offers = () => {
-  const { data, loading } = useOffersQuery({ variables: { active: true, publicOffer: true } })
-
+  const { data, loading } = useOffersQuery({
+    variables: { active: true, publicOffer: true },
+  })
+  
   return (
     <Container row style={{ flexWrap: 'wrap' }}>
       {loading
