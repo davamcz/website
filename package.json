@@ -8,6 +8,7 @@
     "build": "dotenv -- next build",
     "start": "next start",
     "generate": "graphql-codegen --config codegen.yml",
+    "nexus": "nexus-prisma-generate --project backend/prisma/prisma.yml --client backend/generated/prisma-client --output backend/generated/nexus-prisma",
     "prisma": "dotenv -- prisma deploy -p backend/prisma/prisma.yml",
     "prettier-check": "prettier --check \"**/*.{js,jsx,json,ts,tsx,md,mdx,css,html,yml,yaml,scss,sass}\"",
     "prettier-fix": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx,css,html,yml,yaml,scss,sass}\"",

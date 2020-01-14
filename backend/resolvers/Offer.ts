@@ -39,7 +39,7 @@ export const OfferQuery = extendType({
       type: 'Offer',
       args: {
         active: booleanArg({ required: false }),
-        publicOffer: booleanArg()
+        publicOffer: booleanArg({ required: false})
       },
       list: true,
       resolve: async (_, { active, publicOffer }, { prisma }) => {

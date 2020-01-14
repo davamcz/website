@@ -26,6 +26,31 @@ export const organizationsQuery = gql`
   }
 `
 
+export const offerFragment = gql`
+  fragment OfferDetail on Offer {
+    id
+    name
+    price
+    beneficator {
+      name
+    }
+    gallery {
+      images {
+        key
+      }
+    }
+  }
+`
+
+export const offers = gql`
+  query offers($active: Boolean, $publicOffer: Boolean) {
+    offers(active: $active, publicOffer: $publicOffer) {
+      ...OfferDetail
+    }
+  }
+  ${offerFragment.originalDocument}
+`
+
 export const offer = gql`
   query offer($id: ID!) {
     offer(id: $id) {
