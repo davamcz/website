@@ -6,16 +6,17 @@ import { Image } from '../Image'
 import { Placeholder } from '../Placeholder'
 import Spacer from '../Spacer'
 import Text from '../Text'
+import { OfferDetailFragment } from '../../generated/graphql'
 
 interface Props {
-  offer: any
+  offer: OfferDetailFragment
 }
 
 export const OfferItem = ({ offer }: Props) => (
   <StyledContainer>
     <OfferLink id={offer.id}>
       <Image
-        src={`https://davamcz.imgix.net/${offer.gallery.images[0].key}?w=600&h=600&fit=fillmax&fill=solid&fill-color=fff`}
+        src={`https://davamcz.imgix.net/${offer.gallery.images?.[0].key}?w=600&h=600&fit=fillmax&fill=solid&fill-color=fff`}
       />
     </OfferLink>
     <Spacer y={0.5} />
@@ -95,7 +96,7 @@ const StyledContainer = styled(Container)`
     width: 100%;
     margin-right: 0;
     max-width: 100%;
-    
+
     &:nth-child(4n),
     &:nth-child(3n),
     &:nth-child(2n) {
