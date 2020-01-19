@@ -795,6 +795,7 @@ export type TransactionsStatistics = {
    __typename?: 'TransactionsStatistics',
   donatedAmount: Scalars['Int'],
   donationsCount: Scalars['Int'],
+  numberOfOrganizations: Scalars['Int'],
 };
 
 export enum TransactionStatus {
@@ -1081,7 +1082,7 @@ export type GetTransactionsStatisticsQuery = (
   { __typename?: 'Query' }
   & { getTransactionsStatistics: (
     { __typename?: 'TransactionsStatistics' }
-    & Pick<TransactionsStatistics, 'donatedAmount' | 'donationsCount'>
+    & Pick<TransactionsStatistics, 'donatedAmount' | 'donationsCount' | 'numberOfOrganizations'>
   ) }
 );
 
@@ -1438,6 +1439,7 @@ export const GetTransactionsStatisticsDocument = gql`
   getTransactionsStatistics {
     donatedAmount
     donationsCount
+    numberOfOrganizations
   }
 }
     `;

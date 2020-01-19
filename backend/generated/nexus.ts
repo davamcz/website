@@ -703,6 +703,7 @@ export interface NexusGenRootTypes {
   TransactionsStatistics: { // root type
     donatedAmount: number; // Int!
     donationsCount: number; // Int!
+    numberOfOrganizations: number; // Int!
   }
   User: prisma.User;
   String: string;
@@ -815,6 +816,7 @@ export interface NexusGenFieldTypes {
   TransactionsStatistics: { // field return type
     donatedAmount: number; // Int!
     donationsCount: number; // Int!
+    numberOfOrganizations: number; // Int!
   }
   User: { // field return type
     adress: NexusGenRootTypes['Adress'] | null; // Adress

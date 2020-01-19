@@ -638,6 +638,7 @@ enum TransactionOrderByInput {
 type TransactionsStatistics {
   donatedAmount: Int!
   donationsCount: Int!
+  numberOfOrganizations: Int!
 }
 
 enum TransactionStatus {
