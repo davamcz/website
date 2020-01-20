@@ -3,11 +3,12 @@ import styled from 'styled-components'
 interface Props {
   src: string
   maxWidth?: number
+  flex?: string
 }
 
-export const Image = ({ src, maxWidth }: Props) => {
+export const Image = ({ src, maxWidth, flex }: Props) => {
   return (
-    <Box>
+    <Box style={{ flex }}>
       <Img src={src} style={{ maxWidth }} />
     </Box>
   )

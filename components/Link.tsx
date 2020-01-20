@@ -11,6 +11,7 @@ interface Props {
   target?: string
   color?: boolean
   bold?: boolean
+  onHover?: boolean
   showActive?: boolean
   onClick?: () => void
 }
@@ -26,6 +27,7 @@ export const Link: React.FC<Props> = ({
   bold,
   showActive,
   onClick,
+  onHover
 }) => {
   const router = useRouter()
 
@@ -38,6 +40,7 @@ export const Link: React.FC<Props> = ({
         bold={bold}
         colored={color}
         onClick={onClick}
+        onHover={onHover}
       >
         {children}
       </StyledLink>
@@ -53,6 +56,7 @@ export const Link: React.FC<Props> = ({
         bold={bold}
         active={showActive && href === router.pathname}
         onClick={onClick}
+        onHover={onHover}
       >
         {children}
       </StyledLink>
@@ -64,6 +68,7 @@ interface StyledLinkProps {
   colored?: boolean
   bold?: boolean
   active?: boolean
+  onHover?: boolean
 }
 
 const StyledLink = styled.a<StyledLinkProps>`
@@ -77,8 +82,8 @@ const StyledLink = styled.a<StyledLinkProps>`
   translate: color 200ms ease-in;
 
   &:hover {
-    color: ${({ theme, colored }) =>
-      colored ? theme.colors.orange : 'inherit'};
+    color: ${({ theme, colored, onHover }) =>
+      colored || onHover ? theme.colors.orange : 'inherit'};
     text-decoration: underline;
   }
 `
