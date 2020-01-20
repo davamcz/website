@@ -7,12 +7,13 @@ import { Instagram } from './Icons/Instagram'
 
 export const SocialLinks = () => (
   <Container row flex="0 0 auto">
-    <Link external href="https://www.facebook.com/davamcz/">
+    <Link onHover external href="https://www.facebook.com/davamcz/">
       <Facebook />
     </Link>
     <Spacer x={0.5} />
     <Link
       external
+      onHover
       href="https://twitter.com/Davamcz"
       title="Davamcz Twitter"
     >
@@ -21,6 +22,7 @@ export const SocialLinks = () => (
     <Spacer x={0.5} />
     <Link
       external
+      onHover
       href="https://www.instagram.com/davam.cz/"
       title="Davamcz Instagram"
     >
