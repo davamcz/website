@@ -15,9 +15,8 @@ export const Image = ({ src, maxWidth, flex }: Props) => {
 }
 
 const Box = styled.div`
-  display: flex;
-  justify-content: center;
   flex: 1;
+  text-align: center;
   width: 100%;
   height: auto;
 `
