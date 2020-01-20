@@ -25,7 +25,7 @@ export const Link: React.FC<Props> = ({
   color,
   bold,
   showActive,
-  onClick
+  onClick,
 }) => {
   const router = useRouter()
 

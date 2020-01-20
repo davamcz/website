@@ -79,6 +79,7 @@ export const Container: React.FC<Props> = memo(
     vcenter,
     center,
     full,
+    noWrap,
     noWrapper,
     className,
     style,
@@ -151,6 +152,7 @@ export const Container: React.FC<Props> = memo(
         row={row}
         style={style}
         full={full}
+        noWrap={noWrap}
       >
         {children}
       </ContainerBox>
@@ -192,7 +194,7 @@ const ContainerBox = styled.div<ContainerProps>`
   display: flex;
   flex: ${({ flex }) => flex};
   flex-direction: ${({ row }) => (row ? 'row' : 'column')};
-  justify-content: ${({ justify }) => justify};
+    justify-content: ${({ justify }) => justify};
   align-items: ${({ align }) => align};
   position: relative;
   min-width: 1px;
@@ -256,7 +258,7 @@ const ContainerBox = styled.div<ContainerProps>`
 }
 
   ${({ inline }) => inline && `display: inline-flex;`}
-  ${({ noWrap }) => noWrap && `flex-wrap: nowrap;`}
+  ${({ noWrap }) => noWrap && `flex-wrap: nowrap !important;`}
   ${({ full }) =>
     full &&
     css`
