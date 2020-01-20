@@ -16,6 +16,7 @@ export const TransactionsStatistics = objectType({
   definition(t) {
     t.int('donatedAmount')
     t.int('donationsCount')
+    t.int('numberOfOrganizations')
   },
 })
 
@@ -55,6 +56,7 @@ export const TransactionQuery = prismaExtendType({
         const allPaidTransactions = await prisma.transactions({
           where: { status: PAID },
         })
+        const organization = await prisma.organizations({where: {active: true}})
         const donatedAmount = allPaidTransactions.reduce(
           (total, transaction) => {
             return total + (transaction.donatedAmount || 0)
@@ -65,6 +67,7 @@ export const TransactionQuery = prismaExtendType({
         return {
           donatedAmount,
           donationsCount,
+          numberOfOrganizations: organization.length
         }
       },
     })
