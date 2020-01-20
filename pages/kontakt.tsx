@@ -1,13 +1,14 @@
 import { ContactForm } from '../components/ContactForm'
 import { ContactInfo } from '../components/ContactInfo'
 import { Container } from '../components/Container'
-// import { PressKit } from '../components/PressKit'
+import { PressKit } from '../components/PressKit'
 import { FAQ } from '../components/FAQ'
 import Spacer from '../components/Spacer'
 import Text from '../components/Text'
+import { Section } from '../components/Section'
 
 export default () => (
-  <Container>
+  <Section>
     <Container center style={{ paddingTop: '36px' }}>
       <Text h1 color="salmon">
         Kontaktujte nás
@@ -37,14 +38,14 @@ export default () => (
 
     <Spacer></Spacer>
 
-    {/* <Container center style={{ paddingTop: '36px' }}>
+    <Container center style={{ paddingTop: '36px' }}>
       <Text h1 as="h2">
         Pro média
       </Text>
     </Container>
-    <Spacer></Spacer> */}
-    {/* <Container style={{ paddingBottom: '72px' }}>
+    <Spacer></Spacer> 
+    <Container style={{ paddingBottom: '72px' }}>
       <PressKit />
-    </Container> */}
-  </Container>
+    </Container>
+  </Section>
 )
