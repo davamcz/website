@@ -15,13 +15,13 @@ type AuthPayload {
 
 type File {
   fileName: String!
-  id: ID!
+  id: String!
   key: String!
 }
 
 type Gallery {
-  id: ID!
-  images(after: ID, before: ID, first: Int, last: Int, skip: Int): [File!]!
+  id: String!
+  images(after: String, before: String, first: Int, last: Int, skip: Int): [File!]!
 }
 
 type Mutation {
@@ -44,7 +44,7 @@ type Offer {
   beneficator: Organization
   description: String!
   gallery: Gallery!
-  id: ID!
+  id: String!
   name: String!
   price: Int!
   remainingAmount: Int!
@@ -55,7 +55,7 @@ type Offer {
 type Organization {
   apiId: Int
   description: String!
-  id: ID!
+  id: String!
   logo: File
   name: String!
   projectId: Int
@@ -76,7 +76,7 @@ type Transaction {
   amount: Int!
   donatedAmount: Int
   firstName: String!
-  id: ID!
+  id: String!
   lastName: String!
   offer: Offer!
   status: TransactionStatus!
@@ -85,6 +85,7 @@ type Transaction {
 type TransactionsStatistics {
   donatedAmount: Int!
   donationsCount: Int!
+  numberOfOrganizations: Int!
 }
 
 enum TransactionStatus {

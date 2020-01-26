@@ -9,7 +9,7 @@ import {
   getSimplyfiedState,
   capitalize,
 } from '../utils/helpers'
-import { TransactionStatus } from '@prisma/photon'
+import { TransactionStatus } from '@prisma/client'
 import { sendEmail } from '../../emails'
 
 const { PENDING, PAID } = constants.paymentStatus
@@ -58,7 +58,7 @@ export const TransactionQuery = extendType({
         const allPaidTransactions = await photon.transactions.findMany({
           where: { status: PAID },
         })
-        const organization = await prisma.organizations({where: {active: true}})
+        const organizations = await photon.organizations({where: {active: true}})
         const donatedAmount = allPaidTransactions.reduce(
           (total, transaction) => {
             return total + (transaction.donatedAmount || 0)
@@ -69,7 +69,7 @@ export const TransactionQuery = extendType({
         return {
           donatedAmount,
           donationsCount,
-          numberOfOrganizations: organization.length
+          numberOfOrganizations: organizations.length
         }
       },
     })

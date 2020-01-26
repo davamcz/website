@@ -1,5 +1,5 @@
 import { IncomingMessage } from 'http'
-import { UserRole, TransactionStatus, Transaction } from '@prisma/photon'
+import { UserRole, TransactionStatus, Transaction } from '@prisma/client'
 import { verify } from 'jsonwebtoken'
 import md5 from 'md5'
 import { config } from '../configuration'

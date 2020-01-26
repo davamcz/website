@@ -4,7 +4,6 @@
  */
 
 import * as Context from "../context"
-import * as photon from "@prisma/photon"
 import { FieldAuthorizeResolver } from "nexus/dist/plugins/fieldAuthorizePlugin"
 import { core } from "nexus"
 declare global {
@@ -32,27 +31,64 @@ export interface NexusGenInputs {
 }
 
 export interface NexusGenEnums {
-  TransactionStatus: photon.TransactionStatus
+  TransactionStatus: "FAILED" | "INSUFFICIENT" | "PAID" | "PENDING"
 }
 
 export interface NexusGenRootTypes {
-  Adress: photon.Adress;
+  Adress: { // root type
+    city?: string | null; // String
+    postalCode?: string | null; // String
+    street?: string | null; // String
+  }
   AuthPayload: { // root type
     token: string; // String!
     user: NexusGenRootTypes['User']; // User!
   }
-  File: photon.File;
-  Gallery: photon.Gallery;
+  File: { // root type
+    fileName: string; // String!
+    id: string; // String!
+    key: string; // String!
+  }
+  Gallery: { // root type
+    id: string; // String!
+  }
   Mutation: {};
-  Offer: photon.Offer;
-  Organization: photon.Organization;
+  Offer: { // root type
+    active?: boolean | null; // Boolean
+    amount: number; // Int!
+    description: string; // String!
+    id: string; // String!
+    name: string; // String!
+    price: number; // Int!
+    transport?: string | null; // String
+  }
+  Organization: { // root type
+    apiId?: number | null; // Int
+    description: string; // String!
+    id: string; // String!
+    name: string; // String!
+    projectId?: number | null; // Int
+    url: string; // String!
+  }
   Query: {};
-  Transaction: photon.Transaction;
+  Transaction: { // root type
+    amount: number; // Int!
+    donatedAmount?: number | null; // Int
+    firstName: string; // String!
+    id: string; // String!
+    lastName: string; // String!
+    status: NexusGenEnums['TransactionStatus']; // TransactionStatus!
+  }
   TransactionsStatistics: { // root type
     donatedAmount: number; // Int!
     donationsCount: number; // Int!
+    numberOfOrganizations: number; // Int!
   }
-  User: photon.User;
+  User: { // root type
+    email: string; // String!
+    firstName: string; // String!
+    lastName: string; // String!
+  }
   String: string;
   Int: number;
   Float: number;
@@ -77,11 +113,11 @@ export interface NexusGenFieldTypes {
   }
   File: { // field return type
     fileName: string; // String!
-    id: string; // ID!
+    id: string; // String!
     key: string; // String!
   }
   Gallery: { // field return type
-    id: string; // ID!
+    id: string; // String!
     images: NexusGenRootTypes['File'][]; // [File!]!
   }
   Mutation: { // field return type
@@ -100,7 +136,7 @@ export interface NexusGenFieldTypes {
     beneficator: NexusGenRootTypes['Organization'] | null; // Organization
     description: string; // String!
     gallery: NexusGenRootTypes['Gallery']; // Gallery!
-    id: string; // ID!
+    id: string; // String!
     name: string; // String!
     price: number; // Int!
     remainingAmount: number; // Int!
@@ -110,7 +146,7 @@ export interface NexusGenFieldTypes {
   Organization: { // field return type
     apiId: number | null; // Int
     description: string; // String!
-    id: string; // ID!
+    id: string; // String!
     logo: NexusGenRootTypes['File'] | null; // File
     name: string; // String!
     projectId: number | null; // Int
@@ -129,7 +165,7 @@ export interface NexusGenFieldTypes {
     amount: number; // Int!
     donatedAmount: number | null; // Int
     firstName: string; // String!
-    id: string; // ID!
+    id: string; // String!
     lastName: string; // String!
     offer: NexusGenRootTypes['Offer']; // Offer!
     status: NexusGenEnums['TransactionStatus']; // TransactionStatus!
@@ -137,6 +173,7 @@ export interface NexusGenFieldTypes {
   TransactionsStatistics: { // field return type
     donatedAmount: number; // Int!
     donationsCount: number; // Int!
+    numberOfOrganizations: number; // Int!
   }
   User: { // field return type
     adress: NexusGenRootTypes['Adress'] | null; // Adress
@@ -151,8 +188,8 @@ export interface NexusGenFieldTypes {
 export interface NexusGenArgTypes {
   Gallery: {
     images: { // args
-      after?: string | null; // ID
-      before?: string | null; // ID
+      after?: string | null; // String
+      before?: string | null; // String
       first?: number | null; // Int
       last?: number | null; // Int
       skip?: number | null; // Int

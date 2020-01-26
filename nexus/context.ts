@@ -1,13 +1,13 @@
-import { Photon } from '@prisma/photon'
+import { PrismaClient } from '@prisma/client'
 import { IncomingMessage } from 'http'
 
 
-const photon = new Photon(
+const photon = new PrismaClient(
   // { debug: true, log: true }
 )
 
 export interface Context {
-  photon: Photon
+  photon: PrismaClient
   req: IncomingMessage
 }
 
