@@ -29,7 +29,7 @@ export const OrganizationsContainer = () => (
       />
       <Spacer />
 
-      <Image src="https://davamcz.imgix.net/organizace/armada-spasy.svg" maxWidth={35} />
+      <Image flex="0" src="https://davamcz.imgix.net/organizace/armada-spasy.svg" maxWidth={35} />
       <Spacer />
 
       <Image

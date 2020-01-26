@@ -5,32 +5,34 @@ import Spacer from './Spacer'
 import Text from './Text'
 
 export const Home = () => (
-  <HomeContainer style={{ paddingTop: '144px', paddingBottom: '250px' }}>
-    <Text h1 style={{ maxWidth: '480px' }}>
-      Jednoduše spojujeme lidi pro dobrou věc
-    </Text>
-    <Spacer />
-    <Text style={{ maxWidth: '420px' }}>
-      Máte věc nebo službu, kterou chcete věnovat druhým a zároveň pomoci
-      dobročinné organizaci?
-    </Text>
-    <Spacer />
-    <Container
-      style={{ alignItems: 'flex-start' }}
-      direction={['column', 'row', 'row']}
-    >
-      <ButtonLink href="/vytvorit-nabidku">Vytvořit nabídku</ButtonLink>
+  <HomeWrapper>
+    <HomeContainer style={{ paddingTop: '144px', paddingBottom: '250px' }}>
+      <Text h1 style={{ maxWidth: '480px' }}>
+        Jednoduše spojujeme lidi pro dobrou věc
+      </Text>
       <Spacer />
-      <ButtonLink href="/nabidka" secondary>
-        Zobrazit nabídky
-      </ButtonLink>
-    </Container>
-  </HomeContainer>
+      <Text style={{ maxWidth: '420px' }}>
+        Máte věc nebo službu, kterou chcete věnovat druhým a zároveň pomoci
+        dobročinné organizaci?
+      </Text>
+      <Spacer />
+      <Container
+        style={{ alignItems: 'flex-start' }}
+        direction={['column', 'row', 'row']}
+      >
+        <ButtonLink href="/vytvorit-nabidku">Vytvořit nabídku</ButtonLink>
+        <Spacer />
+        <ButtonLink href="/nabidka" secondary>
+          Zobrazit nabídky
+        </ButtonLink>
+      </Container>
+    </HomeContainer>
+  </HomeWrapper>
 )
 
 const HomeContainer = styled(Container)`
   object-fit: contain;
-  background: 100% no-repeat url('/home-background.jpg');
+  background: 100% no-repeat url('/home-background.png');
   background-position: bottom right;
 
   @media only screen and (-webkit-min-device-pixel-ratio: 2),
@@ -39,7 +41,7 @@ const HomeContainer = styled(Container)`
     only screen and (min-device-pixel-ratio: 2),
     only screen and (min-resolution: 192dpi),
     only screen and (min-resolution: 2dppx) {
-    background: 100% no-repeat url('/home-background@2x.jpg');
+    background: 100% no-repeat url('/home-background@2x.png');
     background-size: 420px auto;
     background-position: bottom right;
   }
@@ -47,4 +49,10 @@ const HomeContainer = styled(Container)`
   @media screen and (max-width: 601px) {
     background-size: 250px;
   }
+`
+
+const HomeWrapper = styled.div`
+  background: url('/background.svg') no-repeat;
+  background-position: bottom;
+  background-size: 100%;
 `

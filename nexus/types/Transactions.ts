@@ -19,6 +19,7 @@ export const TransactionsStatistics = objectType({
   definition(t) {
     t.int('donatedAmount')
     t.int('donationsCount')
+    t.int('numberOfOrganizations')
   },
 })
 
@@ -57,6 +58,7 @@ export const TransactionQuery = extendType({
         const allPaidTransactions = await photon.transactions.findMany({
           where: { status: PAID },
         })
+        const organization = await prisma.organizations({where: {active: true}})
         const donatedAmount = allPaidTransactions.reduce(
           (total, transaction) => {
             return total + (transaction.donatedAmount || 0)
@@ -67,6 +69,7 @@ export const TransactionQuery = extendType({
         return {
           donatedAmount,
           donationsCount,
+          numberOfOrganizations: organization.length
         }
       },
     })

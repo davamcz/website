@@ -13,6 +13,7 @@ export const transactionsStatistics = gql`
     getTransactionsStatistics {
       donatedAmount
       donationsCount
+      numberOfOrganizations
     }
   }
 `
@@ -21,6 +22,7 @@ export default () => {
   const { loading, data } = useGetTransactionsStatisticsQuery();
   const donated = 23091 + (data?.getTransactionsStatistics?.donatedAmount || 0)
   const transactions = 85 + (data?.getTransactionsStatistics?.donationsCount || 0)
+  const numberOfOrganizations = data?.getTransactionsStatistics.numberOfOrganizations  || 9
 
   return (
   <Container>
@@ -33,7 +35,7 @@ export default () => {
       direction={['column', 'column', 'row']}
       style={{ justifyContent: 'space-between' }}
     >
-      <Stat title="Zapojených organizací" value="9" loading={false} />
+      <Stat title="Zapojených organizací" value={numberOfOrganizations} loading={loading} />
       <Spacer y={2} />
       <Stat title="Proběhlých darů" value={`${transactions}`} loading={loading} />
       <Spacer y={2} />
@@ -43,7 +45,7 @@ export default () => {
   </Container>
 )}
 
-const Stat = ({ value, title, loading = false }: { value: string; title: string, loading: boolean }) => (
+const Stat = ({ value, title, loading = false }: { value: string | number; title: string, loading: boolean }) => (
   <Block>
     <Spacer />
     {loading && <Loading height={48} />}

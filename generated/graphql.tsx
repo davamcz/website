@@ -725,7 +725,8 @@ export type Query = {
 
 
 export type QueryOffersArgs = {
-  active?: Maybe<Scalars['Boolean']>
+  active?: Maybe<Scalars['Boolean']>,
+  publicOffer?: Maybe<Scalars['Boolean']>
 };
 
 
@@ -795,6 +796,7 @@ export type TransactionsStatistics = {
    __typename?: 'TransactionsStatistics',
   donatedAmount: Scalars['Int'],
   donationsCount: Scalars['Int'],
+  numberOfOrganizations: Scalars['Int'],
 };
 
 export enum TransactionStatus {
@@ -1040,29 +1042,6 @@ export type UserQuery = (
   )> }
 );
 
-export type OffersQueryVariables = {
-  active?: Maybe<Scalars['Boolean']>
-};
-
-
-export type OffersQuery = (
-  { __typename?: 'Query' }
-  & { offers: Array<(
-    { __typename?: 'Offer' }
-    & Pick<Offer, 'id' | 'name' | 'price'>
-    & { beneficator: (
-      { __typename?: 'Organization' }
-      & Pick<Organization, 'name'>
-    ), gallery: (
-      { __typename?: 'Gallery' }
-      & { images: Maybe<Array<(
-        { __typename?: 'File' }
-        & Pick<File, 'key'>
-      )>> }
-    ) }
-  )> }
-);
-
 export type RecentTransactionsQueryVariables = {};
 
 
@@ -1081,7 +1060,7 @@ export type GetTransactionsStatisticsQuery = (
   { __typename?: 'Query' }
   & { getTransactionsStatistics: (
     { __typename?: 'TransactionsStatistics' }
-    & Pick<TransactionsStatistics, 'donatedAmount' | 'donationsCount'>
+    & Pick<TransactionsStatistics, 'donatedAmount' | 'donationsCount' | 'numberOfOrganizations'>
   ) }
 );
 
@@ -1146,6 +1125,35 @@ export type OrganizationsQuery = (
       { __typename?: 'File' }
       & Pick<File, 'key'>
     ) }
+  )> }
+);
+
+export type OfferDetailFragment = (
+  { __typename?: 'Offer' }
+  & Pick<Offer, 'id' | 'name' | 'price'>
+  & { beneficator: (
+    { __typename?: 'Organization' }
+    & Pick<Organization, 'name'>
+  ), gallery: (
+    { __typename?: 'Gallery' }
+    & { images: Maybe<Array<(
+      { __typename?: 'File' }
+      & Pick<File, 'key'>
+    )>> }
+  ) }
+);
+
+export type OffersQueryVariables = {
+  active?: Maybe<Scalars['Boolean']>,
+  publicOffer?: Maybe<Scalars['Boolean']>
+};
+
+
+export type OffersQuery = (
+  { __typename?: 'Query' }
+  & { offers: Array<(
+    { __typename?: 'Offer' }
+    & OfferDetailFragment
   )> }
 );
 
@@ -1317,6 +1325,21 @@ export const OrganizationDetailFragmentDoc = gql`
   }
 }
     `;
+export const OfferDetailFragmentDoc = gql`
+    fragment OfferDetail on Offer {
+  id
+  name
+  price
+  beneficator {
+    name
+  }
+  gallery {
+    images {
+      key
+    }
+  }
+}
+    `;
 export const UserDocument = gql`
     query user {
   user {
@@ -1357,49 +1380,6 @@ export function useUserLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOpt
 export type UserQueryHookResult = ReturnType<typeof useUserQuery>;
 export type UserLazyQueryHookResult = ReturnType<typeof useUserLazyQuery>;
 export type UserQueryResult = ApolloReactCommon.QueryResult<UserQuery, UserQueryVariables>;
-export const OffersDocument = gql`
-    query offers($active: Boolean) {
-  offers(active: $active) {
-    id
-    name
-    price
-    beneficator {
-      name
-    }
-    gallery {
-      images {
-        key
-      }
-    }
-  }
-}
-    `;
-
-/**
- * __useOffersQuery__
- *
- * To run a query within a React component, call `useOffersQuery` and pass it any options that fit your needs.
- * When your component renders, `useOffersQuery` returns an object from Apollo Client that contains loading, error, and data properties 
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useOffersQuery({
- *   variables: {
- *      active: // value for 'active'
- *   },
- * });
- */
-export function useOffersQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<OffersQuery, OffersQueryVariables>) {
-        return ApolloReactHooks.useQuery<OffersQuery, OffersQueryVariables>(OffersDocument, baseOptions);
-      }
-export function useOffersLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<OffersQuery, OffersQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<OffersQuery, OffersQueryVariables>(OffersDocument, baseOptions);
-        }
-export type OffersQueryHookResult = ReturnType<typeof useOffersQuery>;
-export type OffersLazyQueryHookResult = ReturnType<typeof useOffersLazyQuery>;
-export type OffersQueryResult = ApolloReactCommon.QueryResult<OffersQuery, OffersQueryVariables>;
 export const RecentTransactionsDocument = gql`
     query recentTransactions {
   recentTransactions {
@@ -1438,6 +1418,7 @@ export const GetTransactionsStatisticsDocument = gql`
   getTransactionsStatistics {
     donatedAmount
     donationsCount
+    numberOfOrganizations
   }
 }
     `;
@@ -1582,6 +1563,40 @@ export function useOrganizationsLazyQuery(baseOptions?: ApolloReactHooks.LazyQue
 export type OrganizationsQueryHookResult = ReturnType<typeof useOrganizationsQuery>;
 export type OrganizationsLazyQueryHookResult = ReturnType<typeof useOrganizationsLazyQuery>;
 export type OrganizationsQueryResult = ApolloReactCommon.QueryResult<OrganizationsQuery, OrganizationsQueryVariables>;
+export const OffersDocument = gql`
+    query offers($active: Boolean, $publicOffer: Boolean) {
+  offers(active: $active, publicOffer: $publicOffer) {
+    ...OfferDetail
+  }
+}
+    ${OfferDetailFragmentDoc}`;
+
+/**
+ * __useOffersQuery__
+ *
+ * To run a query within a React component, call `useOffersQuery` and pass it any options that fit your needs.
+ * When your component renders, `useOffersQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useOffersQuery({
+ *   variables: {
+ *      active: // value for 'active'
+ *      publicOffer: // value for 'publicOffer'
+ *   },
+ * });
+ */
+export function useOffersQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<OffersQuery, OffersQueryVariables>) {
+        return ApolloReactHooks.useQuery<OffersQuery, OffersQueryVariables>(OffersDocument, baseOptions);
+      }
+export function useOffersLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<OffersQuery, OffersQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<OffersQuery, OffersQueryVariables>(OffersDocument, baseOptions);
+        }
+export type OffersQueryHookResult = ReturnType<typeof useOffersQuery>;
+export type OffersLazyQueryHookResult = ReturnType<typeof useOffersLazyQuery>;
+export type OffersQueryResult = ApolloReactCommon.QueryResult<OffersQuery, OffersQueryVariables>;
 export const OfferDocument = gql`
     query offer($id: ID!) {
   offer(id: $id) {
