@@ -4,6 +4,7 @@
  */
 
 import * as Context from "../context"
+import * as prisma from "@prisma/client"
 import { FieldAuthorizeResolver } from "nexus/dist/plugins/fieldAuthorizePlugin"
 import { core } from "nexus"
 declare global {
@@ -31,64 +32,28 @@ export interface NexusGenInputs {
 }
 
 export interface NexusGenEnums {
-  TransactionStatus: "FAILED" | "INSUFFICIENT" | "PAID" | "PENDING"
+  TransactionStatus: prisma.TransactionStatus
 }
 
 export interface NexusGenRootTypes {
-  Adress: { // root type
-    city?: string | null; // String
-    postalCode?: string | null; // String
-    street?: string | null; // String
-  }
+  Adress: prisma.Adress;
   AuthPayload: { // root type
     token: string; // String!
     user: NexusGenRootTypes['User']; // User!
   }
-  File: { // root type
-    fileName: string; // String!
-    id: string; // String!
-    key: string; // String!
-  }
-  Gallery: { // root type
-    id: string; // String!
-  }
+  File: prisma.File;
+  Gallery: prisma.Gallery;
   Mutation: {};
-  Offer: { // root type
-    active?: boolean | null; // Boolean
-    amount: number; // Int!
-    description: string; // String!
-    id: string; // String!
-    name: string; // String!
-    price: number; // Int!
-    transport?: string | null; // String
-  }
-  Organization: { // root type
-    apiId?: number | null; // Int
-    description: string; // String!
-    id: string; // String!
-    name: string; // String!
-    projectId?: number | null; // Int
-    url: string; // String!
-  }
+  Offer: prisma.Offer;
+  Organization: prisma.Organization;
   Query: {};
-  Transaction: { // root type
-    amount: number; // Int!
-    donatedAmount?: number | null; // Int
-    firstName: string; // String!
-    id: string; // String!
-    lastName: string; // String!
-    status: NexusGenEnums['TransactionStatus']; // TransactionStatus!
-  }
+  Transaction: prisma.Transaction;
   TransactionsStatistics: { // root type
     donatedAmount: number; // Int!
     donationsCount: number; // Int!
     numberOfOrganizations: number; // Int!
   }
-  User: { // root type
-    email: string; // String!
-    firstName: string; // String!
-    lastName: string; // String!
-  }
+  User: prisma.User;
   String: string;
   Int: number;
   Float: number;

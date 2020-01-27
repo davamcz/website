@@ -33,8 +33,8 @@ export const Offer = objectType({
     t.model.user()
     t.field('remainingAmount', {
       type: 'Int',
-      resolve: async ({ id, amount }, _, { photon }) => {
-        const transactions = await photon.transactions({
+      resolve: async ({ id, amount }, _, { prisma }) => {
+        const transactions = await prisma.transactions({
           where: { offer: { id } },
         })
 
@@ -56,14 +56,14 @@ export const OfferQuery = extendType({
         publicOffer: booleanArg(),
       },
       list: true,
-      resolve: async (_, { active, publicOffer }, { photon }) => {
+      resolve: async (_, { active, publicOffer }, { prisma }) => {
         if (!active) {
-          return photon.offers.findMany({
+          return prisma.offers.findMany({
             where: { publicOffer: publicOffer },
             orderBy: { createdAt: 'desc' },
           })
         } else {
-          const allOffers = await photon.offers.findMany({
+          const allOffers = await prisma.offers.findMany({
             where: { active: true, publicOffer: publicOffer },
             orderBy: { createdAt: 'desc' },
             include: {
@@ -98,8 +98,8 @@ export const OfferQuery = extendType({
         id: idArg({ required: true }),
       },
       nullable: true,
-      resolve: async (_, { id }, { photon }) => {
-        return photon.offers.findOne({
+      resolve: async (_, { id }, { prisma }) => {
+        return prisma.offers.findOne({
           where: { id },
           include: {
             beneficator: true,
@@ -126,13 +126,13 @@ export const OfferMutations = extendType({
         confirmationHash: stringArg({ required: true }),
         active: booleanArg({ required: true }),
       },
-      resolve: async (_, { offerId, confirmationHash, active }, { photon }) => {
-        const offer = await photon.offers.findOne({ where: { id: offerId } })
+      resolve: async (_, { offerId, confirmationHash, active }, { prisma }) => {
+        const offer = await prisma.offers.findOne({ where: { id: offerId } })
         if (
           offer &&
           confirmationHash === getConfirmationHash(offerId, offer.createdAt)
         ) {
-          const updatedOffer = await photon.offers.update({
+          const updatedOffer = await prisma.offers.update({
             data: {
               active,
             },
@@ -177,11 +177,11 @@ export const OfferMutations = extendType({
           email,
           images,
         },
-        { req, photon }
+        { req, prisma }
       ) => {
         let { userId } = getUserInfo(req)
         if (!userId) {
-          const { id } = await photon.users.upsert({
+          const { id } = await prisma.users.upsert({
             where: {
               email,
             },
@@ -197,7 +197,7 @@ export const OfferMutations = extendType({
           })
           userId = id
         } else {
-          const user = await photon.users.findOne({ where: { id: userId } })
+          const user = await prisma.users.findOne({ where: { id: userId } })
           if (user) {
             firstName = user.firstName || ''
             lastName = user.lastName || ''
@@ -205,7 +205,7 @@ export const OfferMutations = extendType({
           }
         }
 
-        const createdOffer = await photon.offers.create({
+        const createdOffer = await prisma.offers.create({
           data: {
             name: offerName,
             description,

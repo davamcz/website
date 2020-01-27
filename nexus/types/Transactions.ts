@@ -43,8 +43,8 @@ export const TransactionQuery = extendType({
     t.field('recentTransactions', {
       type: 'Transaction',
       list: true,
-      resolve: async (_, {}, { photon }) => {
-        return photon.transactions.findMany({
+      resolve: async (_, {}, { prisma }) => {
+        return prisma.transactions.findMany({
           where: { status: 'PAID' },
           last: 10,
         })
@@ -54,11 +54,11 @@ export const TransactionQuery = extendType({
 
     t.field('getTransactionsStatistics', {
       type: 'TransactionsStatistics',
-      resolve: async (_, {}, { photon }) => {
-        const allPaidTransactions = await photon.transactions.findMany({
+      resolve: async (_, {}, { prisma }) => {
+        const allPaidTransactions = await prisma.transactions.findMany({
           where: { status: PAID },
         })
-        const organizations = await photon.organizations({where: {active: true}})
+        const organizations = await prisma.organizations({where: {active: true}})
         const donatedAmount = allPaidTransactions.reduce(
           (total, transaction) => {
             return total + (transaction.donatedAmount || 0)
@@ -79,8 +79,8 @@ export const TransactionQuery = extendType({
       args: {
         id: idArg({ required: true }),
       },
-      resolve: async (_, { id }, { photon }) => {
-        const currentTransaction = await photon.transactions.findOne({
+      resolve: async (_, { id }, { prisma }) => {
+        const currentTransaction = await prisma.transactions.findOne({
           where: { id },
           include: { offer: { include: { beneficator: true } } },
         })
@@ -139,7 +139,7 @@ export const TransactionQuery = extendType({
         const isStatusChanged = currentTransaction.status !== newSimplyfiedSate
 
         // update transaction status before emails will fail somehow
-        const updatedTransactionStatus = await photon.transactions.update({
+        const updatedTransactionStatus = await prisma.transactions.update({
           data: {
             status: newSimplyfiedSate,
             donatedAmount: realDonatedAmount,
@@ -219,9 +219,9 @@ export const TransactionMutation = extendType({
       resolve: async (
         _,
         { firstName, lastName, email, comment, offerId, amount },
-        { photon }
+        { prisma }
       ) => {
-        const offer = await photon.offers.findOne({
+        const offer = await prisma.offers.findOne({
           where: { id: offerId },
           select: { active: true, amount: true, transactions: true },
         })
@@ -239,7 +239,7 @@ export const TransactionMutation = extendType({
           throw new Error("Can't create transaction")
         }
 
-        return await photon.transactions.create({
+        return await prisma.transactions.create({
           data: {
             firstName,
             lastName,

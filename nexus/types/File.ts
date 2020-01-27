@@ -48,7 +48,7 @@ export const FileMutation = extendType({
         directory: stringArg({ required: false }),
         file: arg({ type: 'Upload' }),
       },
-      resolve: async (_, { file, directory }, { photon }) => {
+      resolve: async (_, { file, directory }, { prisma }) => {
         const {
           createReadStream,
           filename: fileName,
@@ -72,7 +72,7 @@ export const FileMutation = extendType({
           })
           .promise()
 
-        return photon.files.create({
+        return prisma.files.create({
           data: {
             fileName,
             encoding,

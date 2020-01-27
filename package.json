@@ -20,7 +20,7 @@
   },
   "pre-commit": "lint-staged",
   "resolutions": {
-    "graphql": "14.5.8"
+    "graphql": "14.6.0"
   },
   "dependencies": {
     "@apollo/react-hooks": "^3.0.1",
@@ -41,7 +41,7 @@
     "copy-to-clipboard": "^3.2.0",
     "dotenv": "^8.2.0",
     "formik": "^2.0.3",
-    "graphql": "^14.5.8",
+    "graphql": "^14.6.0",
     "graphql-middleware": "^4.0.2",
     "graphql-shield": "^7.0.2",
     "graphql-tag": "^2.10.1",

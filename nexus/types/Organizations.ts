@@ -27,8 +27,8 @@ export const OrganizationQuery = extendType({
     t.field('organizations', {
       type: 'Organization',
       list: true,
-      resolve: async (_, {}, { photon }) => {
-        return photon.organizations({ where: { active: true } })
+      resolve: async (_, {}, { prisma }) => {
+        return prisma.organizations({ where: { active: true } })
       },
     })
   },
@@ -62,9 +62,9 @@ export const OrganizationMutation = extendType({
           description,
           url,
         },
-        { photon }
+        { prisma }
       ) => {
-        return photon.organizations.create({
+        return prisma.organizations.create({
           data: {
             apiId,
             apiSecret,

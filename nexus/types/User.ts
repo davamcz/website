@@ -28,9 +28,9 @@ export const UserQueries = extendType({
   definition: t => {
     t.field('user', {
       type: 'User',
-      resolve: (_, {}, { req, photon }) => {
+      resolve: (_, {}, { req, prisma }) => {
         const { userId } = getUserInfo(req)
-        return photon.users.findOne({ where: { id: userId } })
+        return prisma.users.findOne({ where: { id: userId } })
       },
     })
   },
@@ -51,10 +51,10 @@ export const UserMutations = extendType({
       resolve: async (
         _,
         { firstName, lastName, email, password },
-        { photon }
+        { prisma }
       ) => {
         const hashedPassword = await hash(password, 10)
-        const user = await photon.users.create({
+        const user = await prisma.users.create({
           data: {
             firstName,
             lastName,
@@ -79,7 +79,7 @@ export const UserMutations = extendType({
         password: stringArg({ required: true }),
       },
       resolve: async (_, { email, password }, context) => {
-        const user = await context.photon.users.findOne({
+        const user = await context.prisma.users.findOne({
           where: {
             email,
           },
@@ -117,7 +117,7 @@ export const UserMutations = extendType({
       resolve: async (
         _,
         { firstName, lastName, city, street, postalCode },
-        { photon, req }
+        { prisma, req }
       ) => {
         const adress = {
           city,
@@ -127,7 +127,7 @@ export const UserMutations = extendType({
 
         const { userId } = getUserInfo(req)
 
-        return photon.users.update({
+        return prisma.users.update({
           where: { id: userId },
           data: {
             firstName,
