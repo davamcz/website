@@ -2,11 +2,12 @@
   "version": 2,
   "name": "davamcz",
   "functions": {
-    "pages/api/graphql.ts": {
+    "**/graphql.ts": {
       "memory": 3008,
       "maxDuration": 10
     }
   },  
+  "regions": ["bru1"],
   "env": {
     "WEBSITE_URL": "@website-url",
     "AIRTABLE_SECRET": "@airtable-secret",
