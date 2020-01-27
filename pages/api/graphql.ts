@@ -6,7 +6,8 @@ const server = new ApolloServer({
   schema: schema,
   context: createContext,
   playground: true,
-  introspection: true
+  introspection: true,
+  tracing: true
 })
 
 export const config = {
