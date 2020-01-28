@@ -88,6 +88,6 @@
     "prisma2": "^2.0.0-preview020.3",
     "shell-quote": "^1.7.2",
     "ts-node": "^8.6.0",
-    "typescript": "^3.7.2"
+    "typescript": "^3.7.5"
   }
 }

@@ -3,7 +3,7 @@ import { join, resolve } from 'path'
 import { nexusPrismaPlugin } from 'nexus-prisma'
 import * as types from './types'
 
-const dirname = process.env.PROJECT_DIRNAM || resolve(__dirname, '..')
+const dirname = process.env.PROJECT_DIRNAME || resolve(__dirname, '..')
 
 export const schema = makeSchema({
   types,
