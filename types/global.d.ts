@@ -12,4 +12,8 @@ declare namespace NodeJS {
     readonly PROJECT_DIRNAME: string
     readonly CONFIRMATION_SECRET_KEY: string
   }
+
+  interface Global {
+    prisma: any
+  }
 }

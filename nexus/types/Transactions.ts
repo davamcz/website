@@ -1,13 +1,16 @@
-import { prismaObjectType, prismaExtendType } from 'nexus-prisma'
-import { stringArg, idArg, intArg, objectType } from 'nexus'
+import { objectType, extendType, stringArg, intArg, idArg } from 'nexus'
 import fetch from 'node-fetch'
-import * as querystring from 'querystring'
+import { encode } from 'querystring'
 import { vokativ } from 'vokativ'
-import { capitalize } from '../utils'
 
-import { constants, isTransactionReserved, getSimplyfiedState } from '../utils'
-import { TransactionStatus } from '../generated/prisma-client'
-import { sendEmail } from '../emails'
+import {
+  constants,
+  isTransactionReserved,
+  getSimplyfiedState,
+  capitalize,
+} from '../utils/helpers'
+import { TransactionStatus } from '@prisma/client'
+import { sendEmail } from '../../emails'
 
 const { PENDING, PAID } = constants.paymentStatus
 
@@ -20,43 +23,43 @@ export const TransactionsStatistics = objectType({
   },
 })
 
-export const Transaction = prismaObjectType({
+export const Transaction = objectType({
   name: 'Transaction',
-  definition(t) {
-    t.prismaFields({
-      pick: [
-        'id',
-        'createdAt',
-        'firstName',
-        'lastName',
-        'donatedAmount',
-        'amount',
-        'status',
-        'offer',
-      ],
-    })
+  definition: t => {
+    t.model.id()
+    // t.model.createdAt()
+    t.model.firstName()
+    t.model.lastName()
+    t.model.donatedAmount()
+    t.model.amount()
+    t.model.status()
+    t.model.offer()
   },
 })
 
-export const TransactionQuery = prismaExtendType({
+export const TransactionQuery = extendType({
   type: 'Query',
-  definition(t) {
-    t.prismaFields(['transactions'])
+  definition: t => {
     t.field('recentTransactions', {
       type: 'Transaction',
       list: true,
-      resolve: async (_, _args, { prisma }) => {
-        return prisma.transactions({ where: { status: PAID }, last: 10 })
+      resolve: async (_, {}, { prisma }) => {
+        return prisma.transactions.findMany({
+          where: { status: 'PAID' },
+          last: 10,
+        })
       },
     })
 
     t.field('getTransactionsStatistics', {
       type: 'TransactionsStatistics',
       resolve: async (_, {}, { prisma }) => {
-        const allPaidTransactions = await prisma.transactions({
+        const allPaidTransactions = await prisma.transactions.findMany({
           where: { status: PAID },
         })
-        const organization = await prisma.organizations({where: {active: true}})
+        const organizations = await prisma.organizations({
+          where: { active: true },
+        })
         const donatedAmount = allPaidTransactions.reduce(
           (total, transaction) => {
             return total + (transaction.donatedAmount || 0)
@@ -67,7 +70,7 @@ export const TransactionQuery = prismaExtendType({
         return {
           donatedAmount,
           donationsCount,
-          numberOfOrganizations: organization.length
+          numberOfOrganizations: organizations.length,
         }
       },
     })
@@ -78,32 +81,10 @@ export const TransactionQuery = prismaExtendType({
         id: idArg({ required: true }),
       },
       resolve: async (_, { id }, { prisma }) => {
-        const currentTransaction = (await prisma.transaction({ id }).$fragment(`
-          fragment transactionApiValues on Transaction {
-            id
-            status
-            email
-            firstName
-            lastName
-            comment
-            amount
-            offer {
-              createdAt
-              firstName
-              lastName
-              email
-              name
-              price
-              beneficator {
-                name
-                organizationId
-                projectId
-                apiId
-                apiSecret
-              }
-            }
-          }
-        `)) as any
+        const currentTransaction = await prisma.transactions.findOne({
+          where: { id },
+          include: { offer: { include: { beneficator: true } } },
+        })
 
         const {
           createdAt,
@@ -121,7 +102,7 @@ export const TransactionQuery = prismaExtendType({
           },
         } = currentTransaction.offer
 
-        const qs = querystring.encode({
+        const qs = encode({
           fromPledgedDate: JSON.stringify(createdAt).slice(1, 11),
           projectId: projectId,
           apiId,
@@ -159,7 +140,7 @@ export const TransactionQuery = prismaExtendType({
         const isStatusChanged = currentTransaction.status !== newSimplyfiedSate
 
         // update transaction status before emails will fail somehow
-        const updatedTransactionStatus = await prisma.updateTransaction({
+        const updatedTransactionStatus = await prisma.transactions.update({
           data: {
             status: newSimplyfiedSate,
             donatedAmount: realDonatedAmount,
@@ -223,7 +204,7 @@ export const TransactionQuery = prismaExtendType({
   },
 })
 
-export const TransactionMutation = prismaExtendType({
+export const TransactionMutation = extendType({
   type: 'Mutation',
   definition(t) {
     t.field('createTransaction', {
@@ -241,17 +222,10 @@ export const TransactionMutation = prismaExtendType({
         { firstName, lastName, email, comment, offerId, amount },
         { prisma }
       ) => {
-        return undefined as any
-        const offer = (await prisma.offer({ id: offerId }).$fragment(`
-          fragment OfferTransaction on Offer {
-            amount
-            transactions {
-              amount
-              status
-              createdAt
-            }
-          }
-        `)) as any
+        const offer = await prisma.offers.findOne({
+          where: { id: offerId },
+          select: { active: true, amount: true, transactions: true },
+        })
 
         const usedAmount = offer.transactions
           .filter(
@@ -266,13 +240,15 @@ export const TransactionMutation = prismaExtendType({
           throw new Error("Can't create transaction")
         }
 
-        return await prisma.createTransaction({
-          firstName,
-          lastName,
-          email,
-          comment,
-          amount,
-          offer: { connect: { id: offerId } },
+        return await prisma.transactions.create({
+          data: {
+            firstName,
+            lastName,
+            email,
+            comment,
+            amount,
+            offer: { connect: { id: offerId } },
+          },
         })
       },
     })

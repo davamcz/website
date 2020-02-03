@@ -1,7 +1,0 @@
-export * from './Query'
-export * from './AuthPayload'
-export * from './Offer'
-export * from './Organization'
-export * from './Transaction'
-export * from './User'
-export * from './File'

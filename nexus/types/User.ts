@@ -1,14 +1,15 @@
-import { stringArg, extendType } from 'nexus'
-import { prismaObjectType } from 'nexus-prisma'
+import { objectType, extendType, stringArg, idArg } from 'nexus'
 import { hash, compare } from 'bcrypt'
 import { sign } from 'jsonwebtoken'
-import { getUserId } from '../utils'
-import { UserWithPassowordSchemaValidation } from '../../validation/user'
+import { getUserInfo } from '../utils/helpers'
 
-export const UserType = prismaObjectType({
+export const User = objectType({
   name: 'User',
-  definition(t) {
-    t.prismaFields({ pick: ['email', 'firstName', 'lastName', 'adress'] })
+  definition: t => {
+    t.model.email()
+    t.model.firstName()
+    t.model.lastName()
+    t.model.adress()
     t.string('fullName', {
       resolve: ({ firstName, lastName }) => {
         return `${firstName} ${lastName}`
@@ -22,22 +23,14 @@ export const UserType = prismaObjectType({
   },
 })
 
-export const UserQuery = extendType({
+export const UserQueries = extendType({
   type: 'Query',
-  definition(t) {
+  definition: t => {
     t.field('user', {
       type: 'User',
-      nullable: true,
-      resolve: async (_, {}, ctx) => {
-        const id = getUserId(ctx)
-
-        return ctx.prisma.user({ id })
-
-        // if (id) {
-        //   return ctx.prisma.user({ id })
-        // }
-        // return { id: '', fullName: '', email: '', __typename: 'User' }
-        // throw new Error('User not found')
+      resolve: (_, {}, { req, prisma }) => {
+        const { userId } = getUserInfo(req)
+        return prisma.users.findOne({ where: { id: userId } })
       },
     })
   },
@@ -45,34 +38,31 @@ export const UserQuery = extendType({
 
 export const UserMutations = extendType({
   type: 'Mutation',
-  definition(t) {
+  definition: t => {
     t.field('signup', {
       type: 'AuthPayload',
       args: {
         firstName: stringArg(),
         lastName: stringArg(),
-        email: stringArg(),
-        password: stringArg(),
+        email: stringArg({ required: true }),
+        password: stringArg({ required: true }),
       },
-      resolve: async (_, { firstName, lastName, email, password }, ctx) => {
-        try {
-          await UserWithPassowordSchemaValidation.validate({
+      nullable: true,
+      resolve: async (
+        _,
+        { firstName, lastName, email, password },
+        { prisma }
+      ) => {
+        const hashedPassword = await hash(password, 10)
+        const user = await prisma.users.create({
+          data: {
             firstName,
             lastName,
             email,
-            password,
-          })
-        } catch (e) {
-          throw e
-        }
-
-        const hashedPassword = await hash(password, 10)
-        const user = await ctx.prisma.createUser({
-          firstName,
-          lastName,
-          email,
-          password: hashedPassword,
+            password: hashedPassword,
+          },
         })
+
         return {
           token: sign(
             { userId: user.id, userRole: user.role },
@@ -82,15 +72,18 @@ export const UserMutations = extendType({
         }
       },
     })
-
     t.field('login', {
       type: 'AuthPayload',
       args: {
-        email: stringArg(),
-        password: stringArg(),
+        email: stringArg({ required: true }),
+        password: stringArg({ required: true }),
       },
       resolve: async (_, { email, password }, context) => {
-        const user = await context.prisma.user({ email })
+        const user = await context.prisma.users.findOne({
+          where: {
+            email,
+          },
+        })
         if (!user) {
           throw new Error(`No user found for email: ${email}`)
         }
@@ -107,7 +100,6 @@ export const UserMutations = extendType({
         }
       },
     })
-
     t.field('updateUser', {
       type: 'User',
       args: {
@@ -116,11 +108,16 @@ export const UserMutations = extendType({
         city: stringArg({ required: true }),
         street: stringArg({ required: true }),
         postalCode: stringArg({ required: true }),
+        id: idArg(),
+      },
+      authorize: (_, { id }, { req }) => {
+        const { userId, userRole } = getUserInfo(req)
+        return id === userId || userRole === 'ADMIN'
       },
       resolve: async (
         _,
         { firstName, lastName, city, street, postalCode },
-        { prisma, request }
+        { prisma, req }
       ) => {
         const adress = {
           city,
@@ -128,10 +125,10 @@ export const UserMutations = extendType({
           postalCode,
         }
 
-        const id = getUserId({ prisma, request })
+        const { userId } = getUserInfo(req)
 
-        return prisma.updateUser({
-          where: { id },
+        return prisma.users.update({
+          where: { id: userId },
           data: {
             firstName,
             lastName,

@@ -1,6 +1,7 @@
 {
   "version": 2,
   "name": "davamcz",
+  "regions": ["bru1"],
   "env": {
     "WEBSITE_URL": "@website-url",
     "AIRTABLE_SECRET": "@airtable-secret",
@@ -11,7 +12,8 @@
     "S3_SECRET_KEY": "@s3-secret-key",
     "EMAIL_ACCESS_KEY": "@email-access-key",
     "EMAIL_SECRET_KEY": "@email-secret-key",
-    "CONFIRMATION_SECRET_KEY": "@confirmation-secret-key"
+    "CONFIRMATION_SECRET_KEY": "@confirmation-secret-key",
+    "MYSQL_URL": "@mysql-url"
   },
   "build": {
     "env": {
@@ -24,7 +26,8 @@
       "S3_SECRET_KEY": "@s3-secret-key",
       "EMAIL_ACCESS_KEY": "@email-access-key",
       "EMAIL_SECRET_KEY": "@email-secret-key",
-      "CONFIRMATION_SECRET_KEY": "@confirmation-secret-key"
+      "CONFIRMATION_SECRET_KEY": "@confirmation-secret-key",
+      "MYSQL_URL": "@mysql-url"
     }
   }
 }

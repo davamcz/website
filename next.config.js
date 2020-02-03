@@ -1,4 +1,5 @@
 module.exports = {
+  target: 'experimental-serverless-trace',
   env: {
     WEBSITE_URL: process.env.WEBSITE_URL,
     AIRTABLE_SECRET: process.env.AIRTABLE_SECRET,
@@ -8,5 +9,6 @@ module.exports = {
     EMAIL_SECRET_KEY: process.env.EMAIL_SECRET_KEY,
     CONFIRMATION_SECRET_KEY: process.env.CONFIRMATION_SECRET_KEY,
     PROJECT_DIRNAME: __dirname,
+    MYSQL_URL: process.env.MYSQL_URL
   },
 }
