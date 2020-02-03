@@ -13,6 +13,8 @@ type AuthPayload {
   user: User!
 }
 
+scalar DateTime
+
 type File {
   fileName: String!
   id: String!
@@ -42,6 +44,7 @@ type Offer {
   active: Boolean
   amount: Int!
   beneficator: Organization
+  createdAt: DateTime!
   description: String!
   gallery: Gallery!
   id: String!
