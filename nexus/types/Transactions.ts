@@ -48,9 +48,8 @@ export const TransactionQuery = extendType({
           where: { status: 'PAID' },
           last: 10,
         })
-      }})
-      
-      
+      },
+    })
 
     t.field('getTransactionsStatistics', {
       type: 'TransactionsStatistics',
@@ -58,7 +57,9 @@ export const TransactionQuery = extendType({
         const allPaidTransactions = await prisma.transactions.findMany({
           where: { status: PAID },
         })
-        const organizations = await prisma.organizations({where: {active: true}})
+        const organizations = await prisma.organizations({
+          where: { active: true },
+        })
         const donatedAmount = allPaidTransactions.reduce(
           (total, transaction) => {
             return total + (transaction.donatedAmount || 0)
@@ -69,7 +70,7 @@ export const TransactionQuery = extendType({
         return {
           donatedAmount,
           donationsCount,
-          numberOfOrganizations: organizations.length
+          numberOfOrganizations: organizations.length,
         }
       },
     })
@@ -84,7 +85,7 @@ export const TransactionQuery = extendType({
           where: { id },
           include: { offer: { include: { beneficator: true } } },
         })
-        
+
         const {
           createdAt,
           price,

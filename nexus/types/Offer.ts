@@ -199,9 +199,9 @@ export const OfferMutations = extendType({
         } else {
           const user = await prisma.users.findOne({ where: { id: userId } })
           if (user) {
-            firstName = user.firstName || ''
-            lastName = user.lastName || ''
-            email = user.email
+            firstName = user!.firstName || ''
+            lastName = user!.lastName || ''
+            email = user!.email
           }
         }
 
