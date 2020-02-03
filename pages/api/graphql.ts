@@ -5,9 +5,9 @@ import { createContext } from '../../nexus/context'
 const server = new ApolloServer({
   schema: schema,
   context: createContext,
-  // playground: true,
-  // introspection: true,
-  // tracing: true
+  playground: true,
+  introspection: true,
+  tracing: true,
 })
 
 export const config = {
