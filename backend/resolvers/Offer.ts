@@ -39,7 +39,7 @@ export const OfferQuery = extendType({
       type: 'Offer',
       args: {
         active: booleanArg({ required: false }),
-        publicOffer: booleanArg({ required: false})
+        publicOffer: booleanArg({ required: false }),
       },
       list: true,
       resolve: async (_, { active, publicOffer }, { prisma }) => {
@@ -176,6 +176,7 @@ export const OfferMutations = extendType({
         },
         ctx
       ) => {
+        return undefined as any
         try {
           await OfferValidationSchema.validate({
             offerName,
@@ -212,9 +213,9 @@ export const OfferMutations = extendType({
         } else {
           const user = await ctx.prisma.user({ id: userId })
           if (user) {
-            firstName = user.firstName || ''
-            lastName = user.lastName || ''
-            email = user.email
+            firstName = user!.firstName || ''
+            lastName = user!.lastName || ''
+            email = user!.email
           }
         }
 

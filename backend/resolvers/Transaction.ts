@@ -241,6 +241,7 @@ export const TransactionMutation = prismaExtendType({
         { firstName, lastName, email, comment, offerId, amount },
         { prisma }
       ) => {
+        return undefined as any
         const offer = (await prisma.offer({ id: offerId }).$fragment(`
           fragment OfferTransaction on Offer {
             amount
