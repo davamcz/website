@@ -219,6 +219,7 @@ export const OfferMutations = extendType({
             firstName,
             lastName,
             email,
+            active: true,
             user: { connect: { id: userId } },
             gallery: {
               create: {
