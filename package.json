@@ -83,7 +83,7 @@
     "@types/styled-components": "^4.1.19",
     "@types/yup": "^0.26.24",
     "dotenv-cli": "^3.1.0",
-    "lint-staged": "^9.5.0",
+    "lint-staged": "^10.0.7",
     "prettier": "^1.19.1",
     "prisma2": "^2.0.0-preview020.3",
     "shell-quote": "^1.7.2",
