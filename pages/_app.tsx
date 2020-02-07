@@ -1,11 +1,13 @@
 import App from 'next/app'
 import Head from 'next/head'
-import { withRouter } from 'next/router'
+import { withRouter, Router } from 'next/router'
 import { ThemeProvider } from 'styled-components'
 import { Layout } from '../components/Layout'
 import { GlobalStyles } from '../styles/GlobalStyles'
 import { theme } from '../styles/theme'
+import { pageview } from '../lib/gtag'
 
+Router.events.on('routeChangeComplete', url => pageview(url))
 class Davam extends App {
   render() {
     const { Component, pageProps, router } = this.props
