@@ -36,7 +36,7 @@ model Offer {
   active       Boolean?
   amount       Int
   beneficator  Organization?
-  createdAt    DateTime?
+  createdAt    DateTime      @default(now())
   deletedAt    DateTime?
   description  String
   email        String
