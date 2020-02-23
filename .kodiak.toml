@@ -10,3 +10,4 @@ block_on_reviews_requested = true
 notify_on_conflict = true
 optimistic_updates = true
 prioritize_ready_to_merge = true
+auto_approve_usernames = ["dependabot-preview"]
