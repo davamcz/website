@@ -27,15 +27,15 @@ export default ({ organizations }: OrganizationsProps) => (
 )
 
 export async function getStaticProps() {
-  // const client = initApolloClient({})
+  const client = initApolloClient({})
 
-  // const {
-  //   data: { organizations },
-  // } = await client.query<OrganizationsQuery>({ query: organizationsQuery })
+  const {
+    data: { organizations },
+  } = await client.query<OrganizationsQuery>({ query: organizationsQuery })
 
   return {
     props: {
-      organizations: [],
+      organizations,
     },
   }
 }
