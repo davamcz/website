@@ -19,41 +19,64 @@ export const transactionsStatistics = gql`
 `
 
 export default () => {
-  const { loading, data } = useGetTransactionsStatisticsQuery();
+  const { loading, data } = useGetTransactionsStatisticsQuery()
   const donated = 23091 + (data?.getTransactionsStatistics?.donatedAmount || 0)
-  const transactions = 85 + (data?.getTransactionsStatistics?.donationsCount || 0)
-  const numberOfOrganizations = data?.getTransactionsStatistics.numberOfOrganizations  || 9
+  const transactions =
+    85 + (data?.getTransactionsStatistics?.donationsCount || 0)
+  const numberOfOrganizations =
+    data?.getTransactionsStatistics?.numberOfOrganizations || 9
 
   return (
-  <Container>
-    <Title description="Velká radost" center>
-      Kolik se vás už podílelo
-    </Title>
-    <Spacer y={2} />
-    <Container
-      center
-      direction={['column', 'column', 'row']}
-      style={{ justifyContent: 'space-between' }}
-    >
-      <Stat title="Zapojených organizací" value={numberOfOrganizations} loading={loading} />
+    <Container>
+      <Title description="Velká radost" center>
+        Kolik se vás už podílelo
+      </Title>
       <Spacer y={2} />
-      <Stat title="Proběhlých darů" value={`${transactions}`} loading={loading} />
-      <Spacer y={2} />
-      <Stat title="Získáno na dobročinnost" value={`${donated} Kč`} loading={loading} />
+      <Container
+        center
+        direction={['column', 'column', 'row']}
+        style={{ justifyContent: 'space-between' }}
+      >
+        <Stat
+          title="Zapojených organizací"
+          value={numberOfOrganizations}
+          loading={loading}
+        />
+        <Spacer y={2} />
+        <Stat
+          title="Proběhlých darů"
+          value={`${transactions}`}
+          loading={loading}
+        />
+        <Spacer y={2} />
+        <Stat
+          title="Získáno na dobročinnost"
+          value={`${donated} Kč`}
+          loading={loading}
+        />
+      </Container>
+      <Spacer y={4} />
     </Container>
-    <Spacer y={4} />
-  </Container>
-)}
+  )
+}
 
-const Stat = ({ value, title, loading = false }: { value: string | number; title: string, loading: boolean }) => (
+const Stat = ({
+  value,
+  title,
+  loading = false,
+}: {
+  value: string | number
+  title: string
+  loading: boolean
+}) => (
   <Block>
     <Spacer />
     {loading && <Loading height={48} />}
-    {!loading && 
+    {!loading && (
       <Text h1 as="span">
         {value}
       </Text>
-    }
+    )}
     <Text color="salmon" span>
       {title}
     </Text>
