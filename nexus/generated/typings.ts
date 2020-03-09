@@ -59,7 +59,6 @@ export interface NexusGenRootTypes {
   Float: number;
   Boolean: boolean;
   ID: string;
-  DateTime: any;
   Upload: any;
 }
 
@@ -100,7 +99,6 @@ export interface NexusGenFieldTypes {
     active: boolean | null; // Boolean
     amount: number; // Int!
     beneficator: NexusGenRootTypes['Organization'] | null; // Organization
-    createdAt: any; // DateTime!
     description: string; // String!
     gallery: NexusGenRootTypes['Gallery']; // Gallery!
     id: string; // String!
@@ -249,7 +247,7 @@ export type NexusGenEnumNames = "TransactionStatus";
 
 export type NexusGenInterfaceNames = never;
 
-export type NexusGenScalarNames = "Boolean" | "DateTime" | "Float" | "ID" | "Int" | "String" | "Upload";
+export type NexusGenScalarNames = "Boolean" | "Float" | "ID" | "Int" | "String" | "Upload";
 
 export type NexusGenUnionNames = never;
 
