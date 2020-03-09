@@ -1423,10 +1423,10 @@
     "@nodelib/fs.scandir" "2.1.3"
     fastq "^1.6.0"
 
-"@prisma/client@2.0.0-preview020.3":
-  version "2.0.0-preview020.3"
-  resolved "https://registry.yarnpkg.com/@prisma/client/-/client-2.0.0-preview020.3.tgz#c1042cba540b580d8068f32654bb1e9519fc81a7"
-  integrity sha512-W+CXyj8Z1UFpWXDMMUTql2QdtxfDrNKYa2F7jdU/Qb5PKBankmQeDlUSWfBNWAoTHUREQ5Q+gGOFRVoHfMvaow==
+"@prisma/client@2.0.0-preview023":
+  version "2.0.0-preview023"
+  resolved "https://registry.yarnpkg.com/@prisma/client/-/client-2.0.0-preview023.tgz#d24515b3f62f1d3730fca7d07a43cff36e308f6c"
+  integrity sha512-R3e+CFr5HkDTzMYnNk9iYsjY76C9/3zxdUxmejD3hivJGJ6yEKq5p95gE3skkzWnj5BBa9tE15tNI7/uZZhv5A==
 
 "@protobufjs/aspromise@^1.1.1", "@protobufjs/aspromise@^1.1.2":
   version "1.1.2"
