@@ -69,7 +69,7 @@ type Query {
   offers(active: Boolean, publicOffer: Boolean): [Offer!]!
   organizations: [Organization!]!
   recentTransactions: [Transaction!]!
-  user: User!
+  user: User
 }
 
 type Transaction {

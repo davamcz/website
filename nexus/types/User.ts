@@ -28,8 +28,12 @@ export const UserQueries = extendType({
   definition: t => {
     t.field('user', {
       type: 'User',
+      nullable: true,
       resolve: (_, {}, { req, prisma }) => {
         const { userId } = getUserInfo(req)
+        if (!userId) {
+          return null
+        }
         return prisma.users.findOne({ where: { id: userId } })
       },
     })

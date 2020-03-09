@@ -12,7 +12,11 @@ import { SelectButton } from '../../components/SelectButton'
 import Spacer from '../../components/Spacer'
 import Text from '../../components/Text'
 import { TextArea } from '../../components/TextArea'
-import { useCreateOfferMutation, useOrganizationsQuery, useUserQuery } from '../../generated/graphql'
+import {
+  useCreateOfferMutation,
+  useOrganizationsQuery,
+  useUserQuery,
+} from '../../generated/graphql'
 import { withApollo } from '../../lib/apollo'
 import { useUpload } from '../../lib/use-upload'
 import { OfferValidationSchema } from '../../validation/offer'
@@ -162,7 +166,7 @@ export default withApollo(() => {
                     Vyberte organizaci
                   </option>
                   {data &&
-                    data.organizations.map(organization => (
+                    data?.organizations?.map(organization => (
                       <option key={organization.id} value={organization.id}>
                         {organization.name}
                       </option>
