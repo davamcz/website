@@ -44,10 +44,9 @@ export const transactionCreatedSeller = data =>
         <mj-section>
           <mj-column>
             <mj-text padding="0">
-              <h1>Hurá! Dobrý skutek je dokonán :-)</h1>
-              Skvělá zpráva, ${data.salutation},<br /><br />
-              někdo právě daroval peníze dobročinné organizaci ${data.ngo} proto aby získal Váš
-              produkt. Spojte se a domluvte si další postup.
+              <h1>Hurá! Dobrý skutek je dokonán!</h1>
+              Dobrý den, ${data.salutation},<br /><br />
+              někdo právě koupí vašeho produktu/služby daroval 100 % ceny na vámi zvolenou dobročinnou organizaci: ${data.ngo} Prosím, spojte se s tímto dárcem a domluvte si předání produktu/služby (poštou, osobně, jinak:-)).
             </mj-text>
           </mj-column>
         </mj-section>

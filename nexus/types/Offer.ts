@@ -251,7 +251,7 @@ export const OfferMutations = extendType({
           const deactivationLink = `https://davam.cz/nabidka/${id}/deaktivovat?ch=${confirmationHash}`
           sendEmail(email, {
             template: 'linkCreated',
-            subject: `Vytvoření platebního odkazu na ${name}`,
+            subject: `Dávám.cz - Vytvořili jste nabídku!`,
             data: {
               firstName,
               salutation,

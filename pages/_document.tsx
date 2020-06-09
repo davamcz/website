@@ -69,10 +69,9 @@ export default class MyDocument extends Document {
               'https://connect.facebook.net/en_US/fbevents.js');
                fbq('init', '${FB_TRACKING_ID}');
               fbq('track', 'PageView');            
-              `
+              `,
             }}
           />
-
         </Head>
         <body>
           <Main />

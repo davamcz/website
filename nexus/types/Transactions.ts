@@ -159,7 +159,7 @@ export const TransactionQuery = extendType({
           // Send email to buyer
           const mailStatus1 = await sendEmail(currentTransaction.email, {
             template: 'transactionCreatedBuyer',
-            subject: `Právě jste daroval ${realDonatedAmount} Kč za ${name}`,
+            subject: `Dávám.cz - Právě jste daroval peníze na dobrou věc!`,
             data: {
               salutation: buyerSalutation,
               ngo: NGOName,
@@ -177,7 +177,7 @@ export const TransactionQuery = extendType({
           // Send email to seller
           const mailStatus2 = await sendEmail(email, {
             template: 'transactionCreatedSeller',
-            subject: `Za ${name} bylo právě darováno ${realDonatedAmount} Kč`,
+            subject: `Dávám.cz Někdo právě projevil zájem o vaši nabídku`,
             data: {
               salutation: sellerSalutation,
               ngo: NGOName,
