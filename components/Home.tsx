@@ -7,13 +7,13 @@ import Text from './Text'
 export const Home = () => (
   <HomeWrapper>
     <HomeContainer style={{ paddingTop: '144px', paddingBottom: '250px' }}>
-      <Text h1 style={{ maxWidth: '480px' }}>
-        Jednoduše spojujeme lidi pro dobrou věc
+      <Text h1 style={{ maxWidth: '570px' }}>
+        Dobročinné tržiště. Když&nbsp;věci a služby pomáhají.
       </Text>
       <Spacer />
       <Text style={{ maxWidth: '420px' }}>
-        Máte věc nebo službu, kterou chcete věnovat druhým a zároveň pomoci
-        dobročinné organizaci?
+        Darujte věc či službu těm, co naoplátku darují finance Vaší oblíbené
+        dobročinné organizaci.
       </Text>
       <Spacer />
       <Container

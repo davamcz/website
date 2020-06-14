@@ -52,13 +52,9 @@ export const linkCreated = data =>
         <mj-section>
           <mj-column>
             <mj-text padding="0">
-              <h1>Hurá! Dobrý skutek je na světě :-)</h1>
+              <h1>Hurá! Dobrý skutek je na světě!</h1>
               Dobrý den, ${data.salutation},<br /><br />
-              děkujeme za vytvoření platebního odkazu, skrze který je možné podpořit dobročinnou organizaci ${data.ngo}.
-              Nyní zveřejněte svůj inzerát na sociálních sítích, inzertních portálech či v naší facebookové skupině
-              <a href="https://www.facebook.com/groups/2159998650981900/" target="_blank">Dobročinný bazar</a>,
-              a připojte odkaz uvedený níže.
-
+              Děkujeme za vytvoření nabídky která podpoří dobročinnou organizaci ${data.ngo}. Svoji nabídku nezapomeňte zveřejnit na sociálních sítích, inzertních portálech, Facebookové skupině  <a href="https://www.facebook.com/groups/2159998650981900/" target="_blank">Dobročinný bazar</a>, nebo ji pošlete e-mailem svým známým i méně známým. :-) URL odkaz Vaší nabídky najdete níže.
             </mj-text>
           </mj-column>
         </mj-section>

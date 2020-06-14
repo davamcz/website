@@ -28,7 +28,7 @@ export default () => {
 
   return (
     <Container>
-      <Title description="Velká radost" center>
+      <Title description="Pomoc v číslech" center>
         Kolik se vás už podílelo
       </Title>
       <Spacer y={2} />
@@ -50,7 +50,7 @@ export default () => {
         />
         <Spacer y={2} />
         <Stat
-          title="Získáno na dobročinnost"
+          title="Celkem vybráno"
           value={`${donated} Kč`}
           loading={loading}
         />

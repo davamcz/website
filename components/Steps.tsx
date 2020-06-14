@@ -16,19 +16,19 @@ export const Steps = () => (
       ></Step>
       <Step
         title="Krok č. 2"
-        description="Vytvořte nabídku s vaší darovanou věcí. My vám vygenerujeme platební odkaz."
+        description="Vytvořte nabídku na vaši věc či službu."
       ></Step>
       <Step
         title="Krok č. 3"
-        description="Svůj inzerát zveřejněte a sdílejte se všemi, ke kterým chcete, aby se nabídka dostala."
+        description="My Vám k tomu ještě vygenerujeme URL odkaz nabídky pro sdílení třeba na sociálních sítích."
       ></Step>
       <Step
         title="Krok č. 4"
-        description="Vyčkejte, až vaše nabídka někoho zaujme a přes platební odkaz přímo přispěje vybrané organizaci."
+        description="Zájemce koupí produktu/služby daruje veškeré peníze dobročínné organizaci."
       ></Step>
       <Step
         title="Krok č. 5"
-        description="Oba obdržíte potvrzení o daru. Domluvíte se na způsobu předání produktu nebo poskytnutí služby."
+        description="Na závěr se domluvte na způsobu předání produktu, nebo poskytnutí služby. Oba také obdržíte potvrzení o daru."
       ></Step>
     </StyledContainer>
   </Container>

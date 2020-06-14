@@ -44,11 +44,10 @@ export const transactionCreatedBuyer = data =>
         <mj-section>
           <mj-column>
             <mj-text padding="0">
-              <h1>Hurá! Dobrý skutek je na světě :-)</h1>
+              <h1>Hurá! Dobrý skutek je na světě!</h1>
               Dobrý den, ${data.salutation},<br /><br />
-              děkujeme, že jste daroval peníze dobročinné organizaci ${data.ngo}. Prosíme, spojte se 
-              nyní s dobromanem (poskytovatelem produktu) a dohodněte si s ním převzetí produktu. 
-
+              děkujeme, že jste daroval peníze dobročinné organizaci ${data.ngo}. Prosíme, spojte se
+              nyní s dávajícím (poskytovatelem produktu) a domluvte se společně, jak si produkt/službu předáte (poštou, osobně, jinak:-)).
             </mj-text>
           </mj-column>
         </mj-section>

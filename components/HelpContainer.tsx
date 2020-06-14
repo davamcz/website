@@ -13,12 +13,12 @@ export const HelpContainer = () => (
       </Text>
       <Spacer y={0.5} />
       <Text h1 as="h2" color="darkGrey" center style={{ maxWidth: '480px' }}>
-        Rozhodli jste se přidat a pomoci?
+        Pojďte s námi pomáhat!
       </Text>
       <Spacer />
-      <Text>Každý, kdo se zapojí, rozdává radost.</Text>
+      <Text>Každý, kdo se zapojí, rozdává dvojnásobnou radost.</Text>
       <Spacer />
-      <ButtonLink href="/vytvorit-nabidku">Přejít k formuláři</ButtonLink>
+      <ButtonLink href="/vytvorit-nabidku">Vytvořit nabídku</ButtonLink>
       <Spacer y={4} />
     </Container>
   </Section>

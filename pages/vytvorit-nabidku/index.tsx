@@ -67,14 +67,14 @@ export default withApollo(() => {
       <Container direction={['column', 'column', 'row']}>
         <Container>
           <Text h1 color="salmon" style={{ maxWidth: '420px' }}>
-            Rozhodli jste se darovat
+            Nabídněte věc nebo službu
           </Text>
           <Spacer y={0.5} />
           <Text>
-            Vytvořte si pomocí našeho formuláře platební odkaz, díky kterému
-            druzí snadno zakoupí vaši věc/službu a přímo tak přispějí vámi
-            vybrané neziskové organizaci. Platba půjde v plné výši dobročinné
-            organizaci.
+            Vytvořte nabídku. My vám vygenerujeme URL odkaz nabídky. Sdílejte ho
+            na sociálních sítích, nebo v e-mailu s ostatními. Zájemce si
+            věc/službu koupí. Celá částka z prodeje poputuje na konto vámi
+            zvolené dobročinné organizace. Radost mají všichni!
           </Text>
           <Spacer y={1.5} />
 

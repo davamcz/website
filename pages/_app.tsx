@@ -16,23 +16,23 @@ class Davam extends App {
       <>
         <Head>
           <title key="title">
-            Dávám - Jednoduše spojujeme lidi pro dobrou věc
+            Dávám - Dobročinné tržiště. Když věci a služby pomáhají.
           </title>
           <meta
             key="description"
             name="description"
-            content="Jednoduše spojujeme lidi pro dobrou věc"
+            content="Dobročinné tržiště. Když věci a služby pomáhají."
           />
           <meta key="og:type" property="og:type" content="website" />
           <meta
             key="og:title"
             property="og:title"
-            content="Dávám - Jednoduše spojujeme lidi pro dobrou věc"
+            content="Dávám - Dobročinné tržiště. Když věci a služby pomáhají."
           />
           <meta
             key="og:description"
             property="og:description"
-            content="Jednoduše spojujeme lidi pro dobrou věc"
+            content="Dobročinné tržiště. Když věci a služby pomáhají."
           />
           <meta
             key="og:image"

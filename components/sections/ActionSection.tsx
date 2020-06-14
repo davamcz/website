@@ -24,7 +24,7 @@ export const ActionSection = () => (
               as="h3"
               style={{ maxWidth: '330px' }}
             >
-              Darujte svoji věc nebo službu
+              Nabídněte věc nebo službu
             </Text>
             <Spacer y={1.5} />
             <ButtonLink href="/vytvorit-nabidku">Vytvořit nabídku</ButtonLink>
@@ -43,7 +43,7 @@ export const ActionSection = () => (
               as="h3"
               style={{ maxWidth: '330px' }}
             >
-              Pomozte koupí darované věci
+              Koupí darujte peníze potřebným
             </Text>
             <Spacer y={1.5} />
             <ButtonLink secondary href="/nabidka">

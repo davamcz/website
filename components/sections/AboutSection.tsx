@@ -15,11 +15,16 @@ export const AboutSection = () => (
       <Title description="O nás">Proč to děláme a kdo jsme?</Title>
       <Spacer y={1.5} />
       <Text>
-        Jsme parta lidí, která se vytvořením této platformy rozhodla podpořit
-        neziskový sektor. Zjednodušit propojení dárce s dobročinnými
-        organizacemi tak, aby s tím měly obě strany co nejméně starostí. Pár
-        kliknutí na této stránce znamenalo radost, kterou uděláte hned dvakrát –
-        tomu, kdo váš produkt koupí, a zároveň i neziskové organizaci.
+        Jsme parta lidí, kteří se rozhodli vytvořením dobročinného tržiště
+        podpořit neziskový sektor. Chceme jednoduchým způsobem pomáhat
+        dobročinným organizacím. Proč? Uvědomujeme si, kolik dobrého tyto
+        organizace konají. Ať už jde o pomoc druhým, nebo o přírodu. Dělají toho
+        mnoho a jsou pro naši společnost naprosto nepostradatelné! A tak jsme
+        dali hlavy dohromady a začali přemýšlet, co bychom mohli na oplátku
+        udělat my, pro ně. Až nás napadlo. Všichni máme doma věci, které nám již
+        neslouží, ale jinému by udělaly radost. A proč neudělat radost
+        dvojnásobnou - tomu, kdo váš produkt nebo službu koupí, a zároveň
+        dobročinné organizaci!
       </Text>
       <Spacer />
       {/* <ButtonLink href="/o-nas" secondary>Více o nás</ButtonLink> */}
